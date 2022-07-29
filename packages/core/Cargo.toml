@@ -1,0 +1,11 @@
+[package]
+name = "tcore"
+version = "0.0.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tokio = {version="1.20.1", features=["full"]}
+prisma-client-rust = { git = "https://github.com/Brendonovich/prisma-client-rust", tag = "0.5.2" }
+prisma-client-rust-cli = { git = "https://github.com/Brendonovich/prisma-client-rust", tag = "0.5.2" }

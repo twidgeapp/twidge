@@ -1,0 +1,23 @@
+{
+  "name": "twidge",
+  "version": "1.0.0",
+  "license": "MIT",
+  "packageManager": "yarn@3.2.2",
+  "workspaces": [
+    "packages/**",
+    "apps/**"
+  ],
+  "scripts": {
+    "dev": "concurrently \"cd apps/web && yarn dev\" \"cargo tauri dev\"",
+    "migrate:dev": "cargo run --bin prisma migrate dev --schema packages/core/prisma/prisma/schema.prisma"
+  },
+  "devDependencies": {
+    "prettier": "2.7.1"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "latest",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "latest",
+    "eslint-plugin-react": "^7.28.0"
+  }
+}

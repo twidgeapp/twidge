@@ -1,0 +1,6 @@
+{
+    "name": "@twidge/config",
+    "devDependencies": {
+        "prettier-airbnb-config": "^1.0.0"
+    }
+}
