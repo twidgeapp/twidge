@@ -9,7 +9,8 @@
   ],
   "scripts": {
     "dev": "concurrently \"cd apps/web && yarn dev\" \"cargo tauri dev\"",
-    "migrate:dev": "cargo run --bin prisma migrate dev --schema packages/core/prisma/prisma/schema.prisma"
+    "migrate:dev": "cargo run --bin prisma migrate dev --schema packages/core/prisma/prisma/schema.prisma",
+    "prisma:gen": "cd packages/core/prisma/ && cargo run --bin prisma -- generate"
   },
   "devDependencies": {
     "prettier": "2.7.1"
