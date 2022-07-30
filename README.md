@@ -1,13 +1,13 @@
 <p align="center">
     <img width="200px" src="https://raw.githubusercontent.com/VarunPotti/twidge/master/assets/logo.svg">
     <br />
-    <br />
     <h1>Twidge</h1>
     <p>A productivity app which acts like an extension to your mind</p>
 </p>
-<br />
-
 Twidge is a cross platform productivity app, powered by [rust](https://rust-lang.org), [tauri](https://tauri.app), [prisma-client-rust](https://github.com/Brendonovich/prisma-client-rust)
+
+<br/>
+<br/>
 
 Twidge works entirely offline, the various features provided by twidge are listed [below](#features)
 
