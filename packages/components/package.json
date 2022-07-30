@@ -1,0 +1,6 @@
+{
+    "name": "@twidge/components",
+    "dependencies": {
+        "@twidge/primitives": "workspace:^"
+    }
+}

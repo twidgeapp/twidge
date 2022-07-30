@@ -1,0 +1,7 @@
+{
+    "name": "@twidge/primitives",
+    "dependencies": {
+        "@stitches/react": "^1.2.8",
+        "@twidge/config": "workspace:^"
+    }
+}

@@ -5,22 +5,27 @@ datasource db {
 
 generator client {
     // Corresponds to the cargo alias created earlier
-    provider      = "cargo run --bin prisma"
+    provider = "cargo run --bin prisma"
     // The location to generate the schema. Is relative to the position of the schema
-    output        = "../src/lib.rs"
+    output   = "../src/lib.rs"
 }
 
 model Migration {
-  id            Int      @id @default(autoincrement())
-  name          String
-  checksum      String   @unique
-  steps_applied Int      @default(0)
-  applied_at    DateTime @default(now())
-  @@map("_migrations")
+    id            Int      @id @default(autoincrement())
+    name          String
+    checksum      String   @unique
+    steps_applied Int      @default(0)
+    applied_at    DateTime @default(now())
+
+    @@map("_migrations")
 }
 
+model Spaces {
+    id          Int      @id @default(autoincrement())
+    name        String
+    description String
+    created_at  DateTime @default(now())
+    updated_at  DateTime @default(now())
 
-model User {
-    id          String  @id
-    displayName String
+    @@map("spaces")
 }
