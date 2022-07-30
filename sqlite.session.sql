@@ -1,2 +1,2 @@
 SELECT *
-FROM spaces;
+FROM spaces

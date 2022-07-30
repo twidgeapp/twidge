@@ -1,8 +1,10 @@
 {
     "name": "@twidge/components",
     "dependencies": {
+        "@fluentui/react-icons": "^2.0.178",
         "@tauri-apps/api": "^1.0.2",
         "@twidge/primitives": "workspace:^",
-        "@twidge/utils": "workspace:^"
+        "@twidge/utils": "workspace:^",
+        "react": "^18.2.0"
     }
 }

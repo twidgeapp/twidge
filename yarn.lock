@@ -277,6 +277,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.1.2":
+  version: 7.18.9
+  resolution: "@babel/runtime@npm:7.18.9"
+  dependencies:
+    regenerator-runtime: ^0.13.4
+  checksum: 36dd736baba7164e82b3cc9d43e081f0cb2d05ff867ad39cac515d99546cee75b7f782018b02a3dcf5f2ef3d27f319faa68965fdfec49d4912c60c6002353a2e
+  languageName: node
+  linkType: hard
+
 "@babel/template@npm:^7.18.6":
   version: 7.18.6
   resolution: "@babel/template@npm:7.18.6"
@@ -316,6 +325,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@emotion/hash@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "@emotion/hash@npm:0.8.0"
+  checksum: 4b35d88a97e67275c1d990c96d3b0450451d089d1508619488fc0acb882cb1ac91e93246d471346ebd1b5402215941ef4162efe5b51534859b39d8b3a0e3ffaa
+  languageName: node
+  linkType: hard
+
 "@eslint/eslintrc@npm:^0.4.3":
   version: 0.4.3
   resolution: "@eslint/eslintrc@npm:0.4.3"
@@ -333,10 +349,48 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fluentui/react-icons@npm:^2.0.178":
+  version: 2.0.178
+  resolution: "@fluentui/react-icons@npm:2.0.178"
+  dependencies:
+    "@griffel/react": ^1.0.0
+    tslib: ^2.1.0
+  peerDependencies:
+    "@griffel/react": ^1.0.0
+    react: ">=16.8.0 <18.0.0"
+  checksum: b93041eedc837f114c4bbab8d9850930bc5f1ea84c0cd50dabb9d6b995f1e164b224a26b1d5fa0ca21965086c3b21da7a1b0e27c5d53ad2b8933f34031edc0cc
+  languageName: node
+  linkType: hard
+
 "@gar/promisify@npm:^1.1.3":
   version: 1.1.3
   resolution: "@gar/promisify@npm:1.1.3"
   checksum: 4059f790e2d07bf3c3ff3e0fec0daa8144fe35c1f6e0111c9921bd32106adaa97a4ab096ad7dab1e28ee6a9060083c4d1a4ada42a7f5f3f7a96b8812e2b757c1
+  languageName: node
+  linkType: hard
+
+"@griffel/core@npm:^1.5.1":
+  version: 1.5.1
+  resolution: "@griffel/core@npm:1.5.1"
+  dependencies:
+    "@emotion/hash": ^0.8.0
+    csstype: ^3.0.10
+    rtl-css-js: ^1.16.0
+    stylis: ^4.0.13
+    tslib: ^2.1.0
+  checksum: bcceffd8db979085ccce7193670157bec0007191fe6cd3a071162d8c7b6da884c36c016dd33a55aadb3d29e632fb3990065a96d8610c6420165ba8ca3379313d
+  languageName: node
+  linkType: hard
+
+"@griffel/react@npm:^1.0.0":
+  version: 1.2.3
+  resolution: "@griffel/react@npm:1.2.3"
+  dependencies:
+    "@griffel/core": ^1.5.1
+    tslib: ^2.1.0
+  peerDependencies:
+    react: ">=16.8.0 <18.0.0"
+  checksum: 5022bbdf9aa6af4fe5deea689b0e76cdfc53c4e55b9f85cee2fe49c0b1a47f321acfdeac9f9763261e4e782a60a2e1f7ac9a78464c1b4fd16a4480c9ab560932
   languageName: node
   linkType: hard
 
@@ -484,9 +538,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@twidge/components@workspace:packages/components"
   dependencies:
+    "@fluentui/react-icons": ^2.0.178
     "@tauri-apps/api": ^1.0.2
     "@twidge/primitives": "workspace:^"
     "@twidge/utils": "workspace:^"
+    react: ^18.2.0
   languageName: unknown
   linkType: soft
 
@@ -1097,7 +1153,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"csstype@npm:^3.0.2":
+"csstype@npm:^3.0.10, csstype@npm:^3.0.2":
   version: 3.1.0
   resolution: "csstype@npm:3.1.0"
   checksum: 644e986cefab86525f0b674a06889cfdbb1f117e5b7d1ce0fc55b0423ecc58807a1ea42ecc75c4f18999d14fc42d1d255f84662a45003a52bb5840e977eb2ffd
@@ -2985,6 +3041,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"regenerator-runtime@npm:^0.13.4":
+  version: 0.13.9
+  resolution: "regenerator-runtime@npm:0.13.9"
+  checksum: 65ed455fe5afd799e2897baf691ca21c2772e1a969d19bb0c4695757c2d96249eb74ee3553ea34a91062b2a676beedf630b4c1551cc6299afb937be1426ec55e
+  languageName: node
+  linkType: hard
+
 "regexp.prototype.flags@npm:^1.4.1, regexp.prototype.flags@npm:^1.4.3":
   version: 1.4.3
   resolution: "regexp.prototype.flags@npm:1.4.3"
@@ -3112,6 +3175,15 @@ __metadata:
   bin:
     rollup: dist/bin/rollup
   checksum: 5a84fb98a6f858906bceba091430442f6c1f362b07c5fa9123b708f87e39f52640e34a189cd9a1776ceae61300055c78ba648205fa03188451539ebeb19797df
+  languageName: node
+  linkType: hard
+
+"rtl-css-js@npm:^1.16.0":
+  version: 1.16.0
+  resolution: "rtl-css-js@npm:1.16.0"
+  dependencies:
+    "@babel/runtime": ^7.1.2
+  checksum: 51756329f691cacd3e1b48f0f9d04a69338a90013f2d2942ca1ae3b069c952f70055f5fd76c66921e9a5cb956276252376a847c3294bd0ee54be9ceb32ea868c
   languageName: node
   linkType: hard
 
@@ -3385,6 +3457,13 @@ __metadata:
   version: 3.1.1
   resolution: "strip-json-comments@npm:3.1.1"
   checksum: 492f73e27268f9b1c122733f28ecb0e7e8d8a531a6662efbd08e22cccb3f9475e90a1b82cab06a392f6afae6d2de636f977e231296400d0ec5304ba70f166443
+  languageName: node
+  linkType: hard
+
+"stylis@npm:^4.0.13":
+  version: 4.1.1
+  resolution: "stylis@npm:4.1.1"
+  checksum: e9b0a086996a94c44d45933287731313f6ecdbf9334410231d882d31a1890fb36e34a7b163487e2d7f992c2044e4cb37179810fc6f758f359a431343c2374ed2
   languageName: node
   linkType: hard
 

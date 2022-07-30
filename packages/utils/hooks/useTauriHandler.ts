@@ -13,19 +13,28 @@ import { useEffect, useState } from 'react'
  * @param invalidateCache Whether to invalidate the cache.
  * @param invalidateTime The time to invalidate the cache at intervals.
  */
-const useTauriHandler = (name: string, args?: any, invalidateCache?: boolean, invalidateTime?: number) => {
-    const [result, setResult] = useState<any>()
+function useTauriHandler<T>({ name, args, invalidateCache, invalidateTime }: {
+    name: string;
+    args?: any;
+    invalidateCache?: boolean;
+    invalidateTime?: number;
+}): {
+    send: (args?: any) => void;
+    result: T | undefined;
+    sent: boolean;
+} {
+    const [result, setResult] = useState<T>()
     const [sent, setSent] = useState(false)
 
     const send = async () => {
         let result = await invoke(name, args)
-        setResult(result)
+        setResult(JSON.parse(result))
         setSent(true)
     }
 
     useEffect(() => {
         // check if invalidateCache is not undefined and is set to true
-        if (invalidateCache != undefined && invalidateCache === true) {
+        if (invalidateCache != null && invalidateCache === true) {
             // check if invaldeTime is not undefined and is set to a number
             if (!invalidateTime) throw new Error('invalidateTime is required when invalidateCache is true')
 
@@ -36,8 +45,7 @@ const useTauriHandler = (name: string, args?: any, invalidateCache?: boolean, in
         }
     }, [])
 
-
-
-
     return { send, result, sent }
 }
+
+export default useTauriHandler;

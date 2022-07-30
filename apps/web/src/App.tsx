@@ -1,7 +1,5 @@
 import Sidebar from '@twidge/components/sidebar'
 import { styled } from '@twidge/config/stitches.config'
-import { invoke } from '@tauri-apps/api/tauri'
-import { useEffect } from 'react'
 
 const Root = styled('div', {
   backgroundColor: '$backgroundColor',
@@ -13,9 +11,6 @@ const Root = styled('div', {
 })
 
 function App() {
-  useEffect(() => {
-    invoke("my_custom_command")
-  })
   return (
     <Root>
       <Sidebar />

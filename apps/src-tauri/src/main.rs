@@ -25,7 +25,7 @@ async fn main() {
     let app = tauri::Builder::default()
         .manage(shared)
         .invoke_handler(tauri::generate_handler![
-            tcore::functions::spaces::my_custom_command
+            tcore::functions::spaces::get_spaces
         ])
         .build(tauri::generate_context!())
         .expect("error while running tauri application");
