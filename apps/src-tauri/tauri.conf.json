@@ -31,7 +31,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "com.charge.vpotti.me",
       "longDescription": "",
       "macOS": {
         "entitlements": null,

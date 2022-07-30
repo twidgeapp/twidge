@@ -2,7 +2,9 @@
     all(not(debug_assertions), target_os = "windows"),
     windows_subsystem = "windows"
 )]
-use tauri::{CustomMenuItem, SystemTray, SystemTrayMenu, SystemTrayMenuItem};
+
+use std::sync::Arc;
+use tauri::{Manager, RunEvent, State};
 
 #[tokio::main]
 async fn main() {
@@ -18,16 +20,24 @@ async fn main() {
         .await
         .unwrap();
 
-    let quit = CustomMenuItem::new("quit".to_string(), "Quit");
-    let hide = CustomMenuItem::new("hide".to_string(), "Hide");
-    let tray_menu = SystemTrayMenu::new()
-        .add_item(quit)
-        .add_native_item(SystemTrayMenuItem::Separator)
-        .add_item(hide);
-    let tray = SystemTray::new().with_menu(tray_menu);
+    let shared = Arc::new(tcore::Shared(Arc::new(client)));
 
-    tauri::Builder::default()
-        .system_tray(tray)
-        .run(tauri::generate_context!())
+    let app = tauri::Builder::default()
+        .manage(shared)
+        .invoke_handler(tauri::generate_handler![
+            tcore::functions::spaces::my_custom_command
+        ])
+        .build(tauri::generate_context!())
         .expect("error while running tauri application");
+
+    app.run(move |app_handler, event| {
+        if let RunEvent::ExitRequested { .. } = event {
+            app_handler.windows().iter().for_each(
+                |(window_name, window)| {
+                    if let Err(e) = window.close() {}
+                },
+            );
+            app_handler.exit(0);
+        }
+    })
 }

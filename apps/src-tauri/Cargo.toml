@@ -21,7 +21,7 @@ tauri = { version = "1.0.5", features = ["api-all", "system-tray"] }
 tcore= {path="../../packages/core"}
 platform-dirs = "0.3.0"
 tokio = {version="1.20.1", features= ["full"] }
-
+prisma = {path="../../packages/core/prisma"}
 [features]
 # by default Tauri runs in production mode
 # when `tauri dev` runs it is executed with `cargo run --no-default-features` if `devPath` is an URL

@@ -1,6 +1,8 @@
 {
     "name": "@twidge/components",
     "dependencies": {
-        "@twidge/primitives": "workspace:^"
+        "@tauri-apps/api": "^1.0.2",
+        "@twidge/primitives": "workspace:^",
+        "@twidge/utils": "workspace:^"
     }
 }

@@ -3,8 +3,9 @@ import { createStitches } from '@stitches/react'
 export const { styled } = createStitches({
     theme: {
         colors: {
-            backgroundColor: "#4B4040",
+            backgroundColor: "#08090B",
             textColor: "#FFFFFF",
+            borderColor: "#232323"
         }
     }
 })

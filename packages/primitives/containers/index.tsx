@@ -2,6 +2,8 @@ import { styled } from '@twidge/config/stitches.config'
 
 const Container = styled('div', {
     display: 'flex',
+    width: '100%',
+    height: '100%',
     variants: {
         padding: {
             sm: {
@@ -42,16 +44,30 @@ const Container = styled('div', {
         },
         align: {
             center: {
-                justifyContent: 'center',
+                alignItems: "center"
             },
             end: {
-                justifyContent: 'flex-end',
+                alignItems: "flex-end"
             },
             start: {
-                justifyContent: 'flex-start',
+                alignItems: "flex-start"
             },
             stretch: {
-                justifyContent: 'stretch',
+                alignItems: "stretch"
+            },
+        },
+        justify: {
+            center: {
+                justifyContent: "center"
+            },
+            end: {
+                justifyContent: "flex-end"
+            },
+            start: {
+                justifyContent: "flex-start"
+            },
+            stretch: {
+                justifyContent: "stretch"
             },
         },
         wrap: {

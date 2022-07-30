@@ -78,6 +78,7 @@ name = "app"
 version = "0.1.0"
 dependencies = [
  "platform-dirs",
+ "prisma",
  "serde",
  "serde_json",
  "tauri",
