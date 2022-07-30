@@ -17,7 +17,17 @@ const Body = styled('div', {
     width: '100%',
     marginTop: '12px',
     backgroundColor: '$backgroundColor',
-    gap: '12px'
+    gap: '12px',
+
+    ".space": {
+        backgroundColor: "#1F2024",
+        width: '35px',
+        height: '35px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: '12px'
+    }
 })
 
 const SpaceComponent = ({ space, name }: {
@@ -27,8 +37,8 @@ const SpaceComponent = ({ space, name }: {
     const Icon = FluentIcons[name] as any;
 
     return (
-        <div>
-            <Icon />
+        <div className="space">
+            <Icon color={space.color} />
         </div>
     )
 }
