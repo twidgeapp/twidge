@@ -5,7 +5,9 @@ import Spaces, { Space } from '@twidge/utils/types/spaces';
 import { styled } from '@twidge/config/stitches.config';
 import * as FluentIcons from '@fluentui/react-icons';
 import Container from '@twidge/primitives/containers';
+import Tippy from '@tippyjs/react';
 import Logo from '../logo';
+import 'tippy.js/dist/tippy.css';
 
 const Body = styled('div', {
   display: 'flex',
@@ -16,16 +18,33 @@ const Body = styled('div', {
   width: '100%',
   marginTop: '12px',
   backgroundColor: '$backgroundColor',
-  gap: '12px',
+  gap: '8px',
+});
 
-  '.space': {
+const SpaceRoot = styled('button', {
+  all: 'unset',
+  cursor: 'pointer',
+  width: '35px',
+  height: '35px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  borderRadius: '12px',
+
+  '&:hover': {
     backgroundColor: '#1F2024',
-    width: '35px',
-    height: '35px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: '12px',
+    transition: 'all 0.2s ease-in-out',
+  },
+
+  variants: {
+    active: {
+      off: {
+        backgroundColor: '$backgroundColor',
+      },
+      on: {
+        backgroundColor: '#1F2024',
+      },
+    },
   },
 });
 
@@ -36,11 +55,27 @@ function SpaceComponent({ space, name }: {
   const Icon = FluentIcons[name] as any;
 
   return (
-    <div className="space">
-      <Icon color={space.color} />
-    </div>
+    <Tippy animateFill content={space.name}>
+      <SpaceRoot active="off">
+        <Icon color={space.color} />
+      </SpaceRoot>
+    </Tippy>
   );
 }
+
+function AddComponent() {
+  return (
+    <SpaceRoot active="off">
+      <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8.49996 13.8333V8.5M8.49996 8.5V3.16666M8.49996 8.5H13.8333M8.49996 8.5H3.16663" stroke="#699BF7" strokeWidth="1.33333" strokeLinecap="round" />
+      </svg>
+    </SpaceRoot>
+  );
+}
+
+const BreakPoint = styled('div', {
+  marginTop: '2px', marginBottom: '2px', width: '75%', borderBottom: '0.1px solid #4B4040',
+});
 
 function Sidebar() {
   const { send, sent, result } = useTauriHandler<Spaces>({ name: 'get_spaces' });
@@ -60,6 +95,8 @@ function Sidebar() {
     >
       <Logo />
       <Body>
+        <AddComponent />
+        <BreakPoint />
         {result && (
           <>
             {result.map((space) => (

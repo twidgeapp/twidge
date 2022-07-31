@@ -1,7 +1,7 @@
 {
     "name": "@twidge/config",
     "dependencies": {
-        "prettier-airbnb-config": "^1.0.0",
-        "@stitches/react": "^1.2.8"
+        "@stitches/react": "^1.2.8",
+        "prettier-airbnb-config": "^1.0.0"
     }
 }

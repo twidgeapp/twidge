@@ -14,8 +14,8 @@
     "@twidge/primitives": "workspace:^",
     "@twidge/utils": "workspace:^",
     "react": "^18.2.0",
-    "vite": "^3.0.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "vite": "^3.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.15",
