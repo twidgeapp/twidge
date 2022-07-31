@@ -1,6 +1,7 @@
-import { invoke } from '@tauri-apps/api/tauri'
-import { useEffect, useState } from 'react'
-
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-shadow */
+import { invoke } from '@tauri-apps/api/tauri';
+import { useEffect, useState } from 'react';
 
 /**
  * React hook to send tauri events,
@@ -13,7 +14,9 @@ import { useEffect, useState } from 'react'
  * @param invalidateCache Whether to invalidate the cache.
  * @param invalidateTime The time to invalidate the cache at intervals.
  */
-function useTauriHandler<T>({ name, args, invalidateCache, invalidateTime }: {
+function useTauriHandler<T>({
+  name, args, invalidateCache, invalidateTime,
+}: {
     name: string;
     args?: any;
     invalidateCache?: boolean;
@@ -23,29 +26,29 @@ function useTauriHandler<T>({ name, args, invalidateCache, invalidateTime }: {
     result: T | undefined;
     sent: boolean;
 } {
-    const [result, setResult] = useState<T>()
-    const [sent, setSent] = useState(false)
+  const [result, setResult] = useState<T>();
+  const [sent, setSent] = useState(false);
 
-    const send = async () => {
-        let result = await invoke(name, args)
-        setResult(JSON.parse(result))
-        setSent(true)
+  const send = async () => {
+    const result: any = await invoke(name, args);
+    setResult(JSON.parse(result));
+    setSent(true);
+  };
+
+  useEffect(() => {
+    // check if invalidateCache is not undefined and is set to true
+    if (invalidateCache != null && invalidateCache === true) {
+      // check if invaldeTime is not undefined and is set to a number
+      if (!invalidateTime) throw new Error('invalidateTime is required when invalidateCache is true');
+
+      setInterval(() => {
+        setSent(false);
+        send();
+      }, invalidateTime! * 1000);
     }
+  }, []);
 
-    useEffect(() => {
-        // check if invalidateCache is not undefined and is set to true
-        if (invalidateCache != null && invalidateCache === true) {
-            // check if invaldeTime is not undefined and is set to a number
-            if (!invalidateTime) throw new Error('invalidateTime is required when invalidateCache is true')
-
-            setInterval(() => {
-                setSent(false)
-                send()
-            }, invalidateTime! * 1000)
-        }
-    }, [])
-
-    return { send, result, sent }
+  return { send, result, sent };
 }
 
 export default useTauriHandler;

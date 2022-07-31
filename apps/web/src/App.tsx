@@ -1,5 +1,5 @@
-import Sidebar from '@twidge/components/sidebar'
-import { styled } from '@twidge/config/stitches.config'
+import Sidebar from '@twidge/components/sidebar';
+import { styled } from '@twidge/config/stitches.config';
 
 const Root = styled('div', {
   backgroundColor: '$backgroundColor',
@@ -7,15 +7,15 @@ const Root = styled('div', {
   minWidth: '100vw',
   minHeight: '100vh',
   width: '100%',
-  height: '100%'
-})
+  height: '100%',
+});
 
 function App() {
   return (
     <Root>
       <Sidebar />
     </Root>
-  )
+  );
 }
 
 export default App;

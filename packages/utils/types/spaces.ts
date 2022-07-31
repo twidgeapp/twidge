@@ -9,4 +9,4 @@ interface Space {
 type Spaces = Space[];
 
 export default Spaces;
-export { Space }
+export { Space };

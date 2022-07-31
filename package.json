@@ -14,10 +14,14 @@
     "build": "concurrently \"cd apps/web && yarn build\" \"cargo tauri build\""
   },
   "devDependencies": {
+    "@typescript-eslint/parser": "^5.31.0",
     "concurrently": "^7.3.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
     "prettier": "2.7.1"
   },
   "dependencies": {
+    "@twidge/config": "workspace:^",
     "@typescript-eslint/eslint-plugin": "latest",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "latest",
