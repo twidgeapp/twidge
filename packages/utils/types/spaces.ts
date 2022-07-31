@@ -8,5 +8,6 @@ interface Space {
 
 type Spaces = Space[];
 
-export default Spaces;
+// @ts-ignore
 export { Space };
+export default Spaces;

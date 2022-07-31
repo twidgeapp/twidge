@@ -4,7 +4,7 @@
 )]
 
 use std::sync::Arc;
-use tauri::{Manager, RunEvent, State};
+use tauri::{Manager, RunEvent};
 
 #[tokio::main]
 async fn main() {
@@ -25,7 +25,8 @@ async fn main() {
     let app = tauri::Builder::default()
         .manage(shared)
         .invoke_handler(tauri::generate_handler![
-            tcore::functions::spaces::get_spaces
+            tcore::functions::spaces::get_spaces,
+            tcore::functions::spaces::create_space
         ])
         .build(tauri::generate_context!())
         .expect("error while running tauri application");

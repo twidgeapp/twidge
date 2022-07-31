@@ -52,6 +52,7 @@ function SpaceComponent({ space, name }: {
   space: Space,
   name: string
 }) {
+  // @ts-ignore
   const Icon = FluentIcons[name] as any;
 
   return (
@@ -64,8 +65,10 @@ function SpaceComponent({ space, name }: {
 }
 
 function AddComponent() {
+  const {send} = useTauriHandler({name: "create_space"});
+
   return (
-    <SpaceRoot active="off">
+    <SpaceRoot onClick={()=>send()} active="off">
       <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M8.49996 13.8333V8.5M8.49996 8.5V3.16666M8.49996 8.5H13.8333M8.49996 8.5H3.16663" stroke="#699BF7" strokeWidth="1.33333" strokeLinecap="round" />
       </svg>
