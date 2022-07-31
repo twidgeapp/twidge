@@ -2,6 +2,7 @@
     "name": "@twidge/components",
     "dependencies": {
         "@fluentui/react-icons": "^2.0.178",
+        "@radix-ui/react-toast": "^1.0.0",
         "@tauri-apps/api": "^1.0.2",
         "@tippyjs/react": "^4.2.6",
         "@twidge/primitives": "workspace:^",

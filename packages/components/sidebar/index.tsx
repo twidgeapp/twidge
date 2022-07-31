@@ -9,7 +9,7 @@ import Tippy from '@tippyjs/react';
 import Logo from '../logo';
 import 'tippy.js/dist/tippy.css';
 import useSpaceStore from '@twidge/utils/state/spaces'
-
+import {Toast, ToastProvider, ToastTitle, ToastAction, ToastViewport, ToastDescription } from '@twidge/primitives/toast'
 const Body = styled('div', {
   display: 'flex',
   flexDirection: 'column',
@@ -69,14 +69,25 @@ function AddComponent() {
   const {send, result} = useTauriHandler<Space>({name: "create_space"});
   const addSpaces = useSpaceStore((space)=>space.addSpace)
 
-  useEffect(()=>{
-  if (result){
+  const [open, setOpen] = React.useState(false);
+  const eventDateRef = React.useRef(new Date());
+  const timerRef = React.useRef(0);
 
-    addSpaces(result)
-  }
+
+  useEffect(()=>{
+    if (result){
+      setOpen(true)
+      addSpaces(result)
+      setTimeout(()=>{
+        setOpen(false)
+      }, 2000)
+    }
   }, [result])
 
   return (
+  <ToastProvider swipeDirection='right'>
+
+  
     <SpaceRoot onClick={()=>{
       send()
     }} active="off">
@@ -84,6 +95,13 @@ function AddComponent() {
         <path d="M8.49996 13.8333V8.5M8.49996 8.5V3.16666M8.49996 8.5H13.8333M8.49996 8.5H3.16663" stroke="#699BF7" strokeWidth="1.33333" strokeLinecap="round" />
       </svg>
     </SpaceRoot>
+
+    <Toast open={open} onOpenChange={setOpen}>
+        <ToastTitle>Succesfully Created Space</ToastTitle>
+      </Toast>
+      <ToastViewport />
+
+    </ToastProvider>
   );
 }
 
@@ -112,7 +130,14 @@ function Sidebar() {
   return (
     <Container
       css={{
-        width: '60px', minHeight: '100vh', backgroundColor: '$backgroundColor', borderRight: '1px solid $borderColor', paddingTop: '12px',
+        width: '60px', 
+        minHeight: '100vh', 
+        backgroundColor: '$backgroundColor', 
+        borderRight: '1px solid $borderColor', 
+        paddingTop: '12px',
+        overflowY: 'auto',
+        paddingBottom: "24px",
+        height: '100%'
       }}
       flex="col"
       align="center"
