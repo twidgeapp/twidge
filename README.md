@@ -5,7 +5,6 @@
     <h1>Twidge</h1>
     <p>A productivity app which is an extension to your mind</p>
 </p>
-<br />
 
 Twidge is a cross platform productivity app, powered by [rust](https://rust-lang.org), [tauri](https://tauri.app), [prisma-client-rust](https://github.com/Brendonovich/prisma-client-rust)
 
