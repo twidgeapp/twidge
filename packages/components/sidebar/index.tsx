@@ -8,6 +8,7 @@ import Container from '@twidge/primitives/containers';
 import Tippy from '@tippyjs/react';
 import Logo from '../logo';
 import 'tippy.js/dist/tippy.css';
+import useSpaceStore from '@twidge/utils/state/spaces'
 
 const Body = styled('div', {
   display: 'flex',
@@ -65,10 +66,20 @@ function SpaceComponent({ space, name }: {
 }
 
 function AddComponent() {
-  const {send} = useTauriHandler({name: "create_space"});
+  const {send, result} = useTauriHandler<Space>({name: "create_space"});
+  const addSpaces = useSpaceStore((space)=>space.addSpace)
+
+  useEffect(()=>{
+  if (result){
+
+    addSpaces(result)
+  }
+  }, [result])
 
   return (
-    <SpaceRoot onClick={()=>send()} active="off">
+    <SpaceRoot onClick={()=>{
+      send()
+    }} active="off">
       <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M8.49996 13.8333V8.5M8.49996 8.5V3.16666M8.49996 8.5H13.8333M8.49996 8.5H3.16663" stroke="#699BF7" strokeWidth="1.33333" strokeLinecap="round" />
       </svg>
@@ -81,10 +92,21 @@ const BreakPoint = styled('div', {
 });
 
 function Sidebar() {
-  const { send, sent, result } = useTauriHandler<Spaces>({ name: 'get_spaces' });
+  const { send, result } = useTauriHandler<Spaces>({ name: 'get_spaces' });
+  const spaces = useSpaceStore((space)=>space.spaces);
+  const overwriteSpaces = useSpaceStore((space)=>space.overwriteSpaces)
+
+  useEffect(()=>{
+    console.log('spaces', spaces)
+  }, [spaces])
+
+  useEffect(()=>{
+    console.log(result)
+    overwriteSpaces(result) 
+  }, [result])
 
   useEffect(() => {
-    send();
+    send() 
   }, []);
 
   return (
@@ -100,10 +122,10 @@ function Sidebar() {
       <Body>
         <AddComponent />
         <BreakPoint />
-        {result && (
+        {spaces && (
           <>
-            {result.map((space) => (
-              <div>
+            {spaces.map((space) => (
+              <div key={space.id}>
                 <SpaceComponent space={space} name={`${space.icon}`} />
               </div>
             ))}

@@ -21,7 +21,7 @@ async fn main() {
         .unwrap();
 
     let shared = Arc::new(tcore::Shared(Arc::new(client)));
-
+    
     let app = tauri::Builder::default()
         .manage(shared)
         .invoke_handler(tauri::generate_handler![
