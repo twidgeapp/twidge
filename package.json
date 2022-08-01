@@ -11,13 +11,15 @@
     "dev": "concurrently \"cd apps/web && yarn dev\" \"cargo tauri dev\"",
     "migrate:dev": "cargo run --bin prisma migrate dev --schema packages/core/prisma/prisma/schema.prisma",
     "prisma:gen": "cd packages/core/prisma/ && cargo run --bin prisma -- generate",
-    "build": "concurrently \"cd apps/web && yarn build\" \"cargo tauri build\""
+    "build": "concurrently \"cd apps/web && yarn build\" \"cargo tauri build\"",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^5.31.0",
     "concurrently": "^7.3.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
+    "husky": "^8.0.1",
     "prettier": "2.7.1"
   },
   "dependencies": {
