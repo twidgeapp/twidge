@@ -25,8 +25,12 @@ async fn main() {
     let app = tauri::Builder::default()
         .manage(shared)
         .invoke_handler(tauri::generate_handler![
+            // spaces
             tcore::functions::spaces::get_spaces,
-            tcore::functions::spaces::create_space
+            tcore::functions::spaces::create_space,
+
+            // loading
+            tcore::functions::migrator::run_migrations
         ])
         .build(tauri::generate_context!())
         .expect("error while running tauri application");

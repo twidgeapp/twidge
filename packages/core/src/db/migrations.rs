@@ -1,11 +1,15 @@
 // CREDITS: https://github.com/spacedriveapp/spacedrive/blob/c685ce5fe995a51b5a8&ab9e943f8c2f92ab69f50/core/src/util/db.rs
 
+use std::sync::Arc;
+
 use data_encoding::HEXLOWER;
 use include_dir::{include_dir, Dir};
 use prisma::{self, migration, PrismaClient};
 use prisma_client_rust::{raw, NewClientError};
 use ring::digest::{Context, SHA256};
+use serde::{Serialize, Deserialize};
 use thiserror::Error;
+use ts_rs::TS;
 
 const INIT_MIGRATION: &str =
     include_str!("../../prisma/prisma/migrations/migration_table/migration.sql");
@@ -22,23 +26,7 @@ pub enum MigrationError {
     InvalidEmbeddedMigration(&'static str),
 }
 
-pub async fn new_client(db_url: &str) -> Result<PrismaClient, MigrationError> {
-    // initialise a new prisma client
-    let client = prisma::new_client_with_url(&format!("file://{}", db_url)).await?;
-
-    let migrations_table_missing = client
-        ._query_raw::<serde_json::Value>(raw!(
-            "SELECT name FROM sqlite_master WHERE type='table' AND name='_migrations'"
-        ))
-        .await?
-        .len()
-        == 0;
-
-    // the _migrations table is missing, so we need to create it
-    if migrations_table_missing {
-        client._execute_raw(raw!(INIT_MIGRATION)).await?;
-    }
-
+pub async fn run_migrations(client: Arc<PrismaClient>) -> Result<Arc<PrismaClient>, MigrationError> {
     let mut migration_directories = MIGRATIONS_DIR
         .dirs()
         .map(|dir| {
@@ -110,7 +98,7 @@ pub async fn new_client(db_url: &str) -> Result<PrismaClient, MigrationError> {
                 .await?;
 
             // Split the migrations file up into each individual step and apply them all
-            let steps = migration_file_raw.split(";").collect::<Vec<&str>>();
+            let steps = migration_file_raw.split(';').collect::<Vec<&str>>();
             let steps = &steps[0..steps.len() - 1];
             for (i, step) in steps.iter().enumerate() {
                 client._execute_raw(raw!(*step)).await?;
@@ -123,6 +111,26 @@ pub async fn new_client(db_url: &str) -> Result<PrismaClient, MigrationError> {
             }
         }
     }
+
+    Ok(client)
+}
+
+pub async fn new_client(db_url: &str) -> Result<PrismaClient, MigrationError> {
+    // initialise a new prisma client
+    let client = prisma::new_client_with_url(&format!("file://{}", db_url)).await?;
+
+    let migrations_table_missing = client
+        ._query_raw::<serde_json::Value>(raw!(
+            "SELECT name FROM sqlite_master WHERE type='table' AND name='_migrations'"
+        ))
+        .await?
+        .is_empty();
+
+    // the _migrations table is missing, so we need to create it
+    if migrations_table_missing {
+        client._execute_raw(raw!(INIT_MIGRATION)).await?;
+    }
+
 
     Ok(client)
 }
