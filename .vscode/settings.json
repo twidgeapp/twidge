@@ -1,12 +1,12 @@
 {
-    "sqltools.connections": [
-        {
-            "previewLimit": 50,
-            "driver": "SQLite",
-            "database": "/home/varun/.local/share/twidge/library.db",
-            "name": "sqlite",
-            "group": "sqlite"
-        }
-    ],
-    "sqltools.useNodeRuntime": true
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "database": "/home/varun/.local/share/twidge/library.db",
+      "name": "sqlite",
+      "group": "sqlite"
+    }
+  ],
+  "sqltools.useNodeRuntime": true
 }

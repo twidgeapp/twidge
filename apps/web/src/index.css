@@ -2,7 +2,9 @@
   margin: 0px;
   padding: 0px;
 }
-html, body, .root{
+html,
+body,
+.root {
   overflow: none;
 }
 .root {

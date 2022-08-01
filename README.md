@@ -15,10 +15,13 @@ Twidge works entirely offline, the various features provided by twidge are liste
 Due to my ever-increasing school work, I seldom had time to code. One day, I tried to see why I was getting so little time, and that is when I realized that a lot of my time was spent deciding what I should do next. The answer was obvious I needed a calendar app, I tried almost all of the calendar apps and realized that I was spending more than 30 minutes filling in my calendar, it was also clear that I needed something more than a calendar, something wherein I can throw all the links when I browse the web so that I can look at them later on, therefore twidge was born.
 
 # Features
+
 Completed:
+
 - Configuration - The structure for the source code of Twidge, built entirely on react, tauri and rust. The structure was inspired by [spacedrive](https://spacedrive.com)
 
 In progress:
+
 - Spaces - Spaces help you segregate tasks based on a specific tag (say work, personal, junk etc)
 - Infinite Scroll View: Twidge aims to offer an infinite scroll view where you can write everything down
 - Todo List: Map all your tasks in a single list, these tasks can be linked with calendars and embeds.
@@ -28,6 +31,7 @@ In progress:
 - Notification Handler - So that you are reminded 5-15 minutes before a new task starts.
 
 Post MVP:
+
 - Mobile app (IOS/Android)
 - Sync between devices.
 - Save all the tasks on the cloud
@@ -35,7 +39,7 @@ Post MVP:
 
 # Architecture
 
-We follow an architecture similar to that of [spacedrive](https://spacedrive.com). 
+We follow an architecture similar to that of [spacedrive](https://spacedrive.com).
 
 - [Prisma](https://github.com/Brendonovich/prisma-client-rust), [Rust](https://www.rust-lang.org/), [React](https://reactjs.org/), [Typescript](https://www.typescriptlang.org/), [Tauri](https://tauri.app/), [Stitches](https://stitches.dev/) and [Radix](https://radix-ui.com)
 - Tauri uses OS webviews, this helps remove the overhead of V8 (like in electron), and brings memory and ram-usage to a minimum.
@@ -44,10 +48,12 @@ We follow an architecture similar to that of [spacedrive](https://spacedrive.com
 # Monorepo
 
 ## Apps (/apps)
+
 - `src-tauri`: A rust tauri app.
 - `web`: The website which will be rendered by Tauri
 
 ## Packages (/packages)
+
 - `components` (TS): Components required by the `web` app
 - `config` (TS): Project wide config such as eslint, prettier, stitches etc.
 - `primitives` (TS): UI primivites

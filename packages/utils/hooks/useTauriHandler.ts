@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-shadow */
-import { invoke } from '@tauri-apps/api/tauri';
-import { useEffect, useState } from 'react';
+import { invoke } from "@tauri-apps/api/tauri";
+import { useEffect, useState } from "react";
 
 /**
  * React hook to send tauri events,
@@ -15,16 +15,19 @@ import { useEffect, useState } from 'react';
  * @param invalidateTime The time to invalidate the cache at intervals.
  */
 function useTauriHandler<T>({
-  name, args, invalidateCache, invalidateTime,
+  name,
+  args,
+  invalidateCache,
+  invalidateTime,
 }: {
-    name: string;
-    args?: any;
-    invalidateCache?: boolean;
-    invalidateTime?: number;
+  name: string;
+  args?: any;
+  invalidateCache?: boolean;
+  invalidateTime?: number;
 }): {
-    send: (args?: any) => void;
-    result: T | undefined;
-    sent: boolean;
+  send: (args?: any) => void;
+  result: T | undefined;
+  sent: boolean;
 } {
   const [result, setResult] = useState<T>();
   const [sent, setSent] = useState(false);
@@ -39,7 +42,10 @@ function useTauriHandler<T>({
     // check if invalidateCache is not undefined and is set to true
     if (invalidateCache != null && invalidateCache === true) {
       // check if invaldeTime is not undefined and is set to a number
-      if (!invalidateTime) throw new Error('invalidateTime is required when invalidateCache is true');
+      if (!invalidateTime)
+        throw new Error(
+          "invalidateTime is required when invalidateCache is true"
+        );
 
       setInterval(() => {
         setSent(false);

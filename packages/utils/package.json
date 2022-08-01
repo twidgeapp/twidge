@@ -1,8 +1,8 @@
 {
-    "name": "@twidge/utils",
-    "dependencies": {
-        "@tauri-apps/api": "^1.0.2",
-        "react": "^18.2.0",
-        "zustand": "^4.0.0"
-    }
+  "name": "@twidge/utils",
+  "dependencies": {
+    "@tauri-apps/api": "^1.0.2",
+    "react": "^18.2.0",
+    "zustand": "^4.0.0"
+  }
 }
