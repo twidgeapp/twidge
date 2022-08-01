@@ -1,5 +1,7 @@
 import Sidebar from '@twidge/components/sidebar';
 import { styled } from '@twidge/config/stitches.config';
+import { Routes, Route } from 'react-router-dom';
+import Home from "./pages/index";
 
 const Root = styled('div', {
   backgroundColor: '$backgroundColor',
@@ -13,7 +15,10 @@ const Root = styled('div', {
 function App() {
   return (
     <Root>
-      <Sidebar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+      {/* <Sidebar /> */}
     </Root>
   );
 }
