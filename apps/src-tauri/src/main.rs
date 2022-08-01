@@ -28,9 +28,6 @@ async fn main() {
             // spaces
             tcore::functions::spaces::get_spaces,
             tcore::functions::spaces::create_space,
-
-            // loading
-            tcore::functions::migrator::run_migrations
         ])
         .build(tauri::generate_context!())
         .expect("error while running tauri application");
