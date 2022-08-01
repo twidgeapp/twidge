@@ -19,7 +19,6 @@ Completed:
 - Configuration - The structure for the source code of Twidge, built entirely on react, tauri and rust. The structure was inspired by [spacedrive](https://spacedrive.com)
 
 In progress:
-- Loading Screen - Run all the migrations
 - Spaces - Spaces help you segregate tasks based on a specific tag (say work, personal, junk etc)
 - Infinite Scroll View: Twidge aims to offer an infinite scroll view where you can write everything down
 - Todo List: Map all your tasks in a single list, these tasks can be linked with calendars and embeds.
