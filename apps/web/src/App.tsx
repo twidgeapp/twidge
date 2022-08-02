@@ -2,6 +2,7 @@ import Sidebar from "@twidge/components/sidebar";
 import { styled } from "@twidge/config/stitches.config";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages";
+import NAHome from "./pages/home";
 import Space from "./pages/spaces/[id]";
 
 const Root = styled("div", {
@@ -17,9 +18,9 @@ const Root = styled("div", {
 function App() {
   return (
     <Root>
-      <Sidebar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/home" element={<NAHome />} />
         <Route path="/spaces/:id" element={<Space />} />
       </Routes>
     </Root>

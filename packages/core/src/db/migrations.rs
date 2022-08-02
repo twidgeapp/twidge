@@ -1,3 +1,5 @@
+use std::sync::Arc;
+
 use prisma::{self, migration, PrismaClient};
 use data_encoding::HEXLOWER;
 use include_dir::{include_dir, Dir};
@@ -19,21 +21,7 @@ pub enum MigrationError {
 	InvalidEmbeddedMigration(&'static str),
 }
 
-/// load_and_migrate will load the database from the given path and migrate it to the latest version of the schema.
-pub async fn new_client(db_url: &str) -> Result<PrismaClient, MigrationError> {
-	let client = prisma::new_client_with_url(&format!("file://{}", db_url)).await?;
-
-	let migrations_table_missing = client
-		._query_raw::<serde_json::Value>(raw!(
-			"SELECT name FROM sqlite_master WHERE type='table' AND name='_migrations'"
-		))
-		.await?
-		.is_empty();
-
-	if migrations_table_missing {
-		client._execute_raw(raw!(INIT_MIGRATION)).await?;
-	}
-
+pub async fn run_migrations(client: Arc<PrismaClient>) -> Result<Arc<PrismaClient>, MigrationError>{
 	let mut migration_directories = MIGRATIONS_DIR
 		.dirs()
 		.map(|dir| {
@@ -116,6 +104,27 @@ pub async fn new_client(db_url: &str) -> Result<PrismaClient, MigrationError> {
 			}
 		}
 	}
+
+	Ok(client.clone())
+}
+
+/// load_and_migrate will load the database from the given path and migrate it to the latest version of the schema.
+pub async fn new_client(db_url: &str) -> Result<Arc<PrismaClient>, MigrationError> {
+	let client = prisma::new_client_with_url(&format!("file://{}", db_url)).await?;
+	let client = Arc::new(client);
+
+	let migrations_table_missing = client
+		._query_raw::<serde_json::Value>(raw!(
+			"SELECT name FROM sqlite_master WHERE type='table' AND name='_migrations'"
+		))
+		.await?
+		.is_empty();
+
+	if migrations_table_missing {
+		client._execute_raw(raw!(INIT_MIGRATION)).await?;
+	}
+
+	// run_migrations(client.clone()).await?;
 
 	Ok(client)
 }

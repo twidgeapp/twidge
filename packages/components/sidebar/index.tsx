@@ -132,12 +132,8 @@ function Sidebar() {
   const overwriteSpaces = useSpaceStore((space) => space.overwriteSpaces);
 
   useEffect(() => {
-    console.log("spaces", spaces);
-  }, [spaces]);
-
-  useEffect(() => {
     console.log(result);
-    overwriteSpaces(result);
+    overwriteSpaces(result as any);
   }, [result]);
 
   useEffect(() => {

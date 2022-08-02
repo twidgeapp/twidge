@@ -4,7 +4,7 @@
 )]
 
 use std::sync::Arc;
-use tauri::{Manager, RunEvent};
+use tauri::{CustomMenuItem, Manager, RunEvent, SystemTray, SystemTrayMenu, SystemTrayMenuItem};
 
 #[tokio::main]
 async fn main() {
@@ -20,14 +20,27 @@ async fn main() {
         .await
         .unwrap();
 
-    let shared = Arc::new(tcore::Shared(Arc::new(client)));
-    
+    let shared = Arc::new(tcore::Shared(client));
+
+    let quit = CustomMenuItem::new("quit".to_string(), "Quit");
+    let hide = CustomMenuItem::new("hide".to_string(), "Hide");
+    let tray_menu = SystemTrayMenu::new()
+        .add_item(quit)
+        .add_native_item(SystemTrayMenuItem::Separator)
+        .add_item(hide);
+
+    let tray = SystemTray::new().with_menu(tray_menu);
+
     let app = tauri::Builder::default()
         .manage(shared)
+        .system_tray(tray)
         .invoke_handler(tauri::generate_handler![
             // spaces
             tcore::functions::spaces::get_spaces,
             tcore::functions::spaces::create_space,
+
+            // migrator
+            tcore::functions::migrator::run_db_migrator
         ])
         .build(tauri::generate_context!())
         .expect("error while running tauri application");

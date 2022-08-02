@@ -11,7 +11,7 @@ const useSpaceStore = create<ISpaceStore>((set) => ({
   spaces: [],
   addSpace: (space: Space) => {
     set((state) => ({
-      spaces: [...state.spaces, space],
+      spaces: [...state.spaces ?? [], space],
       addSpace: state.addSpace,
       overwriteSpaces: state.overwriteSpaces,
     }));

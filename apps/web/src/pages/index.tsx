@@ -1,5 +1,10 @@
 import Logo from "../components/logo";
 import { styled } from "@twidge/config/stitches.config";
+import { useEffect } from "react";
+import useTauriHandler from "@twidge/utils/hooks/useTauriHandler";
+import Spaces from "@twidge/utils/types/spaces";
+import useSpaceStore from "@twidge/utils/state/spaces";
+import { useNavigate } from "react-router-dom";
 
 const Root = styled("div", {
   display: "flex",
@@ -41,6 +46,41 @@ const Root = styled("div", {
 });
 
 const Home = () => {
+  const {send, result} = useTauriHandler({name: "run_db_migrator"});
+  
+  const navigate = useNavigate();
+  const { send: getSend, result: getResult } = useTauriHandler<Spaces>({ name: "get_spaces" });
+  const spaces = useSpaceStore((space) => space.spaces);
+  const overwriteSpaces = useSpaceStore((space) => space.overwriteSpaces);
+
+  useEffect(() => {
+    if (spaces){ 
+      // if there are no spaces move them to /home where they can create a new get_spaces
+      if (spaces.length === 0){
+        navigate('/home') 
+      }else{
+        // else move them to the first space
+        navigate(`/spaces/${spaces[0].id}`)  
+      }
+    }
+    console.log("spaces", spaces);
+  }, [spaces]);
+
+  useEffect(() => {
+    console.log(getResult)
+    overwriteSpaces(getResult as any);
+  }, [getResult]);
+
+  useEffect(()=>{
+    send() 
+  }, [])
+  
+  useEffect(()=>{
+    if (result){
+      getSend() 
+    } 
+  }, [result])
+
   return (
     <Root>
       <div className="main">
