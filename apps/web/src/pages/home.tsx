@@ -77,7 +77,7 @@ const NAHome = () => {
       <Root>
         <div className="main">
           <Logo />
-          <h1>You currently have no spaces!</h1>
+          <h1>Welcome to Twidge!</h1>
           <button onClick={send}>Create new space</button>
         </div>
         <p className="work">Create a space to get started!</p>

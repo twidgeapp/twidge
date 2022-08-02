@@ -61,9 +61,9 @@ const Home = () => {
     if (spaces) {
       // if there are no spaces move them to /home where they can create a new get_spaces
       if (spaces.length === 0) {
-        setTimeout(()=>{
+        setTimeout(() => {
           navigate("/home");
-        }, 10000)
+        }, 10000);
       } else {
         navigate(`/spaces/${spaces[0].id}`);
       }
