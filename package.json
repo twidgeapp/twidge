@@ -11,7 +11,7 @@
     "dev": "concurrently \"cd apps/web && yarn dev\" \"cargo tauri dev\"",
     "migrate:dev": "cargo run --bin prisma migrate dev --schema packages/core/prisma/prisma/schema.prisma",
     "prisma:gen": "cd packages/core/prisma/ && cargo run --bin prisma -- generate",
-    "build": "concurrently \"cd apps/web && yarn build\" \"cargo tauri build\"",
+    "build": "cd apps/web && yarn build && cd ../../ && cargo tauri build",
     "prepare": "husky install"
   },
   "devDependencies": {

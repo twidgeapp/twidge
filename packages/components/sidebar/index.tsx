@@ -22,7 +22,7 @@ const Body = styled("div", {
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-  height: "100%",
+  height: "min-content",
   width: "100%",
   marginTop: "12px",
   backgroundColor: "$backgroundColor",
@@ -62,7 +62,7 @@ function SpaceComponent({ space, name }: { space: Space; name: string }) {
 
   return (
     <Tippy animateFill content={space.name}>
-      <Link to={`spaces/${space.id}`}>
+      <Link to={`/spaces/${space.id}`}>
         <SpaceRoot active="off">
           <Icon color={space.color} />
         </SpaceRoot>

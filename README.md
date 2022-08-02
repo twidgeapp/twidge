@@ -58,4 +58,4 @@ We follow an architecture similar to that of [spacedrive](https://spacedrive.com
 - `config` (TS): Project wide config such as eslint, prettier, stitches etc.
 - `primitives` (TS): UI primivites
 - `utils` (TS): Utilities required by the web app
-- `core` (Rust): The core of twidge, built in Rust 
+- `core` (Rust): The core of twidge, built in Rust

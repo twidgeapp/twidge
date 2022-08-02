@@ -1,5 +1,7 @@
+import Sidebar from "@twidge/components/sidebar";
+
 const Space = () => {
-  return <div>Space screen</div>;
+  return <><Sidebar /> Space screen</>;
 };
 
 export default Space;

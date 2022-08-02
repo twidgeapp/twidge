@@ -1,4 +1,4 @@
-import Sidebar from "@twidge/components/sidebar"
+import Sidebar from "@twidge/components/sidebar";
 import { styled } from "@twidge/config/stitches.config";
 import useTauriHandler from "@twidge/utils/hooks/useTauriHandler";
 import useSpaceStore from "@twidge/utils/state/spaces";
@@ -34,17 +34,17 @@ const Root = styled("div", {
       fontWeight: 700,
     },
     button: {
-      all: 'unset',
-      padding: '8px 12px',
-      marginTop: '8px',
-      borderRadius: '12px',
-      border: '1px solid $borderColor',
-      transition: '0.15s all ease-in-out',
-      cursor: 'pointer',
+      all: "unset",
+      padding: "8px 12px",
+      marginTop: "8px",
+      borderRadius: "12px",
+      border: "1px solid $borderColor",
+      transition: "0.15s all ease-in-out",
+      cursor: "pointer",
       "&:hover": {
-        backgroundColor: '$borderColor'
-      }
-    }
+        backgroundColor: "$borderColor",
+      },
+    },
   },
   ".work": {
     fontSize: "12px",
@@ -67,23 +67,23 @@ const NAHome = () => {
   useEffect(() => {
     if (result) {
       addSpaces(result);
-      navigate(`/spaces/${result.id}`)
+      navigate(`/spaces/${result.id}`);
     }
   }, [result]);
 
   return (
     <>
       <Sidebar />
-    <Root>
-      <div className="main">
-        <Logo />
-        <h1>You currently have no spaces!</h1>
-        <button onClick={send}>Create new space</button>
-      </div>
-      <p className="work">Create a space to get started!</p>
-    </Root>
+      <Root>
+        <div className="main">
+          <Logo />
+          <h1>You currently have no spaces!</h1>
+          <button onClick={send}>Create new space</button>
+        </div>
+        <p className="work">Create a space to get started!</p>
+      </Root>
     </>
-  )
-}
+  );
+};
 
 export default NAHome;

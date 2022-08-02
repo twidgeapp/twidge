@@ -46,40 +46,44 @@ const Root = styled("div", {
 });
 
 const Home = () => {
-  const {send, result} = useTauriHandler({name: "run_db_migrator"});
-  
+  const { send, result } = useTauriHandler({ name: "run_db_migrator" });
+
   const navigate = useNavigate();
-  const { send: getSend, result: getResult } = useTauriHandler<Spaces>({ name: "get_spaces" });
+
+  const { send: getSend, result: getResult } = useTauriHandler<Spaces>({
+    name: "get_spaces",
+  });
+
   const spaces = useSpaceStore((space) => space.spaces);
   const overwriteSpaces = useSpaceStore((space) => space.overwriteSpaces);
 
   useEffect(() => {
-    if (spaces){ 
+    if (spaces) {
       // if there are no spaces move them to /home where they can create a new get_spaces
-      if (spaces.length === 0){
-        navigate('/home') 
-      }else{
-        // else move them to the first space
-        navigate(`/spaces/${spaces[0].id}`)  
+      if (spaces.length === 0) {
+        setTimeout(()=>{
+          navigate("/home");
+        }, 10000)
+      } else {
+        navigate(`/spaces/${spaces[0].id}`);
       }
     }
-    console.log("spaces", spaces);
   }, [spaces]);
 
   useEffect(() => {
-    console.log(getResult)
+    console.log(getResult);
     overwriteSpaces(getResult as any);
   }, [getResult]);
 
-  useEffect(()=>{
-    send() 
-  }, [])
-  
-  useEffect(()=>{
-    if (result){
-      getSend() 
-    } 
-  }, [result])
+  useEffect(() => {
+    send();
+  }, []);
+
+  useEffect(() => {
+    if (result) {
+      getSend();
+    }
+  }, [result]);
 
   return (
     <Root>
@@ -88,7 +92,7 @@ const Home = () => {
         <h1>Welcome to Twidge!</h1>
         <p>The radically new way to organize your life.</p>
       </div>
-      <p className="work">Open a space to get started</p>
+      <p className="work">Initializing database migrations and caching</p>
     </Root>
   );
 };

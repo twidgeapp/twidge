@@ -7,6 +7,7 @@ To get a good overview of the project make sure to read the [ReadMe](https://git
 # Prerequisites
 
 Make sure to have these installed!
+
 - Rustc v1.64.0 (make sure to use nightly(`rustup default nightly`))
 - Node v18.7.0
 - Cargo v1.64.0-nightly
@@ -18,8 +19,8 @@ Make sure to have these installed!
 ## Issues
 
 ### Create a new issue
-If you want a new feature to be supported by Twidge or you found a bug, first check if the [issue has been already created](https://docs.github.com/en/github/searching-for-information-on-github/searching-on-github/searching-issues-and-pull-requests#search-by-the-title-body-or-comments), if not you can create a [new issue](https://github.com/VarunPotti/twidge/issues/new)
 
+If you want a new feature to be supported by Twidge or you found a bug, first check if the [issue has been already created](https://docs.github.com/en/github/searching-for-information-on-github/searching-on-github/searching-issues-and-pull-requests#search-by-the-title-body-or-comments), if not you can create a [new issue](https://github.com/VarunPotti/twidge/issues/new)
 
 ### Solve an issue
 
