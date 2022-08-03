@@ -1,3 +1,4 @@
 /target
 /.yarn
+/apps/web/dist
 /node_modules
