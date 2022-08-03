@@ -11,3 +11,17 @@ body,
   min-width: 100vw;
   min-height: 100vh;
 }
+
+
+.viewer {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+.viewport {
+    position: relative;
+    width: 400px;
+    height: 600px;
+    background: #f55;
+}
+

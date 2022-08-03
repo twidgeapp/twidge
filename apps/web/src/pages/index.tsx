@@ -77,23 +77,44 @@ const Home = () => {
 
     invoke("run_db_migrator").then(() => {
       setStatus("Getting Spaces");
+      
+      setTimeout(()=>{
 
-      invoke("get_spaces").then((res: any) => {
-        let result: Spaces = JSON.parse(res);
-        overWriteSpaces(result);
-      });
+        invoke("get_spaces").then((res: any) => {
+          let result: Spaces = JSON.parse(res);
+          overWriteSpaces(result);
+        });
+      }, 150)
     });
   }, []);
 
   return (
     <Root
-      initial={{ y: -50 }}
-      animate={{ y: 0 }}
+      initial={{ y: -10, opacity: 0.5 }}
+      animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <Image initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: 0.25, duration: 1}} src={Bg1} css={{ width: "75%", top: 0, right: 0 }} />
-      <Image initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: 0.25, duration: 1}} src={Bg2} css={{ width: "75%", top: "-25%", left: 0 }} />
-      <Image initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: 0.25, duration: 1}} src={Bg3} css={{ width: "75%", bottom: 0, right: "150px" }} />
+      <Image
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.25, duration: 1 }}
+        src={Bg1}
+        css={{ width: "75%", top: 0, right: 0 }}
+      />
+      <Image
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.25, duration: 1 }}
+        src={Bg2}
+        css={{ width: "75%", top: "-25%", left: 0 }}
+      />
+      <Image
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.25, duration: 1 }}
+        src={Bg3}
+        css={{ width: "75%", bottom: 0, right: "150px" }}
+      />
       <motion.div
         initial={{ y: -200 }}
         animate={{ y: 0 }}
@@ -104,7 +125,14 @@ const Home = () => {
         <h1>Welcome to Twidge!</h1>
         <p>The radically new way to organize your life.</p>
       </motion.div>
-      <motion.p initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: 0.5}} className="work">{status}</motion.p>
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+        className="work"
+      >
+        {status}
+      </motion.p>
     </Root>
   );
 };
