@@ -1,10 +1,10 @@
 import Logo from "../components/logo";
 import { styled } from "@twidge/config/stitches.config";
 import { useEffect } from "react";
-import useTauriHandler from "@twidge/utils/hooks/useTauriHandler";
-import Spaces from "@twidge/utils/types/spaces";
-import useSpaceStore from "@twidge/utils/state/spaces";
-import { useNavigate } from "react-router-dom";
+import Bg1 from "../assets/index/bg-1.png";
+import Bg2 from "../assets/index/bg-2.png";
+import Bg3 from "../assets/index/bg-3.png";
+import { invoke } from "@tauri-apps/api";
 
 const Root = styled("div", {
   display: "flex",
@@ -45,54 +45,28 @@ const Root = styled("div", {
   },
 });
 
+const Image = styled("img", {
+  position: 'fixed',
+  pointerEvents: 'none',
+  zIndex: '0'
+})
+
 const Home = () => {
-  const { send, result } = useTauriHandler({ name: "run_db_migrator" });
-
-  const navigate = useNavigate();
-
-  const { send: getSend, result: getResult } = useTauriHandler<Spaces>({
-    name: "get_spaces",
-  });
-
-  const spaces = useSpaceStore((space) => space.spaces);
-  const overwriteSpaces = useSpaceStore((space) => space.overwriteSpaces);
-
-  useEffect(() => {
-    if (spaces) {
-      // if there are no spaces move them to /home where they can create a new get_spaces
-      if (spaces.length === 0) {
-        setTimeout(() => {
-          navigate("/home");
-        }, 10000);
-      } else {
-        navigate(`/spaces/${spaces[0].id}`);
-      }
-    }
-  }, [spaces]);
-
-  useEffect(() => {
-    console.log(getResult);
-    overwriteSpaces(getResult as any);
-  }, [getResult]);
-
-  useEffect(() => {
-    send();
-  }, []);
-
-  useEffect(() => {
-    if (result) {
-      getSend();
-    }
-  }, [result]);
+  useEffect(()=>{
+    console.log("MIGRATOR");
+    console.log("migrator", invoke("run_db_migrator"))
+  }, [])
 
   return (
     <Root>
+      <Image src={Bg1} css={{width: '75%', top: 0, right: 0}} />
+      <Image src={Bg2} css={{width: '75%', top: "-25%", left: 0}} />
+      <Image src={Bg3} css={{width: '75%', bottom: 0, right: "150px"}} />
       <div className="main">
         <Logo />
         <h1>Welcome to Twidge!</h1>
         <p>The radically new way to organize your life.</p>
       </div>
-      <p className="work">Initializing database migrations and caching</p>
     </Root>
   );
 };

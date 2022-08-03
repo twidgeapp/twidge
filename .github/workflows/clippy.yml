@@ -4,11 +4,10 @@ on:
   pull_request:
   push:
     paths:
-      - '**.rs'
-      - '**.toml'
+      - "**.rs"
+      - "**.toml"
       - ./.github/workflows
   workflow_dispatch:
-
 
 jobs:
   clippy_check:
@@ -16,7 +15,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      
+
       - name: Install Rust nightly
         uses: actions-rs/toolchain@v1
         with:
@@ -24,7 +23,7 @@ jobs:
           profile: minimal
           override: true
           components: clippy
-      
+
       - name: Cache Rust Dependencies
         uses: Swatinem/rust-cache@v1
         with:
