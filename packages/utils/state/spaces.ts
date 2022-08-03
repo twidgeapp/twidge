@@ -2,13 +2,13 @@ import create from "zustand";
 import Spaces, { Space } from "../types/spaces";
 
 interface ISpaceStore {
-  spaces: Spaces;
+  spaces: Spaces | undefined;
   addSpace: (space: Space) => void;
   overwriteSpaces: (space: Spaces) => void;
 }
 
 const useSpaceStore = create<ISpaceStore>((set) => ({
-  spaces: [],
+  spaces: undefined,
   addSpace: (space: Space) => {
     set((state) => ({
       spaces: [...(state.spaces ?? []), space],
