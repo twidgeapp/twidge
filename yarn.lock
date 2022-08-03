@@ -4337,6 +4337,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "web@workspace:apps/web"
   dependencies:
+    "@tauri-apps/api": ^1.0.2
     "@twidge/components": "workspace:^"
     "@twidge/config": "workspace:^"
     "@twidge/primitives": "workspace:^"

@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tauri-apps/api": "^1.0.2",
     "@twidge/components": "workspace:^",
     "@twidge/config": "workspace:^",
     "@twidge/primitives": "workspace:^",
