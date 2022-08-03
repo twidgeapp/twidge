@@ -8,7 +8,7 @@ import { invoke } from "@tauri-apps/api";
 import useSpaceStore from "@twidge/utils/state/spaces";
 import { useNavigate } from "react-router-dom";
 import Spaces from "@twidge/utils/types/spaces";
-import {motion} from "framer-motion"
+import { motion } from "framer-motion";
 
 const Root = styled(motion.div, {
   display: "flex",
@@ -22,7 +22,7 @@ const Root = styled(motion.div, {
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
-    zIndex: '100',
+    zIndex: "100",
 
     h1: {
       fontWeight: 700,
@@ -86,11 +86,20 @@ const Home = () => {
   }, []);
 
   return (
-    <Root initial={{y: -200}} animate={{y: 0}} transition={{duration: 0.5}}>
+    <Root
+      initial={{ y: -200 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <Image src={Bg1} css={{ width: "75%", top: 0, right: 0 }} />
       <Image src={Bg2} css={{ width: "75%", top: "-25%", left: 0 }} />
       <Image src={Bg3} css={{ width: "75%", bottom: 0, right: "150px" }} />
-      <motion.div initial={{y: -200}} animate={{y: 0}} transition={{duration: 1}} className="main">
+      <motion.div
+        initial={{ y: -200 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 1 }}
+        className="main"
+      >
         <Logo />
         <h1>Welcome to Twidge!</h1>
         <p>The radically new way to organize your life.</p>
