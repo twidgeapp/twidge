@@ -54,30 +54,30 @@ const Image = styled("img", {
 });
 
 const Home = () => {
-  const [status, setStatus] = useState("Loading...");
-  const overWriteSpaces = useSpaceStore((state) => state.overwriteSpaces);
-  const spaces = useSpaceStore((state) => state.spaces);
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (spaces) {
-      if (spaces.length === 0) {
-        navigate("/home");
-      } else {
-        navigate(`/spaces/${spaces[0].id}`);
-      }
+  const [status, setStatus] = useState("Loading...")
+  const overWriteSpaces = useSpaceStore((state)=>state.overwriteSpaces)
+  const spaces = useSpaceStore((state)=>state.spaces)
+  const navigate = useNavigate()
+useEffect(()=>{
+  if (spaces){
+    if (spaces.length === 0){
+      navigate("/home")
+    } else{
+      navigate(`/spaces/${spaces[0].id}`)
     }
-  }, [spaces]);
+  }
+}, [spaces])
 
   useEffect(() => {
-    setStatus("Migrations.");
+    setStatus("Migrations.")
 
-    invoke("run_db_migrator").then(() => {
-      setStatus("Getting Spaces");
-      invoke("get_spaces").then((res: any) => {
+    invoke("run_db_migrator").then(()=>{
+      setStatus("Getting Spaces")
+      invoke("get_spaces").then((res: any)=>{
         let result: Spaces = JSON.parse(res);
-        overWriteSpaces(result);
-      });
-    });
+        overWriteSpaces(result)
+      })
+    })
   }, []);
 
   return (

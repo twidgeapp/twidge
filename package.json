@@ -12,18 +12,14 @@
     "migrate:dev": "cargo run --bin prisma migrate dev --schema packages/core/prisma/prisma/schema.prisma",
     "prisma:gen": "cd packages/core/prisma/ && cargo run --bin prisma -- generate",
     "build": "cd apps/web && yarn build && cd ../../ && cargo tauri build",
-    "prepare": "husky install",
-    "lint": "yarn prettier --write ."
+    "prepare": "husky install"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.0.3",
-    "@commitlint/config-conventional": "^17.0.3",
     "@typescript-eslint/parser": "^5.31.0",
-    "commitlint-config-gitmoji": "^2.2.5",
     "concurrently": "^7.3.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
-    "husky": "^4.0.0",
+    "husky": "^8.0.1",
     "prettier": "2.7.1"
   },
   "dependencies": {
@@ -32,11 +28,5 @@
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "latest",
     "eslint-plugin-react": "^7.28.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   }
 }
