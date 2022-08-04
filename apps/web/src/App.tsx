@@ -6,6 +6,7 @@ import NAHome from "./pages/home";
 import Space from "./pages/spaces/[id]";
 import {useEffect} from "react";
 import { isRegistered, register } from "@tauri-apps/api/globalShortcut";
+import { AnimatePresence } from "framer-motion";
 
 const Root = styled("div", {
   backgroundColor: "$backgroundColor",
@@ -23,6 +24,7 @@ function App() {
   }, [])
 
   return (
+  <AnimatePresence>
     <Root>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -30,6 +32,7 @@ function App() {
         <Route path="/spaces/:id" element={<Space />} />
       </Routes>
     </Root>
+    </AnimatePresence>
   );
 }
 
