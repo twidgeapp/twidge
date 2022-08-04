@@ -4,6 +4,8 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages";
 import NAHome from "./pages/home";
 import Space from "./pages/spaces/[id]";
+import {useEffect} from "react";
+import { isRegistered, register } from "@tauri-apps/api/globalShortcut";
 
 const Root = styled("div", {
   backgroundColor: "$backgroundColor",
@@ -12,10 +14,14 @@ const Root = styled("div", {
   minHeight: "100vh",
   width: "100%",
   display: "flex",
-  height: "100%",
+  height: "100%"
 });
 
 function App() {
+  useEffect(()=>{
+    console.log(isRegistered("CommandOrControl+Shift+K+Space"))
+  }, [])
+
   return (
     <Root>
       <Routes>

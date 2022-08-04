@@ -4,7 +4,10 @@
 )]
 
 use std::sync::Arc;
-use tauri::{CustomMenuItem, Manager, RunEvent, SystemTray, SystemTrayMenu, SystemTrayMenuItem};
+use tauri::{
+    CustomMenuItem, GlobalShortcutManager, Manager, RunEvent, SystemTray, SystemTrayMenu,
+    SystemTrayMenuItem,
+};
 
 #[tokio::main]
 async fn main() {
@@ -38,15 +41,14 @@ async fn main() {
             // spaces
             tcore::functions::spaces::get_spaces,
             tcore::functions::spaces::create_space,
-
             // migrator
             tcore::functions::migrator::run_db_migrator
         ])
         .build(tauri::generate_context!())
         .expect("error while running tauri application");
 
-    app.run(move |app_handler, event| {
-        if let RunEvent::ExitRequested { .. } = event {
+    app.run(move |app_handler, event| match event {
+        RunEvent::ExitRequested { .. } => {
             app_handler.windows().iter().for_each(
                 |(window_name, window)| {
                     if let Err(e) = window.close() {}
@@ -54,5 +56,18 @@ async fn main() {
             );
             app_handler.exit(0);
         }
+        RunEvent::Ready => {
+            let app_handle = app_handler.clone();
+            println!("App is ready");
+            app_handle
+                .global_shortcut_manager()
+                .register("Alt+D", move || {
+                    let app_handle = app_handle.clone();
+                    let window = app_handle.get_window("main").unwrap();
+                    window.set_title("New title!").unwrap();
+                })
+                .unwrap();
+        }
+        _ => {}
     })
 }

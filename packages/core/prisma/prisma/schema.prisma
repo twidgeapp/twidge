@@ -28,6 +28,17 @@ model Spaces {
     updated_at  DateTime @default(now())
     icon        String
     color       String
+    Element     Element? @relation(fields: [elementId], references: [id])
+    elementId   Int?
 
     @@map("spaces")
+}
+
+model Element {
+    id         Int      @id @default(autoincrement())
+    dType       String
+    value      String
+    space      Spaces[]
+    created_at DateTime @default(now())
+    updated_at DateTime @default(now())
 }

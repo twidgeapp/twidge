@@ -21,7 +21,14 @@ body,
 .viewport {
     position: relative;
     width: 400px;
+    image-rendering: pixelated;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     height: 600px;
     background: #f55;
 }
 
+.infinite-viewer-wrapper h1 {
+  -webkit-filter: blur(0.000001px);
+  -webkit-font-smoothing: antialiased;
+}
