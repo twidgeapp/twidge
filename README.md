@@ -1,5 +1,5 @@
 <p align="center">
-    <img width="200px" src="https://raw.githubusercontent.com/VarunPotti/twidge/master/assets/logo.svg">
+    <img width="200px" src="https://raw.githubusercontent.com/VarunPotti/twidge/master/assets/logo.png">
     <br />
     <br />
     <h1>Twidge</h1>
