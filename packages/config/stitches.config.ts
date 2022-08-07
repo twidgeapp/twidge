@@ -4,7 +4,7 @@ import catpuccin from '@catppuccin/palette';
 const latte = catpuccin.variants.latte;
 const mocha = catpuccin.variants.mocha;
 
-const { createTheme, styled } = createStitches({
+const { createTheme, styled, globalCss } = createStitches({
 	theme: {
 		colors: {
 			backgroundColor: latte.base.hex,
@@ -42,7 +42,7 @@ const { createTheme, styled } = createStitches({
 	},
 });
 
-const darkTheme = createTheme({
+const darkTheme = createTheme('dark', {
 	colors: {
 		backgroundColor: mocha.base.hex,
 		textColor: mocha.text.hex,
@@ -77,3 +77,5 @@ const darkTheme = createTheme({
 		sapphire: mocha.sapphire.hex,
 	},
 });
+
+export { darkTheme, styled, latte, mocha, catpuccin, globalCss };

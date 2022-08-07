@@ -1,13 +1,16 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import IndexPage from './pages';
 
 function App() {
+	const location = useLocation();
+
 	return (
-		<BrowserRouter>
-			<Routes>
+		<AnimatePresence exitBeforeEnter>
+			<Routes key={location.pathname} location={location}>
 				<Route path="/" element={<IndexPage />} />
 			</Routes>
-		</BrowserRouter>
+		</AnimatePresence>
 	);
 }
 
