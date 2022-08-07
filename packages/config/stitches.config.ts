@@ -1,10 +1,10 @@
-import {createStitches} from '@stitches/react';
+import { createStitches } from '@stitches/react';
 import catpuccin from '@catppuccin/palette';
 
 const latte = catpuccin.variants.latte;
 const mocha = catpuccin.variants.mocha;
 
-const {createTheme, styled} = createStitches({
+const { createTheme, styled } = createStitches({
 	theme: {
 		colors: {
 			backgroundColor: latte.base.hex,
@@ -38,8 +38,8 @@ const {createTheme, styled} = createStitches({
 			base: latte.base.hex,
 			mauve: latte.mauve.hex,
 			sapphire: latte.sapphire.hex,
-		}
-	}
+		},
+	},
 });
 
 const darkTheme = createTheme({
@@ -75,6 +75,5 @@ const darkTheme = createTheme({
 		base: mocha.base.hex,
 		mauve: mocha.mauve.hex,
 		sapphire: mocha.sapphire.hex,
-
-	}
+	},
 });

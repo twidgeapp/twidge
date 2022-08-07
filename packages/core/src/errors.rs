@@ -15,5 +15,5 @@ pub enum CoreError {
     SerdeError(#[from] serde_json::Error),
 
     #[error("Other")]
-    OtherError(String)
+    OtherError(String),
 }
