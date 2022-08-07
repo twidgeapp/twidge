@@ -1,0 +1,32 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "cargo run --bin prisma"
+  output   = "../packages/core/prisma/src/lib.rs"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "sqlite:./file.db"
+}
+
+model Migration {
+  id            Int      @id @default(autoincrement())
+  name          String
+  checksum      String   @unique
+  steps_applied Int      @default(0)
+  applied_at    DateTime @default(now())
+
+  @@map("_migrations")
+}
+
+model Spaces {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+
+  @@map("spaces")
+}

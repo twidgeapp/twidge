@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "prepare": "husky install",
+    "dev": "turbo run dev",
+    "build": "cd apps/web && yarn build && cd ../src-tauri && cargo tauri build",
     "format": "prettier --write '**/*.{js,jsx,ts,tsx}'",
     "lint": "eslint '**/*.{js,jsx,ts,tsx}'"
   },

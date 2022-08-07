@@ -1,0 +1,7 @@
+{
+    "name": "@twidge/src-tauri",
+    "scripts": {
+        "dev": "cargo tauri dev",
+        "build": "cargo tauri build"
+    }
+}
