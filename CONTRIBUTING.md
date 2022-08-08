@@ -12,7 +12,9 @@ Make sure to have these installed!
 - Node v18.7.0
 - Cargo v1.64.0-nightly
 - Git
-- Yarn v1.22.19
+- Pnpm v7.8.0
+- Sccache v0.3.0 `cargo install sccache`
+- TauriCli v1.0.5 `cargo install tauri-cli`
 
 # Getting Started
 
@@ -29,8 +31,8 @@ If you want a new feature to be supported by Twidge or you found a bug, first ch
 ## Fix an issue or create a new feature
 
 - First clone the repo using the command `git clone git@github.com:VarunPotti/twidge.git`
-- Then run `yarn` to install all the require packages
-- Run `yarn dev` to run twidge.
+- Then run `pnpm` to install all the require packages
+- Run `pnpm dev` to run twidge.
 - Fix the issue or create a new feature
 
 ## Pull Request
