@@ -9,13 +9,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fluentui/react-icons": "^2.0.178",
+    "@tippyjs/react": "^4.2.6",
     "@twidge/config": "workspace:*",
+    "@twidge/utils": "workspace:*",
     "framer-motion": "^7.0.0",
     "next-themes": "^0.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-error-boundary": "^3.1.4",
-    "react-router-dom": "^6.3.0"
+    "react-router-dom": "^6.3.0",
+    "tippy.js": "^6.3.7"
   },
   "devDependencies": {
     "@types/react": "^18.0.15",

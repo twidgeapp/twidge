@@ -1,18 +1,31 @@
-import { styled } from '@twidge/config/stitches.config';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
-import Logo from '../../assets/index/logo.svg';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Logo from '../../assets/index/logo.png';
 import underlay1 from '../../assets/index/underlay1.png';
 import underlay2 from '../../assets/index/underlay2.png';
 import { Image, Root } from './styles';
 
 const IndexPage = () => {
+	const navigate = useNavigate();
+
 	useEffect(() => {
-		useState();
+		const interval = setInterval(() => {
+			navigate('/home');
+		}, 2500);
+
+		return () => {
+			clearInterval(interval);
+		};
 	}, []);
 
 	return (
-		<Root initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 2 }}>
+		<Root
+			initial={{ y: -100 }}
+			exit={{ opacity: 0 }}
+			animate={{ y: 0 }}
+			transition={{ duration: 2 }}
+		>
 			<div className="body">
 				<Image
 					initial={{ opacity: 0 }}
@@ -31,8 +44,8 @@ const IndexPage = () => {
 
 				<img src={Logo} />
 				<motion.h1
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
+					initial={{ opacity: 0, y: -50 }}
+					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.5, delay: 0.5 }}
 					className="header"
 				>
@@ -41,7 +54,7 @@ const IndexPage = () => {
 				<motion.p
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
-					transition={{ duration: 0.5, delay: 0.5 }}
+					transition={{ duration: 0.5, delay: 2 }}
 					className="description"
 				>
 					A smart-canvas for your mind

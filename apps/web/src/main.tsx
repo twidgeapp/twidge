@@ -12,7 +12,11 @@ const globalStyles = globalCss({
 		color: '$textColor',
 		padding: '0px',
 		margin: '0px',
-
+		'#root': {
+			width: '100vw',
+			height: '100vh',
+			overflow: 'hidden !important',
+		},
 		'::selection': {
 			background: '$selectionColor',
 			color: '$textColor',

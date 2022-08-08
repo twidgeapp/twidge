@@ -17,6 +17,7 @@ const { createTheme, styled, globalCss } = createStitches({
 			activeBorderColor: latte.lavender.hex,
 			inactiveBorderColor: latte.overlay0.hex,
 			bellBorderColor: latte.yellow.hex,
+			surface1: latte.surface1.hex,
 
 			success: latte.green.hex,
 			warning: latte.peach.hex,
@@ -54,6 +55,7 @@ const darkTheme = createTheme('dark', {
 		activeBorderColor: mocha.lavender.hex,
 		inactiveBorderColor: mocha.overlay0.hex,
 		bellBorderColor: mocha.yellow.hex,
+		surface1: mocha.surface1.hex,
 
 		success: mocha.green.hex,
 		warning: mocha.peach.hex,

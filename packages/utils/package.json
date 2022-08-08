@@ -1,0 +1,6 @@
+{
+    "name": "@twidge/utils",
+    "dependencies": {
+        "zustand": "^4.0.0"
+    }
+}
