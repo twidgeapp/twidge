@@ -29,6 +29,7 @@ const StyledHeader = styled('div', {
 	'.controls': {
 		display: 'flex',
 		gap: '10px',
+		paddingRight: '24px',
 		'.button': {
 			backgroundColor: 'transparent',
 			display: 'flex',

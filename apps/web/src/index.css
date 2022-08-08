@@ -11,3 +11,23 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+.viewer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.viewport {
+    position: relative;
+    width: 400px;
+    height: 600px;
+    background: var(--colors-blue);
+    color: black;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    border-radius: 12px;
+}
