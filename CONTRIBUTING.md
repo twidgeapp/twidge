@@ -8,9 +8,9 @@ To get a good overview of the project make sure to read the [ReadMe](https://git
 
 Make sure to have these installed!
 
-- Rustc v1.64.0 (make sure to use nightly(`rustup default nightly`))
+- Rustc v1.62.1
 - Node v18.7.0
-- Cargo v1.64.0-nightly
+- Cargo v1.62.1
 - Git
 - Pnpm v7.8.0
 - Sccache v0.3.0 `cargo install sccache`
