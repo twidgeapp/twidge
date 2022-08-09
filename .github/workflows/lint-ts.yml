@@ -22,8 +22,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 18
-          cache: pnpm
-      - run: pnpm install
+          cache: yarn
+      - run: yarn install
 
       - name: Run linters
         uses: wearerequired/lint-action@v1

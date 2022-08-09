@@ -10,7 +10,7 @@
     "format": "prettier --write '**/*.{js,jsx,ts,tsx}'",
     "lint": "eslint '**/*.{js,jsx,ts,tsx}'"
   },
-  "workspaces":[
+  "workspaces": [
     "apps/**",
     "packages/**"
   ],
@@ -30,5 +30,6 @@
   },
   "eslintConfig": {
     "extends": ".eslintrc.js"
-  }
+  },
+  "packageManager": "yarn@3.2.2"
 }

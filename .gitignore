@@ -2,3 +2,10 @@ node_modules
 **/*/node_modules
 /target
 .turbo
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
