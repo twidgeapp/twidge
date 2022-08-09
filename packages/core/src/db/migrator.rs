@@ -1,3 +1,4 @@
+// CREDITS: https://github.com/spacedriveapp/spacedrive/blob/main/core/src/util/db.rs
 use prisma::{migration, PrismaClient};
 
 use crate::errors::CoreError;

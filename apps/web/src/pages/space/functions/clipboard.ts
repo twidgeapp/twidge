@@ -15,7 +15,7 @@ const getClipboardFiles = async (
 	files: FileList
 ): Promise<{ dataURL: string; type: string }[]> => {
 	const file_list = [];
-	// loop through files
+
 	for (let i = 0; i < files.length; i++) {
 		const file = files[i];
 
