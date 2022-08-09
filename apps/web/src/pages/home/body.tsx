@@ -10,7 +10,7 @@ const HomeBody = () => {
 	return (
 		<Root>
 			<div className="body">
-				{/* <Image
+				<Image
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					transition={{ duration: 0.5, delay: 2 }}
@@ -23,7 +23,7 @@ const HomeBody = () => {
 					transition={{ duration: 0.5, delay: 2 }}
 					src={underlay2}
 					css={{ right: '-500px', top: '-500px' }}
-				/> */}
+				/>
 
 				<img src={Logo} />
 				<motion.h1

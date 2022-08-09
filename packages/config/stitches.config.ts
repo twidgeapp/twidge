@@ -3,6 +3,8 @@ import catpuccin from '@catppuccin/palette';
 
 const latte = catpuccin.variants.latte;
 const mocha = catpuccin.variants.mocha;
+const frappe = catpuccin.variants.frappe;
+const macchiato = catpuccin.variants.macchiato;
 
 const { createTheme, styled, globalCss } = createStitches({
 	theme: {
@@ -43,7 +45,7 @@ const { createTheme, styled, globalCss } = createStitches({
 	},
 });
 
-const darkTheme = createTheme('dark', {
+const mochaTheme = createTheme({
 	colors: {
 		backgroundColor: mocha.base.hex,
 		textColor: mocha.text.hex,
@@ -80,4 +82,89 @@ const darkTheme = createTheme('dark', {
 	},
 });
 
-export { darkTheme, styled, latte, mocha, catpuccin, globalCss };
+const frappeTheme = createTheme({
+	colors: {
+		backgroundColor: frappe.base.hex,
+		textColor: frappe.text.hex,
+		urlColor: frappe.rosewater.hex,
+		selectionColor: frappe.surface2.hex,
+		selectionText: frappe.text.hex,
+		cursor: frappe.rosewater.hex,
+		cursorText: frappe.base.hex,
+		activeBorderColor: frappe.lavender.hex,
+		inactiveBorderColor: frappe.overlay0.hex,
+		bellBorderColor: frappe.yellow.hex,
+		surface1: frappe.surface1.hex,
+
+		success: frappe.green.hex,
+		warning: frappe.peach.hex,
+		error: frappe.maroon.hex,
+		tags: frappe.base.hex,
+
+		subtext: frappe.subtext1.hex,
+		red: frappe.red.hex,
+		green: frappe.green.hex,
+		yellow: frappe.yellow.hex,
+		blue: frappe.blue.hex,
+		pink: frappe.pink.hex,
+		teal: frappe.teal.hex,
+		surface2: frappe.surface2.hex,
+
+		peach: frappe.peach.hex,
+		rosewater: frappe.rosewater.hex,
+		lavender: frappe.lavender.hex,
+		base: frappe.base.hex,
+		mauve: frappe.mauve.hex,
+		sapphire: frappe.sapphire.hex,
+	},
+});
+
+const macchiatoTheme = createTheme({
+	colors: {
+		backgroundColor: macchiato.base.hex,
+		textColor: macchiato.text.hex,
+		urlColor: macchiato.rosewater.hex,
+		selectionColor: macchiato.surface2.hex,
+		selectionText: macchiato.text.hex,
+		cursor: macchiato.rosewater.hex,
+		cursorText: macchiato.base.hex,
+		activeBorderColor: macchiato.lavender.hex,
+		inactiveBorderColor: macchiato.overlay0.hex,
+		bellBorderColor: macchiato.yellow.hex,
+		surface1: macchiato.surface1.hex,
+
+		success: macchiato.green.hex,
+		warning: macchiato.peach.hex,
+		error: macchiato.maroon.hex,
+		tags: macchiato.base.hex,
+
+		subtext: macchiato.subtext1.hex,
+		red: macchiato.red.hex,
+		green: macchiato.green.hex,
+		yellow: macchiato.yellow.hex,
+		blue: macchiato.blue.hex,
+		pink: macchiato.pink.hex,
+		teal: macchiato.teal.hex,
+		surface2: macchiato.surface2.hex,
+
+		peach: macchiato.peach.hex,
+		rosewater: macchiato.rosewater.hex,
+		lavender: macchiato.lavender.hex,
+		base: macchiato.base.hex,
+		mauve: macchiato.mauve.hex,
+		sapphire: macchiato.sapphire.hex,
+	},
+});
+
+export {
+	mochaTheme,
+	styled,
+	latte,
+	mocha,
+	catpuccin,
+	globalCss,
+	frappe,
+	frappeTheme,
+	macchiato,
+	macchiatoTheme,
+};

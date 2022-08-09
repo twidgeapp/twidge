@@ -2,7 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
-import { darkTheme, globalCss } from '@twidge/config/stitches.config';
+import {
+	mochaTheme,
+	globalCss,
+	frappeTheme,
+	macchiatoTheme,
+} from '@twidge/config/stitches.config';
 import { ThemeProvider } from 'next-themes';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -35,10 +40,12 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<React.StrictMode>
 		<ThemeProvider
 			attribute="class"
-			defaultTheme="system"
+			defaultTheme="macchiato"
 			value={{
-				light: 'light',
-				dark: darkTheme.className,
+				latte: 'light',
+				mocha: mochaTheme.className,
+				frappe: frappeTheme.className,
+				macchiato: macchiatoTheme.className,
 			}}
 		>
 			<BrowserRouter>
