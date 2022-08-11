@@ -1,6 +1,3 @@
-[build]
-rustc-wrapper = '/home/varun/.cargo/bin/sccache'
-
 [target.x86_64-unknown-linux-gnu]
 rustflags = [
     "-C", "link-arg=-fuse-ld=lld",

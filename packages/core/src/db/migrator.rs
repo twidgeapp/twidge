@@ -26,7 +26,7 @@ pub async fn new_client() -> Result<PrismaClient, CoreError> {
     tokio::fs::File::create(sqlite_file.clone()).await?;
 
     let client =
-        prisma::new_client_with_url(&format!("file://{}", sqlite_file.to_str().unwrap())).await?;
+        prisma::new_client_with_url(&format!("sqlite:{}", sqlite_file.to_str().unwrap())).await?;
 
     let client = run_migrations(client).await.unwrap();
 
