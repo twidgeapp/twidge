@@ -37,7 +37,7 @@ pub async fn create_space(
             prisma::spaces::description::set(String::new()),
             prisma::spaces::icon::set(String::from("Document16Filled")),
             prisma::spaces::color::set(String::from("#ffffff")),
-            vec![],
+            vec![prisma::spaces::index::set(spaces.try_into().unwrap())],
         )
         .exec()
         .await;
