@@ -30,6 +30,4 @@ jobs:
         with:
           eslint: true
           prettier: true
-          auto_fix: true
-          commit_message: 'chore: fix code style issues'
-          neutral_check_on_warning: true
+          auto_fix: false
