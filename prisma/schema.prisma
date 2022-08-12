@@ -22,11 +22,14 @@ model Migration {
 }
 
 model Spaces {
-  id          Int      @id @default(autoincrement())
-  name        String   @unique
+  id          Int    @id @default(autoincrement())
+  name        String @unique
   description String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @default(now()) @updatedAt
+  icon        String
+  color       String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 
   @@map("spaces")
 }

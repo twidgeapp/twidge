@@ -2,11 +2,13 @@
 import Root, { Divider, MainSection, StyledSpace } from './styles';
 import useSpaceStore from '@twidge/utils/spaces/state';
 import { Space as TSpace } from '@twidge/utils/spaces/types';
+import { useEffect } from 'react';
 import * as Icons from '@fluentui/react-icons';
 import Logo from '../../assets/space/sidebar/logo.svg';
 import { Link, useParams } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 import '../../styles/tippy.css'; // optional
+import useGetSpaces from '@twidge/utils/spaces/actions';
 
 const Space = ({ space }: { space: TSpace }) => {
 	const { id } = useParams();
@@ -34,6 +36,7 @@ const Space = ({ space }: { space: TSpace }) => {
 
 const Sidebar = () => {
 	const spaces = useSpaceStore((spaces) => spaces.spaces);
+	useGetSpaces();
 
 	return (
 		<Root>

@@ -19,7 +19,7 @@ pub use prisma_client_rust::{queries::Error as QueryError, NewClientError};
 use serde::{Deserialize, Serialize};
 use std::path::Path;
 use std::sync::Arc;
-static DATAMODEL_STR : & 'static str = "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"cargo run --bin prisma\"\n  output   = \"../packages/core/prisma/src/lib.rs\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  url      = \"sqlite:./file.db\"\n}\n\nmodel Migration {\n  id            Int      @id @default(autoincrement())\n  name          String\n  checksum      String   @unique\n  steps_applied Int      @default(0)\n  applied_at    DateTime @default(now())\n\n  @@map(\"_migrations\")\n}\n\nmodel Spaces {\n  id          Int      @id @default(autoincrement())\n  name        String   @unique\n  description String\n  createdAt   DateTime @default(now())\n  updatedAt   DateTime @default(now()) @updatedAt\n\n  @@map(\"spaces\")\n}\n" ;
+static DATAMODEL_STR : & 'static str = "// This is your Prisma schema file,\r\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\r\n\r\ngenerator client {\r\n  provider = \"cargo run --bin prisma\"\r\n  output   = \"../packages/core/prisma/src/lib.rs\"\r\n}\r\n\r\ndatasource db {\r\n  provider = \"sqlite\"\r\n  url      = \"sqlite:./file.db\"\r\n}\r\n\r\nmodel Migration {\r\n  id            Int      @id @default(autoincrement())\r\n  name          String\r\n  checksum      String   @unique\r\n  steps_applied Int      @default(0)\r\n  applied_at    DateTime @default(now())\r\n\r\n  @@map(\"_migrations\")\r\n}\r\n\r\nmodel Spaces {\r\n  id          Int    @id @default(autoincrement())\r\n  name        String @unique\r\n  description String\r\n  icon        String\r\n  color       String\r\n\r\n  createdAt DateTime @default(now())\r\n  updatedAt DateTime @default(now()) @updatedAt\r\n\r\n  @@map(\"spaces\")\r\n}\r\n" ;
 static DATABASE_STR: &'static str = "sqlite";
 pub async fn new_client() -> Result<_prisma::PrismaClient, NewClientError> {
     let config = parse_configuration(DATAMODEL_STR)?.subject;
@@ -1194,6 +1194,106 @@ pub mod spaces {
             }
         }
     }
+    pub mod icon {
+        use super::super::*;
+        use super::_prisma::*;
+        use super::{Cursor, OrderByParam, SetParam, UniqueWhereParam, WhereParam, WithParam};
+        pub fn set<T: From<Set>>(value: String) -> T {
+            Set(value).into()
+        }
+        pub fn equals(value: String) -> WhereParam {
+            WhereParam::IconEquals(value).into()
+        }
+        pub fn order(direction: Direction) -> OrderByParam {
+            OrderByParam::Icon(direction)
+        }
+        pub fn in_vec(value: Vec<String>) -> WhereParam {
+            WhereParam::IconInVec(value)
+        }
+        pub fn not_in_vec(value: Vec<String>) -> WhereParam {
+            WhereParam::IconNotInVec(value)
+        }
+        pub fn lt(value: String) -> WhereParam {
+            WhereParam::IconLt(value)
+        }
+        pub fn lte(value: String) -> WhereParam {
+            WhereParam::IconLte(value)
+        }
+        pub fn gt(value: String) -> WhereParam {
+            WhereParam::IconGt(value)
+        }
+        pub fn gte(value: String) -> WhereParam {
+            WhereParam::IconGte(value)
+        }
+        pub fn contains(value: String) -> WhereParam {
+            WhereParam::IconContains(value)
+        }
+        pub fn starts_with(value: String) -> WhereParam {
+            WhereParam::IconStartsWith(value)
+        }
+        pub fn ends_with(value: String) -> WhereParam {
+            WhereParam::IconEndsWith(value)
+        }
+        pub fn not(value: String) -> WhereParam {
+            WhereParam::IconNot(value)
+        }
+        pub struct Set(String);
+        impl From<Set> for SetParam {
+            fn from(value: Set) -> Self {
+                Self::SetIcon(value.0)
+            }
+        }
+    }
+    pub mod color {
+        use super::super::*;
+        use super::_prisma::*;
+        use super::{Cursor, OrderByParam, SetParam, UniqueWhereParam, WhereParam, WithParam};
+        pub fn set<T: From<Set>>(value: String) -> T {
+            Set(value).into()
+        }
+        pub fn equals(value: String) -> WhereParam {
+            WhereParam::ColorEquals(value).into()
+        }
+        pub fn order(direction: Direction) -> OrderByParam {
+            OrderByParam::Color(direction)
+        }
+        pub fn in_vec(value: Vec<String>) -> WhereParam {
+            WhereParam::ColorInVec(value)
+        }
+        pub fn not_in_vec(value: Vec<String>) -> WhereParam {
+            WhereParam::ColorNotInVec(value)
+        }
+        pub fn lt(value: String) -> WhereParam {
+            WhereParam::ColorLt(value)
+        }
+        pub fn lte(value: String) -> WhereParam {
+            WhereParam::ColorLte(value)
+        }
+        pub fn gt(value: String) -> WhereParam {
+            WhereParam::ColorGt(value)
+        }
+        pub fn gte(value: String) -> WhereParam {
+            WhereParam::ColorGte(value)
+        }
+        pub fn contains(value: String) -> WhereParam {
+            WhereParam::ColorContains(value)
+        }
+        pub fn starts_with(value: String) -> WhereParam {
+            WhereParam::ColorStartsWith(value)
+        }
+        pub fn ends_with(value: String) -> WhereParam {
+            WhereParam::ColorEndsWith(value)
+        }
+        pub fn not(value: String) -> WhereParam {
+            WhereParam::ColorNot(value)
+        }
+        pub struct Set(String);
+        impl From<Set> for SetParam {
+            fn from(value: Set) -> Self {
+                Self::SetColor(value.0)
+            }
+        }
+    }
     pub mod created_at {
         use super::super::*;
         use super::_prisma::*;
@@ -1277,13 +1377,21 @@ pub mod spaces {
         }
     }
     pub fn _outputs() -> Vec<Selection> {
-        ["id", "name", "description", "createdAt", "updatedAt"]
-            .into_iter()
-            .map(|o| {
-                let builder = Selection::builder(o);
-                builder.build()
-            })
-            .collect()
+        [
+            "id",
+            "name",
+            "description",
+            "icon",
+            "color",
+            "createdAt",
+            "updatedAt",
+        ]
+        .into_iter()
+        .map(|o| {
+            let builder = Selection::builder(o);
+            builder.build()
+        })
+        .collect()
     }
     #[derive(Debug, Clone, Serialize, Deserialize)]
     pub struct Data {
@@ -1293,6 +1401,10 @@ pub mod spaces {
         pub name: String,
         #[serde(rename = "description")]
         pub description: String,
+        #[serde(rename = "icon")]
+        pub icon: String,
+        #[serde(rename = "color")]
+        pub color: String,
         #[serde(rename = "createdAt")]
         pub created_at: chrono::DateTime<chrono::FixedOffset>,
         #[serde(rename = "updatedAt")]
@@ -1315,6 +1427,8 @@ pub mod spaces {
         DivideId(i32),
         SetName(String),
         SetDescription(String),
+        SetIcon(String),
+        SetColor(String),
         SetCreatedAt(chrono::DateTime<chrono::FixedOffset>),
         SetUpdatedAt(chrono::DateTime<chrono::FixedOffset>),
     }
@@ -1354,6 +1468,8 @@ pub mod spaces {
                 SetParam::SetDescription(value) => {
                     ("description".to_string(), PrismaValue::String(value))
                 }
+                SetParam::SetIcon(value) => ("icon".to_string(), PrismaValue::String(value)),
+                SetParam::SetColor(value) => ("color".to_string(), PrismaValue::String(value)),
                 SetParam::SetCreatedAt(value) => {
                     ("createdAt".to_string(), PrismaValue::DateTime(value))
                 }
@@ -1368,6 +1484,8 @@ pub mod spaces {
         Id(Direction),
         Name(Direction),
         Description(Direction),
+        Icon(Direction),
+        Color(Direction),
         CreatedAt(Direction),
         UpdatedAt(Direction),
     }
@@ -1383,6 +1501,14 @@ pub mod spaces {
                 ),
                 Self::Description(direction) => (
                     "description".to_string(),
+                    PrismaValue::String(direction.to_string()),
+                ),
+                Self::Icon(direction) => (
+                    "icon".to_string(),
+                    PrismaValue::String(direction.to_string()),
+                ),
+                Self::Color(direction) => (
+                    "color".to_string(),
                     PrismaValue::String(direction.to_string()),
                 ),
                 Self::CreatedAt(direction) => (
@@ -1444,6 +1570,28 @@ pub mod spaces {
         DescriptionStartsWith(String),
         DescriptionEndsWith(String),
         DescriptionNot(String),
+        IconEquals(String),
+        IconInVec(Vec<String>),
+        IconNotInVec(Vec<String>),
+        IconLt(String),
+        IconLte(String),
+        IconGt(String),
+        IconGte(String),
+        IconContains(String),
+        IconStartsWith(String),
+        IconEndsWith(String),
+        IconNot(String),
+        ColorEquals(String),
+        ColorInVec(Vec<String>),
+        ColorNotInVec(Vec<String>),
+        ColorLt(String),
+        ColorLte(String),
+        ColorGt(String),
+        ColorGte(String),
+        ColorContains(String),
+        ColorStartsWith(String),
+        ColorEndsWith(String),
+        ColorNot(String),
         CreatedAtEquals(chrono::DateTime<chrono::FixedOffset>),
         CreatedAtInVec(Vec<chrono::DateTime<chrono::FixedOffset>>),
         CreatedAtNotInVec(Vec<chrono::DateTime<chrono::FixedOffset>>),
@@ -1719,6 +1867,168 @@ pub mod spaces {
                         PrismaValue::String(value),
                     )]),
                 ),
+                Self::IconEquals(value) => (
+                    "icon".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "equals".to_string(),
+                        PrismaValue::String(value),
+                    )]),
+                ),
+                Self::IconInVec(value) => (
+                    "icon".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "in".to_string(),
+                        PrismaValue::List(
+                            value.into_iter().map(|v| PrismaValue::String(v)).collect(),
+                        ),
+                    )]),
+                ),
+                Self::IconNotInVec(value) => (
+                    "icon".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "notIn".to_string(),
+                        PrismaValue::List(
+                            value.into_iter().map(|v| PrismaValue::String(v)).collect(),
+                        ),
+                    )]),
+                ),
+                Self::IconLt(value) => (
+                    "icon".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "lt".to_string(),
+                        PrismaValue::String(value),
+                    )]),
+                ),
+                Self::IconLte(value) => (
+                    "icon".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "lte".to_string(),
+                        PrismaValue::String(value),
+                    )]),
+                ),
+                Self::IconGt(value) => (
+                    "icon".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "gt".to_string(),
+                        PrismaValue::String(value),
+                    )]),
+                ),
+                Self::IconGte(value) => (
+                    "icon".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "gte".to_string(),
+                        PrismaValue::String(value),
+                    )]),
+                ),
+                Self::IconContains(value) => (
+                    "icon".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "contains".to_string(),
+                        PrismaValue::String(value),
+                    )]),
+                ),
+                Self::IconStartsWith(value) => (
+                    "icon".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "startsWith".to_string(),
+                        PrismaValue::String(value),
+                    )]),
+                ),
+                Self::IconEndsWith(value) => (
+                    "icon".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "endsWith".to_string(),
+                        PrismaValue::String(value),
+                    )]),
+                ),
+                Self::IconNot(value) => (
+                    "icon".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "not".to_string(),
+                        PrismaValue::String(value),
+                    )]),
+                ),
+                Self::ColorEquals(value) => (
+                    "color".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "equals".to_string(),
+                        PrismaValue::String(value),
+                    )]),
+                ),
+                Self::ColorInVec(value) => (
+                    "color".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "in".to_string(),
+                        PrismaValue::List(
+                            value.into_iter().map(|v| PrismaValue::String(v)).collect(),
+                        ),
+                    )]),
+                ),
+                Self::ColorNotInVec(value) => (
+                    "color".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "notIn".to_string(),
+                        PrismaValue::List(
+                            value.into_iter().map(|v| PrismaValue::String(v)).collect(),
+                        ),
+                    )]),
+                ),
+                Self::ColorLt(value) => (
+                    "color".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "lt".to_string(),
+                        PrismaValue::String(value),
+                    )]),
+                ),
+                Self::ColorLte(value) => (
+                    "color".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "lte".to_string(),
+                        PrismaValue::String(value),
+                    )]),
+                ),
+                Self::ColorGt(value) => (
+                    "color".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "gt".to_string(),
+                        PrismaValue::String(value),
+                    )]),
+                ),
+                Self::ColorGte(value) => (
+                    "color".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "gte".to_string(),
+                        PrismaValue::String(value),
+                    )]),
+                ),
+                Self::ColorContains(value) => (
+                    "color".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "contains".to_string(),
+                        PrismaValue::String(value),
+                    )]),
+                ),
+                Self::ColorStartsWith(value) => (
+                    "color".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "startsWith".to_string(),
+                        PrismaValue::String(value),
+                    )]),
+                ),
+                Self::ColorEndsWith(value) => (
+                    "color".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "endsWith".to_string(),
+                        PrismaValue::String(value),
+                    )]),
+                ),
+                Self::ColorNot(value) => (
+                    "color".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "not".to_string(),
+                        PrismaValue::String(value),
+                    )]),
+                ),
                 Self::CreatedAtEquals(value) => (
                     "createdAt".to_string(),
                     SerializedWhereValue::Object(vec![(
@@ -1905,10 +2215,14 @@ pub mod spaces {
             self,
             name: name::Set,
             description: description::Set,
+            icon: icon::Set,
+            color: color::Set,
             mut _params: Vec<SetParam>,
         ) -> Create<'a> {
             _params.push(name.into());
             _params.push(description.into());
+            _params.push(icon.into());
+            _params.push(color.into());
             Create::new(
                 self.client._new_query_context(),
                 QueryInfo::new("Spaces", _outputs()),
@@ -1939,12 +2253,20 @@ pub mod spaces {
         pub fn upsert(
             self,
             _where: UniqueWhereParam,
-            _create: (name::Set, description::Set, Vec<SetParam>),
+            _create: (
+                name::Set,
+                description::Set,
+                icon::Set,
+                color::Set,
+                Vec<SetParam>,
+            ),
             _update: Vec<SetParam>,
         ) -> Upsert<'a> {
-            let (name, description, mut _params) = _create;
+            let (name, description, icon, color, mut _params) = _create;
             _params.push(name.into());
             _params.push(description.into());
+            _params.push(icon.into());
+            _params.push(color.into());
             Upsert::new(
                 self.client._new_query_context(),
                 QueryInfo::new("Spaces", _outputs()),
@@ -2047,6 +2369,10 @@ pub mod _prisma {
         Name,
         #[serde(rename = "description")]
         Description,
+        #[serde(rename = "icon")]
+        Icon,
+        #[serde(rename = "color")]
+        Color,
         #[serde(rename = "createdAt")]
         CreatedAt,
         #[serde(rename = "updatedAt")]
@@ -2058,6 +2384,8 @@ pub mod _prisma {
                 Self::Id => "id".to_string(),
                 Self::Name => "name".to_string(),
                 Self::Description => "description".to_string(),
+                Self::Icon => "icon".to_string(),
+                Self::Color => "color".to_string(),
                 Self::CreatedAt => "createdAt".to_string(),
                 Self::UpdatedAt => "updatedAt".to_string(),
             }
