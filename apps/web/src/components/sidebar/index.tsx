@@ -9,6 +9,7 @@ import { Link, useParams } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 import '../../styles/tippy.css'; // optional
 import useGetSpaces from '@twidge/utils/spaces/actions';
+import { invoke } from '@tauri-apps/api';
 
 const Space = ({ space }: { space: TSpace }) => {
 	const { id } = useParams();
@@ -43,7 +44,11 @@ const Sidebar = () => {
 			<MainSection>
 				<img src={Logo} />
 				<Tippy content={'Add'} placement="right" arrow={false}>
-					<StyledSpace>
+					<StyledSpace
+						onClick={() => {
+							invoke('create_space');
+						}}
+					>
 						<Icons.Add20Regular style={{ color: 'var(--colors-lavender)' }} />
 					</StyledSpace>
 				</Tippy>

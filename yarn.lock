@@ -859,7 +859,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tauri-apps/api@npm:1.0.2":
+"@tauri-apps/api@npm:1.0.2, @tauri-apps/api@npm:^1.0.2":
   version: 1.0.2
   resolution: "@tauri-apps/api@npm:1.0.2"
   checksum: e0976c8d333327c9dfeca8ca02057d0fb6e9250fe7c207d4c8a15717e0050057d10474fba44d9f8deb8304ddf6497b58d85fb0c783136cd12574d3d77c614e73
@@ -1044,6 +1044,7 @@ __metadata:
   resolution: "@twidge/web@workspace:apps/web"
   dependencies:
     "@fluentui/react-icons": ^2.0.178
+    "@tauri-apps/api": ^1.0.2
     "@tauri-apps/cli": ^1.0.5
     "@tippyjs/react": ^4.2.6
     "@twidge/config": "workspace:*"

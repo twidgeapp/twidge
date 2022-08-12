@@ -10,6 +10,7 @@
 	},
 	"dependencies": {
 		"@fluentui/react-icons": "^2.0.178",
+		"@tauri-apps/api": "^1.0.2",
 		"@tauri-apps/cli": "^1.0.5",
 		"@tippyjs/react": "^4.2.6",
 		"@twidge/config": "workspace:*",
