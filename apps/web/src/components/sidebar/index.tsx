@@ -10,8 +10,16 @@ import Tippy from '@tippyjs/react';
 import '../../styles/tippy.css'; // optional
 import useGetSpaces from '@twidge/utils/spaces/actions';
 import { invoke } from '@tauri-apps/api';
+import {
+	DragDropContext,
+	Draggable,
+	Droppable,
+	DroppableProvided,
+	DroppableStateSnapshot,
+} from 'react-beautiful-dnd';
 
-const Space = ({ space }: { space: TSpace }) => {
+const Space = ({ space, index }: { space: TSpace; index: number }) => {
+	const spaces = useSpaceStore((state) => state.spaces);
 	const { id } = useParams();
 	// @ts-ignore
 	const Icon = Icons[space.icon];
@@ -22,6 +30,7 @@ const Space = ({ space }: { space: TSpace }) => {
 				<StyledSpace
 					id={space.id.toString()}
 					css={{
+						marginBottom: index == spaces.length - 1 ? '0px' : '12px',
 						border:
 							space.id === parseInt(id as any)
 								? '1px solid $surface1'
@@ -53,13 +62,42 @@ const Sidebar = () => {
 					</StyledSpace>
 				</Tippy>
 				{spaces.length > 0 && <Divider />}
-				{spaces.map((space) => {
-					return (
-						<div key={space.id}>
-							<Space space={space} key={space.id} />
-						</div>
-					);
-				})}
+				<DragDropContext onDragEnd={console.log}>
+					<Droppable droppableId="droppable">
+						{(provided) => (
+							<div
+								style={{
+									display: 'flex',
+									flexDirection: 'column',
+								}}
+								{...provided.droppableProps}
+								ref={provided.innerRef}
+							>
+								{spaces.map((space, index) => {
+									return (
+										<Draggable
+											key={space.id}
+											draggableId={space.id.toString()}
+											index={index}
+										>
+											{(provided) => (
+												<div
+													key={space.id}
+													ref={provided.innerRef}
+													{...provided.draggableProps}
+													{...provided.dragHandleProps}
+												>
+													<Space index={index} space={space} key={space.id} />
+												</div>
+											)}
+										</Draggable>
+									);
+								})}
+								{provided.placeholder}
+							</div>
+						)}
+					</Droppable>
+				</DragDropContext>
 				<Divider />
 				<Tippy content={'Settings'} placement="right" arrow={false}>
 					<StyledSpace>

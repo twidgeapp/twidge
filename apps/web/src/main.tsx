@@ -37,20 +37,20 @@ const globalStyles = globalCss({
 globalStyles();
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-	<React.StrictMode>
-		<ThemeProvider
-			attribute="class"
-			defaultTheme="macchiato"
-			value={{
-				latte: 'light',
-				mocha: mochaTheme.className,
-				frappe: frappeTheme.className,
-				macchiato: macchiatoTheme.className,
-			}}
-		>
-			<BrowserRouter>
-				<App />
-			</BrowserRouter>
-		</ThemeProvider>
-	</React.StrictMode>
+	// <React.StrictMode>
+	<ThemeProvider
+		attribute="class"
+		defaultTheme="macchiato"
+		value={{
+			latte: 'light',
+			mocha: mochaTheme.className,
+			frappe: frappeTheme.className,
+			macchiato: macchiatoTheme.className,
+		}}
+	>
+		<BrowserRouter>
+			<App />
+		</BrowserRouter>
+	</ThemeProvider>
+	// </React.StrictMode>
 );
