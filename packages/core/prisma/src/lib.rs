@@ -19,7 +19,7 @@ pub use prisma_client_rust::{queries::Error as QueryError, NewClientError};
 use serde::{Deserialize, Serialize};
 use std::path::Path;
 use std::sync::Arc;
-static DATAMODEL_STR : & 'static str = "// This is your Prisma schema file,\r\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\r\n\r\ngenerator client {\r\n  provider = \"cargo run --bin prisma\"\r\n  output   = \"../packages/core/prisma/src/lib.rs\"\r\n}\r\n\r\ndatasource db {\r\n  provider = \"sqlite\"\r\n  url      = \"sqlite:./file.db\"\r\n}\r\n\r\nmodel Migration {\r\n  id            Int      @id @default(autoincrement())\r\n  name          String\r\n  checksum      String   @unique\r\n  steps_applied Int      @default(0)\r\n  applied_at    DateTime @default(now())\r\n\r\n  @@map(\"_migrations\")\r\n}\r\n\r\nmodel Spaces {\r\n  id          Int    @id @default(autoincrement())\r\n  name        String @unique\r\n  description String\r\n  icon        String\r\n  color       String\r\n\r\n  createdAt DateTime @default(now())\r\n  updatedAt DateTime @default(now()) @updatedAt\r\n\r\n  @@map(\"spaces\")\r\n}\r\n" ;
+static DATAMODEL_STR : & 'static str = "// This is your Prisma schema file,\r\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\r\n\r\ngenerator client {\r\n  provider = \"cargo run --bin prisma\"\r\n  output   = \"../packages/core/prisma/src/lib.rs\"\r\n}\r\n\r\ndatasource db {\r\n  provider = \"sqlite\"\r\n  url      = \"sqlite:./file.db\"\r\n}\r\n\r\nmodel Migration {\r\n  id            Int      @id @default(autoincrement())\r\n  name          String\r\n  checksum      String   @unique\r\n  steps_applied Int      @default(0)\r\n  applied_at    DateTime @default(now())\r\n\r\n  @@map(\"_migrations\")\r\n}\r\n\r\nmodel Spaces {\r\n  id          Int      @id @default(autoincrement())\r\n  name        String   @unique\r\n  description String\r\n  icon        String\r\n  color       String\r\n  index       Int      @default(0)\r\n  createdAt   DateTime @default(now())\r\n  updatedAt   DateTime @default(now()) @updatedAt\r\n\r\n  @@map(\"spaces\")\r\n}\r\n" ;
 static DATABASE_STR: &'static str = "sqlite";
 pub async fn new_client() -> Result<_prisma::PrismaClient, NewClientError> {
     let config = parse_configuration(DATAMODEL_STR)?.subject;
@@ -1294,6 +1294,59 @@ pub mod spaces {
             }
         }
     }
+    pub mod index {
+        use super::super::*;
+        use super::_prisma::*;
+        use super::{Cursor, OrderByParam, SetParam, UniqueWhereParam, WhereParam, WithParam};
+        pub fn set<T: From<Set>>(value: i32) -> T {
+            Set(value).into()
+        }
+        pub fn equals(value: i32) -> WhereParam {
+            WhereParam::IndexEquals(value).into()
+        }
+        pub fn order(direction: Direction) -> OrderByParam {
+            OrderByParam::Index(direction)
+        }
+        pub fn in_vec(value: Vec<i32>) -> WhereParam {
+            WhereParam::IndexInVec(value)
+        }
+        pub fn not_in_vec(value: Vec<i32>) -> WhereParam {
+            WhereParam::IndexNotInVec(value)
+        }
+        pub fn lt(value: i32) -> WhereParam {
+            WhereParam::IndexLt(value)
+        }
+        pub fn lte(value: i32) -> WhereParam {
+            WhereParam::IndexLte(value)
+        }
+        pub fn gt(value: i32) -> WhereParam {
+            WhereParam::IndexGt(value)
+        }
+        pub fn gte(value: i32) -> WhereParam {
+            WhereParam::IndexGte(value)
+        }
+        pub fn not(value: i32) -> WhereParam {
+            WhereParam::IndexNot(value)
+        }
+        pub fn increment(value: i32) -> SetParam {
+            SetParam::IncrementIndex(value)
+        }
+        pub fn decrement(value: i32) -> SetParam {
+            SetParam::DecrementIndex(value)
+        }
+        pub fn multiply(value: i32) -> SetParam {
+            SetParam::MultiplyIndex(value)
+        }
+        pub fn divide(value: i32) -> SetParam {
+            SetParam::DivideIndex(value)
+        }
+        pub struct Set(i32);
+        impl From<Set> for SetParam {
+            fn from(value: Set) -> Self {
+                Self::SetIndex(value.0)
+            }
+        }
+    }
     pub mod created_at {
         use super::super::*;
         use super::_prisma::*;
@@ -1383,6 +1436,7 @@ pub mod spaces {
             "description",
             "icon",
             "color",
+            "index",
             "createdAt",
             "updatedAt",
         ]
@@ -1405,6 +1459,8 @@ pub mod spaces {
         pub icon: String,
         #[serde(rename = "color")]
         pub color: String,
+        #[serde(rename = "index")]
+        pub index: i32,
         #[serde(rename = "createdAt")]
         pub created_at: chrono::DateTime<chrono::FixedOffset>,
         #[serde(rename = "updatedAt")]
@@ -1429,6 +1485,11 @@ pub mod spaces {
         SetDescription(String),
         SetIcon(String),
         SetColor(String),
+        SetIndex(i32),
+        IncrementIndex(i32),
+        DecrementIndex(i32),
+        MultiplyIndex(i32),
+        DivideIndex(i32),
         SetCreatedAt(chrono::DateTime<chrono::FixedOffset>),
         SetUpdatedAt(chrono::DateTime<chrono::FixedOffset>),
     }
@@ -1470,6 +1531,35 @@ pub mod spaces {
                 }
                 SetParam::SetIcon(value) => ("icon".to_string(), PrismaValue::String(value)),
                 SetParam::SetColor(value) => ("color".to_string(), PrismaValue::String(value)),
+                SetParam::SetIndex(value) => ("index".to_string(), PrismaValue::Int(value as i64)),
+                SetParam::IncrementIndex(value) => (
+                    "index".to_string(),
+                    PrismaValue::Object(vec![(
+                        "increment".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                SetParam::DecrementIndex(value) => (
+                    "index".to_string(),
+                    PrismaValue::Object(vec![(
+                        "decrement".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                SetParam::MultiplyIndex(value) => (
+                    "index".to_string(),
+                    PrismaValue::Object(vec![(
+                        "multiply".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                SetParam::DivideIndex(value) => (
+                    "index".to_string(),
+                    PrismaValue::Object(vec![(
+                        "divide".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
                 SetParam::SetCreatedAt(value) => {
                     ("createdAt".to_string(), PrismaValue::DateTime(value))
                 }
@@ -1486,6 +1576,7 @@ pub mod spaces {
         Description(Direction),
         Icon(Direction),
         Color(Direction),
+        Index(Direction),
         CreatedAt(Direction),
         UpdatedAt(Direction),
     }
@@ -1509,6 +1600,10 @@ pub mod spaces {
                 ),
                 Self::Color(direction) => (
                     "color".to_string(),
+                    PrismaValue::String(direction.to_string()),
+                ),
+                Self::Index(direction) => (
+                    "index".to_string(),
                     PrismaValue::String(direction.to_string()),
                 ),
                 Self::CreatedAt(direction) => (
@@ -1592,6 +1687,14 @@ pub mod spaces {
         ColorStartsWith(String),
         ColorEndsWith(String),
         ColorNot(String),
+        IndexEquals(i32),
+        IndexInVec(Vec<i32>),
+        IndexNotInVec(Vec<i32>),
+        IndexLt(i32),
+        IndexLte(i32),
+        IndexGt(i32),
+        IndexGte(i32),
+        IndexNot(i32),
         CreatedAtEquals(chrono::DateTime<chrono::FixedOffset>),
         CreatedAtInVec(Vec<chrono::DateTime<chrono::FixedOffset>>),
         CreatedAtNotInVec(Vec<chrono::DateTime<chrono::FixedOffset>>),
@@ -2029,6 +2132,72 @@ pub mod spaces {
                         PrismaValue::String(value),
                     )]),
                 ),
+                Self::IndexEquals(value) => (
+                    "index".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "equals".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::IndexInVec(value) => (
+                    "index".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "in".to_string(),
+                        PrismaValue::List(
+                            value
+                                .into_iter()
+                                .map(|v| PrismaValue::Int(v as i64))
+                                .collect(),
+                        ),
+                    )]),
+                ),
+                Self::IndexNotInVec(value) => (
+                    "index".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "notIn".to_string(),
+                        PrismaValue::List(
+                            value
+                                .into_iter()
+                                .map(|v| PrismaValue::Int(v as i64))
+                                .collect(),
+                        ),
+                    )]),
+                ),
+                Self::IndexLt(value) => (
+                    "index".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "lt".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::IndexLte(value) => (
+                    "index".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "lte".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::IndexGt(value) => (
+                    "index".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "gt".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::IndexGte(value) => (
+                    "index".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "gte".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::IndexNot(value) => (
+                    "index".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "not".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
                 Self::CreatedAtEquals(value) => (
                     "createdAt".to_string(),
                     SerializedWhereValue::Object(vec![(
@@ -2373,6 +2542,8 @@ pub mod _prisma {
         Icon,
         #[serde(rename = "color")]
         Color,
+        #[serde(rename = "index")]
+        Index,
         #[serde(rename = "createdAt")]
         CreatedAt,
         #[serde(rename = "updatedAt")]
@@ -2386,6 +2557,7 @@ pub mod _prisma {
                 Self::Description => "description".to_string(),
                 Self::Icon => "icon".to_string(),
                 Self::Color => "color".to_string(),
+                Self::Index => "index".to_string(),
                 Self::CreatedAt => "createdAt".to_string(),
                 Self::UpdatedAt => "updatedAt".to_string(),
             }
