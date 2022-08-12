@@ -20,10 +20,15 @@ pub async fn new_client() -> Result<PrismaClient, CoreError> {
     let data_dir = platform_dirs::AppDirs::new(Some("twidge"), true)
         .unwrap()
         .data_dir;
-    tokio::fs::create_dir_all(&data_dir).await?;
+    if !data_dir.exists() {
+        tokio::fs::create_dir_all(&data_dir).await?;
+    }
 
     let sqlite_file = data_dir.join("library.db");
-    tokio::fs::File::create(sqlite_file.clone()).await?;
+
+    if !sqlite_file.exists() {
+        tokio::fs::File::create(sqlite_file.clone()).await?;
+    }
 
     let client =
         prisma::new_client_with_url(&format!("sqlite:{}", sqlite_file.to_str().unwrap())).await?;

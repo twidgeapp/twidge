@@ -52,7 +52,7 @@ const Sidebar = () => {
 						<Icons.Add20Regular style={{ color: 'var(--colors-lavender)' }} />
 					</StyledSpace>
 				</Tippy>
-				<Divider />
+				{spaces.length > 0 && <Divider />}
 				{spaces.map((space) => {
 					return (
 						<div key={space.id}>
