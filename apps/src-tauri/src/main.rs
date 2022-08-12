@@ -3,11 +3,17 @@
     windows_subsystem = "windows"
 )]
 
+use std::sync::Arc;
+
 #[tokio::main]
 async fn main() {
-    tcore::db::migrator::new_client().await.unwrap();
+    let client = tcore::db::migrator::new_client().await.unwrap();
 
     tauri::Builder::default()
+        .manage(Arc::new(client))
+        .invoke_handler(tauri::generate_handler![
+            tcore::functions::spaces::get_spaces
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
