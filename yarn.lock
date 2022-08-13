@@ -1034,6 +1034,9 @@ __metadata:
   resolution: "@twidge/utils@workspace:packages/utils"
   dependencies:
     "@tauri-apps/api": 1.0.2
+    "@vscode/vscode-languagedetection": ^1.0.21
+    guess-programming-language: ^1.0.0
+    highlight.js: ^11.6.0
     react: ^18.2.0
     zustand: ^4.0.0
   languageName: unknown
@@ -1298,6 +1301,15 @@ __metadata:
   peerDependencies:
     vite: ^3.0.0
   checksum: 27e7968a46c04dffcd32e3a3cce5e0506b6d31544e18964224abcc688ccfa74d8fe99397f99489acf72c324f5a12cb7df39d3f261259603e256b296d5c6f4a89
+  languageName: node
+  linkType: hard
+
+"@vscode/vscode-languagedetection@npm:^1.0.21":
+  version: 1.0.21
+  resolution: "@vscode/vscode-languagedetection@npm:1.0.21"
+  bin:
+    vscode-languagedetection: cli/index.js
+  checksum: 5bd97d1317386e26207e06eed67a64d93774e93b6ef02b556d24feb516cef7376aa81f15563f0e1ad649c41c73b082952e32f90e3e76a87e7a4bec2729586d88
   languageName: node
   linkType: hard
 
@@ -2870,6 +2882,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"guess-programming-language@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "guess-programming-language@npm:1.0.0"
+  dependencies:
+    highlight.js: ^9.12.0
+  checksum: 64f161ddca3f9b51f463656cc1937bb1f34379d5843efc048e50445b474eec63751ff8ec0e5655fdfcf0387db14c61da288810e9e93ef3f3741c5c3dff948e35
+  languageName: node
+  linkType: hard
+
 "hard-rejection@npm:^2.1.0":
   version: 2.1.0
   resolution: "hard-rejection@npm:2.1.0"
@@ -2943,6 +2964,20 @@ __metadata:
   version: 1.0.8
   resolution: "hey-listen@npm:1.0.8"
   checksum: 6bad60b367688f5348e25e7ca3276a74b59ac5a09b0455e6ff8ab7d4a9e38cd2116c708a7dcd8a954d27253ce1d8717ec891d175723ea739885b828cf44e4072
+  languageName: node
+  linkType: hard
+
+"highlight.js@npm:^11.6.0":
+  version: 11.6.0
+  resolution: "highlight.js@npm:11.6.0"
+  checksum: 3908eb34a4b442ca1e20c1ae6415ea935fbbcdb2b532a89948d82b0fa4ad41fc5de3802a0de4e88a0bcb7d97d4445579048cd2aab1d105ac47f59dd58a9a98ae
+  languageName: node
+  linkType: hard
+
+"highlight.js@npm:^9.12.0":
+  version: 9.18.5
+  resolution: "highlight.js@npm:9.18.5"
+  checksum: a8afdb395869bba8a892dd8891b738d3bd48fe2e5b6843ec3181c93d73f52abf2cab863424caa631442a7bbafac222bafdab3f5a536a69aab9c60d4c1b7f8b77
   languageName: node
   linkType: hard
 

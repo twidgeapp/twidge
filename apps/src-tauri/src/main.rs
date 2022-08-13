@@ -15,6 +15,7 @@ async fn main() {
             tcore::functions::spaces::get_spaces,
             tcore::functions::spaces::create_space,
             tcore::functions::spaces::update_space_indexes,
+            tcore::functions::elements::create_element,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

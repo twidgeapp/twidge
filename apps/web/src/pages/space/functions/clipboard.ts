@@ -1,3 +1,6 @@
+import { invoke } from '@tauri-apps/api/tauri';
+import getCodingLanguage from '@twidge/utils/getProgrammingLanguage';
+
 const fileReader = (file: File) => {
 	return new Promise((resolve, reject) => {
 		const reader = new FileReader();
@@ -13,7 +16,7 @@ const fileReader = (file: File) => {
 
 const getClipboardFiles = async (
 	files: FileList
-): Promise<{ dataURL: string; type: string }[]> => {
+): Promise<{ data_url: string; type: string }[]> => {
 	const file_list = [];
 
 	for (let i = 0; i < files.length; i++) {
@@ -26,7 +29,7 @@ const getClipboardFiles = async (
 		);
 
 		file_list.push({
-			dataURL: dataUrl,
+			data_url: dataUrl,
 			type: type,
 		});
 	}
@@ -36,8 +39,20 @@ const getClipboardFiles = async (
 
 const getClipboardData = async (ev: ClipboardEvent) => {
 	const files = ev.clipboardData?.files;
+	const text = ev.clipboardData?.getData('text');
+
 	if (files) {
-		console.log(await getClipboardFiles(files));
+		const data = await getClipboardFiles(files);
+		console.log(data);
+		invoke('create_element', {
+			data: {
+				space_id: 1,
+				type: 'file',
+				value: data,
+			},
+		});
+	} else {
+		console.log(getCodingLanguage(text));
 	}
 };
 

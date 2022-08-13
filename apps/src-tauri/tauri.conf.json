@@ -6,7 +6,7 @@
 		"distDir": "../web/dist"
 	},
 	"package": {
-		"productName": "twidge",
+		"productName": "Twidge",
 		"version": "0.1.0"
 	},
 	"tauri": {

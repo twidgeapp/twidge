@@ -1,7 +1,7 @@
 // CREDITS: https://github.com/spacedriveapp/spacedrive/blob/main/core/src/util/db.rs
 use prisma::{migration, PrismaClient};
 
-use crate::errors::CoreError;
+use crate::{errors::CoreError, utils::get_data_dir};
 use data_encoding::HEXLOWER;
 use include_dir::{include_dir, Dir};
 use prisma_client_rust::raw;
@@ -17,12 +17,7 @@ const INIT_MIGRATION: &str =
 /// Returns
 /// - Result<PrismaClient, CoreError> - The prisma client
 pub async fn new_client() -> Result<PrismaClient, CoreError> {
-    let data_dir = platform_dirs::AppDirs::new(Some("twidge"), true)
-        .unwrap()
-        .data_dir;
-    if !data_dir.exists() {
-        tokio::fs::create_dir_all(&data_dir).await?;
-    }
+    let data_dir = get_data_dir().await?;
 
     let sqlite_file = data_dir.join("library.db");
 

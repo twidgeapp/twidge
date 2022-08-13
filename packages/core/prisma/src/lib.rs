@@ -19,7 +19,7 @@ pub use prisma_client_rust::{queries::Error as QueryError, NewClientError};
 use serde::{Deserialize, Serialize};
 use std::path::Path;
 use std::sync::Arc;
-static DATAMODEL_STR : & 'static str = "// This is your Prisma schema file,\r\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\r\n\r\ngenerator client {\r\n  provider = \"cargo run --bin prisma\"\r\n  output   = \"../packages/core/prisma/src/lib.rs\"\r\n}\r\n\r\ndatasource db {\r\n  provider = \"sqlite\"\r\n  url      = \"sqlite:./file.db\"\r\n}\r\n\r\nmodel Migration {\r\n  id            Int      @id @default(autoincrement())\r\n  name          String\r\n  checksum      String   @unique\r\n  steps_applied Int      @default(0)\r\n  applied_at    DateTime @default(now())\r\n\r\n  @@map(\"_migrations\")\r\n}\r\n\r\nmodel Spaces {\r\n  id          Int        @id @default(autoincrement())\r\n  name        String     @unique\r\n  description String\r\n  icon        String\r\n  color       String\r\n  index       Int        @default(0)\r\n  createdAt   DateTime   @default(now())\r\n  updatedAt   DateTime   @default(now()) @updatedAt\r\n  Elements    Elements[]\r\n\r\n  @@map(\"spaces\")\r\n}\r\n\r\nmodel Elements {\r\n  id          Int      @id @default(autoincrement())\r\n  elementType String // LINK, IMAGE, VIDEO, AUDIO, TEXT, CODEBLOCK, README, NOTE, FILE\r\n  content     String\r\n  space       Spaces   @relation(fields: [spacesId], references: [id])\r\n  createdAt   DateTime @default(now())\r\n  updatedAt   DateTime @default(now()) @updatedAt\r\n  spacesId    Int\r\n}\r\n" ;
+static DATAMODEL_STR : & 'static str = "// This is your Prisma schema file,\r\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\r\n\r\ngenerator client {\r\n  provider = \"cargo run --bin prisma\"\r\n  output   = \"../packages/core/prisma/src/lib.rs\"\r\n}\r\n\r\ndatasource db {\r\n  provider = \"sqlite\"\r\n  url      = \"sqlite:./file.db\"\r\n}\r\n\r\nmodel Migration {\r\n  id            Int      @id @default(autoincrement())\r\n  name          String\r\n  checksum      String   @unique\r\n  steps_applied Int      @default(0)\r\n  applied_at    DateTime @default(now())\r\n\r\n  @@map(\"_migrations\")\r\n}\r\n\r\nmodel Spaces {\r\n  id          Int        @id @default(autoincrement())\r\n  name        String     @unique\r\n  description String\r\n  icon        String\r\n  color       String\r\n  index       Int        @default(0)\r\n  createdAt   DateTime   @default(now())\r\n  updatedAt   DateTime   @default(now()) @updatedAt\r\n  Elements    Elements[]\r\n\r\n  @@map(\"spaces\")\r\n}\r\n\r\nmodel Elements {\r\n  id          Int      @id @default(autoincrement())\r\n  elementType String // LINK, IMAGE, VIDEO, AUDIO, TEXT, CODEBLOCK, README, NOTE, FILE\r\n  content     String\r\n  space       Spaces   @relation(fields: [spacesId], references: [id])\r\n  positionX   Int      @default(0)\r\n  positionY   Int      @default(0)\r\n  createdAt   DateTime @default(now())\r\n  updatedAt   DateTime @default(now()) @updatedAt\r\n  spacesId    Int\r\n\r\n  @@map(\"elements\")\r\n}\r\n" ;
 static DATABASE_STR: &'static str = "sqlite";
 pub async fn new_client() -> Result<_prisma::PrismaClient, NewClientError> {
     let config = parse_configuration(DATAMODEL_STR)?.subject;
@@ -2783,6 +2783,112 @@ pub mod elements {
             }
         }
     }
+    pub mod position_x {
+        use super::super::*;
+        use super::_prisma::*;
+        use super::{Cursor, OrderByParam, SetParam, UniqueWhereParam, WhereParam, WithParam};
+        pub fn set<T: From<Set>>(value: i32) -> T {
+            Set(value).into()
+        }
+        pub fn equals(value: i32) -> WhereParam {
+            WhereParam::PositionXEquals(value).into()
+        }
+        pub fn order(direction: Direction) -> OrderByParam {
+            OrderByParam::PositionX(direction)
+        }
+        pub fn in_vec(value: Vec<i32>) -> WhereParam {
+            WhereParam::PositionXInVec(value)
+        }
+        pub fn not_in_vec(value: Vec<i32>) -> WhereParam {
+            WhereParam::PositionXNotInVec(value)
+        }
+        pub fn lt(value: i32) -> WhereParam {
+            WhereParam::PositionXLt(value)
+        }
+        pub fn lte(value: i32) -> WhereParam {
+            WhereParam::PositionXLte(value)
+        }
+        pub fn gt(value: i32) -> WhereParam {
+            WhereParam::PositionXGt(value)
+        }
+        pub fn gte(value: i32) -> WhereParam {
+            WhereParam::PositionXGte(value)
+        }
+        pub fn not(value: i32) -> WhereParam {
+            WhereParam::PositionXNot(value)
+        }
+        pub fn increment(value: i32) -> SetParam {
+            SetParam::IncrementPositionX(value)
+        }
+        pub fn decrement(value: i32) -> SetParam {
+            SetParam::DecrementPositionX(value)
+        }
+        pub fn multiply(value: i32) -> SetParam {
+            SetParam::MultiplyPositionX(value)
+        }
+        pub fn divide(value: i32) -> SetParam {
+            SetParam::DividePositionX(value)
+        }
+        pub struct Set(i32);
+        impl From<Set> for SetParam {
+            fn from(value: Set) -> Self {
+                Self::SetPositionX(value.0)
+            }
+        }
+    }
+    pub mod position_y {
+        use super::super::*;
+        use super::_prisma::*;
+        use super::{Cursor, OrderByParam, SetParam, UniqueWhereParam, WhereParam, WithParam};
+        pub fn set<T: From<Set>>(value: i32) -> T {
+            Set(value).into()
+        }
+        pub fn equals(value: i32) -> WhereParam {
+            WhereParam::PositionYEquals(value).into()
+        }
+        pub fn order(direction: Direction) -> OrderByParam {
+            OrderByParam::PositionY(direction)
+        }
+        pub fn in_vec(value: Vec<i32>) -> WhereParam {
+            WhereParam::PositionYInVec(value)
+        }
+        pub fn not_in_vec(value: Vec<i32>) -> WhereParam {
+            WhereParam::PositionYNotInVec(value)
+        }
+        pub fn lt(value: i32) -> WhereParam {
+            WhereParam::PositionYLt(value)
+        }
+        pub fn lte(value: i32) -> WhereParam {
+            WhereParam::PositionYLte(value)
+        }
+        pub fn gt(value: i32) -> WhereParam {
+            WhereParam::PositionYGt(value)
+        }
+        pub fn gte(value: i32) -> WhereParam {
+            WhereParam::PositionYGte(value)
+        }
+        pub fn not(value: i32) -> WhereParam {
+            WhereParam::PositionYNot(value)
+        }
+        pub fn increment(value: i32) -> SetParam {
+            SetParam::IncrementPositionY(value)
+        }
+        pub fn decrement(value: i32) -> SetParam {
+            SetParam::DecrementPositionY(value)
+        }
+        pub fn multiply(value: i32) -> SetParam {
+            SetParam::MultiplyPositionY(value)
+        }
+        pub fn divide(value: i32) -> SetParam {
+            SetParam::DividePositionY(value)
+        }
+        pub struct Set(i32);
+        impl From<Set> for SetParam {
+            fn from(value: Set) -> Self {
+                Self::SetPositionY(value.0)
+            }
+        }
+    }
     pub mod created_at {
         use super::super::*;
         use super::_prisma::*;
@@ -2923,6 +3029,8 @@ pub mod elements {
             "id",
             "elementType",
             "content",
+            "positionX",
+            "positionY",
             "createdAt",
             "updatedAt",
             "spacesId",
@@ -2944,6 +3052,10 @@ pub mod elements {
         pub content: String,
         #[serde(rename = "space")]
         pub space: Option<Box<super::spaces::Data>>,
+        #[serde(rename = "positionX")]
+        pub position_x: i32,
+        #[serde(rename = "positionY")]
+        pub position_y: i32,
         #[serde(rename = "createdAt")]
         pub created_at: chrono::DateTime<chrono::FixedOffset>,
         #[serde(rename = "updatedAt")]
@@ -2986,6 +3098,16 @@ pub mod elements {
         SetElementType(String),
         SetContent(String),
         LinkSpace(super::spaces::UniqueWhereParam),
+        SetPositionX(i32),
+        IncrementPositionX(i32),
+        DecrementPositionX(i32),
+        MultiplyPositionX(i32),
+        DividePositionX(i32),
+        SetPositionY(i32),
+        IncrementPositionY(i32),
+        DecrementPositionY(i32),
+        MultiplyPositionY(i32),
+        DividePositionY(i32),
         SetCreatedAt(chrono::DateTime<chrono::FixedOffset>),
         SetUpdatedAt(chrono::DateTime<chrono::FixedOffset>),
         SetSpacesId(i32),
@@ -3039,6 +3161,68 @@ pub mod elements {
                         )),
                     )]),
                 ),
+                SetParam::SetPositionX(value) => {
+                    ("positionX".to_string(), PrismaValue::Int(value as i64))
+                }
+                SetParam::IncrementPositionX(value) => (
+                    "positionX".to_string(),
+                    PrismaValue::Object(vec![(
+                        "increment".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                SetParam::DecrementPositionX(value) => (
+                    "positionX".to_string(),
+                    PrismaValue::Object(vec![(
+                        "decrement".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                SetParam::MultiplyPositionX(value) => (
+                    "positionX".to_string(),
+                    PrismaValue::Object(vec![(
+                        "multiply".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                SetParam::DividePositionX(value) => (
+                    "positionX".to_string(),
+                    PrismaValue::Object(vec![(
+                        "divide".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                SetParam::SetPositionY(value) => {
+                    ("positionY".to_string(), PrismaValue::Int(value as i64))
+                }
+                SetParam::IncrementPositionY(value) => (
+                    "positionY".to_string(),
+                    PrismaValue::Object(vec![(
+                        "increment".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                SetParam::DecrementPositionY(value) => (
+                    "positionY".to_string(),
+                    PrismaValue::Object(vec![(
+                        "decrement".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                SetParam::MultiplyPositionY(value) => (
+                    "positionY".to_string(),
+                    PrismaValue::Object(vec![(
+                        "multiply".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                SetParam::DividePositionY(value) => (
+                    "positionY".to_string(),
+                    PrismaValue::Object(vec![(
+                        "divide".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
                 SetParam::SetCreatedAt(value) => {
                     ("createdAt".to_string(), PrismaValue::DateTime(value))
                 }
@@ -3084,6 +3268,8 @@ pub mod elements {
         Id(Direction),
         ElementType(Direction),
         Content(Direction),
+        PositionX(Direction),
+        PositionY(Direction),
         CreatedAt(Direction),
         UpdatedAt(Direction),
         SpacesId(Direction),
@@ -3100,6 +3286,14 @@ pub mod elements {
                 ),
                 Self::Content(direction) => (
                     "content".to_string(),
+                    PrismaValue::String(direction.to_string()),
+                ),
+                Self::PositionX(direction) => (
+                    "positionX".to_string(),
+                    PrismaValue::String(direction.to_string()),
+                ),
+                Self::PositionY(direction) => (
+                    "positionY".to_string(),
                     PrismaValue::String(direction.to_string()),
                 ),
                 Self::CreatedAt(direction) => (
@@ -3165,6 +3359,22 @@ pub mod elements {
         ContentNot(String),
         SpaceIs(Vec<super::spaces::WhereParam>),
         SpaceIsNot(Vec<super::spaces::WhereParam>),
+        PositionXEquals(i32),
+        PositionXInVec(Vec<i32>),
+        PositionXNotInVec(Vec<i32>),
+        PositionXLt(i32),
+        PositionXLte(i32),
+        PositionXGt(i32),
+        PositionXGte(i32),
+        PositionXNot(i32),
+        PositionYEquals(i32),
+        PositionYInVec(Vec<i32>),
+        PositionYNotInVec(Vec<i32>),
+        PositionYLt(i32),
+        PositionYLte(i32),
+        PositionYGt(i32),
+        PositionYGte(i32),
+        PositionYNot(i32),
         CreatedAtEquals(chrono::DateTime<chrono::FixedOffset>),
         CreatedAtInVec(Vec<chrono::DateTime<chrono::FixedOffset>>),
         CreatedAtNotInVec(Vec<chrono::DateTime<chrono::FixedOffset>>),
@@ -3464,6 +3674,138 @@ pub mod elements {
                         PrismaValue::Object(transform_equals(
                             value.into_iter().map(Into::<SerializedWhere>::into),
                         )),
+                    )]),
+                ),
+                Self::PositionXEquals(value) => (
+                    "positionX".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "equals".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::PositionXInVec(value) => (
+                    "positionX".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "in".to_string(),
+                        PrismaValue::List(
+                            value
+                                .into_iter()
+                                .map(|v| PrismaValue::Int(v as i64))
+                                .collect(),
+                        ),
+                    )]),
+                ),
+                Self::PositionXNotInVec(value) => (
+                    "positionX".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "notIn".to_string(),
+                        PrismaValue::List(
+                            value
+                                .into_iter()
+                                .map(|v| PrismaValue::Int(v as i64))
+                                .collect(),
+                        ),
+                    )]),
+                ),
+                Self::PositionXLt(value) => (
+                    "positionX".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "lt".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::PositionXLte(value) => (
+                    "positionX".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "lte".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::PositionXGt(value) => (
+                    "positionX".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "gt".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::PositionXGte(value) => (
+                    "positionX".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "gte".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::PositionXNot(value) => (
+                    "positionX".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "not".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::PositionYEquals(value) => (
+                    "positionY".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "equals".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::PositionYInVec(value) => (
+                    "positionY".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "in".to_string(),
+                        PrismaValue::List(
+                            value
+                                .into_iter()
+                                .map(|v| PrismaValue::Int(v as i64))
+                                .collect(),
+                        ),
+                    )]),
+                ),
+                Self::PositionYNotInVec(value) => (
+                    "positionY".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "notIn".to_string(),
+                        PrismaValue::List(
+                            value
+                                .into_iter()
+                                .map(|v| PrismaValue::Int(v as i64))
+                                .collect(),
+                        ),
+                    )]),
+                ),
+                Self::PositionYLt(value) => (
+                    "positionY".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "lt".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::PositionYLte(value) => (
+                    "positionY".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "lte".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::PositionYGt(value) => (
+                    "positionY".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "gt".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::PositionYGte(value) => (
+                    "positionY".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "gte".to_string(),
+                        PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::PositionYNot(value) => (
+                    "positionY".to_string(),
+                    SerializedWhereValue::Object(vec![(
+                        "not".to_string(),
+                        PrismaValue::Int(value as i64),
                     )]),
                 ),
                 Self::CreatedAtEquals(value) => (
@@ -3897,6 +4239,10 @@ pub mod _prisma {
         ElementType,
         #[serde(rename = "content")]
         Content,
+        #[serde(rename = "positionX")]
+        PositionX,
+        #[serde(rename = "positionY")]
+        PositionY,
         #[serde(rename = "createdAt")]
         CreatedAt,
         #[serde(rename = "updatedAt")]
@@ -3910,6 +4256,8 @@ pub mod _prisma {
                 Self::Id => "id".to_string(),
                 Self::ElementType => "elementType".to_string(),
                 Self::Content => "content".to_string(),
+                Self::PositionX => "positionX".to_string(),
+                Self::PositionY => "positionY".to_string(),
                 Self::CreatedAt => "createdAt".to_string(),
                 Self::UpdatedAt => "updatedAt".to_string(),
                 Self::SpacesId => "spacesId".to_string(),
