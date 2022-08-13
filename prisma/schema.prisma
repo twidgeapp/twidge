@@ -22,14 +22,25 @@ model Migration {
 }
 
 model Spaces {
-  id          Int      @id @default(autoincrement())
-  name        String   @unique
+  id          Int        @id @default(autoincrement())
+  name        String     @unique
   description String
   icon        String
   color       String
-  index       Int      @default(0)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @default(now()) @updatedAt
+  index       Int        @default(0)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @default(now()) @updatedAt
+  Elements    Elements[]
 
   @@map("spaces")
+}
+
+model Elements {
+  id          Int      @id @default(autoincrement())
+  elementType String // LINK, IMAGE, VIDEO, AUDIO, TEXT, CODEBLOCK, README, NOTE, FILE
+  content     String
+  space       Spaces   @relation(fields: [spacesId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+  spacesId    Int
 }

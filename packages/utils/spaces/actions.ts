@@ -9,7 +9,6 @@ const useGetSpaces = () => {
 	useEffect(() => {
 		const interval = setInterval(() => {
 			send().then((spaces: any) => {
-				console.log(spaces);
 				setSpaces(spaces);
 			});
 		}, 1000);

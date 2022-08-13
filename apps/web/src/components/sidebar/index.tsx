@@ -2,21 +2,15 @@
 import Root, { Divider, MainSection, StyledSpace } from './styles';
 import useSpaceStore from '@twidge/utils/spaces/state';
 import { Space as TSpace } from '@twidge/utils/spaces/types';
-import { useEffect } from 'react';
 import * as Icons from '@fluentui/react-icons';
+import { useOnDragEnd } from './functions';
 import Logo from '../../assets/space/sidebar/logo.svg';
 import { Link, useParams } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 import '../../styles/tippy.css'; // optional
 import useGetSpaces from '@twidge/utils/spaces/actions';
 import { invoke } from '@tauri-apps/api';
-import {
-	DragDropContext,
-	Draggable,
-	Droppable,
-	DroppableProvided,
-	DroppableStateSnapshot,
-} from 'react-beautiful-dnd';
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 
 const Space = ({ space, index }: { space: TSpace; index: number }) => {
 	const spaces = useSpaceStore((state) => state.spaces);
@@ -47,7 +41,7 @@ const Space = ({ space, index }: { space: TSpace; index: number }) => {
 const Sidebar = () => {
 	const spaces = useSpaceStore((spaces) => spaces.spaces);
 	useGetSpaces();
-
+	const { onDragEnd } = useOnDragEnd();
 	return (
 		<Root>
 			<MainSection>
@@ -62,7 +56,7 @@ const Sidebar = () => {
 					</StyledSpace>
 				</Tippy>
 				{spaces.length > 0 && <Divider />}
-				<DragDropContext onDragEnd={console.log}>
+				<DragDropContext onDragEnd={onDragEnd}>
 					<Droppable droppableId="droppable">
 						{(provided) => (
 							<div

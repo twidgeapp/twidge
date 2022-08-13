@@ -13,7 +13,8 @@ async fn main() {
         .manage(Arc::new(client))
         .invoke_handler(tauri::generate_handler![
             tcore::functions::spaces::get_spaces,
-            tcore::functions::spaces::create_space
+            tcore::functions::spaces::create_space,
+            tcore::functions::spaces::update_space_indexes,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
