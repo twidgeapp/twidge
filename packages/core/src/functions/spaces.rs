@@ -22,6 +22,7 @@ pub async fn get_spaces(
 #[tauri::command(async)]
 pub async fn create_space(
     client: State<'_, Arc<prisma::PrismaClient>>,
+    window: tauri::Window,
 ) -> Result<prisma::spaces::Data, String> {
     let client = client.inner().clone();
 
@@ -46,7 +47,10 @@ pub async fn create_space(
         .await;
 
     match space {
-        Ok(space) => Ok(space),
+        Ok(space) => {
+            window.emit("new_space", serde_json::to_string(&space).unwrap());
+            Ok(space)
+        }
         Err(err) => Err(err.to_string()),
     }
 }
