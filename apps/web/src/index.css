@@ -21,8 +21,6 @@
 	position: relative;
 	width: 400px;
 	height: 600px;
-	background: var(--colors-blue);
-	color: black;
 	padding: 12px;
 	display: flex;
 	flex-direction: column;
