@@ -31,6 +31,7 @@ pub struct CreateElementData {
 #[tauri::command]
 pub async fn create_element(
     client: State<'_, Arc<PrismaClient>>,
+    window: tauri::Window,
     data: CreateElementData,
 ) -> Result<(), String> {
     let client = client.inner().clone();
@@ -68,7 +69,7 @@ pub async fn create_element(
     }
 
     for value in values {
-        client
+        let ele = client
             .elements()
             .create(
                 prisma::elements::element_type::set(value.r#type),
@@ -81,6 +82,8 @@ pub async fn create_element(
             .exec()
             .await
             .unwrap();
+
+        window.emit("create-element", serde_json::to_string(&ele).unwrap());
     }
 
     Ok(())
