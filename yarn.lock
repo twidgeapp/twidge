@@ -1038,6 +1038,7 @@ __metadata:
     guess-programming-language: ^1.0.0
     highlight.js: ^11.6.0
     react: ^18.2.0
+    react-router-dom: ^6.3.0
     zustand: ^4.0.0
   languageName: unknown
   linkType: soft

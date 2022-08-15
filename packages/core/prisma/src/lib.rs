@@ -19,7 +19,7 @@ pub use prisma_client_rust::{queries::Error as QueryError, NewClientError};
 use serde::{Deserialize, Serialize};
 use std::path::Path;
 use std::sync::Arc;
-static DATAMODEL_STR : & 'static str = "// This is your Prisma schema file,\r\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\r\n\r\ngenerator client {\r\n  provider = \"cargo run --bin prisma\"\r\n  output   = \"../packages/core/prisma/src/lib.rs\"\r\n}\r\n\r\ndatasource db {\r\n  provider = \"sqlite\"\r\n  url      = \"sqlite:./file.db\"\r\n}\r\n\r\nmodel Migration {\r\n  id            Int      @id @default(autoincrement())\r\n  name          String\r\n  checksum      String   @unique\r\n  steps_applied Int      @default(0)\r\n  applied_at    DateTime @default(now())\r\n\r\n  @@map(\"_migrations\")\r\n}\r\n\r\nmodel Spaces {\r\n  id          Int        @id @default(autoincrement())\r\n  name        String     @unique\r\n  description String\r\n  icon        String\r\n  color       String\r\n  index       Int        @default(0)\r\n  createdAt   DateTime   @default(now())\r\n  updatedAt   DateTime   @default(now()) @updatedAt\r\n  Elements    Elements[]\r\n\r\n  @@map(\"spaces\")\r\n}\r\n\r\nmodel Elements {\r\n  id          Int      @id @default(autoincrement())\r\n  elementType String // LINK, IMAGE, VIDEO, AUDIO, TEXT, CODEBLOCK, README, NOTE, FILE\r\n  content     String\r\n  space       Spaces   @relation(fields: [spacesId], references: [id])\r\n  positionX   Int      @default(0)\r\n  positionY   Int      @default(0)\r\n  createdAt   DateTime @default(now())\r\n  updatedAt   DateTime @default(now()) @updatedAt\r\n  spacesId    Int\r\n\r\n  @@map(\"elements\")\r\n}\r\n" ;
+static DATAMODEL_STR : & 'static str = "// This is your Prisma schema file,\r\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\r\n\r\ngenerator client {\r\n  provider = \"cargo run --bin prisma\"\r\n  output   = \"../packages/core/prisma/src/lib.rs\"\r\n}\r\n\r\ndatasource db {\r\n  provider = \"sqlite\"\r\n  url      = \"sqlite:./file.db\"\r\n}\r\n\r\nmodel Migration {\r\n  id            Int      @id @default(autoincrement())\r\n  name          String\r\n  checksum      String   @unique\r\n  steps_applied Int      @default(0)\r\n  applied_at    DateTime @default(now())\r\n\r\n  @@map(\"_migrations\")\r\n}\r\n\r\nmodel Spaces {\r\n  id          Int        @id @default(autoincrement())\r\n  name        String     @unique\r\n  description String\r\n  icon        String\r\n  color       String\r\n  index       Int        @default(0)\r\n  createdAt   DateTime   @default(now())\r\n  updatedAt   DateTime   @default(now()) @updatedAt\r\n  Elements    Elements[]\r\n\r\n  @@map(\"spaces\")\r\n}\r\n\r\nmodel Elements {\r\n  id          Int      @id @default(autoincrement())\r\n  elementType String // LINK, IMAGE, VIDEO, AUDIO, TEXT, CODEBLOCK, README, NOTE, FILE\r\n  content     String\r\n  space       Spaces   @relation(fields: [spaceId], references: [id])\r\n  positionX   Int      @default(0)\r\n  positionY   Int      @default(0)\r\n  createdAt   DateTime @default(now())\r\n  updatedAt   DateTime @default(now()) @updatedAt\r\n  spaceId     Int\r\n\r\n  @@map(\"elements\")\r\n}\r\n" ;
 static DATABASE_STR: &'static str = "sqlite";
 pub async fn new_client() -> Result<_prisma::PrismaClient, NewClientError> {
     let config = parse_configuration(DATAMODEL_STR)?.subject;
@@ -2971,7 +2971,7 @@ pub mod elements {
             }
         }
     }
-    pub mod spaces_id {
+    pub mod space_id {
         use super::super::*;
         use super::_prisma::*;
         use super::{Cursor, OrderByParam, SetParam, UniqueWhereParam, WhereParam, WithParam};
@@ -2979,48 +2979,48 @@ pub mod elements {
             Set(value).into()
         }
         pub fn equals(value: i32) -> WhereParam {
-            WhereParam::SpacesIdEquals(value).into()
+            WhereParam::SpaceIdEquals(value).into()
         }
         pub fn order(direction: Direction) -> OrderByParam {
-            OrderByParam::SpacesId(direction)
+            OrderByParam::SpaceId(direction)
         }
         pub fn in_vec(value: Vec<i32>) -> WhereParam {
-            WhereParam::SpacesIdInVec(value)
+            WhereParam::SpaceIdInVec(value)
         }
         pub fn not_in_vec(value: Vec<i32>) -> WhereParam {
-            WhereParam::SpacesIdNotInVec(value)
+            WhereParam::SpaceIdNotInVec(value)
         }
         pub fn lt(value: i32) -> WhereParam {
-            WhereParam::SpacesIdLt(value)
+            WhereParam::SpaceIdLt(value)
         }
         pub fn lte(value: i32) -> WhereParam {
-            WhereParam::SpacesIdLte(value)
+            WhereParam::SpaceIdLte(value)
         }
         pub fn gt(value: i32) -> WhereParam {
-            WhereParam::SpacesIdGt(value)
+            WhereParam::SpaceIdGt(value)
         }
         pub fn gte(value: i32) -> WhereParam {
-            WhereParam::SpacesIdGte(value)
+            WhereParam::SpaceIdGte(value)
         }
         pub fn not(value: i32) -> WhereParam {
-            WhereParam::SpacesIdNot(value)
+            WhereParam::SpaceIdNot(value)
         }
         pub fn increment(value: i32) -> SetParam {
-            SetParam::IncrementSpacesId(value)
+            SetParam::IncrementSpaceId(value)
         }
         pub fn decrement(value: i32) -> SetParam {
-            SetParam::DecrementSpacesId(value)
+            SetParam::DecrementSpaceId(value)
         }
         pub fn multiply(value: i32) -> SetParam {
-            SetParam::MultiplySpacesId(value)
+            SetParam::MultiplySpaceId(value)
         }
         pub fn divide(value: i32) -> SetParam {
-            SetParam::DivideSpacesId(value)
+            SetParam::DivideSpaceId(value)
         }
         pub struct Set(i32);
         impl From<Set> for SetParam {
             fn from(value: Set) -> Self {
-                Self::SetSpacesId(value.0)
+                Self::SetSpaceId(value.0)
             }
         }
     }
@@ -3033,7 +3033,7 @@ pub mod elements {
             "positionY",
             "createdAt",
             "updatedAt",
-            "spacesId",
+            "spaceId",
         ]
         .into_iter()
         .map(|o| {
@@ -3060,8 +3060,8 @@ pub mod elements {
         pub created_at: chrono::DateTime<chrono::FixedOffset>,
         #[serde(rename = "updatedAt")]
         pub updated_at: chrono::DateTime<chrono::FixedOffset>,
-        #[serde(rename = "spacesId")]
-        pub spaces_id: i32,
+        #[serde(rename = "spaceId")]
+        pub space_id: i32,
     }
     impl Data {
         pub fn space(&self) -> Result<&super::spaces::Data, &'static str> {
@@ -3110,11 +3110,11 @@ pub mod elements {
         DividePositionY(i32),
         SetCreatedAt(chrono::DateTime<chrono::FixedOffset>),
         SetUpdatedAt(chrono::DateTime<chrono::FixedOffset>),
-        SetSpacesId(i32),
-        IncrementSpacesId(i32),
-        DecrementSpacesId(i32),
-        MultiplySpacesId(i32),
-        DivideSpacesId(i32),
+        SetSpaceId(i32),
+        IncrementSpaceId(i32),
+        DecrementSpaceId(i32),
+        MultiplySpaceId(i32),
+        DivideSpaceId(i32),
     }
     impl Into<(String, PrismaValue)> for SetParam {
         fn into(self) -> (String, PrismaValue) {
@@ -3229,32 +3229,32 @@ pub mod elements {
                 SetParam::SetUpdatedAt(value) => {
                     ("updatedAt".to_string(), PrismaValue::DateTime(value))
                 }
-                SetParam::SetSpacesId(value) => {
-                    ("spacesId".to_string(), PrismaValue::Int(value as i64))
+                SetParam::SetSpaceId(value) => {
+                    ("spaceId".to_string(), PrismaValue::Int(value as i64))
                 }
-                SetParam::IncrementSpacesId(value) => (
-                    "spacesId".to_string(),
+                SetParam::IncrementSpaceId(value) => (
+                    "spaceId".to_string(),
                     PrismaValue::Object(vec![(
                         "increment".to_string(),
                         PrismaValue::Int(value as i64),
                     )]),
                 ),
-                SetParam::DecrementSpacesId(value) => (
-                    "spacesId".to_string(),
+                SetParam::DecrementSpaceId(value) => (
+                    "spaceId".to_string(),
                     PrismaValue::Object(vec![(
                         "decrement".to_string(),
                         PrismaValue::Int(value as i64),
                     )]),
                 ),
-                SetParam::MultiplySpacesId(value) => (
-                    "spacesId".to_string(),
+                SetParam::MultiplySpaceId(value) => (
+                    "spaceId".to_string(),
                     PrismaValue::Object(vec![(
                         "multiply".to_string(),
                         PrismaValue::Int(value as i64),
                     )]),
                 ),
-                SetParam::DivideSpacesId(value) => (
-                    "spacesId".to_string(),
+                SetParam::DivideSpaceId(value) => (
+                    "spaceId".to_string(),
                     PrismaValue::Object(vec![(
                         "divide".to_string(),
                         PrismaValue::Int(value as i64),
@@ -3272,7 +3272,7 @@ pub mod elements {
         PositionY(Direction),
         CreatedAt(Direction),
         UpdatedAt(Direction),
-        SpacesId(Direction),
+        SpaceId(Direction),
     }
     impl Into<(String, PrismaValue)> for OrderByParam {
         fn into(self) -> (String, PrismaValue) {
@@ -3304,8 +3304,8 @@ pub mod elements {
                     "updatedAt".to_string(),
                     PrismaValue::String(direction.to_string()),
                 ),
-                Self::SpacesId(direction) => (
-                    "spacesId".to_string(),
+                Self::SpaceId(direction) => (
+                    "spaceId".to_string(),
                     PrismaValue::String(direction.to_string()),
                 ),
             }
@@ -3391,14 +3391,14 @@ pub mod elements {
         UpdatedAtGt(chrono::DateTime<chrono::FixedOffset>),
         UpdatedAtGte(chrono::DateTime<chrono::FixedOffset>),
         UpdatedAtNot(chrono::DateTime<chrono::FixedOffset>),
-        SpacesIdEquals(i32),
-        SpacesIdInVec(Vec<i32>),
-        SpacesIdNotInVec(Vec<i32>),
-        SpacesIdLt(i32),
-        SpacesIdLte(i32),
-        SpacesIdGt(i32),
-        SpacesIdGte(i32),
-        SpacesIdNot(i32),
+        SpaceIdEquals(i32),
+        SpaceIdInVec(Vec<i32>),
+        SpaceIdNotInVec(Vec<i32>),
+        SpaceIdLt(i32),
+        SpaceIdLte(i32),
+        SpaceIdGt(i32),
+        SpaceIdGte(i32),
+        SpaceIdNot(i32),
     }
     impl Into<SerializedWhere> for WhereParam {
         fn into(self) -> SerializedWhere {
@@ -3940,15 +3940,15 @@ pub mod elements {
                         PrismaValue::DateTime(value),
                     )]),
                 ),
-                Self::SpacesIdEquals(value) => (
-                    "spacesId".to_string(),
+                Self::SpaceIdEquals(value) => (
+                    "spaceId".to_string(),
                     SerializedWhereValue::Object(vec![(
                         "equals".to_string(),
                         PrismaValue::Int(value as i64),
                     )]),
                 ),
-                Self::SpacesIdInVec(value) => (
-                    "spacesId".to_string(),
+                Self::SpaceIdInVec(value) => (
+                    "spaceId".to_string(),
                     SerializedWhereValue::Object(vec![(
                         "in".to_string(),
                         PrismaValue::List(
@@ -3959,8 +3959,8 @@ pub mod elements {
                         ),
                     )]),
                 ),
-                Self::SpacesIdNotInVec(value) => (
-                    "spacesId".to_string(),
+                Self::SpaceIdNotInVec(value) => (
+                    "spaceId".to_string(),
                     SerializedWhereValue::Object(vec![(
                         "notIn".to_string(),
                         PrismaValue::List(
@@ -3971,36 +3971,36 @@ pub mod elements {
                         ),
                     )]),
                 ),
-                Self::SpacesIdLt(value) => (
-                    "spacesId".to_string(),
+                Self::SpaceIdLt(value) => (
+                    "spaceId".to_string(),
                     SerializedWhereValue::Object(vec![(
                         "lt".to_string(),
                         PrismaValue::Int(value as i64),
                     )]),
                 ),
-                Self::SpacesIdLte(value) => (
-                    "spacesId".to_string(),
+                Self::SpaceIdLte(value) => (
+                    "spaceId".to_string(),
                     SerializedWhereValue::Object(vec![(
                         "lte".to_string(),
                         PrismaValue::Int(value as i64),
                     )]),
                 ),
-                Self::SpacesIdGt(value) => (
-                    "spacesId".to_string(),
+                Self::SpaceIdGt(value) => (
+                    "spaceId".to_string(),
                     SerializedWhereValue::Object(vec![(
                         "gt".to_string(),
                         PrismaValue::Int(value as i64),
                     )]),
                 ),
-                Self::SpacesIdGte(value) => (
-                    "spacesId".to_string(),
+                Self::SpaceIdGte(value) => (
+                    "spaceId".to_string(),
                     SerializedWhereValue::Object(vec![(
                         "gte".to_string(),
                         PrismaValue::Int(value as i64),
                     )]),
                 ),
-                Self::SpacesIdNot(value) => (
-                    "spacesId".to_string(),
+                Self::SpaceIdNot(value) => (
+                    "spaceId".to_string(),
                     SerializedWhereValue::Object(vec![(
                         "not".to_string(),
                         PrismaValue::Int(value as i64),
@@ -4247,8 +4247,8 @@ pub mod _prisma {
         CreatedAt,
         #[serde(rename = "updatedAt")]
         UpdatedAt,
-        #[serde(rename = "spacesId")]
-        SpacesId,
+        #[serde(rename = "spaceId")]
+        SpaceId,
     }
     impl ToString for ElementsScalarFieldEnum {
         fn to_string(&self) -> String {
@@ -4260,7 +4260,7 @@ pub mod _prisma {
                 Self::PositionY => "positionY".to_string(),
                 Self::CreatedAt => "createdAt".to_string(),
                 Self::UpdatedAt => "updatedAt".to_string(),
-                Self::SpacesId => "spacesId".to_string(),
+                Self::SpaceId => "spaceId".to_string(),
             }
         }
     }

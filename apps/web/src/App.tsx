@@ -3,6 +3,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import ErrorFallback from './pages/error';
 import React from 'react';
+import useGetElements from '@twidge/utils/elements/actions';
 
 const IndexPage = React.lazy(() => import('./pages/index'));
 const HomePage = React.lazy(() => import('./pages/home'));

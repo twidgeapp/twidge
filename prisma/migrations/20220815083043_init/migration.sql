@@ -9,6 +9,7 @@ CREATE TABLE "spaces" (
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+
 -- CreateTable
 CREATE TABLE "elements" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -21,7 +22,6 @@ CREATE TABLE "elements" (
     "spacesId" INTEGER NOT NULL,
     CONSTRAINT "elements_spacesId_fkey" FOREIGN KEY ("spacesId") REFERENCES "spaces" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
--- CreateIndex
-CREATE UNIQUE INDEX "_migrations_checksum_key" ON "_migrations"("checksum");
+
 -- CreateIndex
 CREATE UNIQUE INDEX "spaces_name_key" ON "spaces"("name");

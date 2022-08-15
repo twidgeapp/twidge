@@ -16,7 +16,7 @@ const fileReader = (file: File) => {
 
 const getClipboardFiles = async (
 	files: FileList
-): Promise<{ data_url: string; type: string }[]> => {
+): Promise<{ content: string; type: string }[]> => {
 	const file_list = [];
 
 	for (let i = 0; i < files.length; i++) {
@@ -29,7 +29,7 @@ const getClipboardFiles = async (
 		);
 
 		file_list.push({
-			data_url: dataUrl,
+			content: dataUrl,
 			type: type,
 		});
 	}
@@ -40,10 +40,8 @@ const getClipboardFiles = async (
 const getClipboardData = async (ev: ClipboardEvent) => {
 	const files = ev.clipboardData?.files;
 	const text = ev.clipboardData?.getData('text');
-
-	if (files) {
+	if (files && files?.length != 0) {
 		const data = await getClipboardFiles(files);
-		console.log(data);
 		invoke('create_element', {
 			data: {
 				space_id: 1,
@@ -52,7 +50,18 @@ const getClipboardData = async (ev: ClipboardEvent) => {
 			},
 		});
 	} else {
-		console.log(getCodingLanguage(text));
+		invoke('create_element', {
+			data: {
+				space_id: 1,
+				type: 'text',
+				value: [
+					{
+						content: text,
+						type: 'text',
+					},
+				],
+			},
+		});
 	}
 };
 

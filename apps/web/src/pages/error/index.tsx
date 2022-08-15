@@ -22,7 +22,7 @@ const ErrorFallback = ({
 				onClick={resetErrorBoundary}
 				css={{ left: '12px', bottom: '12px' }}
 			>
-				Come again?
+				Reload
 			</Buttons>
 			<Buttons
 				onClick={() => {
@@ -30,7 +30,7 @@ const ErrorFallback = ({
 						'https://github.com/VarunPotti/twidge/issues'
 					);
 				}}
-				css={{ left: '120px', bottom: '12px' }}
+				css={{ left: '80px', bottom: '12px' }}
 			>
 				Open GitHub issues
 			</Buttons>

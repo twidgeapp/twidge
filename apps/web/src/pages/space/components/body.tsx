@@ -4,9 +4,18 @@ import Draggable from 'react-draggable';
 import { useElementStore } from '@twidge/utils/elements/state';
 import Element from './element';
 import { Resizable } from 'react-resizable';
+import { useMemo } from 'react';
+import { useParams } from 'react-router-dom';
 
 const Body = () => {
-	const elements = useElementStore((state) => state.elements);
+	const { id } = useParams();
+	const elementState = useElementStore((state) => state.elements);
+	const elements = useMemo(() => {
+		return elementState.filter(
+			(element) => element.spaceId === parseInt(id as any)
+		);
+	}, [elementState]);
+
 	return (
 		<div
 			style={{

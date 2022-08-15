@@ -5,6 +5,7 @@ import SpaceLayout from '../../layouts/space/layout';
 import Body from './components/body';
 import SpaceCtx from './ctx';
 import getClipboardData from './functions/clipboard';
+import useGetElements from '@twidge/utils/elements/actions';
 
 const SpacePage = () => {
 	const { id } = useParams();
@@ -13,6 +14,7 @@ const SpacePage = () => {
 		return spaces.filter((space) => space.id === parseInt(id as any))[0];
 	}, [spaces]);
 	const spaceRef = useRef<HTMLDivElement>(null);
+	useGetElements();
 
 	useEffect(() => {
 		const onPaste = async (ev: ClipboardEvent) => {

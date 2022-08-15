@@ -15,7 +15,6 @@
 		"@tippyjs/react": "^4.2.6",
 		"@twidge/config": "workspace:*",
 		"@twidge/utils": "workspace:*",
-		"@types/react-beautiful-dnd": "^13.1.2",
 		"framer-motion": "^7.0.0",
 		"next-themes": "^0.2.0",
 		"react": "^18.2.0",
@@ -30,6 +29,7 @@
 	},
 	"devDependencies": {
 		"@types/react": "^18.0.15",
+		"@types/react-beautiful-dnd": "^13.1.2",
 		"@types/react-dom": "^18.0.6",
 		"@types/react-resizable": "^3.0.2",
 		"@vitejs/plugin-react": "^2.0.0",

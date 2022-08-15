@@ -11,16 +11,12 @@ pub fn parse_type(t: String) -> String {
     result.to_string()
 }
 
-pub fn write_data_url_to_fs(url: String, path: PathBuf) -> Result<(), String> {
+pub fn write_data_url_to_fs(url: String, path: PathBuf) -> String {
     let data_url = dataurl::DataUrl::parse(&url).unwrap();
     let data = data_url.get_data();
-    let mut path = path.clone();
 
-    let infered_type = data_url.get_media_type();
-
-    path.with_extension(infered_type.split("/").last().unwrap());
-    let mut file = File::create(path).unwrap();
+    let mut file = File::create(path.clone()).unwrap();
     file.write_all(data).unwrap();
 
-    Ok(())
+    path.to_str().unwrap().to_string()
 }

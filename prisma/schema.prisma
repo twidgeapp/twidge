@@ -39,12 +39,12 @@ model Elements {
   id          Int      @id @default(autoincrement())
   elementType String // LINK, IMAGE, VIDEO, AUDIO, TEXT, CODEBLOCK, README, NOTE, FILE
   content     String
-  space       Spaces   @relation(fields: [spacesId], references: [id])
+  space       Spaces   @relation(fields: [spaceId], references: [id])
   positionX   Int      @default(0)
   positionY   Int      @default(0)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now()) @updatedAt
-  spacesId    Int
+  spaceId     Int
 
   @@map("elements")
 }
