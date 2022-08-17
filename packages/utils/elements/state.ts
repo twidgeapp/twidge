@@ -48,7 +48,7 @@ export const useElementStore = create<ElementState>((set) => ({
 				addElement: state.addElement,
 				removeElement: state.removeElement,
 				setElements: state.setElements,
-				elements: JSON.parse(elements),
+				elements: JSON.parse(elements as any),
 			};
 		});
 	},

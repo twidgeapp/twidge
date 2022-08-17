@@ -1,5 +1,4 @@
 import { invoke } from '@tauri-apps/api/tauri';
-import getCodingLanguage from '@twidge/utils/getProgrammingLanguage';
 
 const fileReader = (file: File) => {
 	return new Promise((resolve, reject) => {
@@ -37,14 +36,14 @@ const getClipboardFiles = async (
 	return file_list;
 };
 
-const getClipboardData = async (ev: ClipboardEvent) => {
+const getClipboardData = async (ev: ClipboardEvent, space_id: number) => {
 	const files = ev.clipboardData?.files;
 	const text = ev.clipboardData?.getData('text');
 	if (files && files?.length != 0) {
 		const data = await getClipboardFiles(files);
 		invoke('create_element', {
 			data: {
-				space_id: 1,
+				space_id: space_id,
 				type: 'file',
 				value: data,
 			},
@@ -52,7 +51,7 @@ const getClipboardData = async (ev: ClipboardEvent) => {
 	} else {
 		invoke('create_element', {
 			data: {
-				space_id: 1,
+				space_id: space_id,
 				type: 'text',
 				value: [
 					{
