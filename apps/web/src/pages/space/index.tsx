@@ -19,7 +19,7 @@ const SpacePage = () => {
 	useEffect(() => {
 		const onPaste = async (ev: ClipboardEvent) => {
 			console.log(ev);
-			getClipboardData(ev, parseInt(id));
+			getClipboardData(ev, parseInt(id as any));
 		};
 
 		spaceRef.current?.addEventListener('paste', onPaste);

@@ -3,14 +3,32 @@
     windows_subsystem = "windows"
 )]
 
+pub mod settings;
+
+use settings::Settings;
 use std::sync::Arc;
+use tauri::{CustomMenuItem, SystemTray, SystemTrayMenu, SystemTrayMenuItem};
+use tauri_plugin_autostart::MacosLauncher;
 
 #[tokio::main]
 async fn main() {
-    let client = tcore::db::migrator::new_client().await.unwrap();
+    let client = Arc::new(tcore::db::migrator::new_client().await.unwrap());
+    let quit = CustomMenuItem::new("quit".to_string(), "Quit");
+    let hide = CustomMenuItem::new("hide".to_string(), "Hide");
+    let tray_menu = SystemTrayMenu::new()
+        .add_item(quit)
+        .add_native_item(SystemTrayMenuItem::Separator)
+        .add_item(hide);
+
+    Settings::new(client.clone()).await.unwrap();
 
     tauri::Builder::default()
-        .manage(Arc::new(client))
+        .system_tray(SystemTray::new().with_menu(tray_menu))
+        .plugin(tauri_plugin_autostart::init(
+            MacosLauncher::LaunchAgent,
+            false,
+        ))
+        .manage(client)
         .invoke_handler(tauri::generate_handler![
             // spaces
             tcore::functions::spaces::get_spaces,

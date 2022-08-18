@@ -81,6 +81,7 @@ dependencies = [
  "serde_json",
  "tauri",
  "tauri-build",
+ "tauri-plugin-autostart",
  "tcore",
  "tokio",
 ]
@@ -184,6 +185,16 @@ dependencies = [
  "hermit-abi",
  "libc",
  "winapi",
+]
+
+[[package]]
+name = "auto-launch"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8f0ab475f9b1049a9d4e9c83f45ff27ec3bce4a6cb8e58e7f29030f8992af8c5"
+dependencies = [
+ "dirs",
+ "winreg 0.10.1",
 ]
 
 [[package]]
@@ -1017,6 +1028,15 @@ name = "directories"
 version = "4.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f51c5d4ddabd36886dd3e1438cb358cdcb0d7c499cb99cb4ac2e38e18b5cb210"
+dependencies = [
+ "dirs-sys",
+]
+
+[[package]]
+name = "dirs"
+version = "4.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ca3aa72a6f96ea37bbc5aa912f6788242832f75369bdfdadcb0e38423f100059"
 dependencies = [
  "dirs-sys",
 ]
@@ -2373,6 +2393,30 @@ checksum = "e1b6f3d1f4422866b68192d62f77bc5c700bee84f3069f2469d7bc8c77852446"
 dependencies = [
  "lexical-util",
  "static_assertions",
+]
+
+[[package]]
+name = "libappindicator"
+version = "0.7.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "db2d3cb96d092b4824cb306c9e544c856a4cb6210c1081945187f7f1924b47e8"
+dependencies = [
+ "glib",
+ "gtk",
+ "gtk-sys",
+ "libappindicator-sys",
+ "log",
+]
+
+[[package]]
+name = "libappindicator-sys"
+version = "0.7.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f1b3b6681973cea8cc3bce7391e6d7d5502720b80a581c9a95c9cbaf592826aa"
+dependencies = [
+ "gtk-sys",
+ "libloading",
+ "once_cell",
 ]
 
 [[package]]
@@ -4922,6 +4966,7 @@ dependencies = [
  "core-foundation",
  "core-graphics",
  "crossbeam-channel",
+ "dirs-next 2.0.0",
  "dispatch",
  "gdk",
  "gdk-pixbuf",
@@ -4935,6 +4980,7 @@ dependencies = [
  "instant",
  "jni 0.19.0",
  "lazy_static",
+ "libappindicator",
  "libc",
  "log",
  "ndk",
@@ -5079,6 +5125,17 @@ dependencies = [
  "syn",
  "tauri-codegen",
  "tauri-utils",
+]
+
+[[package]]
+name = "tauri-plugin-autostart"
+version = "0.0.0"
+source = "git+https://github.com/tauri-apps/tauri-plugin-autostart#522eec72b58d6d8de87e14b1986ed14fd9c4ece3"
+dependencies = [
+ "auto-launch",
+ "serde",
+ "tauri",
+ "thiserror",
 ]
 
 [[package]]
