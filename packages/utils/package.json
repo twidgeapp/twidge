@@ -1,6 +1,8 @@
 {
 	"name": "@twidge/utils",
 	"dependencies": {
+		"@rspc/client": "^0.0.5",
+		"@tanstack/react-query": "^4.2.1",
 		"@tauri-apps/api": "1.0.2",
 		"@vscode/vscode-languagedetection": "^1.0.21",
 		"guess-programming-language": "^1.0.0",

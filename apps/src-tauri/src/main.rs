@@ -27,6 +27,10 @@ async fn main() {
 
     tauri::Builder::default()
         .system_tray(SystemTray::new().with_menu(tray_menu))
+        .plugin(rspc::integrations::tauri::plugin(
+            Arc::new(tcore::routes::init_router()),
+            || (),
+        ))
         .plugin(tauri_plugin_autostart::init(
             MacosLauncher::LaunchAgent,
             true,

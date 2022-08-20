@@ -2,7 +2,6 @@ import { AnimatePresence } from 'framer-motion';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import ErrorFallback from './pages/error';
-import useGetElements from '@twidge/utils/elements/actions';
 import React, { useEffect } from 'react';
 import { invoke } from '@tauri-apps/api/tauri';
 
@@ -12,6 +11,7 @@ const SpacePage = React.lazy(() => import('./pages/space'));
 
 function App() {
 	const location = useLocation();
+
 	useEffect(() => {
 		invoke('plugin:autostart|enable').then(console.log).catch(console.error); // make sure to catch errors !
 	}, []);
