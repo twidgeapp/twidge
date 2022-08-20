@@ -6,6 +6,9 @@
         <img src="https://img.shields.io/github/license/VarunPotti/twidge?color=75ff73">
         <img src="https://img.shields.io/github/languages/top/VarunPotti/twidge?color=b5f0ff">
         <img src="https://img.shields.io/github/languages/code-size/VarunPotti/twidge?color=%235e6cff&label=size">
+        <a href="https://img.shields.io/badge/discord-join-green">
+            <img src="https://img.shields.io/badge/discord-join-green" />
+        </a>
     </p>
     <br />
     <h1>Twidge</h1>
