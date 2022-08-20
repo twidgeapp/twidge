@@ -1,6 +1,12 @@
 <p align="center">
     <img width="200px" src="https://raw.githubusercontent.com/VarunPotti/twidge/master/assets/logo.svg">
-    <br />
+    <p align="center">
+        <img src="https://img.shields.io/badge/version-0.0.1--alpha-c6b5ff">
+        <img src="https://img.shields.io/tokei/lines/github/VarunPotti/twidge?color=ffb5f5">
+        <img src="https://img.shields.io/github/license/VarunPotti/twidge?color=75ff73">
+        <img src="https://img.shields.io/github/languages/top/VarunPotti/twidge?color=b5f0ff">
+        <img src="https://img.shields.io/github/languages/code-size/VarunPotti/twidge?color=%235e6cff&label=size">
+    </p>
     <br />
     <h1>Twidge</h1>
     <p>A productivity app which is an extension to your mind</p>
