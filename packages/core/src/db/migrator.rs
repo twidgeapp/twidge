@@ -24,9 +24,9 @@ pub async fn new_client() -> Result<PrismaClient, CoreError> {
     if !sqlite_file.exists() {
         tokio::fs::File::create(sqlite_file.clone()).await?;
     }
-
+    log::info!("Using sqlite file: {}", sqlite_file.display());
     let client =
-        prisma::new_client_with_url(&format!("sqlite:{}", sqlite_file.to_str().unwrap())).await?;
+        prisma::new_client_with_url(&format!("file:{}", sqlite_file.to_str().unwrap())).await?;
 
     let client = run_migrations(client).await.unwrap();
 
@@ -38,11 +38,12 @@ pub async fn run_migrations(client: PrismaClient) -> Result<PrismaClient, CoreEr
         ._query_raw::<serde_json::Value>(raw!(
             "SELECT name FROM sqlite_master WHERE type='table' AND name='_migrations'"
         ))
+        .exec()
         .await?
         .is_empty();
 
     if migrations_table_missing {
-        client._execute_raw(raw!(INIT_MIGRATION)).await?;
+        client._execute_raw(raw!(INIT_MIGRATION)).exec().await?;
     }
 
     let mut migration_directories = MIGRATIONS_DIR
@@ -103,11 +104,7 @@ pub async fn run_migrations(client: PrismaClient) -> Result<PrismaClient, CoreEr
             // Create migration record
             client
                 .migration()
-                .create(
-                    prisma::migration::name::set(name.to_string()),
-                    prisma::migration::checksum::set(checksum.clone()),
-                    vec![],
-                )
+                .create(name.to_string(), checksum.clone(), vec![])
                 .exec()
                 .await?;
 
@@ -115,11 +112,13 @@ pub async fn run_migrations(client: PrismaClient) -> Result<PrismaClient, CoreEr
             let steps = migration_file_raw.split(';').collect::<Vec<&str>>();
             let steps = &steps[0..steps.len() - 1];
             for (i, step) in steps.iter().enumerate() {
-                client._execute_raw(raw!(*step)).await?;
+                client._execute_raw(raw!(*step)).exec().await?;
                 client
                     .migration()
-                    .find_unique(migration::checksum::equals(checksum.clone()))
-                    .update(vec![migration::steps_applied::set(i as i32 + 1)])
+                    .update(
+                        migration::checksum::equals(checksum.clone()),
+                        vec![migration::steps_applied::set(i as i32 + 1)],
+                    )
                     .exec()
                     .await?;
             }

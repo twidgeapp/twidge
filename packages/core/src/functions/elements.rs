@@ -72,11 +72,9 @@ pub async fn create_element(
         let ele = client
             .elements()
             .create(
-                prisma::elements::element_type::set(value.r#type),
-                prisma::elements::content::set(value.content),
-                prisma::elements::space::link(prisma::spaces::UniqueWhereParam::IdEquals(
-                    data.space_id,
-                )),
+                value.r#type,
+                value.content,
+                prisma::spaces::UniqueWhereParam::IdEquals(data.space_id),
                 vec![],
             )
             .exec()

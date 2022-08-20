@@ -12,6 +12,9 @@ use tauri_plugin_autostart::MacosLauncher;
 
 #[tokio::main]
 async fn main() {
+    std::env::set_var("RUST_LOG", "info");
+    pretty_env_logger::init();
+
     let client = Arc::new(tcore::db::migrator::new_client().await.unwrap());
     let quit = CustomMenuItem::new("quit".to_string(), "Quit");
     let hide = CustomMenuItem::new("hide".to_string(), "Hide");
@@ -26,7 +29,7 @@ async fn main() {
         .system_tray(SystemTray::new().with_menu(tray_menu))
         .plugin(tauri_plugin_autostart::init(
             MacosLauncher::LaunchAgent,
-            false,
+            true,
         ))
         .manage(client)
         .invoke_handler(tauri::generate_handler![

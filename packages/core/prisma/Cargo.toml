@@ -6,7 +6,19 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-prisma-client-rust = { git = "https://github.com/Brendonovich/prisma-client-rust", tag = "0.5.2" }
-prisma-client-rust-cli = { git = "https://github.com/Brendonovich/prisma-client-rust", tag = "0.5.2" }
+prisma-client-rust = { git = "https://github.com/Brendonovich/prisma-client-rust.git", rev = "6a0119bce951c8d956542a59b2f783fc5a591fc7", features = [
+  "rspc",
+  "sqlite-create-many",
+] }
+rspc = { version = "0.0.4", features = [
+  "tauri",
+  "uuid",
+  "chrono",
+  "tracing",
+] }
+prisma-client-rust-cli = { git = "https://github.com/Brendonovich/prisma-client-rust.git", rev = "6a0119bce951c8d956542a59b2f783fc5a591fc7", features = [
+  "rspc",
+  "sqlite-create-many",
+] }
 serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
