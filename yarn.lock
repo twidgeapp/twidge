@@ -841,6 +841,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rspc/client@npm:^0.0.5":
+  version: 0.0.5
+  resolution: "@rspc/client@npm:0.0.5"
+  dependencies:
+    "@tanstack/react-query": ^4.0.10
+    "@tauri-apps/api": ^1.0.2
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: d0e35f20a6733a01a60f89333444154f135218e8de29ca0c5163a6ea90a77086eb3c9206727fd13843433b617ae4b6f4aa6f44b955337a42402b0eceaecc1f51
+  languageName: node
+  linkType: hard
+
 "@scena/event-emitter@npm:^1.0.2, @scena/event-emitter@npm:^1.0.5":
   version: 1.0.5
   resolution: "@scena/event-emitter@npm:1.0.5"
@@ -856,6 +868,33 @@ __metadata:
   peerDependencies:
     react: ">= 16.3.0"
   checksum: 029795323cdedb5599ec0636526fc233b2cf41fa9c1f4a704b1f7f457c6170053384a7430afed45e25f73e348d7c391cf1379bc079943cd9cad44302234a5244
+  languageName: node
+  linkType: hard
+
+"@tanstack/query-core@npm:^4.0.0-beta.1":
+  version: 4.2.1
+  resolution: "@tanstack/query-core@npm:4.2.1"
+  checksum: f71854969e02de6c2cfbe25e8b11e275b61e1297a902e0d5c4beac580a87db99555c1c21d536d838ce5e0664bc49da7b60a3c6b8de334c7004c5005fe2a48030
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query@npm:^4.0.10, @tanstack/react-query@npm:^4.2.1":
+  version: 4.2.1
+  resolution: "@tanstack/react-query@npm:4.2.1"
+  dependencies:
+    "@tanstack/query-core": ^4.0.0-beta.1
+    "@types/use-sync-external-store": ^0.0.3
+    use-sync-external-store: ^1.2.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-native: "*"
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+  checksum: bbf3a808645c26c649971dc182bb9a7ed7a1d89f6456b60685c6081b8be6ae84ae83b39c7eacb96c4f3b6677ca001d8114037329951987b7a8d65de53b28c862
   languageName: node
   linkType: hard
 
@@ -1033,6 +1072,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@twidge/utils@workspace:packages/utils"
   dependencies:
+    "@rspc/client": ^0.0.5
+    "@tanstack/react-query": ^4.2.1
     "@tauri-apps/api": 1.0.2
     "@vscode/vscode-languagedetection": ^1.0.21
     guess-programming-language: ^1.0.0
@@ -1048,6 +1089,8 @@ __metadata:
   resolution: "@twidge/web@workspace:apps/web"
   dependencies:
     "@fluentui/react-icons": ^2.0.178
+    "@rspc/client": ^0.0.5
+    "@tanstack/react-query": ^4.2.1
     "@tauri-apps/api": ^1.0.2
     "@tauri-apps/cli": ^1.0.5
     "@tippyjs/react": ^4.2.6
@@ -1180,6 +1223,13 @@ __metadata:
   version: 0.16.2
   resolution: "@types/scheduler@npm:0.16.2"
   checksum: b6b4dcfeae6deba2e06a70941860fb1435730576d3689225a421280b7742318d1548b3d22c1f66ab68e414f346a9542f29240bc955b6332c5b11e561077583bc
+  languageName: node
+  linkType: hard
+
+"@types/use-sync-external-store@npm:^0.0.3":
+  version: 0.0.3
+  resolution: "@types/use-sync-external-store@npm:0.0.3"
+  checksum: 161ddb8eec5dbe7279ac971531217e9af6b99f7783213566d2b502e2e2378ea19cf5e5ea4595039d730aa79d3d35c6567d48599f69773a02ffcff1776ec2a44e
   languageName: node
   linkType: hard
 
@@ -5407,7 +5457,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:1.2.0":
+"use-sync-external-store@npm:1.2.0, use-sync-external-store@npm:^1.2.0":
   version: 1.2.0
   resolution: "use-sync-external-store@npm:1.2.0"
   peerDependencies:

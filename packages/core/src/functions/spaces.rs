@@ -37,10 +37,10 @@ pub async fn create_space(
     let space = client
         .spaces()
         .create(
-            prisma::spaces::name::set("Space ".to_owned() + &spaces.to_string()),
-            prisma::spaces::description::set(String::new()),
-            prisma::spaces::icon::set(String::from("Document16Filled")),
-            prisma::spaces::color::set(String::from("#ffffff")),
+            "Space ".to_owned() + &spaces.to_string(),
+            String::new(),
+            String::from("Document16Filled"),
+            String::from("#ffffff"),
             vec![prisma::spaces::index::set(spaces.try_into().unwrap())],
         )
         .exec()
@@ -69,10 +69,10 @@ pub async fn update_space_indexes(
             .upsert(
                 prisma::spaces::UniqueWhereParam::IdEquals(space.id.clone()),
                 (
-                    prisma::spaces::name::set("Space ".to_owned() + &(space.id + 1).to_string()),
-                    prisma::spaces::description::set(String::new()),
-                    prisma::spaces::icon::set(String::from("Document16Filled")),
-                    prisma::spaces::color::set(String::from("#ffffff")),
+                    "Space ".to_owned() + &(space.id + 1).to_string(),
+                    String::new(),
+                    String::from("Document16Filled"),
+                    String::from("#ffffff"),
                     vec![prisma::spaces::index::set(index.try_into().unwrap())],
                 ),
                 vec![prisma::spaces::index::set(index.try_into().unwrap())],

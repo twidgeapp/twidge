@@ -1,6 +1,7 @@
 pub mod db;
 pub mod errors;
 pub mod functions;
+pub mod routes;
 pub mod utils;
 pub mod prisma {
     pub use prisma::*;

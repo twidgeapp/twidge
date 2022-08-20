@@ -10,6 +10,7 @@ import {
 } from '@twidge/config/stitches.config';
 import { ThemeProvider } from 'next-themes';
 import { BrowserRouter } from 'react-router-dom';
+import rspc, { client, queryClient } from '@twidge/utils/query';
 
 const globalStyles = globalCss({
 	body: {
@@ -48,9 +49,11 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 			macchiato: macchiatoTheme.className,
 		}}
 	>
-		<BrowserRouter>
-			<App />
-		</BrowserRouter>
+		<rspc.Provider client={client} queryClient={queryClient}>
+			<BrowserRouter>
+				<App />
+			</BrowserRouter>
+		</rspc.Provider>
 	</ThemeProvider>
 	// </React.StrictMode>
 );
