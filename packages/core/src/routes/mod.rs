@@ -1,7 +1,7 @@
 use std::{path::PathBuf, sync::Arc};
 
 use prisma::PrismaClient;
-use rspc::Router;
+use rspc::{Config, Router};
 mod spaces;
 #[derive(Clone, Debug)]
 pub struct Shared {
@@ -10,6 +10,7 @@ pub struct Shared {
 
 pub fn init_router() -> Router<Shared> {
     let router = Router::<Shared>::new()
+        .config(Config::new().set_ts_bindings_header("/* eslint-disable */"))
         .merge("spaces.", spaces::mount())
         .build();
 
