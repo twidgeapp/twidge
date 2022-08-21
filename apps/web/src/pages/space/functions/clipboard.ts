@@ -1,5 +1,3 @@
-import { invoke } from '@tauri-apps/api/tauri';
-
 const fileReader = (file: File) => {
 	return new Promise((resolve, reject) => {
 		const reader = new FileReader();
@@ -36,31 +34,52 @@ const getClipboardFiles = async (
 	return file_list;
 };
 
-const getClipboardData = async (ev: ClipboardEvent, space_id: number) => {
+const getClipboardData = async (
+	ev: ClipboardEvent,
+	space_id: number,
+	mutation: any,
+	refetch: any
+) => {
 	const files = ev.clipboardData?.files;
 	const text = ev.clipboardData?.getData('text');
 	if (files && files?.length != 0) {
 		const data = await getClipboardFiles(files);
-		invoke('create_element', {
-			data: {
+		mutation.mutate(
+			{
 				space_id: space_id,
 				type: 'file',
 				value: data,
 			},
-		});
+			{
+				onError: (error: any) => {
+					throw new Error(error.message);
+				},
+				onSuccess: () => {
+					refetch();
+				},
+			}
+		);
 	} else {
-		invoke('create_element', {
-			data: {
+		mutation.mutate(
+			{
 				space_id: space_id,
 				type: 'text',
 				value: [
 					{
-						content: text,
+						content: text!,
 						type: 'text',
 					},
 				],
 			},
-		});
+			{
+				onError: (error: any) => {
+					throw new Error(error.message);
+				},
+				onSuccess: () => {
+					refetch();
+				},
+			}
+		);
 	}
 };
 

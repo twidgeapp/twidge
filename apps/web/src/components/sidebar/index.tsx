@@ -9,7 +9,6 @@ import { Link, useParams } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 import '../../styles/tippy.css'; // optional
 import useGetSpaces from '@twidge/utils/spaces/actions';
-import { invoke } from '@tauri-apps/api';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import rspc from '@twidge/utils/query';
 

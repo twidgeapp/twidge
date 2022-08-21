@@ -41,15 +41,6 @@ async fn main() {
             true,
         ))
         .manage(client)
-        .invoke_handler(tauri::generate_handler![
-            // spaces
-            tcore::functions::spaces::get_spaces,
-            tcore::functions::spaces::create_space,
-            tcore::functions::spaces::update_space_indexes,
-            // elements
-            tcore::functions::elements::create_element,
-            tcore::functions::elements::get_elements,
-        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

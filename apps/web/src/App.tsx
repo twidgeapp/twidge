@@ -3,7 +3,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import ErrorFallback from './pages/error';
 import React, { useEffect } from 'react';
-import { invoke } from '@tauri-apps/api/tauri';
+import { invoke } from '@tauri-apps/api';
 
 const IndexPage = React.lazy(() => import('./pages/index'));
 const HomePage = React.lazy(() => import('./pages/home'));
