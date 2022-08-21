@@ -51,8 +51,8 @@ Post MVP:
 We follow an architecture similar to that of [spacedrive](https://spacedrive.com).
 
 - [Prisma](https://github.com/Brendonovich/prisma-client-rust), [Rust](https://www.rust-lang.org/), [React](https://reactjs.org/), [Typescript](https://www.typescriptlang.org/), [Tauri](https://tauri.app/), [Stitches](https://stitches.dev/) and [Radix](https://radix-ui.com)
-- Tauri uses OS webviews, this helps remove the overhead of V8 (like in electron), and brings memory and ram-usage to a minimum.
-- We can use prisma on the front-end thanks to [brendonovich](https://github.com/brendonovich) who is the creator of [prisma-client-rust](https://github.com/Brendonovich/prisma-client-rust)
+- Tauri uses OS webviews, this helps remove the overhead of V8 (like in electron), and brings cpu and ram-usage to a minimum.
+- We can use prisma on the front-end thanks to [brendan](https://github.com/brendonovich) who is the creator of [prisma-client-rust](https://github.com/Brendonovich/prisma-client-rust)
 
 # Monorepo
 
