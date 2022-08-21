@@ -45,7 +45,7 @@ impl Settings {
             let insert = client
                 .settings()
                 .upsert(
-                    settings::UniqueWhereParam::NameEquals(name.to_owned().to_owned()),
+                    settings::name::equals(name.to_owned().to_owned()),
                     (
                         (name.to_owned().to_owned()),
                         (value.to_owned().to_owned()),

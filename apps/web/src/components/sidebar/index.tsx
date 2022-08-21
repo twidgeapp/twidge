@@ -9,8 +9,8 @@ import { Link, useParams } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 import '../../styles/tippy.css'; // optional
 import useGetSpaces from '@twidge/utils/spaces/actions';
-import { invoke } from '@tauri-apps/api';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import rspc from '@twidge/utils/query';
 
 const Space = ({ space, index }: { space: TSpace; index: number }) => {
 	const spaces = useSpaceStore((state) => state.spaces);
@@ -40,8 +40,10 @@ const Space = ({ space, index }: { space: TSpace; index: number }) => {
 
 const Sidebar = () => {
 	const spaces = useSpaceStore((spaces) => spaces.spaces);
-	useGetSpaces();
+	const { refetch } = useGetSpaces();
 	const { onDragEnd } = useOnDragEnd();
+	const mutation = rspc.useMutation('spaces.create');
+
 	return (
 		<Root>
 			<MainSection>
@@ -49,7 +51,14 @@ const Sidebar = () => {
 				<Tippy content={'Add'} placement="right" arrow={false}>
 					<StyledSpace
 						onClick={() => {
-							invoke('create_space');
+							mutation.mutate(undefined, {
+								onError: (error) => {
+									throw new Error(error.message);
+								},
+								onSuccess: () => {
+									refetch();
+								},
+							});
 						}}
 					>
 						<Icons.Add20Regular style={{ color: 'var(--colors-lavender)' }} />

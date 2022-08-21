@@ -6,6 +6,7 @@ import Body from './components/body';
 import SpaceCtx from './ctx';
 import getClipboardData from './functions/clipboard';
 import useGetElements from '@twidge/utils/elements/actions';
+import rspc from '@twidge/utils/query';
 
 const SpacePage = () => {
 	const { id } = useParams();
@@ -14,12 +15,14 @@ const SpacePage = () => {
 		return spaces.filter((space) => space.id === parseInt(id as any))[0];
 	}, [spaces]);
 	const spaceRef = useRef<HTMLDivElement>(null);
-	useGetElements();
+
+	const { refetch } = useGetElements();
+	const mutation = rspc.useMutation('elements.create');
 
 	useEffect(() => {
 		const onPaste = async (ev: ClipboardEvent) => {
 			console.log(ev);
-			getClipboardData(ev, parseInt(id as any));
+			getClipboardData(ev, parseInt(id as any), mutation, refetch);
 		};
 
 		spaceRef.current?.addEventListener('paste', onPaste);
@@ -27,7 +30,7 @@ const SpacePage = () => {
 		return () => {
 			spaceRef.current?.removeEventListener('paste', onPaste);
 		};
-	}, []);
+	}, [refetch]);
 
 	return (
 		<SpaceCtx.Provider value={{ currentSpace: currentSpace }}>
