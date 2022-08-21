@@ -1,10 +1,20 @@
-use std::path::PathBuf;
+use std::{path::PathBuf, sync::Arc};
 
+use prisma::PrismaClient;
 use rspc::Router;
 
-pub fn init_router() -> Router {
-    let router = <Router>::new()
-        .query("version", |ctx, args: ()| "1.0.0")
+#[derive(Clone, Debug)]
+pub struct Shared {
+    pub client: Arc<PrismaClient>,
+}
+
+pub fn init_router() -> Router<Shared> {
+    let router = Router::<Shared>::new()
+        .query("getUsers", move |ctx, _: ()| async move {
+            let client = ctx.client.clone();
+            let users = client.spaces().find_many(vec![]).exec().await.unwrap();
+            Ok(users)
+        })
         .build();
 
     router

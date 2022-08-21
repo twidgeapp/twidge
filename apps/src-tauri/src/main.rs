@@ -9,6 +9,7 @@ use settings::Settings;
 use std::sync::Arc;
 use tauri::{CustomMenuItem, SystemTray, SystemTrayMenu, SystemTrayMenuItem};
 use tauri_plugin_autostart::MacosLauncher;
+use tcore::routes::Shared;
 
 #[tokio::main]
 async fn main() {
@@ -25,11 +26,15 @@ async fn main() {
 
     Settings::new(client.clone()).await.unwrap();
 
+    let shared = Shared {
+        client: client.clone(),
+    };
+
     tauri::Builder::default()
         .system_tray(SystemTray::new().with_menu(tray_menu))
         .plugin(rspc::integrations::tauri::plugin(
             Arc::new(tcore::routes::init_router()),
-            || (),
+            move || (shared.clone()),
         ))
         .plugin(tauri_plugin_autostart::init(
             MacosLauncher::LaunchAgent,

@@ -2,7 +2,11 @@
 
 export type Operations = {
     queries: 
-        { key: ["version"], result: string },
+        { key: ["getUsers"], result: Array<Spaces> },
     mutations: never,
     subscriptions: never
 };
+
+export interface Spaces { id: number, name: string, description: string, icon: string, color: string, index: number, createdAt: string, updatedAt: string, Elements: Array<Elements> | null }
+
+export interface Elements { id: number, elementType: string, content: string, space: Spaces | null, positionX: number, positionY: number, createdAt: string, updatedAt: string, spaceId: number }
