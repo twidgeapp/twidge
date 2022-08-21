@@ -3,6 +3,7 @@ use std::{path::PathBuf, sync::Arc};
 use prisma::PrismaClient;
 use rspc::{Config, Router};
 mod elements;
+mod settings;
 mod spaces;
 
 #[derive(Clone, Debug)]
@@ -15,6 +16,7 @@ pub fn init_router() -> Router<Shared> {
         .config(Config::new().set_ts_bindings_header("/* eslint-disable */"))
         .merge("spaces.", spaces::mount())
         .merge("elements.", elements::mount())
+        .merge("settings.", settings::mount())
         .build();
 
     router

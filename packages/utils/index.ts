@@ -3,17 +3,29 @@
 
 export type Operations = {
 	queries:
-		| { key: ['elements.get']; result: Array<Elements> }
-		| { key: ['spaces.get']; result: Array<Spaces> };
+		| { key: ['spaces.get']; result: Array<Spaces> }
+		| { key: ['settings.get', GetSettingsArgs]; result: Settings | null }
+		| { key: ['elements.get']; result: Array<Elements> };
 	mutations:
+		| { key: ['settings.set', SetSettingsArgs]; result: Settings }
 		| {
 				key: ['spaces.updateSpaceIndexes', UpdateSpaceIndexesArgs];
 				result: null;
 		  }
-		| { key: ['spaces.create']; result: Spaces }
-		| { key: ['elements.create', CreateElementDataArgs]; result: null };
+		| { key: ['elements.create', CreateElementDataArgs]; result: null }
+		| { key: ['spaces.create']; result: Spaces };
 	subscriptions: never;
 };
+
+export interface CreateElementDataArgs {
+	space_id: number;
+	type: string;
+	value: Array<Element>;
+}
+
+export interface GetSettingsArgs {
+	key: string;
+}
 
 export interface Elements {
 	id: number;
@@ -31,6 +43,14 @@ export interface UpdateSpaceIndexesArgs {
 	spaces: Array<Spaces>;
 }
 
+export interface Settings {
+	id: number;
+	name: string;
+	value: string;
+	createdAt: string;
+	updatedAt: string;
+}
+
 export interface Spaces {
 	id: number;
 	name: string;
@@ -43,13 +63,12 @@ export interface Spaces {
 	Elements: Array<Elements> | null;
 }
 
+export interface SetSettingsArgs {
+	key: string;
+	value: string;
+}
+
 export interface Element {
 	content: string;
 	type: string;
-}
-
-export interface CreateElementDataArgs {
-	space_id: number;
-	type: string;
-	value: Array<Element>;
 }
