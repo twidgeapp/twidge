@@ -67,7 +67,7 @@ pub async fn update_space_indexes(
         let space = client
             .spaces()
             .upsert(
-                prisma::spaces::UniqueWhereParam::IdEquals(space.id.clone()),
+                prisma::spaces::id::equals(space.id.clone()),
                 (
                     "Space ".to_owned() + &(space.id + 1).to_string(),
                     String::new(),
