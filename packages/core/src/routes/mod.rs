@@ -10,7 +10,7 @@ pub struct Shared {
 
 pub fn init_router() -> Router<Shared> {
     let router = Router::<Shared>::new()
-        .query("getUsers", move |ctx, _: ()| async move {
+        .query("getSpaces", move |ctx, _: ()| async move {
             let client = ctx.client.clone();
             let users = client.spaces().find_many(vec![]).exec().await.unwrap();
             Ok(users)
