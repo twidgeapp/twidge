@@ -3,15 +3,15 @@
 
 export type Operations = {
 	queries:
-		| { key: ['spaces.get']; result: Array<Spaces> }
-		| { key: ['elements.get']; result: Array<Elements> };
+		| { key: ['elements.get']; result: Array<Elements> }
+		| { key: ['spaces.get']; result: Array<Spaces> };
 	mutations:
-		| { key: ['spaces.create']; result: Spaces }
-		| { key: ['elements.create', CreateElementDataArgs]; result: null }
 		| {
 				key: ['spaces.updateSpaceIndexes', UpdateSpaceIndexesArgs];
 				result: null;
-		  };
+		  }
+		| { key: ['spaces.create']; result: Spaces }
+		| { key: ['elements.create', CreateElementDataArgs]; result: null };
 	subscriptions: never;
 };
 
@@ -27,9 +27,8 @@ export interface Elements {
 	spaceId: number;
 }
 
-export interface Element {
-	content: string;
-	type: string;
+export interface UpdateSpaceIndexesArgs {
+	spaces: Array<Spaces>;
 }
 
 export interface Spaces {
@@ -44,12 +43,13 @@ export interface Spaces {
 	Elements: Array<Elements> | null;
 }
 
+export interface Element {
+	content: string;
+	type: string;
+}
+
 export interface CreateElementDataArgs {
 	space_id: number;
 	type: string;
 	value: Array<Element>;
-}
-
-export interface UpdateSpaceIndexesArgs {
-	spaces: Array<Spaces>;
 }
