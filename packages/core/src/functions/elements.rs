@@ -74,7 +74,7 @@ pub async fn create_element(
             .create(
                 value.r#type,
                 value.content,
-                prisma::spaces::UniqueWhereParam::IdEquals(data.space_id),
+                prisma::spaces::id::equals(data.space_id),
                 vec![],
             )
             .exec()
