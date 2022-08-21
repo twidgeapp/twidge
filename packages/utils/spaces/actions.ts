@@ -8,7 +8,7 @@ import { Space } from './types';
 const useGetSpaces = () => {
 	const setSpaces = useSpaceStore((spaces) => spaces.setSpaces);
 	const addSpace = useSpaceStore((spaces) => spaces.addSpace);
-	const { data } = rspc.useQuery(['getSpaces']);
+	const { data } = rspc.useQuery(['spaces.get']);
 
 	useEffect(() => {
 		if (data) {
