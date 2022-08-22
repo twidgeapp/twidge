@@ -41,4 +41,26 @@ export const Divider = styled('div', {
 	borderTop: '1px solid $lavender',
 });
 
+export const ThemeButton = styled('button', {
+	all: 'unset',
+	border: 'none',
+	backgroundColor: '$surface1',
+	color: '$text1',
+	padding: '9px',
+	borderRadius: '12px',
+	transition: 'background-color 0.2s ease-in-out',
+	cursor: 'pointer',
+
+	position: 'absolute',
+	bottom: '12px',
+	width: '32px',
+	height: '32px',
+	display: 'flex',
+	alignItems: 'center',
+	justifyContent: 'center',
+	'&:hover': {
+		backgroundColor: '$surface2',
+	},
+});
+
 export default Root;

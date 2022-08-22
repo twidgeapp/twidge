@@ -12,10 +12,19 @@
 	"tauri": {
 		"systemTray": {
 			"iconPath": "icons/icon.png",
-      		"iconAsTemplate": true
-    	},
+			"iconAsTemplate": true
+		},
 		"allowlist": {
 			"all": true,
+			"fs": {
+				"all": true
+			},
+			"protocol": {
+				"assetScope": ["*"]
+			},
+			"os": {
+				"all": true
+			},
 			"globalShortcut": {
 				"all": true
 			}
@@ -39,7 +48,7 @@
 				"signingIdentity": null
 			},
 			"resources": [],
-			"shortDescription": "",
+			"shortDescription": "The productivity tool built for professionals",
 			"targets": "all",
 			"windows": {
 				"certificateThumbprint": null,
@@ -48,7 +57,7 @@
 			}
 		},
 		"security": {
-			"csp": null
+			"csp": "default-src asset: https://asset.localhost blob: data: filesystem: ws: wss: http: https: tauri: 'unsafe-eval' 'unsafe-inline' 'self' img-src: 'self'"
 		},
 		"updater": {
 			"active": false

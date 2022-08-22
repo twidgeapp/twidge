@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import Root, { Divider, MainSection, StyledSpace } from './styles';
+import Root, { Divider, MainSection, StyledSpace, ThemeButton } from './styles';
 import useSpaceStore from '@twidge/utils/spaces/state';
 import { Space as TSpace } from '@twidge/utils/spaces/types';
 import * as Icons from '@fluentui/react-icons';
@@ -11,6 +11,8 @@ import '../../styles/tippy.css'; // optional
 import useGetSpaces from '@twidge/utils/spaces/actions';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import rspc from '@twidge/utils/query';
+import { useTheme } from 'next-themes';
+import ThemeIcon from './icon';
 
 const Space = ({ space, index }: { space: TSpace; index: number }) => {
 	const spaces = useSpaceStore((state) => state.spaces);
@@ -43,6 +45,9 @@ const Sidebar = () => {
 	const { refetch } = useGetSpaces();
 	const { onDragEnd } = useOnDragEnd();
 	const mutation = rspc.useMutation('spaces.create');
+	const { theme, setTheme } = useTheme();
+	const themes = ['macchiato', 'frappe', 'mocha', 'latte'];
+	const nextTheme = themes[(themes.indexOf(theme as any) + 1) % themes.length];
 
 	return (
 		<Root>
@@ -108,6 +113,13 @@ const Sidebar = () => {
 					</StyledSpace>
 				</Tippy>
 			</MainSection>
+			<ThemeButton
+				onClick={() => {
+					setTheme(nextTheme);
+				}}
+			>
+				<ThemeIcon nextTheme={nextTheme} />
+			</ThemeButton>
 		</Root>
 	);
 };

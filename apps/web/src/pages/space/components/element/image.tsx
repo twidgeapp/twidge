@@ -1,3 +1,4 @@
+import { convertFileSrc } from '@tauri-apps/api/tauri';
 import { styled } from '@twidge/config/stitches.config';
 import { useState } from 'react';
 import { Resizable, ResizableBox } from 'react-resizable';
@@ -32,7 +33,12 @@ const Image = ({ content }: { content: string }) => {
 			}}
 		>
 			<Root>
-				<img src={content} alt="" width={size.width} height={size.height} />
+				<img
+					src={convertFileSrc(content)}
+					alt=""
+					width={size.width}
+					height={size.height}
+				/>
 			</Root>
 		</ResizableBox>
 	);

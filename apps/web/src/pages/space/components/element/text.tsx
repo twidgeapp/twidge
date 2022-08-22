@@ -17,7 +17,7 @@ const Root = styled('div', {
 });
 
 const Text = ({ content }: { content: string }) => {
-	const [size, setSize] = useState({ width: 200, height: 200 });
+	const [size, setSize] = useState({ width: 400, height: 200 });
 
 	return (
 		<ResizableBox
