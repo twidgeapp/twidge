@@ -56,9 +56,10 @@ pub fn mount() -> RouterBuilder<Shared> {
             move |ctx, args: UpdateSpaceIndexesArgs| async move {
                 let client = ctx.client.clone();
                 info!("{:?}", args);
+                let mut edited_spaces = Vec::new();
                 for (index, space) in args.spaces.iter().enumerate() {
                     // create spaces if they do not exist
-                    client
+                    let inserted_space = client
                         .spaces()
                         .upsert(
                             prisma::spaces::id::equals(space.id.clone()),
@@ -71,9 +72,12 @@ pub fn mount() -> RouterBuilder<Shared> {
                             ),
                             vec![prisma::spaces::index::set(index.try_into().unwrap())],
                         )
-                        .exec()
-                        .await?;
+                        .exec();
+
+                    edited_spaces.push(inserted_space);
                 }
+
+                futures::future::join_all(edited_spaces).await;
 
                 Ok(())
             },

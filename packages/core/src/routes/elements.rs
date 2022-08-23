@@ -1,4 +1,3 @@
-use log::info;
 use rspc::RouterBuilder;
 
 use crate::utils::{
@@ -56,6 +55,8 @@ pub fn mount() -> RouterBuilder<Shared> {
                             let mut file =
                                 assets_dir.join(uuid::Uuid::new_v4().to_string() + "." + f_type);
 
+                            log::info!("Saving file to {:#?}", assets_dir);
+
                             let file = write_data_url_to_fs(data.content.clone(), file);
                             let ele = Element {
                                 content: file,
@@ -69,6 +70,8 @@ pub fn mount() -> RouterBuilder<Shared> {
                     &_ => todo!(),
                 }
 
+                let mut create_values = Vec::new();
+
                 for value in values {
                     let ele = client
                         .elements()
@@ -78,10 +81,12 @@ pub fn mount() -> RouterBuilder<Shared> {
                             prisma::spaces::id::equals(args.space_id),
                             vec![],
                         )
-                        .exec()
-                        .await
-                        .unwrap();
+                        .exec();
+
+                    create_values.push(ele);
                 }
+
+                futures::future::join_all(create_values).await;
 
                 Ok(())
             },

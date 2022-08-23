@@ -33,6 +33,7 @@ rspc = { version = "0.0.4", features = [
   "chrono",
   "tracing",
 ] }
+futures = "0.3.23"
 log = "0.4.17"
 rand = "0.7.2"
 

@@ -5614,6 +5614,7 @@ version = "0.1.0"
 dependencies = [
  "data-encoding",
  "dataurl",
+ "futures",
  "include_dir",
  "infer 0.9.0",
  "log",
