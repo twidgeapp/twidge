@@ -1,4 +1,5 @@
 use log::info;
+use rand::Rng;
 use rspc::RouterBuilder;
 
 use super::Shared;
@@ -21,6 +22,19 @@ pub fn mount() -> RouterBuilder<Shared> {
         .mutation("create", move |ctx, _: ()| async move {
             let client = ctx.client.clone();
 
+            let colors = vec![
+                "var(--colors-blue)",
+                "var(--colors-red)",
+                "var(--colors-green)",
+                "var(--colors-yellow)",
+                "var(--colors-blue)",
+                "var(--colors-pink)",
+                "var(--colors-teal)",
+                "var(--colors-mauve)",
+            ];
+
+            let color = colors[rand::thread_rng().gen_range(0, colors.len())];
+
             let spaces = client.spaces().find_many(vec![]).exec().await?.len();
             info!("Creating space with id: {}", spaces);
             let space = client
@@ -29,7 +43,7 @@ pub fn mount() -> RouterBuilder<Shared> {
                     "Space ".to_owned() + &spaces.to_string(),
                     String::new(),
                     String::from("Document16Filled"),
-                    String::from("#ffffff"),
+                    String::from(color),
                     vec![prisma::spaces::index::set(spaces.try_into().unwrap())],
                 )
                 .exec()

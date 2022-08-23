@@ -5621,6 +5621,7 @@ dependencies = [
  "prisma",
  "prisma-client-rust",
  "prisma-client-rust-cli",
+ "rand 0.7.3",
  "ring 0.17.0-alpha.11",
  "rspc",
  "serde",
