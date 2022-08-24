@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const fileReader = (file: File) => {
 	return new Promise((resolve, reject) => {
 		const reader = new FileReader();
@@ -19,7 +20,7 @@ const getClipboardFiles = async (
 	for (let i = 0; i < files.length; i++) {
 		const file = files[i];
 
-		const dataUrl: string = (await fileReader(file)) as any;
+		const dataUrl: string = (await fileReader(file)) as string;
 		const type = dataUrl.substring(
 			dataUrl.indexOf(':') + 1,
 			dataUrl.indexOf(';')
@@ -59,14 +60,14 @@ const getClipboardData = async (
 				},
 			}
 		);
-	} else {
+	} else if (text !== null) {
 		mutation.mutate(
 			{
 				space_id: space_id,
 				type: 'text',
 				value: [
 					{
-						content: text!,
+						content: text,
 						type: 'text',
 					},
 				],

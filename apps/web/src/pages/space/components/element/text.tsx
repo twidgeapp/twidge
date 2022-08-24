@@ -1,6 +1,4 @@
 import { styled } from '@twidge/config/stitches.config';
-import { useState } from 'react';
-import { Resizable, ResizableBox } from 'react-resizable';
 
 const Root = styled('div', {
 	padding: '24px',
@@ -17,8 +15,6 @@ const Root = styled('div', {
 });
 
 const Text = ({ content }: { content: string }) => {
-	const [size, setSize] = useState({ width: 400, height: 200 });
-
 	return <Root>{content}</Root>;
 };
 

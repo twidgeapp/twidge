@@ -63,8 +63,8 @@ pub fn mount() -> RouterBuilder<Shared> {
 
                         for data in args.value.clone() {
                             // split the data url into the data and the mime type
-                            let f_type = args.r#type.split("/").last().unwrap();
-                            let mut file =
+                            let f_type = args.r#type.split('/').last().unwrap();
+                            let file =
                                 assets_dir.join(uuid::Uuid::new_v4().to_string() + "." + f_type);
 
                             log::info!("Saving file to {:#?}", assets_dir);
@@ -119,8 +119,9 @@ pub fn mount() -> RouterBuilder<Shared> {
                         "Element not found".to_owned(),
                     ));
                 }
+
                 let element = element.unwrap();
-                let ele = client
+                client
                     .elements()
                     .update(
                         prisma::elements::id::equals(element.id),

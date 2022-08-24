@@ -28,7 +28,7 @@ const Space = ({ space, index }: { space: TSpace; index: number }) => {
 					css={{
 						marginBottom: index == spaces.length - 1 ? '0px' : '12px',
 						border:
-							space.id === parseInt(id as any)
+							space.id === parseInt(id as string)
 								? '1px solid $surface1'
 								: '0px solid $surface1',
 					}}
@@ -47,7 +47,8 @@ const Sidebar = () => {
 	const mutation = rspc.useMutation('spaces.create');
 	const { theme, setTheme } = useTheme();
 	const themes = ['macchiato', 'frappe', 'mocha', 'latte'];
-	const nextTheme = themes[(themes.indexOf(theme as any) + 1) % themes.length];
+	const nextTheme =
+		themes[(themes.indexOf(theme as string) + 1) % themes.length];
 
 	return (
 		<Root>

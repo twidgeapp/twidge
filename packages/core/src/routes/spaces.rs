@@ -61,7 +61,7 @@ pub fn mount() -> RouterBuilder<Shared> {
                     let inserted_space = client
                         .spaces()
                         .upsert(
-                            prisma::spaces::id::equals(space.id.clone()),
+                            prisma::spaces::id::equals(space.id),
                             (
                                 "Space ".to_owned() + &(space.id + 1).to_string(),
                                 String::new(),

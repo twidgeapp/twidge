@@ -51,12 +51,14 @@ pub async fn run_migrations(client: PrismaClient) -> Result<PrismaClient, CoreEr
         .map(|dir| {
             dir.path()
                 .file_name()
-                .ok_or(CoreError::OtherError("File has malformed name".to_string()))
+                .ok_or_else(|| CoreError::OtherError("File has malformed name".to_string()))
                 .and_then(|name| {
                     name.to_str()
-                        .ok_or(CoreError::OtherError(
-                            "File name contains malformed characters".to_string(),
-                        ))
+                        .ok_or_else(|| {
+                            CoreError::OtherError(
+                                "File name contains malformed characters".to_string(),
+                            )
+                        })
                         .map(|name| (name, dir))
                 })
         })
@@ -77,16 +79,19 @@ pub async fn run_migrations(client: PrismaClient) -> Result<PrismaClient, CoreEr
 
     for (name, _, dir) in migration_directories {
         let migration_file_raw = dir
-			.get_file(dir.path().join("./migration.sql"))
-			.ok_or(CoreError::OtherError(
-				"Failed to find 'migration.sql' file in '{}' migration subdirectory".to_string(),
-			))?
-			.contents_utf8()
-			.ok_or(
-				CoreError::OtherError(
+            .get_file(dir.path().join("./migration.sql"))
+            .ok_or_else(|| {
+                CoreError::OtherError(
+                    "Failed to find 'migration.sql' file in '{}' migration subdirectory"
+                        .to_string(),
+                )
+            })?
+            .contents_utf8()
+            .ok_or_else(|| {
+                CoreError::OtherError(
 					"Failed to open the contents of 'migration.sql' file in '{}' migration subdirectory".to_string(),
 				)
-			)?;
+            })?;
 
         // Generate SHA256 checksum of migration
         let mut checksum = Context::new(&SHA256);

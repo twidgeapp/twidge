@@ -1,7 +1,5 @@
 import { convertFileSrc } from '@tauri-apps/api/tauri';
 import { styled } from '@twidge/config/stitches.config';
-import { useState } from 'react';
-import { Resizable, ResizableBox } from 'react-resizable';
 
 const Root = styled('div', {
 	padding: '12px',

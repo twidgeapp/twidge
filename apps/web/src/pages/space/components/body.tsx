@@ -6,7 +6,6 @@ import Element from './element';
 import { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import rspc from '@twidge/utils/query';
-import { Elements } from '@twidge/utils';
 
 const Body = () => {
 	const { id } = useParams();
@@ -14,7 +13,7 @@ const Body = () => {
 	const { mutate } = rspc.useMutation('elements.move_element');
 	const elements = useMemo(() => {
 		return elementState.filter(
-			(element) => element.spaceId === parseInt(id as any)
+			(element) => element.spaceId === parseInt(id as string)
 		);
 	}, [elementState]);
 

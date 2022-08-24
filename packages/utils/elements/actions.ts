@@ -8,7 +8,7 @@ const useGetElements = () => {
 
 	useEffect(() => {
 		if (data) {
-			setElements(JSON.stringify(data) as any);
+			setElements(JSON.stringify(data) as string);
 		}
 	}, [data]);
 

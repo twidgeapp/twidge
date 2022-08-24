@@ -12,7 +12,7 @@ const SpacePage = () => {
 	const { id } = useParams();
 	const spaces = useSpaceStore((spaces) => spaces.spaces);
 	const currentSpace = useMemo(() => {
-		return spaces.filter((space) => space.id === parseInt(id as any))[0];
+		return spaces.filter((space) => space.id === parseInt(id as string))[0];
 	}, [spaces]);
 	const spaceRef = useRef<HTMLDivElement>(null);
 
@@ -22,7 +22,7 @@ const SpacePage = () => {
 	useEffect(() => {
 		const onPaste = async (ev: ClipboardEvent) => {
 			console.log(ev);
-			getClipboardData(ev, parseInt(id as any), mutation, refetch);
+			getClipboardData(ev, parseInt(id as string), mutation, refetch);
 		};
 
 		spaceRef.current?.addEventListener('paste', onPaste);

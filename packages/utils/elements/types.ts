@@ -11,5 +11,5 @@ export interface ElementState {
 	elements: Element[];
 	addElement: (element: Element) => void;
 	removeElement: (id: number) => void;
-	setElements: (elements: Element[]) => void;
+	setElements: (elements: string) => void;
 }

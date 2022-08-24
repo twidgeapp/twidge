@@ -5,6 +5,7 @@ import ErrorFallback from './pages/error';
 import React, { useEffect } from 'react';
 import { invoke } from '@tauri-apps/api/tauri';
 import rspc from '@twidge/utils/query';
+import { Settings } from '@twidge/utils';
 
 const IndexPage = React.lazy(() => import('./pages/index'));
 const HomePage = React.lazy(() => import('./pages/home'));
@@ -16,7 +17,7 @@ function App() {
 
 	useEffect(() => {
 		if (data) {
-			const autostart = (data as any)['value'] === 'true';
+			const autostart = (data as Settings).value === 'true';
 			if (autostart) {
 				invoke('plugin:autostart|enable')
 					.then(console.log)

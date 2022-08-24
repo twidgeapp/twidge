@@ -6,7 +6,7 @@ const ErrorFallback = ({
 	resetErrorBoundary,
 }: {
 	error: Error;
-	resetErrorBoundary: any;
+	resetErrorBoundary: () => void;
 }) => {
 	return (
 		<Root>
