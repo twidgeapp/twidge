@@ -22,6 +22,18 @@ pub struct CreateElementDataArgs {
     pub value: Vec<Element>,
 }
 
+#[derive(Debug, Serialize, Deserialize, Clone, Type)]
+pub struct EditElementData {
+    pub id: i32,
+    pub position_x: i32,
+    pub position_y: i32,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone, Type)]
+pub struct EditElementDataArgs {
+    pub value: EditElementData,
+}
+
 pub fn mount() -> RouterBuilder<Shared> {
     RouterBuilder::<Shared>::new()
         .query("get", move |ctx, _: ()| async move {
@@ -89,6 +101,38 @@ pub fn mount() -> RouterBuilder<Shared> {
                 futures::future::join_all(create_values).await;
 
                 Ok(())
+            },
+        )
+        .mutation(
+            "move_element",
+            move |ctx, args: EditElementDataArgs| async move {
+                let client = ctx.client.clone();
+
+                let element = client
+                    .elements()
+                    .find_unique(prisma::elements::id::equals(args.value.id))
+                    .exec()
+                    .await?;
+                if element.is_none() {
+                    return Err(rspc::Error::new(
+                        rspc::ErrorCode::NotFound,
+                        "Element not found".to_owned(),
+                    ));
+                }
+                let element = element.unwrap();
+                let ele = client
+                    .elements()
+                    .update(
+                        prisma::elements::id::equals(element.id),
+                        vec![
+                            prisma::elements::position_x::set(args.value.position_x),
+                            prisma::elements::position_y::set(args.value.position_y),
+                        ],
+                    )
+                    .exec()
+                    .await?;
+
+                Ok(element)
             },
         )
 }

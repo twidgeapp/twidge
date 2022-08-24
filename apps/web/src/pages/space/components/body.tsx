@@ -3,13 +3,15 @@ import InfiniteViewer from 'react-infinite-viewer';
 import Draggable from 'react-draggable';
 import { useElementStore } from '@twidge/utils/elements/state';
 import Element from './element';
-import { Resizable } from 'react-resizable';
 import { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
+import rspc from '@twidge/utils/query';
+import { Elements } from '@twidge/utils';
 
 const Body = () => {
 	const { id } = useParams();
 	const elementState = useElementStore((state) => state.elements);
+	const { mutate } = rspc.useMutation('elements.move_element');
 	const elements = useMemo(() => {
 		return elementState.filter(
 			(element) => element.spaceId === parseInt(id as any)
@@ -44,7 +46,15 @@ const Body = () => {
 						{elements.map((element) => (
 							<Draggable
 								defaultPosition={{ x: element.positionX, y: element.positionY }}
-								onDrag={console.log}
+								onStop={(e, data) => {
+									mutate({
+										value: {
+											id: element.id,
+											position_x: data.x,
+											position_y: data.y,
+										},
+									});
+								}}
 								key={element.id}
 							>
 								<div>

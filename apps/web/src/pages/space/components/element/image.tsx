@@ -12,8 +12,8 @@ const Root = styled('div', {
 	fontWeight: 400,
 	fontSize: '14px',
 	lineHeight: '24px',
-	width: '100%',
-	height: '100%',
+	width: '400px',
+	height: '400px',
 	letterSpacing: '0.2px',
 
 	img: {
@@ -22,25 +22,15 @@ const Root = styled('div', {
 });
 
 const Image = ({ content }: { content: string }) => {
-	const [size, setSize] = useState({ width: 200, height: 200 });
-
 	return (
-		<ResizableBox
-			width={size.width}
-			height={size.height}
-			onResize={(e, { size }) => {
-				setSize({ height: size.height, width: size.width });
-			}}
-		>
-			<Root>
-				<img
-					src={convertFileSrc(content)}
-					alt=""
-					width={size.width}
-					height={size.height}
-				/>
-			</Root>
-		</ResizableBox>
+		<Root>
+			<img
+				src={convertFileSrc(content)}
+				alt=""
+				width={'400px'}
+				height={'400px'}
+			/>
+		</Root>
 	);
 };
 

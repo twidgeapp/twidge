@@ -27,7 +27,6 @@ pub fn mount() -> RouterBuilder<Shared> {
                 "var(--colors-red)",
                 "var(--colors-green)",
                 "var(--colors-yellow)",
-                "var(--colors-blue)",
                 "var(--colors-pink)",
                 "var(--colors-teal)",
                 "var(--colors-mauve)",
