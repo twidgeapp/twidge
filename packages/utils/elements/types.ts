@@ -5,6 +5,8 @@ export interface Element {
 	spaceId: number;
 	positionX: number;
 	positionY: number;
+	width: string;
+	height: string;
 }
 
 export interface ElementState {

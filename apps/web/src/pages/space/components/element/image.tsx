@@ -1,5 +1,6 @@
 import { convertFileSrc } from '@tauri-apps/api/tauri';
 import { styled } from '@twidge/config/stitches.config';
+import { Resizable } from 're-resizable';
 
 const Root = styled('div', {
 	padding: '12px',
@@ -10,8 +11,6 @@ const Root = styled('div', {
 	fontWeight: 400,
 	fontSize: '14px',
 	lineHeight: '24px',
-	width: '400px',
-	height: '400px',
 	letterSpacing: '0.2px',
 
 	img: {
@@ -21,14 +20,16 @@ const Root = styled('div', {
 
 const Image = ({ content }: { content: string }) => {
 	return (
-		<Root>
-			<img
-				src={convertFileSrc(content)}
-				alt=""
-				width={'400px'}
-				height={'400px'}
-			/>
-		</Root>
+		<Resizable defaultSize={{ height: 'auto', width: 'auto' }}>
+			<Root>
+				<img
+					src={convertFileSrc(content)}
+					alt=""
+					width={'100%'}
+					height={'100%'}
+				/>
+			</Root>
+		</Resizable>
 	);
 };
 

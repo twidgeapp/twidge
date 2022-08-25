@@ -4,7 +4,7 @@ import Text from './text';
 
 const Element = (element: TElement) => {
 	if (element.elementType === 'text') {
-		return <Text content={element.content} />;
+		return <Text {...element} />;
 	} else if (element.elementType.startsWith('image')) {
 		return <Image content={element.content} />;
 	}

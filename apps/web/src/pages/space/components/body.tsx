@@ -47,11 +47,9 @@ const Body = () => {
 								defaultPosition={{ x: element.positionX, y: element.positionY }}
 								onStop={(e, data) => {
 									mutate({
-										value: {
-											id: element.id,
-											position_x: data.x,
-											position_y: data.y,
-										},
+										id: element.id,
+										position_x: data.x,
+										position_y: data.y,
 									});
 								}}
 								key={element.id}

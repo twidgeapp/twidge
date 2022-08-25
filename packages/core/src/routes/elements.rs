@@ -30,8 +30,10 @@ pub struct EditElementData {
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone, Type)]
-pub struct EditElementDataArgs {
-    pub value: EditElementData,
+pub struct ResizeElementDataArgs {
+    pub id: i32,
+    pub height: i32,
+    pub width: i32,
 }
 
 pub fn mount() -> RouterBuilder<Shared> {
@@ -105,12 +107,12 @@ pub fn mount() -> RouterBuilder<Shared> {
         )
         .mutation(
             "move_element",
-            move |ctx, args: EditElementDataArgs| async move {
+            move |ctx, args: EditElementData| async move {
                 let client = ctx.client.clone();
 
                 let element = client
                     .elements()
-                    .find_unique(prisma::elements::id::equals(args.value.id))
+                    .find_unique(prisma::elements::id::equals(args.id))
                     .exec()
                     .await?;
                 if element.is_none() {
@@ -126,8 +128,8 @@ pub fn mount() -> RouterBuilder<Shared> {
                     .update(
                         prisma::elements::id::equals(element.id),
                         vec![
-                            prisma::elements::position_x::set(args.value.position_x),
-                            prisma::elements::position_y::set(args.value.position_y),
+                            prisma::elements::position_x::set(args.position_x),
+                            prisma::elements::position_y::set(args.position_y),
                         ],
                     )
                     .exec()
@@ -136,4 +138,34 @@ pub fn mount() -> RouterBuilder<Shared> {
                 Ok(element)
             },
         )
+        .mutation("resize", |ctx, args: ResizeElementDataArgs| async move {
+            let client = ctx.client.clone();
+
+            let element = client
+                .elements()
+                .find_unique(prisma::elements::id::equals(args.id))
+                .exec()
+                .await?;
+            if element.is_none() {
+                return Err(rspc::Error::new(
+                    rspc::ErrorCode::NotFound,
+                    "Element not found".to_owned(),
+                ));
+            }
+
+            let element = element.unwrap();
+            client
+                .elements()
+                .update(
+                    prisma::elements::id::equals(element.id),
+                    vec![
+                        prisma::elements::width::set(args.width.to_string()),
+                        prisma::elements::height::set(args.height.to_string()),
+                    ],
+                )
+                .exec()
+                .await?;
+
+            Ok(element)
+        })
 }

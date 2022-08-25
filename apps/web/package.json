@@ -19,6 +19,7 @@
 		"@twidge/utils": "workspace:*",
 		"framer-motion": "^7.0.0",
 		"next-themes": "^0.2.0",
+		"re-resizable": "^6.9.9",
 		"react": "^18.2.0",
 		"react-beautiful-dnd": "^13.1.0",
 		"react-dom": "^18.2.0",

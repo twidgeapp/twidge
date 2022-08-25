@@ -1,5 +1,5 @@
 import useSpaceStore from '@twidge/utils/spaces/state';
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import SpaceLayout from '../../layouts/space/layout';
 import Body from './components/body';
@@ -14,7 +14,6 @@ const SpacePage = () => {
 	const currentSpace = useMemo(() => {
 		return spaces.filter((space) => space.id === parseInt(id as string))[0];
 	}, [spaces]);
-	const spaceRef = useRef<HTMLDivElement>(null);
 
 	const { refetch } = useGetElements();
 	const mutation = rspc.useMutation('elements.create');
@@ -24,17 +23,17 @@ const SpacePage = () => {
 			console.log(ev);
 			getClipboardData(ev, parseInt(id as string), mutation, refetch);
 		};
-
-		spaceRef.current?.addEventListener('paste', onPaste);
+		const body = document.body;
+		body?.addEventListener('paste', onPaste);
 
 		return () => {
-			spaceRef.current?.removeEventListener('paste', onPaste);
+			body?.removeEventListener('paste', onPaste);
 		};
 	}, [refetch]);
 
 	return (
 		<SpaceCtx.Provider value={{ currentSpace: currentSpace }}>
-			<SpaceLayout ref={spaceRef} animate={false}>
+			<SpaceLayout animate={false}>
 				<Body />
 			</SpaceLayout>
 		</SpaceCtx.Provider>
