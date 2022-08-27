@@ -6,6 +6,11 @@ import React, { useEffect } from 'react';
 import { invoke } from '@tauri-apps/api/tauri';
 import rspc from '@twidge/utils/query';
 import { Settings } from '@twidge/utils';
+import SpaceCtxMenu from './components/ctx-menu';
+import {
+	ContextMenu,
+	ContextMenuTrigger,
+} from '@twidge/components/context-menu';
 
 const IndexPage = React.lazy(() => import('./pages/index'));
 const HomePage = React.lazy(() => import('./pages/home'));

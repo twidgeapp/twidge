@@ -7,6 +7,11 @@ import SpaceCtx from './ctx';
 import getClipboardData from './functions/clipboard';
 import useGetElements from '@twidge/utils/elements/actions';
 import rspc from '@twidge/utils/query';
+import {
+	ContextMenu,
+	ContextMenuTrigger,
+} from '@twidge/components/context-menu';
+import SpaceCtxMenu from '../../components/ctx-menu';
 
 const SpacePage = () => {
 	const { id } = useParams();
@@ -32,11 +37,16 @@ const SpacePage = () => {
 	}, [refetch]);
 
 	return (
-		<SpaceCtx.Provider value={{ currentSpace: currentSpace }}>
-			<SpaceLayout animate={false}>
-				<Body />
-			</SpaceLayout>
-		</SpaceCtx.Provider>
+		<ContextMenu>
+			<ContextMenuTrigger>
+				<SpaceCtx.Provider value={{ currentSpace: currentSpace }}>
+					<SpaceLayout animate={false}>
+						<Body />
+					</SpaceLayout>
+				</SpaceCtx.Provider>
+			</ContextMenuTrigger>
+			<SpaceCtxMenu></SpaceCtxMenu>
+		</ContextMenu>
 	);
 };
 
