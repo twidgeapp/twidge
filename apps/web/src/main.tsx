@@ -11,6 +11,7 @@ import {
 import { ThemeProvider } from 'next-themes';
 import { BrowserRouter } from 'react-router-dom';
 import rspc, { client, queryClient } from '@twidge/utils/query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const globalStyles = globalCss({
 	body: {
@@ -52,6 +53,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 		<rspc.Provider client={client} queryClient={queryClient}>
 			<BrowserRouter>
 				<App />
+				<ReactQueryDevtools initialIsOpen={false} />
 			</BrowserRouter>
 		</rspc.Provider>
 	</ThemeProvider>

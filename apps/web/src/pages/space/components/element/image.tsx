@@ -1,6 +1,9 @@
 import { convertFileSrc } from '@tauri-apps/api/tauri';
 import { styled } from '@twidge/config/stitches.config';
+import { Element } from '@twidge/utils/elements/types';
+import rspc from '@twidge/utils/query';
 import { Resizable } from 're-resizable';
+import { useState } from 'react';
 
 const Root = styled('div', {
 	padding: '12px',
@@ -18,15 +21,42 @@ const Root = styled('div', {
 	},
 });
 
-const Image = ({ content }: { content: string }) => {
+const Image = (element: Element) => {
+	const { mutate } = rspc.useMutation('elements.resize');
+	const [size, setSize] = useState({
+		width: element.width === 'auto' ? 'auto' : element.width + 'px',
+		height: element.height === 'auto' ? 'auto' : element.height + 'px',
+	});
+
 	return (
-		<Resizable defaultSize={{ height: 'auto', width: 'auto' }}>
-			<Root>
+		<Resizable
+			onResizeStop={(e, direction, ref, d) => {
+				mutate({
+					id: element.id,
+					height: ref.clientHeight,
+					width: ref.clientWidth,
+				});
+				setSize({
+					width: ref.clientWidth + 'px',
+					height: ref.clientHeight + 'px',
+				});
+			}}
+			size={{
+				height: size.height,
+				width: size.width,
+			}}
+		>
+			<Root
+				css={{
+					height: size.height,
+					width: size.width,
+				}}
+			>
 				<img
-					src={convertFileSrc(content)}
+					height={size.height === 'auto' ? size.height : size.height + 'px'}
+					width={size.width}
+					src={convertFileSrc(element.content)}
 					alt=""
-					width={'100%'}
-					height={'100%'}
 				/>
 			</Root>
 		</Resizable>

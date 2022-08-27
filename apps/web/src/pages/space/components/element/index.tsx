@@ -6,7 +6,7 @@ const Element = (element: TElement) => {
 	if (element.elementType === 'text') {
 		return <Text {...element} />;
 	} else if (element.elementType.startsWith('image')) {
-		return <Image content={element.content} />;
+		return <Image {...element} />;
 	}
 	return <></>;
 };

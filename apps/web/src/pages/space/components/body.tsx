@@ -78,7 +78,7 @@ const Body = () => {
 						</InfiniteViewer>
 					</div>
 				</ContextMenuTrigger>
-				<ContextMenuDemo></ContextMenuDemo>;
+				<ContextMenuDemo></ContextMenuDemo>
 			</ContextMenu>
 		</div>
 	);

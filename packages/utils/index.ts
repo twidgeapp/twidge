@@ -2,45 +2,33 @@
 
 export type Operations = {
 	queries:
-		| { key: ['elements.get']; result: Array<Elements> }
+		| { key: ['settings.get', GetSettingsArgs]; result: Settings | null }
 		| { key: ['spaces.get']; result: Array<Spaces> }
-		| { key: ['settings.get', GetSettingsArgs]; result: Settings | null };
+		| { key: ['elements.get']; result: Array<Elements> };
 	mutations:
+		| { key: ['spaces.create']; result: Spaces }
+		| { key: ['elements.create', CreateElementDataArgs]; result: null }
 		| {
 				key: ['spaces.updateSpaceIndexes', UpdateSpaceIndexesArgs];
 				result: null;
 				// eslint-disable-next-line no-mixed-spaces-and-tabs
 		  }
+		| { key: ['elements.resize', ResizeElementDataArgs]; result: Elements }
 		| { key: ['elements.move_element', EditElementData]; result: Elements }
-		| { key: ['elements.create', CreateElementDataArgs]; result: null }
-		| { key: ['settings.set', SetSettingsArgs]; result: Settings }
-		| { key: ['spaces.create']; result: Spaces }
-		| { key: ['elements.resize', ResizeElementDataArgs]; result: Elements };
+		| { key: ['settings.set', SetSettingsArgs]; result: Settings };
 	subscriptions: never;
 };
 
-export interface CreateElementDataArgs {
-	space_id: number;
-	type: string;
-	value: Array<Element>;
-}
-
-export interface ResizeElementDataArgs {
-	id: number;
-	height: number;
-	width: number;
-}
-
-export interface GetSettingsArgs {
-	key: string;
-}
-
-export interface Settings {
+export interface Spaces {
 	id: number;
 	name: string;
-	value: string;
+	description: string;
+	icon: string;
+	color: string;
+	index: number;
 	createdAt: string;
 	updatedAt: string;
+	Elements: Array<Elements> | null;
 }
 
 export interface EditElementData {
@@ -63,28 +51,40 @@ export interface Elements {
 	height: string;
 }
 
+export interface Element {
+	content: string;
+	type: string;
+}
+
+export interface CreateElementDataArgs {
+	space_id: number;
+	type: string;
+	value: Array<Element>;
+}
+
+export interface Settings {
+	id: number;
+	name: string;
+	value: string;
+	createdAt: string;
+	updatedAt: string;
+}
+
 export interface SetSettingsArgs {
 	key: string;
 	value: string;
 }
 
+export interface GetSettingsArgs {
+	key: string;
+}
+
+export interface ResizeElementDataArgs {
+	id: number;
+	height: number;
+	width: number;
+}
+
 export interface UpdateSpaceIndexesArgs {
 	spaces: Array<Spaces>;
-}
-
-export interface Spaces {
-	id: number;
-	name: string;
-	description: string;
-	icon: string;
-	color: string;
-	index: number;
-	createdAt: string;
-	updatedAt: string;
-	Elements: Array<Elements> | null;
-}
-
-export interface Element {
-	content: string;
-	type: string;
 }
