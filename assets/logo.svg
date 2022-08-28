@@ -8,9 +8,11 @@
 <rect x="23" width="105" height="111" rx="52.5" fill="#F4B8E4"/>
 </g>
 <g opacity="0.9" filter="url(#filter2_d_125_49)">
-<path d="M49.15 37H71.8C78.4274 37 83.8 42.3726 83.8 49V61C83.8 67.6274 78.4274 73 71.8 73H39.7858C38.4176 73 37.4533 71.6569 37.8909 70.3604L49.15 37Z" fill="#8CAAEE"/>
+<path d="M49.15 37H71.8C78.4274 37 83.8 42.3726 83.8 49V61C83.8 67.6274 78.4274 73 71.8 73H39.7858C38.4176 73 37.4533 71.6569 37.8909 70.3604L49.15 37Z" fill="#3771F4"/>
 </g>
-<path d="M51.1275 62.247C50.839 63.0551 50.0671 63.5891 49.2091 63.5742L27.9982 63.2039C21.3718 63.0883 16.0938 57.6227 16.2094 50.9963L16.4189 38.9982C16.5345 32.3718 22.0001 27.0938 28.6265 27.2094L60.6357 27.7681C62.0038 27.792 62.9445 29.1518 62.4844 30.4404L51.1275 62.247Z" fill="url(#paint0_linear_125_49)" fill-opacity="0.85"/>
+<g opacity="0.95">
+<path d="M51.1275 63.247C50.839 64.0551 50.0671 64.5891 49.2091 64.5742L27.9982 64.2039C21.3718 64.0883 16.0938 58.6227 16.2094 51.9963L16.4189 39.9982C16.5345 33.3718 22.0001 28.0938 28.6265 28.2094L60.6357 28.7681C62.0038 28.792 62.9445 30.1518 62.4844 31.4404L51.1275 63.247Z" fill="url(#paint0_linear_125_49)"/>
+</g>
 </g>
 <defs>
 <filter id="filter0_f_125_49" x="-131" y="-80" width="309" height="307" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
@@ -33,9 +35,9 @@
 <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_125_49"/>
 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_125_49" result="shape"/>
 </filter>
-<linearGradient id="paint0_linear_125_49" x1="39.3964" y1="63.4029" x2="40.0247" y2="27.4084" gradientUnits="userSpaceOnUse">
-<stop stop-color="#F4B8E4"/>
-<stop offset="1" stop-color="#EEBEBE"/>
+<linearGradient id="paint0_linear_125_49" x1="23.5" y1="63" x2="61" y2="30" gradientUnits="userSpaceOnUse">
+<stop stop-color="#497AF3"/>
+<stop offset="1" stop-color="#00C2FF"/>
 </linearGradient>
 <clipPath id="clip0_125_49">
 <rect width="100" height="100" rx="24" fill="white"/>
