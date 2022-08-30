@@ -1,62 +1,16 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-generator client {
-  provider = "cargo run --bin prisma"
-  output   = "../packages/core/prisma/src/lib.rs"
-}
-
 datasource db {
   provider = "sqlite"
-  url      = "file:./file.db"
+  url      = "file:dev.db"
 }
 
-model Migration {
-  id            Int      @id @default(autoincrement())
-  name          String
-  checksum      String   @unique
-  steps_applied Int      @default(0)
-  applied_at    DateTime @default(now())
-
-  @@map("_migrations")
+generator client {
+  // Corresponds to the cargo alias created earlier
+  provider = "cargo prisma"
+  // The location to generate the schema. Is relative to the position of the schema
+  output   = "../core/src/prisma.rs"
 }
 
-model Spaces {
-  id          Int        @id @default(autoincrement())
-  name        String     @unique
-  description String
-  icon        String
-  color       String
-  index       Int        @default(0)
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @default(now()) @updatedAt
-  Elements    Elements[]
-
-  @@map("spaces")
-}
-
-model Elements {
-  id          Int      @id @default(autoincrement())
-  elementType String // LINK, IMAGE, VIDEO, AUDIO, TEXT, CODEBLOCK, README, NOTE, FILE
-  content     String
-  space       Spaces   @relation(fields: [spaceId], references: [id])
-  positionX   Int      @default(0)
-  positionY   Int      @default(0)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @default(now()) @updatedAt
-  spaceId     Int
-  width       String   @default("auto")
-  height      String   @default("auto")
-
-  @@map("elements")
-}
-
-model Settings {
-  id        Int      @id @default(autoincrement())
-  name      String   @unique
-  value     String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
-
-  @@map("settings")
+model User {
+  id          String @id
+  displayName String
 }

@@ -1,6 +1,6 @@
 [workspace]
 members = [
-    "packages/core",
-    "packages/core/prisma",
-    "apps/src-tauri"
+    "apps/src-tauri",
+    "core",
+    "core/prisma"
 ]

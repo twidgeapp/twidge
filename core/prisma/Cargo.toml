@@ -1,0 +1,12 @@
+[package]
+name = "prisma"
+version = "0.0.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+prisma-client-rust-cli = { git = "https://github.com/Brendonovich/prisma-client-rust.git", rev = "6a0119bce951c8d956542a59b2f783fc5a591fc7", features = [
+  "rspc",
+  "sqlite-create-many",
+] }

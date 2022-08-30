@@ -1,4 +1,0 @@
-./packages/utils/index.ts
-/target
-**/*/dist
-/node_modules
