@@ -1,9 +1,0 @@
-[alias]
-prisma = "run -p prisma --"
-
-
-[build]
-rustc-wrapper = "/home/varunp/.cargo/bin/sccache"
-
-[target.x86_64-pc-windows-msvc]
-rustflags = ["-Ctarget-feature=+crt-static"]

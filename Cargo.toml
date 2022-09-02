@@ -4,3 +4,5 @@ members = [
     "core",
     "core/prisma"
 ]
+
+resolver="2"

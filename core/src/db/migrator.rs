@@ -16,7 +16,7 @@ pub async fn new_client() -> Result<PrismaClient, CoreError> {
     tokio::fs::File::create(library_url.clone()).await?;
 
     let client =
-        new_client_with_url(&("file://".to_string() + library_url.to_str().unwrap())).await?;
+        new_client_with_url(&("file:".to_string() + library_url.to_str().unwrap())).await?;
 
     Ok(client)
 }
