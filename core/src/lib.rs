@@ -1,6 +1,7 @@
 use std::sync::Arc;
 
 use prisma::PrismaClient;
+use serde::{Deserialize, Serialize};
 
 pub mod db;
 pub mod errors;

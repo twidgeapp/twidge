@@ -275,7 +275,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.12.1, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.12.1, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.9.2":
   version: 7.18.9
   resolution: "@babel/runtime@npm:7.18.9"
   dependencies:
@@ -324,6 +324,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@emotion/hash@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "@emotion/hash@npm:0.8.0"
+  checksum: 4b35d88a97e67275c1d990c96d3b0450451d089d1508619488fc0acb882cb1ac91e93246d471346ebd1b5402215941ef4162efe5b51534859b39d8b3a0e3ffaa
+  languageName: node
+  linkType: hard
+
 "@emotion/is-prop-valid@npm:^0.8.2":
   version: 0.8.8
   resolution: "@emotion/is-prop-valid@npm:0.8.8"
@@ -347,10 +354,48 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fluentui/react-icons@npm:^2.0.179":
+  version: 2.0.179
+  resolution: "@fluentui/react-icons@npm:2.0.179"
+  dependencies:
+    "@griffel/react": ^1.0.0
+    tslib: ^2.1.0
+  peerDependencies:
+    "@griffel/react": ^1.0.0
+    react: ">=16.8.0 <18.0.0"
+  checksum: 65bace876add14d72c7f6ff18c9e0d7b4a178d2f3ac412fe8381e6681fc45e7144bced3005b1d229f04386fb2c518f243bfd1b7913966cb5f32663745e8c122f
+  languageName: node
+  linkType: hard
+
 "@gar/promisify@npm:^1.1.3":
   version: 1.1.3
   resolution: "@gar/promisify@npm:1.1.3"
   checksum: 4059f790e2d07bf3c3ff3e0fec0daa8144fe35c1f6e0111c9921bd32106adaa97a4ab096ad7dab1e28ee6a9060083c4d1a4ada42a7f5f3f7a96b8812e2b757c1
+  languageName: node
+  linkType: hard
+
+"@griffel/core@npm:^1.6.0":
+  version: 1.6.0
+  resolution: "@griffel/core@npm:1.6.0"
+  dependencies:
+    "@emotion/hash": ^0.8.0
+    csstype: ^3.0.10
+    rtl-css-js: ^1.16.0
+    stylis: ^4.0.13
+    tslib: ^2.1.0
+  checksum: d2ebae80ec47a4e9009055063947679e1c0b9cb2df4b378563a06fe48eec9fcef367f648be32b265ad34cadfc63b770c32d5ee225b7c0b8338a415939a21cdd4
+  languageName: node
+  linkType: hard
+
+"@griffel/react@npm:^1.0.0":
+  version: 1.3.1
+  resolution: "@griffel/react@npm:1.3.1"
+  dependencies:
+    "@griffel/core": ^1.6.0
+    tslib: ^2.1.0
+  peerDependencies:
+    react: ">=16.8.0 <18.0.0"
+  checksum: a42f6118b64c5e1dc4a5b60a0d7cccb4d461835c123d90d14deb19ed99fd9b976bd31894dad281c394ace6d855e1a80bbbf1336e9aacc8f5ca5a01d9f8cf944d
   languageName: node
   linkType: hard
 
@@ -1164,7 +1209,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"csstype@npm:^3.0.2":
+"csstype@npm:^3.0.10, csstype@npm:^3.0.2":
   version: 3.1.0
   resolution: "csstype@npm:3.1.0"
   checksum: 644e986cefab86525f0b674a06889cfdbb1f117e5b7d1ce0fc55b0423ecc58807a1ea42ecc75c4f18999d14fc42d1d255f84662a45003a52bb5840e977eb2ffd
@@ -2646,6 +2691,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"rtl-css-js@npm:^1.16.0":
+  version: 1.16.0
+  resolution: "rtl-css-js@npm:1.16.0"
+  dependencies:
+    "@babel/runtime": ^7.1.2
+  checksum: 51756329f691cacd3e1b48f0f9d04a69338a90013f2d2942ca1ae3b069c952f70055f5fd76c66921e9a5cb956276252376a847c3294bd0ee54be9ceb32ea868c
+  languageName: node
+  linkType: hard
+
 "run-parallel@npm:^1.1.9":
   version: 1.2.0
   resolution: "run-parallel@npm:1.2.0"
@@ -2829,6 +2883,13 @@ __metadata:
     hey-listen: ^1.0.8
     tslib: 2.4.0
   checksum: 262d89aa3131d9076f8699cb38119740beadff901732c5f71bd3a34fcc398246a398d74057ca4ed3c06aeb44d8c5022839f6203a9a1bc7fdde2965674e3eaa31
+  languageName: node
+  linkType: hard
+
+"stylis@npm:^4.0.13":
+  version: 4.1.1
+  resolution: "stylis@npm:4.1.1"
+  checksum: e9b0a086996a94c44d45933287731313f6ecdbf9334410231d882d31a1890fb36e34a7b163487e2d7f992c2044e4cb37179810fc6f758f359a431343c2374ed2
   languageName: node
   linkType: hard
 
@@ -3059,6 +3120,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "web@workspace:apps/web"
   dependencies:
+    "@fluentui/react-icons": ^2.0.179
     "@radix-ui/react-progress": ^1.0.0
     "@tauri-apps/api": ^1.0.2
     "@twidge/core": "workspace:*"

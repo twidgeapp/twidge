@@ -9,7 +9,6 @@ export const globalStore = createSlice({
   },
   reducers: {
     setLoaded: (state, action) => {
-      console.log(action.payload);
       state.loaded = action.payload;
     },
     setVersion: (state, action) => {

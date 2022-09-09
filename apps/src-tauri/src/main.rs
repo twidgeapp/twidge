@@ -16,12 +16,17 @@ async fn main() {
         client: Arc::new(client),
     };
     let router = Arc::new(tcore::routes::init_router());
+    let shared_clone = shared.clone();
 
     tauri::Builder::default()
         .plugin(rspc::integrations::tauri::plugin(router, move || {
-            shared.clone()
+            shared_clone.clone()
         }))
-        .invoke_handler(tauri::generate_handler![tcore::functions::show_bar])
+        .manage(shared)
+        .invoke_handler(tauri::generate_handler![
+            tcore::functions::show_bar,
+            tcore::db::migrator::run_migrations
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

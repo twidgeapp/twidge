@@ -17,14 +17,13 @@ const Home = () => {
     if (versionData.data) {
       dispatch(setLoaded(true));
       dispatch(setVersion(versionData.data));
-      platform().then((e) => {
-        dispatch(setPlatform(e));
+      invoke("run_migrations").then(() => {
+        platform().then((e) => {
+          dispatch(setPlatform(e));
+          invoke("show_bar");
+          // navigate("/home");
+        });
       });
-
-      setTimeout(() => {
-        invoke("show_bar");
-        navigate("/home");
-      }, 2000);
     }
   }, [versionData.data]);
 
