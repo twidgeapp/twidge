@@ -2,7 +2,7 @@
 name = "app"
 version = "0.1.0"
 description = "A Tauri App"
-authors = ["Varun Potti <potti.varun07@gmail.com>"]
+authors = ["you"]
 license = ""
 repository = ""
 default-run = "app"
@@ -15,22 +15,19 @@ rust-version = "1.57"
 tauri-build = { version = "1.0.4", features = [] }
 
 [dependencies]
-serde_json = "1.0"
-serde = { version = "1.0", features = ["derive"] }
-tauri = { version = "1.0.5", features = ["api-all", "system-tray"] }
-tcore = {path="../../packages/core"}
-tokio = { version = "1.20.1", features = ["full"] }
 rspc = { version = "0.0.4", features = [
-  "axum",
-  "tauri",
   "uuid",
   "chrono",
   "tracing",
+  "tauri"
 ] }
-pretty_env_logger = "0.4.0"
-futures = "0.3.23"
-lazy_static = "1.4.0"
-log = "0.4.17"
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+tauri = { version = "1.0.5", features = ["api-all"] }
+tcore= {path="../../core"}
+log = "0.4"
+tokio = { version = "1", features = ["full"] }
+pretty_env_logger = "0.4"
 
 [features]
 # by default Tauri runs in production mode
@@ -39,6 +36,3 @@ default = [ "custom-protocol" ]
 # this feature is used used for production builds where `devPath` points to the filesystem
 # DO NOT remove this
 custom-protocol = [ "tauri/custom-protocol" ]
-
-[dependencies.tauri-plugin-autostart]
-git = "https://github.com/tauri-apps/tauri-plugin-autostart"

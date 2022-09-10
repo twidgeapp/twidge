@@ -1,7 +1,0 @@
-{
-	"name": "@twidge/config",
-	"dependencies": {
-		"@catppuccin/palette": "^0.1.5",
-		"@stitches/react": "^1.2.8"
-	}
-}

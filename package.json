@@ -1,35 +1,30 @@
 {
-	"name": "twidge",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"prepare": "husky install",
-		"dev": "turbo run dev",
-		"build": "cd apps/web && yarn build && cd ../src-tauri && cargo tauri build",
-		"format": "prettier --write '**/*.{js,jsx,ts,tsx}'",
-		"lint": "eslint '**/*.{js,jsx,ts,tsx}'"
-	},
-	"workspaces": [
-		"apps/**",
-		"packages/**"
-	],
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"devDependencies": {
-		"@commitlint/cli": "^17.0.3",
-		"@commitlint/config-conventional": "^17.0.3",
-		"@typescript-eslint/eslint-plugin": "^5.32.0",
-		"@typescript-eslint/parser": "^5.32.0",
-		"eslint": "^8.21.0",
-		"eslint-plugin-react": "^7.30.1",
-		"husky": "^8.0.1",
-		"prettier": "^2.7.1",
-		"turbo": "^1.4.2"
-	},
-	"eslintConfig": {
-		"extends": ".eslintrc.js"
-	},
-	"packageManager": "yarn@3.2.2"
+  "name": "twidge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "./core"
+  ],
+  "scripts": {
+    "web:dev": "cd apps/web && yarn dev",
+    "tauri:dev": "cd apps/src-tauri && yarn dev",
+    "web:build": "cd apps/web && yarn build",
+    "tauri:build": "cd apps/src-tauri && yarn build",
+    "dev": "concurrently --names \"web,tauri\" -c \"bgBlue.bold,bgMagenta.bold\" \"yarn web:dev\" \"yarn tauri:dev\"",
+    "build": "yarn web:build && yarn tauri:build",
+    "landing:dev": "cd apps/landing && yarn dev",
+    "landing:build": "cd apps/landing && yarn build",
+    "landing:preview": "cd apps/landing && yarn preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "yarn@3.2.3",
+  "devDependencies": {
+    "astro": "^1.2.1",
+    "concurrently": "^7.3.0"
+  }
 }

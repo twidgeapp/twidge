@@ -3,44 +3,30 @@
     windows_subsystem = "windows"
 )]
 
-pub mod settings;
-
-use settings::Settings;
 use std::sync::Arc;
-use tauri::{CustomMenuItem, SystemTray, SystemTrayMenu, SystemTrayMenuItem};
-use tauri_plugin_autostart::MacosLauncher;
-use tcore::routes::Shared;
+use tcore::Shared;
 
 #[tokio::main]
 async fn main() {
-    std::env::set_var("RUST_LOG", "info");
+    std::env::set_var("RUST_LOG", "debug");
     pretty_env_logger::init();
 
-    let client = Arc::new(tcore::db::migrator::new_client().await.unwrap());
-    let quit = CustomMenuItem::new("quit".to_string(), "Quit");
-    let hide = CustomMenuItem::new("hide".to_string(), "Hide");
-    let tray_menu = SystemTrayMenu::new()
-        .add_item(quit)
-        .add_native_item(SystemTrayMenuItem::Separator)
-        .add_item(hide);
-
-    Settings::new(client.clone()).await.unwrap();
-
+    let client = tcore::db::migrator::new_client().await.unwrap();
     let shared = Shared {
-        client: client.clone(),
+        client: Arc::new(client),
     };
+    let router = Arc::new(tcore::routes::init_router());
+    let shared_clone = shared.clone();
 
     tauri::Builder::default()
-        .system_tray(SystemTray::new().with_menu(tray_menu))
-        .plugin(rspc::integrations::tauri::plugin(
-            Arc::new(tcore::routes::init_router()),
-            move || (shared.clone()),
-        ))
-        .plugin(tauri_plugin_autostart::init(
-            MacosLauncher::LaunchAgent,
-            true,
-        ))
-        .manage(client)
+        .plugin(rspc::integrations::tauri::plugin(router, move || {
+            shared_clone.clone()
+        }))
+        .manage(shared)
+        .invoke_handler(tauri::generate_handler![
+            tcore::functions::show_bar,
+            tcore::db::migrator::run_migrations
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
