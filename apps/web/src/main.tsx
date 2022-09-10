@@ -11,13 +11,13 @@ import { createBrowserHistory } from "history";
 const history = createBrowserHistory({ window });
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <Provider store={state}>
-      <HistoryRouter history={history}>
-        <rspc.Provider client={client} queryClient={queryClient}>
-          <App />
-        </rspc.Provider>
-      </HistoryRouter>
-    </Provider>
-  </React.StrictMode>
+    <React.StrictMode>
+        <Provider store={state}>
+            <HistoryRouter history={history}>
+                <rspc.Provider client={client} queryClient={queryClient}>
+                    <App />
+                </rspc.Provider>
+            </HistoryRouter>
+        </Provider>
+    </React.StrictMode>
 );

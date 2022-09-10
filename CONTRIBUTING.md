@@ -8,13 +8,13 @@ To get a good overview of the project make sure to read the [ReadMe](https://git
 
 Make sure to have these installed!
 
-- Rustc v1.62.1
-- Node v18.7.0
-- Cargo v1.62.1
-- Git
-- Pnpm v7.8.0
-- Sccache v0.3.0 `cargo install sccache`
-- TauriCli v1.0.5 `cargo install tauri-cli`
+-   Rustc v1.62.1
+-   Node v18.7.0
+-   Cargo v1.62.1
+-   Git
+-   Pnpm v7.8.0
+-   Sccache v0.3.0 `cargo install sccache`
+-   TauriCli v1.0.5 `cargo install tauri-cli`
 
 # Getting Started
 
@@ -30,13 +30,13 @@ If you want a new feature to be supported by Twidge or you found a bug, first ch
 
 ## Fix an issue or create a new feature
 
-- First clone the repo using the command `git clone git@github.com:VarunPotti/twidge.git`
-- Then run `pnpm` to install all the require packages
-- Run `pnpm dev` to run twidge.
-- Fix the issue or create a new feature
+-   First clone the repo using the command `git clone git@github.com:VarunPotti/twidge.git`
+-   Then run `pnpm` to install all the require packages
+-   Run `pnpm dev` to run twidge.
+-   Fix the issue or create a new feature
 
 ## Pull Request
 
-- [Create a new pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) and ask the maintainers to take a look into the pull request.
-- We may ask for changes to be made before a PR can be merged, either using [suggested changes](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/incorporating-feedback-in-your-pull-request) or pull request comments. You can apply suggested changes directly through the UI. You can make any other changes in your fork, then commit them to your branch.
-- If you run into any merge issues, checkout this [git tutorial](https://lab.github.com/githubtraining/managing-merge-conflicts) to help you resolve merge conflicts and other issues.
+-   [Create a new pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) and ask the maintainers to take a look into the pull request.
+-   We may ask for changes to be made before a PR can be merged, either using [suggested changes](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/incorporating-feedback-in-your-pull-request) or pull request comments. You can apply suggested changes directly through the UI. You can make any other changes in your fork, then commit them to your branch.
+-   If you run into any merge issues, checkout this [git tutorial](https://lab.github.com/githubtraining/managing-merge-conflicts) to help you resolve merge conflicts and other issues.

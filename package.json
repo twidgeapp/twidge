@@ -1,34 +1,40 @@
 {
-  "name": "twidge",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "workspaces": [
-    "apps/*",
-    "packages/*",
-    "./core"
-  ],
-  "scripts": {
-    "web:dev": "cd apps/web && yarn dev",
-    "tauri:dev": "cd apps/src-tauri && yarn dev",
-    "web:build": "cd apps/web && yarn build",
-    "tauri:build": "cd apps/src-tauri && yarn build",
-    "dev": "concurrently --names \"web,tauri\" -c \"bgBlue.bold,bgMagenta.bold\" \"yarn web:dev\" \"yarn tauri:dev\"",
-    "build": "yarn web:build && yarn tauri:build",
-    "landing:dev": "cd apps/landing && yarn dev",
-    "landing:build": "cd apps/landing && yarn build",
-    "landing:preview": "cd apps/landing && yarn preview",
-    "postinstall": "husky install"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "yarn@3.2.3",
-  "devDependencies": {
-    "@commitlint/cli": "^17.1.2",
-    "@commitlint/config-conventional": "^17.1.0",
-    "astro": "^1.2.1",
-    "concurrently": "^7.3.0",
-    "husky": "^8.0.1"
-  }
+    "name": "twidge",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "workspaces": [
+        "apps/*",
+        "packages/*",
+        "./core"
+    ],
+    "scripts": {
+        "web:dev": "cd apps/web && yarn dev",
+        "tauri:dev": "cd apps/src-tauri && yarn dev",
+        "web:build": "cd apps/web && yarn build",
+        "tauri:build": "cd apps/src-tauri && yarn build",
+        "dev": "concurrently --names \"web,tauri\" -c \"bgBlue.bold,bgMagenta.bold\" \"yarn web:dev\" \"yarn tauri:dev\"",
+        "build": "yarn web:build && yarn tauri:build",
+        "landing:dev": "cd apps/landing && yarn dev",
+        "landing:build": "cd apps/landing && yarn build",
+        "landing:preview": "cd apps/landing && yarn preview",
+        "postinstall": "husky install",
+        "format": "prettier --write '**/*.{js,jsx,ts,tsx}'",
+        "lint": "eslint '**/*.{js,jsx,ts,tsx}'"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "packageManager": "yarn@3.2.3",
+    "devDependencies": {
+        "@commitlint/cli": "^17.1.2",
+        "@commitlint/config-conventional": "^17.1.0",
+        "@typescript-eslint/eslint-plugin": "^5.36.2",
+        "@typescript-eslint/parser": "^5.36.2",
+        "astro": "^1.2.1",
+        "concurrently": "^7.3.0",
+        "eslint": "^8.23.0",
+        "husky": "^8.0.1",
+        "prettier": "2.7.1"
+    }
 }

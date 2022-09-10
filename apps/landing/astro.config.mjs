@@ -8,6 +8,6 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://vpotti.me",
-  integrations: [image(), prefetch(), sitemap(), tailwind()],
+    site: "https://vpotti.me",
+    integrations: [image(), prefetch(), sitemap(), tailwind()],
 });
