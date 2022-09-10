@@ -14,13 +14,17 @@
     "web:build": "cd apps/web && yarn build",
     "tauri:build": "cd apps/src-tauri && yarn build",
     "dev": "concurrently --names \"web,tauri\" -c \"bgBlue.bold,bgMagenta.bold\" \"yarn web:dev\" \"yarn tauri:dev\"",
-    "build": "yarn web:build && yarn tauri:build"
+    "build": "yarn web:build && yarn tauri:build",
+    "landing:dev": "cd apps/landing && yarn dev",
+    "landing:build": "cd apps/landing && yarn build",
+    "landing:preview": "cd apps/landing && yarn preview"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "yarn@3.2.3",
   "devDependencies": {
+    "astro": "^1.2.1",
     "concurrently": "^7.3.0"
   }
 }

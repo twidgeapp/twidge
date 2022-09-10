@@ -10,7 +10,23 @@ generator client {
   output   = "../core/src/prisma.rs"
 }
 
-model User {
-  id          String @id
-  displayName String
+model Spaces {
+  id          Int        @id @default(autoincrement())
+  name        String
+  description String
+  color       String
+  icon        String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  Elements    Elements[]
+}
+
+model Elements {
+  id        Int      @id @default(autoincrement())
+  e_type    String
+  value     String
+  space     Spaces   @relation(fields: [spacesId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  spacesId  Int
 }

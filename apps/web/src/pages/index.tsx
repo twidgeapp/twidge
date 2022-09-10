@@ -8,7 +8,6 @@ import { setLoaded, setPlatform, setVersion } from "@twidge/core/state/global";
 import { platform } from "@tauri-apps/api/os";
 
 const Home = () => {
-  const loaded = useSelector((state: any) => state.global.loaded);
   const versionData = rspc.useQuery(["version"]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,7 +20,7 @@ const Home = () => {
         platform().then((e) => {
           dispatch(setPlatform(e));
           invoke("show_bar");
-          // navigate("/home");
+          navigate("/home");
         });
       });
     }

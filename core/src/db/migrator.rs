@@ -2,7 +2,6 @@ use crate::{
     errors::CoreError,
     prisma::{new_client_with_url, PrismaClient},
     utils::get_twidge_dir,
-    Shared,
 };
 use enumflags2::BitFlags;
 use include_dir::{include_dir, Dir};
@@ -32,11 +31,10 @@ pub async fn new_client() -> Result<PrismaClient, CoreError> {
 }
 
 #[tauri::command]
-pub async fn run_migrations(state: tauri::State<'_, Shared>) -> Result<(), String> {
+pub async fn run_migrations() -> Result<(), String> {
     let library_url = get_twidge_dir().join("library.db");
     let library_url = &("file:".to_string() + library_url.to_str().unwrap());
 
-    let shared = state.clone();
     let migrations_temp = get_twidge_dir().join("migrations");
     let migrations_directory_path = migrations_temp
         .to_str()
