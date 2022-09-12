@@ -23,22 +23,23 @@ const OnboardingIntro = () => {
                 <div className="flex gap-3">
                     <button
                         onClick={() => {
-                            navigate("/onboarding/2");
-                        }}
-                        className="bg-dark-blue4 border border-dark-blue10 text-dark-blue10 hover:bg-dark-blue3 hover:border-dark-blue8 hover:text-dark-blue9 transition text-sm px-7 py-2 rounded-lg w-36"
-                    >
-                        Continue
-                    </button>
-                    <button
-                        onClick={() => {
                             mutation.mutate({
                                 key: "first_run",
                                 value: "false",
                             });
                         }}
-                        className="bg-dark-mint4 border border-dark-mint8 text-dark-mint9 hover:bg-dark-mint3 hover:border-dark-mint8 hover:text-dark-mint9 transition text-sm px-7 py-2 rounded-lg w-36"
+                        className="bg-dark-gray4 border border-dark-gray8 text-dark-gray12 hover:bg-dark-gray3 hover:border-dark-gray8 hover:text-dark-gray9 transition text-sm px-7 py-2 rounded-lg w-36"
                     >
                         Skip
+                    </button>
+
+                    <button
+                        onClick={() => {
+                            navigate("/onboarding/2");
+                        }}
+                        className="bg-dark-pink4 border border-dark-pink10 text-dark-pink10 hover:bg-dark-pink3 hover:border-dark-pink8 hover:text-dark-pink9 transition text-sm px-7 py-2 rounded-lg w-36"
+                    >
+                        Continue
                     </button>
                 </div>
             </div>

@@ -13,6 +13,14 @@ const NavigatorPages = [
         url: "/onboarding/3",
         name: "3",
     },
+    {
+        url: "/onboarding/4",
+        name: "4",
+    },
+    {
+        url: "/onboarding/5",
+        name: "5",
+    },
 ];
 
 const NavigatorIcons = ({ page }: { page: string }) => {

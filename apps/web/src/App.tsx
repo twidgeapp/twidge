@@ -4,6 +4,8 @@ import { Route, Routes } from "@twidge/core/router";
 import OnboardingIntro from "./pages/onboard/1";
 import OnBoardingPage2 from "./pages/onboard/2";
 import OnBoardingPage3 from "./pages/onboard/3";
+import OnBoardingPage4 from "./pages/onboard/4";
+import OnBoardingPage5 from "./pages/onboard/6";
 
 function App() {
     return (
@@ -15,6 +17,8 @@ function App() {
                     <Route path="1" element={<OnboardingIntro />} />
                     <Route path="2" element={<OnBoardingPage2 />} />
                     <Route path="3" element={<OnBoardingPage3 />} />
+                    <Route path="4" element={<OnBoardingPage4 />} />
+                    <Route path="5" element={<OnBoardingPage5 />} />
                 </Route>
             </Routes>
         </div>

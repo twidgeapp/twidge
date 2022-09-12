@@ -12,6 +12,7 @@
         "@fluentui/react-icons": "^2.0.179",
         "@radix-ui/colors": "^0.1.8",
         "@radix-ui/react-progress": "^1.0.0",
+        "@tabler/icons": "^1.95.1",
         "@tanstack/react-query-devtools": "^4.3.5",
         "@tauri-apps/api": "^1.0.2",
         "@twidge/core": "workspace:*",

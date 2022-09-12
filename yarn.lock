@@ -1334,6 +1334,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tabler/icons@npm:^1.95.1":
+  version: 1.95.1
+  resolution: "@tabler/icons@npm:1.95.1"
+  peerDependencies:
+    react: ^16.x || 17.x || 18.x
+    react-dom: ^16.x || 17.x || 18.x
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: b003e3661f76257e7cd9d37e07e6df2d30638a37413233c6f55fd26ca16c476fef93e3e16880171da53c5c0b1d1bfb1696f6b57ab1c0a7ad27dca891ea2e17c3
+  languageName: node
+  linkType: hard
+
 "@tanstack/match-sorter-utils@npm:^8.1.1":
   version: 8.1.1
   resolution: "@tanstack/match-sorter-utils@npm:8.1.1"
@@ -8368,6 +8383,7 @@ __metadata:
     "@fluentui/react-icons": ^2.0.179
     "@radix-ui/colors": ^0.1.8
     "@radix-ui/react-progress": ^1.0.0
+    "@tabler/icons": ^1.95.1
     "@tanstack/react-query-devtools": ^4.3.5
     "@tauri-apps/api": ^1.0.2
     "@twidge/core": "workspace:*"

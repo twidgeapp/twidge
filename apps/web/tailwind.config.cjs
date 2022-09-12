@@ -7,6 +7,7 @@ const {
     blueDark,
     redDark,
     greenDark,
+    pinkDark,
     mintDark,
 } = require("@radix-ui/colors");
 
@@ -24,6 +25,7 @@ module.exports = {
                     ...grayDark,
                     ...blueDark,
                     ...redDark,
+                    ...pinkDark,
                     ...greenDark,
                     ...mintDark,
                 },
