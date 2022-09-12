@@ -7,6 +7,7 @@ const {
     blueDark,
     redDark,
     greenDark,
+    mintDark,
 } = require("@radix-ui/colors");
 
 /** @type {import('tailwindcss').Config} */
@@ -19,10 +20,13 @@ module.exports = {
                 ...blue,
                 ...red,
                 ...green,
-                ...grayDark,
-                ...blueDark,
-                ...redDark,
-                ...greenDark,
+                dark: {
+                    ...grayDark,
+                    ...blueDark,
+                    ...redDark,
+                    ...greenDark,
+                    ...mintDark,
+                },
             },
         },
     },

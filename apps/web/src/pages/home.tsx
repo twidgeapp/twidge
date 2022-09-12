@@ -23,10 +23,11 @@ const Home = () => {
         const data: any = firstRun.data;
         if (data) {
             if (data.value === "true") {
-                navigate("/setup");
+                navigate("/onboarding/1");
             }
         }
     }, [firstRun.data]);
+
     return (
         <MenuBarContext.Provider
             value={{

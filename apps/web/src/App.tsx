@@ -1,6 +1,7 @@
 import Index from "./pages";
 import Home from "./pages/home";
 import { Route, Routes } from "@twidge/core/router";
+import OnboardingIntro from "./pages/onboard/1";
 
 function App() {
     return (
@@ -8,6 +9,9 @@ function App() {
             <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/home" element={<Home />} />
+                <Route path="/onboarding">
+                    <Route path="1" element={<OnboardingIntro />} />
+                </Route>
             </Routes>
         </div>
     );
