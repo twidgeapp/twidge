@@ -5,6 +5,7 @@ import "./index.css";
 import state, { Provider } from "@twidge/core/state";
 import rspc, { client, queryClient } from "@twidge/core/query";
 import { unstable_HistoryRouter as HistoryRouter } from "@twidge/core/router";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import { createBrowserHistory } from "history";
 
@@ -15,7 +16,10 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <Provider store={state}>
             <HistoryRouter history={history}>
                 <rspc.Provider client={client} queryClient={queryClient}>
-                    <App />
+                    <>
+                        <ReactQueryDevtools position="bottom-right" />
+                        <App />
+                    </>
                 </rspc.Provider>
             </HistoryRouter>
         </Provider>

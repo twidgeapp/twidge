@@ -21,7 +21,9 @@ const Home = () => {
 
     useEffect(() => {
         const data: any = firstRun.data;
+
         if (data) {
+            console.log(data);
             if (data.value === "true") {
                 navigate("/onboarding/1");
             }

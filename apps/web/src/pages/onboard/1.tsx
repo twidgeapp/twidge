@@ -1,15 +1,14 @@
 import rspc from "@twidge/core/query";
+import { useNavigate } from "react-router";
 import Logo from "../../assets/logo.svg";
+import OnBoardingLayout from "../../layout/onboarding_layout";
 
 const OnboardingIntro = () => {
     const mutation = rspc.useMutation("settings.set");
+    const navigate = useNavigate();
 
     return (
-        <div
-            className={
-                "bg-black bg-opacity-90 w-full h-full rounded-md flex items-center justify-center text-white selection:bg-dark-blue11 selection:bg-opacity-50"
-            }
-        >
+        <OnBoardingLayout page="1">
             <div className="flex items-center justify-center flex-col gap-4">
                 <img src={Logo} width={96} />
                 <div className="flex flex-col gap-[6px] items-center justify-center mt-3">
@@ -22,7 +21,12 @@ const OnboardingIntro = () => {
                     </p>
                 </div>
                 <div className="flex gap-3">
-                    <button className="bg-dark-blue4 border border-dark-blue10 text-dark-blue10 hover:bg-dark-blue3 hover:border-dark-blue8 hover:text-dark-blue9 transition text-sm px-7 py-2 rounded-lg w-36">
+                    <button
+                        onClick={() => {
+                            navigate("/onboarding/2");
+                        }}
+                        className="bg-dark-blue4 border border-dark-blue10 text-dark-blue10 hover:bg-dark-blue3 hover:border-dark-blue8 hover:text-dark-blue9 transition text-sm px-7 py-2 rounded-lg w-36"
+                    >
                         Continue
                     </button>
                     <button
@@ -38,7 +42,7 @@ const OnboardingIntro = () => {
                     </button>
                 </div>
             </div>
-        </div>
+        </OnBoardingLayout>
     );
 };
 

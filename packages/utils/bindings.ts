@@ -2,15 +2,15 @@
 
 export type Operations = {
     queries: 
-        { key: ["version"], result: string } | 
-        { key: ["settings.get", GetSettingsArgs], result: Settings | null },
+        { key: ["settings.get", GetSettingsArgs], result: Settings | null } | 
+        { key: ["version"], result: string },
     mutations: 
         { key: ["settings.set", SetSettingsArgs], result: Settings },
     subscriptions: never
 };
 
-export interface GetSettingsArgs { key: string }
-
 export interface Settings { id: number, name: string, value: string, createdAt: string, updatedAt: string }
+
+export interface GetSettingsArgs { key: string }
 
 export interface SetSettingsArgs { key: string, value: string }
