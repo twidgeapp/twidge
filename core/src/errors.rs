@@ -1,3 +1,4 @@
+use migration_core::migration_connector::ConnectorError;
 use thiserror::Error;
 
 #[derive(Debug, Error)]
@@ -13,4 +14,10 @@ pub enum CoreError {
 
     #[error("Tokio Join Error")]
     TokioJoinError(#[from] tokio::task::JoinError),
+
+    #[error("Quaint Error")]
+    QuaintError(#[from] quaint::error::Error),
+
+    #[error("Migration Core Error")]
+    MigrationCoreError(#[from] ConnectorError),
 }

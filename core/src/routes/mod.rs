@@ -1,3 +1,5 @@
+pub mod settings;
+
 use std::path::PathBuf;
 
 use rspc::{Config, Router};
@@ -13,6 +15,7 @@ pub fn init_router() -> Router<Shared> {
                     PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../packages/utils/bindings.ts"),
                 ),
         )
+        .merge("settings.", settings::mount())
         .query("version", move |_, _: ()| async move {
             env!("CARGO_PKG_VERSION")
         });

@@ -30,3 +30,5 @@ sql-migration-connector = { git = "https://github.com/Brendonovich/prisma-engine
 
 
 include_dir = "0.7.2"
+lazy_static = "1.4.0"
+futures = "0.3.24"

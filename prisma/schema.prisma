@@ -30,3 +30,11 @@ model Elements {
   updatedAt DateTime @updatedAt
   spacesId  Int
 }
+
+model Settings {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  value     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+}
