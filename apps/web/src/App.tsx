@@ -5,7 +5,7 @@ import OnboardingIntro from "./pages/onboard/1";
 import OnBoardingPage2 from "./pages/onboard/2";
 import OnBoardingPage3 from "./pages/onboard/3";
 import OnBoardingPage4 from "./pages/onboard/4";
-import OnBoardingPage5 from "./pages/onboard/6";
+import OnBoardingPage5 from "./pages/onboard/5";
 
 function App() {
     return (

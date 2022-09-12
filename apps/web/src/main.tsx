@@ -17,7 +17,6 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
             <HistoryRouter history={history}>
                 <rspc.Provider client={client} queryClient={queryClient}>
                     <>
-                        <ReactQueryDevtools position="bottom-right" />
                         <App />
                     </>
                 </rspc.Provider>
