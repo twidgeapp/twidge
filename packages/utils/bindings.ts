@@ -9,8 +9,8 @@ export type Operations = {
     subscriptions: never
 };
 
-export interface Settings { id: number, name: string, value: string, createdAt: string, updatedAt: string }
-
 export interface GetSettingsArgs { key: string }
+
+export interface Settings { id: number, name: string, value: string, createdAt: string, updatedAt: string }
 
 export interface SetSettingsArgs { key: string, value: string }

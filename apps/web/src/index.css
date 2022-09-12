@@ -10,7 +10,7 @@ body, html{
 .progress-css {
     position: relative;
     overflow: hidden;
-    background-color: #3771f4;
+    background-color: #F34953;
 }
 .progress-css::after {
     position: absolute;

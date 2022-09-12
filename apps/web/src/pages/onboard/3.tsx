@@ -3,9 +3,9 @@ import BottomRightLogo from "../../components/onboarding/logo";
 import NextButton from "../../components/onboarding/buttons";
 import OnBoardingLayout from "../../layout/onboarding_layout";
 
-const OnBoardingPage2 = () => {
+const OnBoardingPage3 = () => {
     return (
-        <OnBoardingLayout page="2">
+        <OnBoardingLayout page="3">
             <div className="flex items-center justify-center flex-col gap-2">
                 <h1 className="text-4xl font-extrabold">
                     This is the <i className="font-black">fastest</i> it gets.
@@ -27,9 +27,9 @@ const OnBoardingPage2 = () => {
                 </div>
             </div>
             <BottomRightLogo />
-            <NextButton page="3" />
+            <NextButton page="4" />
         </OnBoardingLayout>
     );
 };
 
-export default OnBoardingPage2;
+export default OnBoardingPage3;

@@ -9,6 +9,10 @@ const NavigatorPages = [
         url: "/onboarding/2",
         name: "2",
     },
+    {
+        url: "/onboarding/3",
+        name: "3",
+    },
 ];
 
 const NavigatorIcons = ({ page }: { page: string }) => {
