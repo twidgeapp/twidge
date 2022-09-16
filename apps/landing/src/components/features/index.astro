@@ -11,9 +11,17 @@ import Card from "./card.astro";
 ---
 
 <div
-    class="w-full flex items-center justify-center flex-col gap-6 mt-3 bg-dark-purple2 p-8"
+    style="background-image: url('/assets/features.svg'); background-position: center; background-repeat: no-repeat;"
+    class="w-full flex py-16 items-center justify-center flex-col gap-6 mt-3 bg-dark-purple2 p-8"
 >
-    <h1 class="text-5xl font-bold">Features</h1>
+    <h1
+        class="text-base rounded-xl font-bold bg-dark-blue4 border border-dark-blue10 text-dark-blue11 px-4 py-1"
+    >
+        Features
+    </h1>
+    <h1 class="text-5xl font-extrabold text-center">
+        Built for power users, everything from shortcuts<br /> to customizability.
+    </h1>
     <div class="w-full h-fit grid grid-rows-2 items-center justify-center">
         <div class="flex w-full items-center justify-center">
             <Card
