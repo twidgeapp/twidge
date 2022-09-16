@@ -23,10 +23,7 @@ async fn main() {
             shared_clone.clone()
         }))
         .manage(shared)
-        .invoke_handler(tauri::generate_handler![
-            tcore::functions::show_bar,
-            tcore::db::migrator::run_migrations
-        ])
+        .invoke_handler(tauri::generate_handler![tcore::functions::show_bar,])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

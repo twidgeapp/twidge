@@ -1,3 +1,4 @@
+pub mod db;
 pub mod settings;
 
 use std::path::PathBuf;
@@ -16,6 +17,7 @@ pub fn init_router() -> Router<Shared> {
                 ),
         )
         .merge("settings.", settings::mount())
+        .merge("db.", db::mount())
         .query("version", move |_, _: ()| async move {
             env!("CARGO_PKG_VERSION")
         });

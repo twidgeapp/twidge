@@ -9,22 +9,23 @@ import { platform } from "@tauri-apps/api/os";
 
 const Home = () => {
     const versionData = rspc.useQuery(["version"]);
+    const migrator = rspc.useQuery(["db.migrate_and_populate"]);
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (versionData.data) {
+        console.log(versionData.data);
+        if (versionData.data && !migrator.isLoading) {
             dispatch(setLoaded(true));
             dispatch(setVersion(versionData.data));
-            invoke("run_migrations").then(() => {
-                platform().then((e) => {
-                    dispatch(setPlatform(e));
-                    invoke("show_bar");
-                    navigate("/home");
-                });
+            platform().then((e) => {
+                dispatch(setPlatform(e));
+                invoke("show_bar");
+                navigate("/home");
             });
         }
-    }, [versionData.data]);
+    }, [versionData.data, migrator.isLoading]);
 
     return (
         <div className="rounded-md w-screen h-screen bg-black bg-opacity-90">

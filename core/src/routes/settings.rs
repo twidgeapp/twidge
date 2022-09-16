@@ -23,7 +23,8 @@ pub fn mount() -> RouterBuilder<Shared> {
                 .settings()
                 .find_unique(prisma::settings::name::equals(args.key.clone()))
                 .exec()
-                .await?;
+                .await?
+                .unwrap();
 
             Ok(value)
         })
