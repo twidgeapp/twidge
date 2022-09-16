@@ -3,16 +3,18 @@ import Buttons from "./Buttons.astro";
 ---
 
 <div class="w-full h-[calc(100vh-126px)] flex items-center justify-center px-8">
-    <div class="w-1/2 flex items-start flex-col justify-center gap-8">
-        <h1 class="font-extrabold text-8xl">Unleash your productive self.</h1>
-        <p class="w-3/4 font-semibold text-2xl">
+    <div class="w-full lg:w-1/2 flex items-start flex-col justify-center gap-8">
+        <h1 class="font-extrabold md:text-8xl text-6xl">
+            Unleash your productive self.
+        </h1>
+        <p class="w-3/4 font-semibold md:text-2xl text-lg">
             Instantly jot down notes, maintain calendars, todo lists without
             obstructing your flow. Twidge is built for unleashing your 10x self.
         </p>
         <Buttons />
     </div>
     <div
-        class="w-full h-full max-w-4xl max-h-[676px] bg-dark-purple12 rounded-xl"
+        class="w-full h-full max-w-4xl max-h-[676px] xl:max-w-2xl lg:block hidden bg-dark-purple12 rounded-xl"
     >
     </div>
 </div>

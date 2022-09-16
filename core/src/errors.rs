@@ -1,4 +1,5 @@
 use migration_core::migration_connector::ConnectorError;
+use prisma_client_rust::migrations::DbPushError;
 use thiserror::Error;
 
 #[derive(Debug, Error)]
@@ -20,4 +21,7 @@ pub enum CoreError {
 
     #[error("Migration Core Error")]
     MigrationCoreError(#[from] ConnectorError),
+
+    #[error("Db Push Error")]
+    DbPushError(#[from] DbPushError),
 }
