@@ -20,7 +20,8 @@
         "landing:preview": "cd apps/landing && yarn preview",
         "postinstall": "husky install",
         "format": "prettier --write '**/*.{js,jsx,ts,tsx}'",
-        "lint": "eslint '**/*.{js,jsx,ts,tsx}'"
+        "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
+        "postinstall": "cargo prisma generate"
     },
     "keywords": [],
     "author": "",
