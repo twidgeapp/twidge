@@ -14,8 +14,13 @@
         "@astrojs/partytown": "^1.0.0",
         "@astrojs/prefetch": "^0.0.7",
         "@astrojs/sitemap": "^1.0.0",
+        "@astrojs/solid-js": "^1.1.0",
+        "@astrojs/svelte": "^1.0.0",
         "@astrojs/tailwind": "^1.0.0",
         "@radix-ui/colors": "^0.1.8",
-        "astro": "^1.2.1"
+        "astro": "^1.2.1",
+        "solid-js": "^1.4.3",
+        "svelte": "^3.46.4",
+        "svelte-vertical-timeline": "^0.0.2"
     }
 }

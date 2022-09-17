@@ -8,14 +8,14 @@ const { title, description } = Astro.props;
 ---
 
 <div
-    class="p-8 flex items-start justify-center flex-col gap-4 rounded-xl w-96 h-40"
+    class="lg:p-8 p-1 flex items-start justify-start flex-col gap-4 rounded-xl w-96 h-40"
 >
-    <h1 class="text-3xl font-extrabold flex gap-3">
+    <h1 class="lg:text-xl text-3xl font-extrabold flex gap-3 items-center">
         <slot />
         {title}
     </h1>
     <p
-        class="text-white max-w-[356px] leading-normal tracking-tight font-semibold text-start"
+        class="text-white max-w-[356px] leading-normal tracking-tight font-semibold text-base break-all"
     >
         {description}
     </p>
