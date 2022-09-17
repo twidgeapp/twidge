@@ -10,7 +10,7 @@ async fn migrate_and_populate(client: Arc<PrismaClient>) -> Result<(), CoreError
     client._db_push(false).await?;
 
     #[cfg(not(debug_assertions))]
-    client._migrate_deploy().await?;
+    client._migrate_deploy().await.unwrap();
 
     settings::populate_settings(client).await?;
 
