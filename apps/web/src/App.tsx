@@ -12,6 +12,7 @@ import { platform } from "@tauri-apps/api/os";
 import { useDispatch } from "@twidge/core/state";
 import { setPlatform } from "@twidge/core/state/global";
 import { setBackRoutes, setRouteHistory } from "@twidge/core/state/router";
+import WhiteboardPage from "./pages/spaces/whiteboard";
 
 function App() {
     const dispatch = useDispatch();
@@ -41,7 +42,13 @@ function App() {
                     <Route path="4" element={<OnBoardingPage4 />} />
                     <Route path="5" element={<OnBoardingPage5 />} />
                 </Route>
-                <Route path="/spaces/:id" element={<SpaceHome />} />
+                <Route path="/spaces">
+                    <Route path=":id" element={<SpaceHome />} />
+                    <Route
+                        path=":id/whiteboard"
+                        element={<WhiteboardPage />}
+                    ></Route>
+                </Route>
             </Routes>
         </div>
     );

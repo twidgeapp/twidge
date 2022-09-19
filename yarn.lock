@@ -4156,9 +4156,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:^7.2.1":
-  version: 7.2.1
-  resolution: "framer-motion@npm:7.2.1"
+"framer-motion@npm:^7.3.5":
+  version: 7.3.5
+  resolution: "framer-motion@npm:7.3.5"
   dependencies:
     "@emotion/is-prop-valid": ^0.8.2
     "@motionone/dom": 10.13.1
@@ -4173,7 +4173,7 @@ __metadata:
   dependenciesMeta:
     "@emotion/is-prop-valid":
       optional: true
-  checksum: 765406514606c5c812b7f81fb7c250f3ab7b0fe2b9eb01de79257219239252e6ccb897455377ae16ce8353248c6481b53b55da54f8aedd6a0f6e08a90dbebbdd
+  checksum: cf424759774baec082d4ab6912d5dedb97fa3e2fcf53bd8948b7dc9f22d296d1411c4de7b0608a5dcb95e4664856a8dcfbcd5ada6b5a005a1e3acd9781d7348f
   languageName: node
   linkType: hard
 
@@ -9000,7 +9000,7 @@ __metadata:
     "@types/react-router": ^5.1.18
     "@vitejs/plugin-react": ^2.0.1
     autoprefixer: ^10.4.8
-    framer-motion: ^7.2.1
+    framer-motion: ^7.3.5
     history: ^5.3.0
     postcss: ^8.4.16
     react: ^18.2.0

@@ -1,11 +1,6 @@
 import {
     ArrowHookDownLeft16Filled,
     ArrowHookUpRight16Filled,
-    ArrowLeft20Filled,
-    ArrowNext20Filled,
-    ArrowPrevious20Filled,
-    ArrowRight20Filled,
-    ArrowStepBack16Filled,
 } from "@fluentui/react-icons";
 import { useDispatch, useSelector } from "@twidge/core/state";
 import { popBackRoutes, popForwardRoutes } from "@twidge/core/state/router";

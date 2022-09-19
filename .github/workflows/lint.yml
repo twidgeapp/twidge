@@ -5,7 +5,7 @@ on:
 
 jobs:
   twidge:
-    name: twidge
+    name: lint
     runs-on: ubuntu-20.04
     steps:
 
@@ -17,6 +17,7 @@ jobs:
           toolchain: stable
           components: clippy
       - name: Install dependencies 
-        run: sudo apt install libdbus-1-dev pkg-config build-essential curl wget libssl-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev
+        run: sudo apt install libdbus-1-dev pkg-config build-essential curl wget libssl-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev libsoup2.4-dev
+
       - name: Lint
         run: cargo clippy -- -D warnings
