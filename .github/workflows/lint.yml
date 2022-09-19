@@ -6,7 +6,7 @@ on:
 jobs:
   twidge:
     name: Lint
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout Repository 
         uses: actions/checkout@v2
@@ -16,4 +16,4 @@ jobs:
           toolchain: stable
           components: clippy
       - name: Lint
-        run: cargo clippy 
+        run: cargo clippy -- -D warnings
