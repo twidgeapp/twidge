@@ -28,8 +28,8 @@ runs:
       if: matrix.platform == 'ubuntu-latest'
       uses: actions/upload-artifact@v3
       with:
-        name: Twid-deb-${{ env.GITHUB_SHA_SHORT }}
-        path: ./target/release/bundle/deb/twidge_0.1.0_amd64*.deb
+        name: Twidge-deb-${{ env.GITHUB_SHA_SHORT }}
+        path: ./target/release/bundle/deb/twidge*.deb
 
     - name: Publish artifacts (Windows)
       if: matrix.platform == 'windows-latest'
@@ -42,5 +42,5 @@ runs:
       if: matrix.platform == 'macos-latest'
       uses: actions/upload-artifact@v3
       with:
-        name: twidge-macOS-${{ env.GITHUB_SHA_SHORT }}
+        name: twidge-MacOS-${{ env.GITHUB_SHA_SHORT }}
         path: ./target/release/bundle/macos/*.app

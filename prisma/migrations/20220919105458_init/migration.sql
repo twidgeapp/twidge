@@ -13,7 +13,9 @@ CREATE TABLE "WhiteboardItem" (
 CREATE TABLE "Whiteboard" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" TEXT NOT NULL,
-    "description" TEXT NOT NULL
+    "description" TEXT NOT NULL,
+    "spacesId" INTEGER NOT NULL,
+    CONSTRAINT "Whiteboard_spacesId_fkey" FOREIGN KEY ("spacesId") REFERENCES "Spaces" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable
@@ -41,8 +43,8 @@ CREATE TABLE "Journals" (
 CREATE TABLE "Spaces" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" TEXT NOT NULL,
-    "whiteboardId" INTEGER NOT NULL,
-    CONSTRAINT "Spaces_whiteboardId_fkey" FOREIGN KEY ("whiteboardId") REFERENCES "Whiteboard" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+    "icon" TEXT NOT NULL,
+    "color" TEXT NOT NULL
 );
 
 -- CreateTable

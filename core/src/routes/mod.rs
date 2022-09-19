@@ -1,6 +1,6 @@
 pub mod db;
 pub mod settings;
-
+pub mod spaces;
 use std::path::PathBuf;
 
 use rspc::{Config, Router};
@@ -16,6 +16,7 @@ pub fn init_router() -> Router<Shared> {
                     PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../packages/utils/bindings.ts"),
                 ),
         )
+        .merge("spaces.", spaces::mount())
         .merge("settings.", settings::mount())
         .merge("db.", db::mount())
         .query("version", move |_, _: ()| async move {

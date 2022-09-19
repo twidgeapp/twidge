@@ -5965,6 +5965,7 @@ dependencies = [
  "platform-dirs",
  "prisma-client-rust",
  "quaint 0.2.0-alpha.13 (git+https://github.com/prisma/quaint.git)",
+ "rand 0.7.3",
  "rspc",
  "serde",
  "serde_json",

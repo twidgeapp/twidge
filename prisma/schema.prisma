@@ -25,7 +25,8 @@ model Whiteboard {
   name            String
   description     String
   whiteboardItems WhiteboardItem[]
-  Spaces          Spaces[]
+  space           Spaces           @relation(fields: [spacesId], references: [id])
+  spacesId        Int
 }
 
 model Notes {
@@ -49,12 +50,13 @@ model Journals {
 }
 
 model Spaces {
-  id           Int        @id @default(autoincrement())
-  name         String
-  whiteboard   Whiteboard @relation(fields: [whiteboardId], references: [id])
-  whiteboardId Int
-  Notes        Notes[]
-  journals     Journals[]
+  id         Int          @id @default(autoincrement())
+  name       String
+  icon       String
+  color      String
+  Notes      Notes[]
+  journals   Journals[]
+  Whiteboard Whiteboard[]
 }
 
 model Settings {

@@ -5,9 +5,11 @@ export type Operations = {
     queries: 
         { key: ["db.migrate_and_populate"], result: null } | 
         { key: ["settings.get", GetSettingsArgs], result: Settings } | 
+        { key: ["spaces.get"], result: Array<Spaces> } | 
         { key: ["version"], result: string },
     mutations: 
-        { key: ["settings.set", SetSettingsArgs], result: Settings },
+        { key: ["settings.set", SetSettingsArgs], result: Settings } | 
+        { key: ["spaces.create"], result: Spaces },
     subscriptions: never
 };
 
@@ -16,3 +18,5 @@ export interface GetSettingsArgs { key: string }
 export interface SetSettingsArgs { key: string, value: string }
 
 export interface Settings { id: number, name: string, value: string, createdAt: string, updatedAt: string }
+
+export interface Spaces { id: number, name: string, icon: string, color: string }
