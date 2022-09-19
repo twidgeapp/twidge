@@ -1,0 +1,19 @@
+name: lint
+on: 
+  - push
+  - pull_request
+
+jobs:
+  twidge:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository 
+        uses: actions/checkout@v2
+      - name: Install toolchai n
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          components: clippy
+      - name: Lint
+        run: cargo clippy 
