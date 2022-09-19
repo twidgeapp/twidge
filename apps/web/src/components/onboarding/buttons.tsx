@@ -30,7 +30,9 @@ const NextButton = ({ page, back }: { page: string; back?: boolean }) => {
                                 value: "false",
                             })
                             .then(() => {
-                                navigate("/home");
+                                setTimeout(() => {
+                                    window.location.replace("/");
+                                }, 500);
                             });
                     }
                 }}

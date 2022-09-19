@@ -10,25 +10,51 @@ generator client {
   output   = "../core/src/prisma.rs"
 }
 
-model Spaces {
-  id          Int        @id @default(autoincrement())
-  name        String
-  description String
-  color       String
-  icon        String
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
-  Elements    Elements[]
+model WhiteboardItem {
+  id           Int         @id @default(autoincrement())
+  item_type    String
+  value        String
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  Whiteboard   Whiteboard? @relation(fields: [whiteboardId], references: [id])
+  whiteboardId Int?
 }
 
-model Elements {
-  id        Int      @id @default(autoincrement())
-  e_type    String
-  value     String
-  space     Spaces   @relation(fields: [spacesId], references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  spacesId  Int
+model Whiteboard {
+  id              Int              @id @default(autoincrement())
+  name            String
+  description     String
+  whiteboardItems WhiteboardItem[]
+  Spaces          Spaces[]
+}
+
+model Notes {
+  id         Int       @id @default(autoincrement())
+  title      String
+  content    String
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  spaceId    Spaces    @relation(fields: [spacesId], references: [id])
+  spacesId   Int
+  Journals   Journals? @relation(fields: [journalsId], references: [id])
+  journalsId Int?
+}
+
+model Journals {
+  id       Int     @id @default(autoincrement())
+  notes    Notes[]
+  title    String
+  Spaces   Spaces? @relation(fields: [spacesId], references: [id])
+  spacesId Int?
+}
+
+model Spaces {
+  id           Int        @id @default(autoincrement())
+  name         String
+  whiteboard   Whiteboard @relation(fields: [whiteboardId], references: [id])
+  whiteboardId Int
+  Notes        Notes[]
+  journals     Journals[]
 }
 
 model Settings {

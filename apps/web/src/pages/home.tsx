@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import WindowsMenuBar from "../components/menu-bar/windows";
 import MenuBarContext from "../components/menu-bar/windows/ctx";
+import Sidebar from "../components/sidebar";
 
 const Home = () => {
     const firstRun = rspc.useQuery(["settings.get", { key: "first_run" }]);
@@ -40,11 +41,14 @@ const Home = () => {
             <MenuBarContext.Consumer>
                 {(value) => (
                     <div
-                        className={`bg-black bg-opacity-90 w-full h-full ${
+                        className={`bg-black text-white bg-opacity-90 w-full h-full ${
                             value.maximised ? "" : "rounded-md"
                         }`}
                     >
                         {platform === "win32" ? <WindowsMenuBar /> : <></>}
+                        <div className={"w-full h-full flex"}>
+                            <Sidebar />
+                        </div>
                     </div>
                 )}
             </MenuBarContext.Consumer>

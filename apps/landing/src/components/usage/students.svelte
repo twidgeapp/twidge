@@ -14,7 +14,7 @@
         { title: "Pause video", time: "09:30:31 am" },
         { title: "Open notes", time: "9:30:35 am" },
         { title: "Click on a few buttons and note down", time: "9:31:00 am" },
-        { title: "Loosing your flow and rewinding", time: "9:31:00 am" },
+        { title: "losing your flow and rewinding", time: "9:31:00 am" },
     ];
 
     const witht = [
@@ -25,7 +25,7 @@
             time: "09:30:35 am",
         },
         { title: "Clicking on save", time: "09:30:35 am" },
-        { title: "Continue without loosing your flow", time: "09:30:35 am" },
+        { title: "Continue without losing your flow", time: "09:30:35 am" },
     ];
 </script>
 
@@ -71,7 +71,7 @@
                 </TimelineItem>
             {/each}
         </Timeline>
-        <p>Continue without loosing your flow 🤞</p>
+        <p>Continue without losing your flow 🤞</p>
     </div>
 </div>
 

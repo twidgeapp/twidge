@@ -24,7 +24,7 @@
         { title: "Open the global launcher (Ctrl+Space)", time: "09:30:31 am" },
         { title: "Click on insert from clipboard", time: "09:30:35 am" },
         { title: "Clicking on save", time: "09:30:35 am" },
-        { title: "Continue without loosing your flow", time: "09:30:35 am" },
+        { title: "Continue without losing your flow", time: "09:30:35 am" },
     ];
 </script>
 
@@ -50,7 +50,7 @@
             {/each}
         </Timeline>
         <p class="text-center">
-            The developer feels overwhelmed <br />and starts loosing flow, the
+            The developer feels overwhelmed <br />and starts losing flow, the
             client seems to be getting impatient.
         </p>
     </div>
@@ -74,7 +74,7 @@
             {/each}
         </Timeline>
         <p class="text-center">
-            The developer feels in control and continues working <br /> without loosing
+            The developer feels in control and continues working <br /> without losing
             focus, the client is happy.
         </p>
     </div>

@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import Logo from "../../../assets/logo.svg";
 import MenuBarContext from "./ctx";
 import WindowsTrafficLights from "./traffic_light";
 
@@ -9,13 +8,10 @@ const WindowsMenuBar = () => {
     return (
         <div
             data-tauri-drag-region
-            className={`w-full h-10 flex items-center justify-between pl-4 ${
+            className={`absolute w-[calc(100vw-56px)] top-0 right-0 h-10 flex items-center justify-end pl-4 ${
                 ctx.maximised ? "" : "rounded-tl-md rounded-tr-md"
             }`}
         >
-            <div>
-                <img src={Logo} width="16px" />
-            </div>
             <WindowsTrafficLights />
         </div>
     );
