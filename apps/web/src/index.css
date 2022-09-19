@@ -34,6 +34,40 @@
     }
 }
 
+.viewer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.viewport {
+  position: relative;
+}
+
+
+.target {
+  position: absolute;
+  background: #d9d9d9;
+  width: 300px;
+  height: 300px;
+  top: 100px;
+  left: 100px;
+  line-height: 100px;
+}
+
+.dimension {
+  position: absolute;
+  background: #4af;
+  border-radius: 2px;
+  padding: 3px 6px;
+  color: white;
+  font-size: 12px;
+  line-height: 1;
+  white-space: nowrap;
+  font-weight: bold;
+  will-change: transform;
+  transform: translate(-50%, 0px);
+  transform-origin: top center;
+}
 .progress-css {
     position: relative;
     overflow: hidden;
