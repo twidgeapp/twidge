@@ -19,11 +19,8 @@ const Home = () => {
         if (versionData.data && !migrator.isLoading) {
             dispatch(setLoaded(true));
             dispatch(setVersion(versionData.data));
-            platform().then((e) => {
-                dispatch(setPlatform(e));
-                invoke("show_bar");
-                navigate("/home");
-            });
+            invoke("show_bar");
+            navigate("/home");
         }
     }, [versionData.data, migrator.isLoading]);
 

@@ -6,8 +6,19 @@ import OnBoardingPage2 from "./pages/onboard/2";
 import OnBoardingPage3 from "./pages/onboard/3";
 import OnBoardingPage4 from "./pages/onboard/4";
 import OnBoardingPage5 from "./pages/onboard/5";
+import SpaceHome from "./pages/spaces/[id]";
+import { useEffect } from "react";
+import { platform } from "@tauri-apps/api/os";
+import { useDispatch } from "@twidge/core/state";
+import { setPlatform } from "@twidge/core/state/global";
 
 function App() {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        platform().then((e) => {
+            dispatch(setPlatform(e));
+        });
+    });
     return (
         <div className="w-screen h-screen bg-white rounded-md">
             <Routes>
@@ -20,6 +31,7 @@ function App() {
                     <Route path="4" element={<OnBoardingPage4 />} />
                     <Route path="5" element={<OnBoardingPage5 />} />
                 </Route>
+                <Route path="/spaces/:id" element={<SpaceHome />} />
             </Routes>
         </div>
     );

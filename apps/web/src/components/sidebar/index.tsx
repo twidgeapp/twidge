@@ -1,19 +1,28 @@
-import { useSelector } from "@twidge/core/state";
+import { useDispatch, useSelector } from "@twidge/core/state";
 import Image from "../../assets/logo.svg";
-import { Link } from "@twidge/core/router";
+import { Link, useNavigate } from "@twidge/core/router";
 import Element from "./element";
 import { Add20Filled, Document16Filled } from "@fluentui/react-icons";
 import rspc from "@twidge/core/query";
-import * as Icons from "@fluentui/react-icons";
+import { setSpaces } from "@twidge/core/state/space";
+import { useEffect } from "react";
 
 const LineBreak = () => (
-    <div className="border-b w-3/5 h-1 border-dark-gray11"></div>
+    <div className="border-b w-3/5 h-1 border-b-dark-gray4"></div>
 );
 
 const Sidebar = () => {
     const platform = useSelector((state: any) => state.global.platform);
     const { mutate } = rspc.useMutation("spaces.create");
     const { refetch, data } = rspc.useQuery(["spaces.get"]);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        dispatch(setSpaces(data));
+    }, [data]);
 
     return (
         <div className="no-scrollbar w-14">
@@ -45,7 +54,7 @@ const Sidebar = () => {
                             color={space.color}
                             icon={<Document16Filled />}
                             onClick={() => {
-                                console.log("clicked");
+                                navigate(`/spaces/${space.id}`);
                             }}
                         />
                     ))}
