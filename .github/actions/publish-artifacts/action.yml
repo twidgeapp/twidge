@@ -30,7 +30,7 @@ runs:
       uses: actions/upload-artifact@v3
       with:
           name: twidge-deb-${{ env.GITHUB_SHA_SHORT }}
-          path: ./target/release/bundle/deb/spacedrive*.deb
+          path: ./target/release/bundle/deb/twidge*.deb
 
     - name: Publish artifacts (Windows)
       if: matrix.platform == 'windows-latest'

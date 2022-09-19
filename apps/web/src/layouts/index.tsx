@@ -40,7 +40,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             <MenuBarContext.Consumer>
                 {(value) => (
                     <div
-                        className={`bg-black text-white bg-opacity-90 w-full h-full ${
+                        className={`bg-dark-gray2 text-white bg-opacity-90 w-full h-full ${
                             value.maximised ? "" : "rounded-md"
                         }`}
                     >

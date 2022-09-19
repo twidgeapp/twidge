@@ -30,7 +30,7 @@ function App() {
     }, []);
 
     return (
-        <div className="w-screen h-screen bg-white rounded-md">
+        <div className="w-screen h-screen bg-black rounded-md">
             <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/home" element={<Home />} />
