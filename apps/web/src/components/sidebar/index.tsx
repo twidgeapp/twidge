@@ -27,7 +27,7 @@ const Sidebar = () => {
     return (
         <div className="no-scrollbar w-14">
             <div
-                className="w-full h-full overflow-y-auto bg-dark-gray1 py-3"
+                className="w-full h-full overflow-y-auto bg-dark-gray1 py-3 border-r border-r-dark-gray4 "
                 style={{
                     borderTopLeftRadius: platform === "win32" ? "12px" : "",
                     borderBottomLeftRadius: platform === "win32" ? "12px" : "",
