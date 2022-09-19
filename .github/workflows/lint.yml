@@ -1,0 +1,22 @@
+name: lint
+on: 
+  - push
+  - pull_request
+
+jobs:
+  twidge:
+    name: twidge
+    runs-on: ubuntu-20.04
+    steps:
+
+      - name: Checkout Repository 
+        uses: actions/checkout@v2
+      - name: Install toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          components: clippy
+      - name: Install dependencies 
+        run: sudo apt install libdbus-1-dev pkg-config
+      - name: Lint
+        run: cargo clippy -- -D warnings
