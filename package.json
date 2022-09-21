@@ -18,7 +18,7 @@
         "landing:dev": "cd apps/landing && yarn dev",
         "landing:build": "cd apps/landing && yarn build",
         "landing:preview": "cd apps/landing && yarn preview",
-        "postinstall": "cargo prisma generate",
+        "generate": "cargo prisma generate",
         "format": "prettier --write '**/*.{js,jsx,ts,tsx}'",
         "lint": "eslint '**/*.{js,jsx,ts,tsx}'"
     },
