@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: 18
           cache: yarn
-      - run: yarn install
+      - run: yarn install --ignore-scripts
 
       - name: Run linters
         uses: wearerequired/lint-action@v1
