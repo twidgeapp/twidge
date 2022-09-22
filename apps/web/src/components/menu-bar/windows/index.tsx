@@ -47,7 +47,7 @@ const WindowsMenuBar = () => {
     return (
         <div
             data-tauri-drag-region
-            className={`absolute z-[9999999999999999] w-[calc(100vw-45px)] top-0 right-0 h-10 flex items-center justify-between pl-2 border-b  border-b-dark-gray4 bg-dark-gray1 border-l border-l-dark-gray4 ${
+            className={`absolute z-[9999999999999999] w-[calc(100%-4%)] top-0 right-0 h-10 flex items-center justify-between pl-2 border-b  border-b-dark-gray4 bg-dark-gray1 ${
                 ctx.maximised ? "" : "rounded-tr-md"
             }`}
         >

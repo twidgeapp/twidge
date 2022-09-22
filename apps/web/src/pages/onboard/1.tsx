@@ -1,7 +1,7 @@
 import rspc from "@twidge/core/query";
 import { useNavigate } from "react-router";
 import Logo from "../../assets/logo.svg";
-import OnBoardingLayout from "../../layout/onboarding_layout";
+import OnBoardingLayout from "../../layouts/onboarding_layout";
 import Button from "@twidge/ui/button";
 
 const OnboardingIntro = () => {

@@ -8,11 +8,8 @@ import SpaceSidebar from "../../components/spaces/sidebar";
 import Layout from "../../layouts";
 import Moveable from "react-moveable";
 import { flushSync } from "react-dom";
-import Selecto from "selecto";
 
 const WhiteboardPage = () => {
-    const selectoRef = React.useRef(null);
-
     const params = useParams();
     const spaces = useSelector((state: any) => state.spaces.spaces);
 

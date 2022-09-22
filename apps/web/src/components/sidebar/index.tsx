@@ -25,7 +25,7 @@ const Sidebar = () => {
     }, [data]);
 
     return (
-        <div className="no-scrollbar w-14">
+        <div className="no-scrollbar w-14 min-w-[3.5rem]">
             <div
                 className="w-full h-full overflow-y-auto bg-dark-gray1 py-3 border-r border-r-dark-gray4 "
                 style={{

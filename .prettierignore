@@ -3,3 +3,6 @@
 /node_modules
 /.yarn
 /apps/**/*.{astro}
+/**/*.{json}
+/**/*.{yml}
+/**/*.{js}

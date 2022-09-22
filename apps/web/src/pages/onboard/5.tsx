@@ -1,6 +1,6 @@
 import BottomRightLogo from "../../components/onboarding/logo";
 import NextButton from "../../components/onboarding/buttons";
-import OnBoardingLayout from "../../layout/onboarding_layout";
+import OnBoardingLayout from "../../layouts/onboarding_layout";
 import LinkCards from "../../components/onboarding/link_card";
 
 const OnBoardingPage5 = () => {

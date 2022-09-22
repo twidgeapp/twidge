@@ -1,7 +1,7 @@
 import Card from "../../components/onboarding/card";
 import BottomRightLogo from "../../components/onboarding/logo";
 import NextButton from "../../components/onboarding/buttons";
-import OnBoardingLayout from "../../layout/onboarding_layout";
+import OnBoardingLayout from "../../layouts/onboarding_layout";
 
 const OnBoardingPage2 = () => {
     return (
