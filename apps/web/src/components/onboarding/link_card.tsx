@@ -22,7 +22,7 @@ const LinkCards = () => {
                 icon={<IconBrandGithub width={64} height={64} />}
             />
             <Card
-                link="https://twitter.com/PottiVarun"
+                link="https://twitter.com/twidgeapp"
                 icon={<IconBrandTwitter width={64} height={64} />}
             />
             <Card
