@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types";
 import { Button } from "./index";
 
@@ -41,7 +40,7 @@ export default {
                 "black",
             ],
         },
-        fontSize: {
+        font: {
             control: "select",
             options: [
                 "xs",
@@ -69,5 +68,5 @@ Btn.args = {
     buttonSize: "small",
     color: "pink",
     fontWeight: "normal",
-    fontSize: "base",
+    font: "base",
 };
