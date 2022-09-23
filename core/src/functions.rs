@@ -1,9 +1,9 @@
 #[tauri::command]
 pub async fn show_bar(window: tauri::Window) -> Result<(), String> {
-    #[cfg(linux)]
+    #[cfg(target_os = "macos")]
     window.set_decorations(true);
 
-    #[cfg(macos)]
+    #[cfg(target_os = "linux")]
     window.set_decorations(true);
 
     Ok(())

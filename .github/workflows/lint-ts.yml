@@ -30,4 +30,4 @@ jobs:
         with:
           eslint: true
           prettier: true
-          auto_fix: false
+          auto_fix: true
