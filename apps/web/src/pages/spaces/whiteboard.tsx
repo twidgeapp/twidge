@@ -1,19 +1,23 @@
-import { useSelector } from "@twidge/core/state";
-import { Spaces } from "@twidge/utils/bindings";
+import {useSelector} from "@twidge/core/state";
+import {Spaces} from "@twidge/utils/bindings";
 import InfiniteViewer from "react-infinite-viewer";
-import React, { useMemo } from "react";
-import { useParams } from "react-router";
+import React, {useEffect, useMemo} from "react";
+import {useParams} from "react-router";
 import SpaceContext from "../../components/spaces/ctx";
 import SpaceSidebar from "../../components/spaces/sidebar";
 import Layout from "../../layouts";
 import Moveable from "react-moveable";
-import { flushSync } from "react-dom";
+import {flushSync} from "react-dom";
 import useClipSense from "../../utils/clipsense";
 
 const WhiteboardPage = () => {
     const params = useParams();
     const spaces = useSelector((state: any) => state.spaces.spaces);
-    const clipsense = useClipSense();
+    const {items} = useClipSense();
+
+    useEffect(() => {
+        console.log(items);
+    }, [items]);
 
     const spaceInfo = useMemo(() => {
         if (!spaces) return null;
@@ -24,9 +28,9 @@ const WhiteboardPage = () => {
     }, [params, spaces]);
 
     return (
-        <SpaceContext.Provider value={{ spaceInfo: spaceInfo }}>
+        <SpaceContext.Provider value={{spaceInfo: spaceInfo}}>
             <Layout>
-                <SpaceSidebar />
+                <SpaceSidebar/>
 
                 <InfiniteViewer
                     useAutoZoom={true}

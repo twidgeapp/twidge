@@ -1,4 +1,4 @@
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 
 interface IClipBoardItem {
     type: "text" | "file";
@@ -40,7 +40,7 @@ const getClipboardData = (e: ClipboardEvent): IClipBoardItem[] | undefined => {
 
 const getClipboardFileType = (file: File) => {
     let fileType = file.type;
-    // get file type also
+
     if (fileType.includes("image")) {
         fileType = fileType.replace("image/", "");
         // svg
@@ -75,17 +75,20 @@ const getClipboardFileType = (file: File) => {
  * Infers the type of the clipboard data and returns it
  */
 const useClipSense = () => {
+    const [items, setItems] = useState<IClipBoardItem[]>([]);
 
     const onPaste = (e: ClipboardEvent) => {
         const clipBoardItems = getClipboardData(e);
         if (!clipBoardItems) return;
 
+        setItems(clipBoardItems);
+
         for (const item of clipBoardItems) {
             if (item.type === "text") {
                 console.log("text", item.data);
-                
-            } else if (item.type === "file") {
+            } else if (item.type === "file" && typeof item.data !== "string") {
                 console.log("File type", getClipboardFileType(item.data));
+                console.log("File name", item.data.name);
             }
         }
     };
@@ -97,6 +100,8 @@ const useClipSense = () => {
             document.body.removeEventListener("paste", onPaste);
         };
     }, []);
+
+    return {items};
 };
 
 export default useClipSense;
