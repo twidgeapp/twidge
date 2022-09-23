@@ -55,7 +55,7 @@ export default {
                 "6xl",
                 "7xl",
                 "8xl",
-                "9x",
+                "9xl",
             ],
         },
     },

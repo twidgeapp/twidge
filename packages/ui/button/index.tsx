@@ -5,7 +5,7 @@ import {
     fontSize,
     fontWeight,
     paddingTypes,
-} from "./colored";
+} from "./styled";
 import clsx from "clsx";
 
 export const Button = ({

@@ -8,10 +8,12 @@ import SpaceSidebar from "../../components/spaces/sidebar";
 import Layout from "../../layouts";
 import Moveable from "react-moveable";
 import { flushSync } from "react-dom";
+import useClipSense from "../../utils/clipsense";
 
 const WhiteboardPage = () => {
     const params = useParams();
     const spaces = useSelector((state: any) => state.spaces.spaces);
+    const clipsense = useClipSense();
 
     const spaceInfo = useMemo(() => {
         if (!spaces) return null;
