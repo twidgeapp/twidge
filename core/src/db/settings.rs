@@ -2,11 +2,10 @@ use std::collections::HashMap;
 use std::sync::Arc;
 
 use lazy_static::lazy_static;
-use log::info;
 
 use crate::{
     errors::CoreError,
-    prisma::{self, settings, PrismaClient},
+    prisma::{settings, PrismaClient},
 };
 
 lazy_static! {

@@ -15,43 +15,40 @@ import { setBackRoutes, setRouteHistory } from "@twidge/core/state/router";
 import WhiteboardPage from "./pages/spaces/whiteboard";
 
 function App() {
-    const dispatch = useDispatch();
-    const location = useLocation();
+  const dispatch = useDispatch();
+  const location = useLocation();
 
-    useEffect(() => {
-        dispatch(setBackRoutes(location.pathname));
+  useEffect(() => {
+    dispatch(setBackRoutes(location.pathname));
 
-        dispatch(setRouteHistory(location.pathname));
-    }, [location.pathname]);
+    dispatch(setRouteHistory(location.pathname));
+  }, [location.pathname]);
 
-    useEffect(() => {
-        platform().then((e) => {
-            dispatch(setPlatform(e));
-        });
-    }, []);
+  useEffect(() => {
+    platform().then((e) => {
+      dispatch(setPlatform(e));
+    });
+  }, []);
 
-    return (
-        <div className="w-screen h-screen bg-black rounded-md">
-            <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/home" element={<Home />} />
-                <Route path="/onboarding">
-                    <Route path="1" element={<OnboardingIntro />} />
-                    <Route path="2" element={<OnBoardingPage2 />} />
-                    <Route path="3" element={<OnBoardingPage3 />} />
-                    <Route path="4" element={<OnBoardingPage4 />} />
-                    <Route path="5" element={<OnBoardingPage5 />} />
-                </Route>
-                <Route path="/spaces">
-                    <Route path=":id" element={<SpaceHome />} />
-                    <Route
-                        path=":id/whiteboard"
-                        element={<WhiteboardPage />}
-                    ></Route>
-                </Route>
-            </Routes>
-        </div>
-    );
+  return (
+    <div className="w-screen h-screen bg-black rounded-md">
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/onboarding">
+          <Route path="1" element={<OnboardingIntro />} />
+          <Route path="2" element={<OnBoardingPage2 />} />
+          <Route path="3" element={<OnBoardingPage3 />} />
+          <Route path="4" element={<OnBoardingPage4 />} />
+          <Route path="5" element={<OnBoardingPage5 />} />
+        </Route>
+        <Route path="/spaces">
+          <Route path=":id" element={<SpaceHome />} />
+          <Route path=":id/whiteboard" element={<WhiteboardPage />}></Route>
+        </Route>
+      </Routes>
+    </div>
+  );
 }
 
 export default App;

@@ -7,17 +7,18 @@ edition = "2021"
 
 [dependencies]
 platform-dirs = "0.3.0"
-prisma-client-rust = { git = "https://github.com/Brendonovich/prisma-client-rust", branch = "migrations", features = [
-  "rspc", 
-  "sqlite-create-many",
-  "migrations"
+prisma-client-rust = { git = "https://github.com/Brendonovich/prisma-client-rust", rev = "a0ede73f4a6a950a64d8a3dc01f6dbb332de36af", default-features = false, features = [
+    "sqlite",
+    "rspc",
+    "sqlite-create-many",
+    "migrations"
 ] }
 tauri = { version = "1.0.5", features = ["api-all"] }
 rspc = { version = "0.0.5", features = [
-  "uuid",
-  "tauri",
-  "chrono",
-  "tracing",
+    "uuid",
+    "tauri",
+    "chrono",
+    "tracing",
 ] }
 thiserror = "1.0.32"
 tokio = { version = "1", features = ["full"] }

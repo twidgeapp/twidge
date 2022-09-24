@@ -5,9 +5,9 @@ import routerReducer from "./router";
 
 export * from "react-redux";
 export default configureStore({
-    reducer: {
-        global: globalReducer,
-        spaces: spaceReducer,
-        router: routerReducer,
-    },
+  reducer: {
+    global: globalReducer,
+    spaces: spaceReducer,
+    router: routerReducer,
+  },
 });
