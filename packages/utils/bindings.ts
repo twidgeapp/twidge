@@ -6,7 +6,8 @@ export type Operations = {
         { key: ["db.migrate_and_populate"], result: null } | 
         { key: ["settings.get", GetSettingsArgs], result: Settings } | 
         { key: ["spaces.get"], result: Array<Spaces> } | 
-        { key: ["version"], result: string },
+        { key: ["version"], result: string } | 
+        { key: ["whiteboard.items.get", GetWhiteBoardItemsArgs], result: Array<WhiteboardItem> },
     mutations: 
         { key: ["settings.set", SetSettingsArgs], result: Settings } | 
         { key: ["spaces.create"], result: Spaces },
@@ -15,8 +16,12 @@ export type Operations = {
 
 export interface GetSettingsArgs { key: string }
 
+export interface GetWhiteBoardItemsArgs { whiteboard_id: number }
+
 export interface SetSettingsArgs { key: string, value: string }
 
 export interface Settings { id: number, name: string, value: string, createdAt: string, updatedAt: string }
 
 export interface Spaces { id: number, name: string, icon: string, color: string }
+
+export interface WhiteboardItem { id: number, item_type: string, value: string, createdAt: string, updatedAt: string, whiteboardId: number | null }

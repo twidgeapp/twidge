@@ -1,11 +1,13 @@
-pub mod db;
-pub mod settings;
-pub mod spaces;
 use std::path::PathBuf;
 
 use rspc::{Config, Router};
 
 use crate::Shared;
+
+pub mod db;
+pub mod settings;
+pub mod spaces;
+pub mod whiteboard;
 
 pub fn init_router() -> Router<Shared> {
     let router = Router::<Shared>::new()
@@ -19,6 +21,7 @@ pub fn init_router() -> Router<Shared> {
         .merge("spaces.", spaces::mount())
         .merge("settings.", settings::mount())
         .merge("db.", db::mount())
+        .merge("whiteboard.", whiteboard::mount())
         .query("version", move |_, _: ()| async move {
             env!("CARGO_PKG_VERSION")
         });
