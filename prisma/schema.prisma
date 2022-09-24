@@ -23,7 +23,6 @@ model WhiteboardItem {
 model Whiteboard {
   id              Int              @id @default(autoincrement())
   name            String
-  description     String
   whiteboardItems WhiteboardItem[]
   space           Spaces           @relation(fields: [spacesId], references: [id])
   spacesId        Int

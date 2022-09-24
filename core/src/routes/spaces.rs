@@ -1,7 +1,7 @@
 use rand::seq::SliceRandom;
 use rspc::RouterBuilder;
 
-use crate::Shared;
+use crate::{prisma, Shared};
 
 pub fn mount() -> RouterBuilder<Shared> {
     RouterBuilder::<Shared>::new()
@@ -17,14 +17,22 @@ pub fn mount() -> RouterBuilder<Shared> {
                 .to_owned()
                 .to_owned();
 
+            let space_name = "Space ".to_owned() + &space_len.to_string();
+
             let space = client
                 .spaces()
                 .create(
-                    "Spaces".to_owned() + &space_len.to_string(),
+                    space_name.clone(),
                     "Document16Filled".to_owned(),
                     color,
                     vec![],
                 )
+                .exec()
+                .await?;
+
+            client
+                .whiteboard()
+                .create(space_name, prisma::spaces::id::equals(space.id), vec![])
                 .exec()
                 .await?;
 

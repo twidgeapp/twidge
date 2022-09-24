@@ -13,7 +13,6 @@ CREATE TABLE "WhiteboardItem" (
 CREATE TABLE "Whiteboard" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" TEXT NOT NULL,
-    "description" TEXT NOT NULL,
     "spacesId" INTEGER NOT NULL,
     CONSTRAINT "Whiteboard_spacesId_fkey" FOREIGN KEY ("spacesId") REFERENCES "Spaces" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
