@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import {useEffect} from "react";
+import rspc from "@twidge/core/query";
+import {useParams} from "react-router";
 
 interface IClipBoardItem {
-  type: "text" | "file";
-  data: string | File;
+    type: "text" | "file";
+    data: string | File;
 }
 
 /***
@@ -12,61 +14,62 @@ interface IClipBoardItem {
  * @return {IClipBoardItem[] | undefined}
  */
 const getClipboardData = (e: ClipboardEvent): IClipBoardItem[] | undefined => {
-  const items = e.clipboardData?.items;
-  const clipBoardItems: IClipBoardItem[] = [];
-  if (!items) return;
+    const items = e.clipboardData?.items;
+    const clipBoardItems: IClipBoardItem[] = [];
+    if (!items) return;
 
-  for (let i = 0; i < items.length; i++) {
-    const item = items[i];
-    if (item.kind === "string") {
-      // get the text
-      const text = e.clipboardData?.getData("text/plain");
-      clipBoardItems.push({
-        type: "text",
-        data: text,
-      });
-    } else if (item.kind === "file") {
-      // get the file
-      const file = item.getAsFile();
-      if (!file) return;
-      clipBoardItems.push({
-        type: "file",
-        data: file,
-      });
+    for (let i = 0; i < items.length; i++) {
+        const item = items[i];
+        if (item.kind === "string") {
+            // get the text
+            const text = e.clipboardData?.getData("text/plain");
+
+            clipBoardItems.push({
+                type: "text",
+                data: text,
+            });
+        } else if (item.kind === "file") {
+            // get the file
+            const file = item.getAsFile();
+            if (!file) return;
+            clipBoardItems.push({
+                type: "file",
+                data: file,
+            });
+        }
     }
-  }
-  return clipBoardItems;
+    return clipBoardItems;
 };
 
 const getClipboardFileType = (file: File) => {
-  let fileType = file.type;
-
-  if (fileType.includes("image")) {
-    fileType = fileType.replace("image/", "");
-    // svg
-    fileType = fileType.replace("+xml", "");
-    return {
-      type: "image",
-      fileType,
-    };
-  } else if (fileType.includes("video")) {
-    fileType = fileType.replace("video/", "");
-    return {
-      type: "video",
-      fileType,
-    };
-  } else if (fileType.includes("audio")) {
-    fileType = fileType.replace("audio/", "");
-    return {
-      type: "audio",
-      fileType,
-    };
-  } else {
-    return {
-      type: "file",
-      fileType,
-    };
-  }
+    let fileType = file.type;
+    console.log(fileType)
+    if (fileType.includes("image")) {
+        fileType = fileType.replace("image/", "");
+        // svg
+        fileType = fileType.replace("+xml", "");
+        return {
+            type: "image",
+            fileType,
+        };
+    } else if (fileType.includes("video")) {
+        fileType = fileType.replace("video/", "");
+        return {
+            type: "video",
+            fileType,
+        };
+    } else if (fileType.includes("audio")) {
+        fileType = fileType.replace("audio/", "");
+        return {
+            type: "audio",
+            fileType,
+        };
+    } else {
+        return {
+            type: "file",
+            fileType,
+        };
+    }
 };
 
 /**
@@ -74,33 +77,52 @@ const getClipboardFileType = (file: File) => {
  * Infers the type of the clipboard data and returns it
  */
 const useClipSense = () => {
-  const [items, setItems] = useState<IClipBoardItem[]>([]);
+    const mutations = rspc.useMutation("whiteboard.items.create")
+    const params = useParams();
 
-  const onPaste = (e: ClipboardEvent) => {
-    const clipBoardItems = getClipboardData(e);
-    if (!clipBoardItems) return;
+    const onPaste = (e: ClipboardEvent) => {
+        let clipBoardItems = getClipboardData(e);
+        if (!clipBoardItems) return;
 
-    setItems(clipBoardItems);
+        // remove duplicates from clipBoardItems
+        clipBoardItems = clipBoardItems.filter((item, index) => {
+            if (!clipBoardItems) return;
+            return clipBoardItems.findIndex((i) => i.data === item.data) === index;
+        });
 
-    for (const item of clipBoardItems) {
-      if (item.type === "text") {
-        console.log("text", item.data);
-      } else if (item.type === "file" && typeof item.data !== "string") {
-        console.log("File type", getClipboardFileType(item.data));
-        console.log("File name", item.data.name);
-      }
-    }
-  };
+        for (const item of clipBoardItems) {
+            if (item.type === "text" && typeof item.data === "string") {
+                console.log("text", item.data);
+                mutations.mutate({whiteboard_id: parseInt(params.id!), data: item.data, type: "text"})
 
-  useEffect(() => {
-    document.body.addEventListener("paste", onPaste);
+            } else if (item.type === "file" && typeof item.data !== "string") {
+                // convert item.data to base64
+                const reader = new FileReader();
+                reader.readAsDataURL(item.data);
+                reader.onload = () => {
+                    if (!reader.result) return;
 
-    return () => {
-      document.body.removeEventListener("paste", onPaste);
+                    mutations.mutate({
+                        whiteboard_id: parseInt(params.id!),
+                        data: reader.result.toString(),
+                        type: getClipboardFileType(item.data).fileType
+                    })
+                }
+
+                console.log("File name", item.data.name);
+            }
+        }
     };
-  }, []);
 
-  return { items };
+    useEffect(() => {
+        document.body.addEventListener("paste", onPaste);
+
+        return () => {
+            document.body.removeEventListener("paste", onPaste);
+        };
+    }, []);
+
+    return {};
 };
 
 export default useClipSense;

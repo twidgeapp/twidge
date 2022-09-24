@@ -5,8 +5,8 @@ CREATE TABLE "WhiteboardItem" (
     "value" TEXT NOT NULL,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL,
-    "whiteboardId" INTEGER,
-    CONSTRAINT "WhiteboardItem_whiteboardId_fkey" FOREIGN KEY ("whiteboardId") REFERENCES "Whiteboard" ("id") ON DELETE SET NULL ON UPDATE CASCADE
+    "whiteboardId" INTEGER NOT NULL,
+    CONSTRAINT "WhiteboardItem_whiteboardId_fkey" FOREIGN KEY ("whiteboardId") REFERENCES "Whiteboard" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable

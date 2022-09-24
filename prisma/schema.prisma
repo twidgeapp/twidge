@@ -16,8 +16,8 @@ model WhiteboardItem {
   value        String
   createdAt    DateTime    @default(now())
   updatedAt    DateTime    @updatedAt
-  Whiteboard   Whiteboard? @relation(fields: [whiteboardId], references: [id])
-  whiteboardId Int?
+  Whiteboard   Whiteboard @relation(fields: [whiteboardId], references: [id])
+  whiteboardId Int
 }
 
 model Whiteboard {

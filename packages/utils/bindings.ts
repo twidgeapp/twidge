@@ -10,9 +10,12 @@ export type Operations = {
         { key: ["whiteboard.items.get", GetWhiteBoardItemsArgs], result: Array<WhiteboardItem> },
     mutations: 
         { key: ["settings.set", SetSettingsArgs], result: Settings } | 
-        { key: ["spaces.create"], result: Spaces },
+        { key: ["spaces.create"], result: Spaces } | 
+        { key: ["whiteboard.items.create", CreateWhiteBoardArgs], result: null },
     subscriptions: never
 };
+
+export interface CreateWhiteBoardArgs { type: string, data: string, whiteboard_id: number }
 
 export interface GetSettingsArgs { key: string }
 
@@ -24,4 +27,4 @@ export interface Settings { id: number, name: string, value: string, createdAt: 
 
 export interface Spaces { id: number, name: string, icon: string, color: string }
 
-export interface WhiteboardItem { id: number, item_type: string, value: string, createdAt: string, updatedAt: string, whiteboardId: number | null }
+export interface WhiteboardItem { id: number, item_type: string, value: string, createdAt: string, updatedAt: string, whiteboardId: number }

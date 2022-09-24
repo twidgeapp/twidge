@@ -1,7 +1,7 @@
 import {useSelector} from "@twidge/core/state";
 import {Spaces} from "@twidge/utils/bindings";
 import InfiniteViewer from "react-infinite-viewer";
-import React, {useEffect, useMemo} from "react";
+import React, {useMemo} from "react";
 import {useParams} from "react-router";
 import SpaceContext from "../../components/spaces/ctx";
 import SpaceSidebar from "../../components/spaces/sidebar";
@@ -15,11 +15,7 @@ const WhiteboardPage = () => {
     const params = useParams();
     const spaces = useSelector((state: any) => state.spaces.spaces);
     const {data, error, refetch} = rspc.useQuery(["whiteboard.items.get", {whiteboard_id: parseInt(params.id!)}]);
-    const {items} = useClipSense();
-
-    useEffect(() => {
-        console.log(items);
-    }, [items]);
+    useClipSense();
 
     const spaceInfo = useMemo(() => {
         if (!spaces) return null;
