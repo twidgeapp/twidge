@@ -277,6 +277,300 @@ pub mod whiteboard_item {
             }
         }
     }
+    pub mod pos_x {
+        use super::super::*;
+        use super::_prisma::*;
+        use super::{OrderByParam, SetParam, UniqueWhereParam, WhereParam, WithParam};
+        pub fn set<T: From<Set>>(value: i32) -> T {
+            Set(value).into()
+        }
+        pub fn equals(value: i32) -> WhereParam {
+            WhereParam::PosXEquals(value).into()
+        }
+        pub fn order(direction: ::prisma_client_rust::Direction) -> OrderByParam {
+            OrderByParam::PosX(direction)
+        }
+        pub fn in_vec(value: Vec<i32>) -> WhereParam {
+            WhereParam::PosXInVec(value)
+        }
+        pub fn not_in_vec(value: Vec<i32>) -> WhereParam {
+            WhereParam::PosXNotInVec(value)
+        }
+        pub fn lt(value: i32) -> WhereParam {
+            WhereParam::PosXLt(value)
+        }
+        pub fn lte(value: i32) -> WhereParam {
+            WhereParam::PosXLte(value)
+        }
+        pub fn gt(value: i32) -> WhereParam {
+            WhereParam::PosXGt(value)
+        }
+        pub fn gte(value: i32) -> WhereParam {
+            WhereParam::PosXGte(value)
+        }
+        pub fn not(value: i32) -> WhereParam {
+            WhereParam::PosXNot(value)
+        }
+        pub fn increment(value: i32) -> SetParam {
+            SetParam::IncrementPosX(value)
+        }
+        pub fn decrement(value: i32) -> SetParam {
+            SetParam::DecrementPosX(value)
+        }
+        pub fn multiply(value: i32) -> SetParam {
+            SetParam::MultiplyPosX(value)
+        }
+        pub fn divide(value: i32) -> SetParam {
+            SetParam::DividePosX(value)
+        }
+        pub struct Set(pub i32);
+        impl From<Set> for SetParam {
+            fn from(value: Set) -> Self {
+                Self::SetPosX(value.0)
+            }
+        }
+        pub struct Include;
+        impl Into<super::IncludeParam> for Include {
+            fn into(self) -> super::IncludeParam {
+                super::IncludeParam::PosX(self)
+            }
+        }
+        impl Include {
+            pub fn to_selection(self) -> ::prisma_client_rust::Selection {
+                ::prisma_client_rust::Selection::builder("posX").build()
+            }
+        }
+        pub struct Select;
+        impl Into<super::SelectParam> for Select {
+            fn into(self) -> super::SelectParam {
+                super::SelectParam::PosX(self)
+            }
+        }
+        impl Select {
+            pub fn to_selection(self) -> ::prisma_client_rust::Selection {
+                ::prisma_client_rust::Selection::builder("posX").build()
+            }
+        }
+    }
+    pub mod pos_y {
+        use super::super::*;
+        use super::_prisma::*;
+        use super::{OrderByParam, SetParam, UniqueWhereParam, WhereParam, WithParam};
+        pub fn set<T: From<Set>>(value: i32) -> T {
+            Set(value).into()
+        }
+        pub fn equals(value: i32) -> WhereParam {
+            WhereParam::PosYEquals(value).into()
+        }
+        pub fn order(direction: ::prisma_client_rust::Direction) -> OrderByParam {
+            OrderByParam::PosY(direction)
+        }
+        pub fn in_vec(value: Vec<i32>) -> WhereParam {
+            WhereParam::PosYInVec(value)
+        }
+        pub fn not_in_vec(value: Vec<i32>) -> WhereParam {
+            WhereParam::PosYNotInVec(value)
+        }
+        pub fn lt(value: i32) -> WhereParam {
+            WhereParam::PosYLt(value)
+        }
+        pub fn lte(value: i32) -> WhereParam {
+            WhereParam::PosYLte(value)
+        }
+        pub fn gt(value: i32) -> WhereParam {
+            WhereParam::PosYGt(value)
+        }
+        pub fn gte(value: i32) -> WhereParam {
+            WhereParam::PosYGte(value)
+        }
+        pub fn not(value: i32) -> WhereParam {
+            WhereParam::PosYNot(value)
+        }
+        pub fn increment(value: i32) -> SetParam {
+            SetParam::IncrementPosY(value)
+        }
+        pub fn decrement(value: i32) -> SetParam {
+            SetParam::DecrementPosY(value)
+        }
+        pub fn multiply(value: i32) -> SetParam {
+            SetParam::MultiplyPosY(value)
+        }
+        pub fn divide(value: i32) -> SetParam {
+            SetParam::DividePosY(value)
+        }
+        pub struct Set(pub i32);
+        impl From<Set> for SetParam {
+            fn from(value: Set) -> Self {
+                Self::SetPosY(value.0)
+            }
+        }
+        pub struct Include;
+        impl Into<super::IncludeParam> for Include {
+            fn into(self) -> super::IncludeParam {
+                super::IncludeParam::PosY(self)
+            }
+        }
+        impl Include {
+            pub fn to_selection(self) -> ::prisma_client_rust::Selection {
+                ::prisma_client_rust::Selection::builder("posY").build()
+            }
+        }
+        pub struct Select;
+        impl Into<super::SelectParam> for Select {
+            fn into(self) -> super::SelectParam {
+                super::SelectParam::PosY(self)
+            }
+        }
+        impl Select {
+            pub fn to_selection(self) -> ::prisma_client_rust::Selection {
+                ::prisma_client_rust::Selection::builder("posY").build()
+            }
+        }
+    }
+    pub mod width {
+        use super::super::*;
+        use super::_prisma::*;
+        use super::{OrderByParam, SetParam, UniqueWhereParam, WhereParam, WithParam};
+        pub fn set<T: From<Set>>(value: String) -> T {
+            Set(value).into()
+        }
+        pub fn equals(value: String) -> WhereParam {
+            WhereParam::WidthEquals(value).into()
+        }
+        pub fn order(direction: ::prisma_client_rust::Direction) -> OrderByParam {
+            OrderByParam::Width(direction)
+        }
+        pub fn in_vec(value: Vec<String>) -> WhereParam {
+            WhereParam::WidthInVec(value)
+        }
+        pub fn not_in_vec(value: Vec<String>) -> WhereParam {
+            WhereParam::WidthNotInVec(value)
+        }
+        pub fn lt(value: String) -> WhereParam {
+            WhereParam::WidthLt(value)
+        }
+        pub fn lte(value: String) -> WhereParam {
+            WhereParam::WidthLte(value)
+        }
+        pub fn gt(value: String) -> WhereParam {
+            WhereParam::WidthGt(value)
+        }
+        pub fn gte(value: String) -> WhereParam {
+            WhereParam::WidthGte(value)
+        }
+        pub fn contains(value: String) -> WhereParam {
+            WhereParam::WidthContains(value)
+        }
+        pub fn starts_with(value: String) -> WhereParam {
+            WhereParam::WidthStartsWith(value)
+        }
+        pub fn ends_with(value: String) -> WhereParam {
+            WhereParam::WidthEndsWith(value)
+        }
+        pub fn not(value: String) -> WhereParam {
+            WhereParam::WidthNot(value)
+        }
+        pub struct Set(pub String);
+        impl From<Set> for SetParam {
+            fn from(value: Set) -> Self {
+                Self::SetWidth(value.0)
+            }
+        }
+        pub struct Include;
+        impl Into<super::IncludeParam> for Include {
+            fn into(self) -> super::IncludeParam {
+                super::IncludeParam::Width(self)
+            }
+        }
+        impl Include {
+            pub fn to_selection(self) -> ::prisma_client_rust::Selection {
+                ::prisma_client_rust::Selection::builder("width").build()
+            }
+        }
+        pub struct Select;
+        impl Into<super::SelectParam> for Select {
+            fn into(self) -> super::SelectParam {
+                super::SelectParam::Width(self)
+            }
+        }
+        impl Select {
+            pub fn to_selection(self) -> ::prisma_client_rust::Selection {
+                ::prisma_client_rust::Selection::builder("width").build()
+            }
+        }
+    }
+    pub mod height {
+        use super::super::*;
+        use super::_prisma::*;
+        use super::{OrderByParam, SetParam, UniqueWhereParam, WhereParam, WithParam};
+        pub fn set<T: From<Set>>(value: String) -> T {
+            Set(value).into()
+        }
+        pub fn equals(value: String) -> WhereParam {
+            WhereParam::HeightEquals(value).into()
+        }
+        pub fn order(direction: ::prisma_client_rust::Direction) -> OrderByParam {
+            OrderByParam::Height(direction)
+        }
+        pub fn in_vec(value: Vec<String>) -> WhereParam {
+            WhereParam::HeightInVec(value)
+        }
+        pub fn not_in_vec(value: Vec<String>) -> WhereParam {
+            WhereParam::HeightNotInVec(value)
+        }
+        pub fn lt(value: String) -> WhereParam {
+            WhereParam::HeightLt(value)
+        }
+        pub fn lte(value: String) -> WhereParam {
+            WhereParam::HeightLte(value)
+        }
+        pub fn gt(value: String) -> WhereParam {
+            WhereParam::HeightGt(value)
+        }
+        pub fn gte(value: String) -> WhereParam {
+            WhereParam::HeightGte(value)
+        }
+        pub fn contains(value: String) -> WhereParam {
+            WhereParam::HeightContains(value)
+        }
+        pub fn starts_with(value: String) -> WhereParam {
+            WhereParam::HeightStartsWith(value)
+        }
+        pub fn ends_with(value: String) -> WhereParam {
+            WhereParam::HeightEndsWith(value)
+        }
+        pub fn not(value: String) -> WhereParam {
+            WhereParam::HeightNot(value)
+        }
+        pub struct Set(pub String);
+        impl From<Set> for SetParam {
+            fn from(value: Set) -> Self {
+                Self::SetHeight(value.0)
+            }
+        }
+        pub struct Include;
+        impl Into<super::IncludeParam> for Include {
+            fn into(self) -> super::IncludeParam {
+                super::IncludeParam::Height(self)
+            }
+        }
+        impl Include {
+            pub fn to_selection(self) -> ::prisma_client_rust::Selection {
+                ::prisma_client_rust::Selection::builder("height").build()
+            }
+        }
+        pub struct Select;
+        impl Into<super::SelectParam> for Select {
+            fn into(self) -> super::SelectParam {
+                super::SelectParam::Height(self)
+            }
+        }
+        impl Select {
+            pub fn to_selection(self) -> ::prisma_client_rust::Selection {
+                ::prisma_client_rust::Selection::builder("height").build()
+            }
+        }
+    }
     pub mod created_at {
         use super::super::*;
         use super::_prisma::*;
@@ -668,6 +962,10 @@ pub mod whiteboard_item {
             "id",
             "item_type",
             "value",
+            "posX",
+            "posY",
+            "width",
+            "height",
             "createdAt",
             "updatedAt",
             "whiteboardId",
@@ -682,18 +980,35 @@ pub mod whiteboard_item {
     pub fn create(
         item_type: String,
         value: String,
+        pos_x: i32,
+        pos_y: i32,
+        width: String,
+        height: String,
         whiteboard_id: i32,
         _params: Vec<SetParam>,
-    ) -> (String, String, i32, Vec<SetParam>) {
-        (item_type, value, whiteboard_id, _params)
+    ) -> (String, String, i32, i32, String, String, i32, Vec<SetParam>) {
+        (
+            item_type,
+            value,
+            pos_x,
+            pos_y,
+            width,
+            height,
+            whiteboard_id,
+            _params,
+        )
     }
     #[macro_export]
-    macro_rules ! _select_whiteboard_item { ($ (($ ($ func_arg : ident : $ func_arg_ty : ty) , +) =>) ? $ module_name : ident { $ ($ field : ident $ (($ ($ filters : tt) +) $ (. $ arg : ident ($ ($ arg_params : tt) *)) *) ? $ (: $ selection_mode : ident { $ ($ selections : tt) + }) ?) + }) => { # [allow (warnings)] pub mod $ module_name { $ crate :: prisma :: whiteboard_item :: select ! (@ definitions ; $ ($ field $ (($ ($ filters) +) $ (. $ arg ($ ($ arg_params) *)) *) ? $ (: $ selection_mode { $ ($ selections) + }) ?) +) ; pub struct Select (Vec < :: prisma_client_rust :: Selection >) ; impl :: prisma_client_rust :: select :: SelectType for Select { type Data = Data ; type ModelData = $ crate :: prisma :: whiteboard_item :: Data ; fn to_selections (self) -> Vec < :: prisma_client_rust :: Selection > { self . 0 } } use super :: * ; pub fn select ($ ($ ($ func_arg : $ func_arg_ty) , +) ?) -> Select { Select ($ crate :: prisma :: whiteboard_item :: select ! (@ selections_to_select_params ; : select { $ ($ field $ (($ ($ filters) +) $ (. $ arg ($ ($ arg_params) *)) *) ? $ (: $ selection_mode { $ ($ selections) + }) ?) + }) . into_iter () . map (| p | p . to_selection ()) . collect ()) } } } ; ({ $ ($ field : ident $ (($ ($ filters : tt) +) $ (. $ arg : ident ($ ($ arg_params : tt) *)) *) ? $ (: $ selection_mode : ident { $ ($ selections : tt) + }) ?) + }) => { { $ crate :: prisma :: whiteboard_item :: select ! (@ definitions ; $ ($ field $ (($ ($ filters) +) $ (. $ arg ($ ($ arg_params) *)) *) ? $ (: $ selection_mode { $ ($ selections) + }) ?) +) ; pub struct Select (Vec < :: prisma_client_rust :: Selection >) ; impl :: prisma_client_rust :: select :: SelectType for Select { type Data = Data ; type ModelData = $ crate :: prisma :: whiteboard_item :: Data ; fn to_selections (self) -> Vec < :: prisma_client_rust :: Selection > { self . 0 } } Select ($ crate :: prisma :: whiteboard_item :: select ! (@ selections_to_select_params ; : select { $ ($ field $ (($ ($ filters) +) $ (. $ arg ($ ($ arg_params) *)) *) ? $ (: $ selection_mode { $ ($ selections) + }) ?) + }) . into_iter () . map (| p | p . to_selection ()) . collect ()) } } ; (@ definitions ; $ ($ field : ident $ (($ ($ filters : tt) +) $ (. $ arg : ident ($ ($ arg_params : tt) *)) *) ? $ (: $ selection_mode : ident { $ ($ selections : tt) + }) ?) +) => { # [allow (warnings)] enum Fields { id , item_type , value , created_at , updated_at , whiteboard , whiteboard_id } # [allow (warnings)] impl Fields { fn selections () { $ (let _ = Fields :: $ field ;) + } } # [allow (warnings)] # [derive (std :: fmt :: Debug , Clone)] pub struct Data { $ (pub $ field : $ crate :: prisma :: whiteboard_item :: select ! (@ field_type ; $ field $ (: $ selection_mode { $ ($ selections) + }) ?) ,) + } impl :: serde :: Serialize for Data { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : :: serde :: Serializer , { use :: serde :: ser :: SerializeStruct ; let mut state = serializer . serialize_struct ("Data" , [$ (stringify ! ($ field) ,) + stringify ! (id) , stringify ! (item_type) , stringify ! (value) , stringify ! (created_at) , stringify ! (updated_at) , stringify ! (whiteboard_id)] . len ()) ? ; $ (state . serialize_field ($ crate :: prisma :: whiteboard_item :: select ! (@ field_serde_name ; $ field) , & self . $ field) ? ;) * state . end () } } impl < 'de > :: serde :: Deserialize < 'de > for Data { fn deserialize < D > (deserializer : D) -> Result < Self , D :: Error > where D : :: serde :: Deserializer < 'de > , { # [allow (warnings)] enum Field { $ ($ field) , + , } impl < 'de > :: serde :: Deserialize < 'de > for Field { fn deserialize < D > (deserializer : D) -> Result < Field , D :: Error > where D : :: serde :: Deserializer < 'de > , { struct FieldVisitor ; impl < 'de > :: serde :: de :: Visitor < 'de > for FieldVisitor { type Value = Field ; fn expecting (& self , formatter : & mut :: std :: fmt :: Formatter) -> :: std :: fmt :: Result { formatter . write_str (concat ! ($ ($ crate :: prisma :: whiteboard_item :: select ! (@ field_serde_name ; $ field) , ", ") , +)) } fn visit_str < E > (self , value : & str) -> Result < Field , E > where E : :: serde :: de :: Error , { match value { $ ($ crate :: prisma :: whiteboard_item :: select ! (@ field_serde_name ; $ field) => Ok (Field :: $ field)) , * , _ => Err (:: serde :: de :: Error :: unknown_field (value , FIELDS)) , } } } deserializer . deserialize_identifier (FieldVisitor) } } struct DataVisitor ; impl < 'de > :: serde :: de :: Visitor < 'de > for DataVisitor { type Value = Data ; fn expecting (& self , formatter : & mut std :: fmt :: Formatter) -> std :: fmt :: Result { formatter . write_str ("struct Data") } fn visit_map < V > (self , mut map : V) -> Result < Data , V :: Error > where V : :: serde :: de :: MapAccess < 'de > , { $ (let mut $ field = None ;) * while let Some (key) = map . next_key () ? { match key { $ (Field :: $ field => { if $ field . is_some () { return Err (:: serde :: de :: Error :: duplicate_field ($ crate :: prisma :: whiteboard_item :: select ! (@ field_serde_name ; $ field))) ; } $ field = Some (map . next_value () ?) ; }) * } } $ (let $ field = $ field . ok_or_else (|| serde :: de :: Error :: missing_field ($ crate :: prisma :: whiteboard_item :: select ! (@ field_serde_name ; $ field))) ? ;) * Ok (Data { $ ($ field) , * }) } } const FIELDS : & 'static [& 'static str] = & ["id" , "item_type" , "value" , "createdAt" , "updatedAt" , "Whiteboard" , "whiteboardId"] ; deserializer . deserialize_struct ("Data" , FIELDS , DataVisitor) } } impl prisma_client_rust :: rspc :: internal :: specta :: Type for Data { const NAME : & 'static str = "Data" ; fn inline (_opts : prisma_client_rust :: rspc :: internal :: specta :: DefOpts , _ : & [prisma_client_rust :: rspc :: internal :: specta :: DataType]) -> prisma_client_rust :: rspc :: internal :: specta :: DataType { prisma_client_rust :: rspc :: internal :: specta :: DataType :: Object (prisma_client_rust :: rspc :: internal :: specta :: ObjectType { name : "Data" . to_string () , tag : None , generics : vec ! [] , fields : vec ! [$ (prisma_client_rust :: rspc :: internal :: specta :: ObjectField { name : stringify ! ($ field) . to_string () , optional : false , ty : < $ crate :: prisma :: whiteboard_item :: select ! (@ field_type ; $ field $ (: $ selection_mode { $ ($ selections) + }) ?) as prisma_client_rust :: rspc :: internal :: specta :: Type > :: reference (prisma_client_rust :: rspc :: internal :: specta :: DefOpts { parent_inline : false , type_map : _opts . type_map } , & []) }) , *] , type_id : None }) } fn reference (_opts : prisma_client_rust :: rspc :: internal :: specta :: DefOpts , _ : & [prisma_client_rust :: rspc :: internal :: specta :: DataType]) -> prisma_client_rust :: rspc :: internal :: specta :: DataType { Self :: inline (_opts , & []) } fn definition (_opts : prisma_client_rust :: rspc :: internal :: specta :: DefOpts) -> prisma_client_rust :: rspc :: internal :: specta :: DataType { unreachable ! () } } $ ($ (pub mod $ field { $ crate :: prisma :: whiteboard_item :: select ! (@ field_module ; $ field : $ selection_mode { $ ($ selections) + }) ; }) ?) + } ; (@ field_type ; id) => { i32 } ; (@ field_type ; item_type) => { String } ; (@ field_type ; value) => { String } ; (@ field_type ; created_at) => { :: prisma_client_rust :: chrono :: DateTime < :: prisma_client_rust :: chrono :: FixedOffset , > } ; (@ field_type ; updated_at) => { :: prisma_client_rust :: chrono :: DateTime < :: prisma_client_rust :: chrono :: FixedOffset , > } ; (@ field_type ; whiteboard : $ selection_mode : ident { $ ($ selections : tt) + }) => { whiteboard :: Data } ; (@ field_type ; whiteboard) => { crate :: prisma :: whiteboard :: Data } ; (@ field_type ; whiteboard_id) => { i32 } ; (@ field_type ; $ field : ident $ ($ tokens : tt) *) => { compile_error ! (stringify ! (Cannot select field nonexistent field $ field on model "WhiteboardItem" , available fields are "id, item_type, value, created_at, updated_at, whiteboard, whiteboard_id")) } ; (@ field_module ; whiteboard : $ selection_mode : ident { $ ($ selections : tt) + }) => { $ crate :: prisma :: whiteboard :: select ! (@ definitions ; $ ($ selections) +) ; } ; (@ field_module ; $ ($ tokens : tt) *) => { } ; (@ selection_field_to_selection_param ; id) => { Into :: < $ crate :: prisma :: whiteboard_item :: SelectParam > :: into ($ crate :: prisma :: whiteboard_item :: id :: Select) } ; (@ selection_field_to_selection_param ; item_type) => { Into :: < $ crate :: prisma :: whiteboard_item :: SelectParam > :: into ($ crate :: prisma :: whiteboard_item :: item_type :: Select) } ; (@ selection_field_to_selection_param ; value) => { Into :: < $ crate :: prisma :: whiteboard_item :: SelectParam > :: into ($ crate :: prisma :: whiteboard_item :: value :: Select) } ; (@ selection_field_to_selection_param ; created_at) => { Into :: < $ crate :: prisma :: whiteboard_item :: SelectParam > :: into ($ crate :: prisma :: whiteboard_item :: created_at :: Select) } ; (@ selection_field_to_selection_param ; updated_at) => { Into :: < $ crate :: prisma :: whiteboard_item :: SelectParam > :: into ($ crate :: prisma :: whiteboard_item :: updated_at :: Select) } ; (@ selection_field_to_selection_param ; whiteboard $ (($ ($ filters : tt) +) $ (. $ arg : ident ($ ($ arg_params : tt) *)) *) ? : $ selection_mode : ident { $ ($ selections : tt) + }) => { { Into :: < $ crate :: prisma :: whiteboard_item :: SelectParam > :: into ($ crate :: prisma :: whiteboard_item :: whiteboard :: Select :: $ selection_mode ($ crate :: prisma :: whiteboard :: select ! (@ selections_to_select_params ; : $ selection_mode { $ ($ selections) + }) . into_iter () . collect ())) } } ; (@ selection_field_to_selection_param ; whiteboard $ (($ ($ filters : tt) +) $ (. $ arg : ident ($ ($ arg_params : tt) *)) *) ?) => { { Into :: < $ crate :: prisma :: whiteboard_item :: SelectParam > :: into ($ crate :: prisma :: whiteboard_item :: whiteboard :: Select :: Fetch) } } ; (@ selection_field_to_selection_param ; whiteboard_id) => { Into :: < $ crate :: prisma :: whiteboard_item :: SelectParam > :: into ($ crate :: prisma :: whiteboard_item :: whiteboard_id :: Select) } ; (@ selection_field_to_selection_param ; $ ($ tokens : tt) *) => { compile_error ! (stringify ! ($ ($ tokens) *)) } ; (@ selections_to_select_params ; : $ macro_name : ident { $ ($ field : ident $ (($ ($ filters : tt) +) $ (. $ arg : ident ($ ($ arg_params : tt) *)) *) ? $ (: $ selection_mode : ident { $ ($ selections : tt) + }) ?) + }) => { [$ ($ crate :: prisma :: whiteboard_item :: $ macro_name ! (@ selection_field_to_selection_param ; $ field $ (($ ($ filters) +) $ (. $ arg ($ ($ arg_params) *)) *) ? $ (: $ selection_mode { $ ($ selections) + }) ?) ,) +] } ; (@ filters_to_args ;) => { vec ! [] } ; (@ filters_to_args ; $ ($ t : tt) *) => { $ ($ t) * } ; (@ field_serde_name ; id) => { "id" } ; (@ field_serde_name ; item_type) => { "item_type" } ; (@ field_serde_name ; value) => { "value" } ; (@ field_serde_name ; created_at) => { "createdAt" } ; (@ field_serde_name ; updated_at) => { "updatedAt" } ; (@ field_serde_name ; whiteboard) => { "Whiteboard" } ; (@ field_serde_name ; whiteboard_id) => { "whiteboardId" } ; }
+    macro_rules ! _select_whiteboard_item { ($ (($ ($ func_arg : ident : $ func_arg_ty : ty) , +) =>) ? $ module_name : ident { $ ($ field : ident $ (($ ($ filters : tt) +) $ (. $ arg : ident ($ ($ arg_params : tt) *)) *) ? $ (: $ selection_mode : ident { $ ($ selections : tt) + }) ?) + }) => { # [allow (warnings)] pub mod $ module_name { $ crate :: prisma :: whiteboard_item :: select ! (@ definitions ; $ ($ field $ (($ ($ filters) +) $ (. $ arg ($ ($ arg_params) *)) *) ? $ (: $ selection_mode { $ ($ selections) + }) ?) +) ; pub struct Select (Vec < :: prisma_client_rust :: Selection >) ; impl :: prisma_client_rust :: select :: SelectType for Select { type Data = Data ; type ModelData = $ crate :: prisma :: whiteboard_item :: Data ; fn to_selections (self) -> Vec < :: prisma_client_rust :: Selection > { self . 0 } } use super :: * ; pub fn select ($ ($ ($ func_arg : $ func_arg_ty) , +) ?) -> Select { Select ($ crate :: prisma :: whiteboard_item :: select ! (@ selections_to_select_params ; : select { $ ($ field $ (($ ($ filters) +) $ (. $ arg ($ ($ arg_params) *)) *) ? $ (: $ selection_mode { $ ($ selections) + }) ?) + }) . into_iter () . map (| p | p . to_selection ()) . collect ()) } } } ; ({ $ ($ field : ident $ (($ ($ filters : tt) +) $ (. $ arg : ident ($ ($ arg_params : tt) *)) *) ? $ (: $ selection_mode : ident { $ ($ selections : tt) + }) ?) + }) => { { $ crate :: prisma :: whiteboard_item :: select ! (@ definitions ; $ ($ field $ (($ ($ filters) +) $ (. $ arg ($ ($ arg_params) *)) *) ? $ (: $ selection_mode { $ ($ selections) + }) ?) +) ; pub struct Select (Vec < :: prisma_client_rust :: Selection >) ; impl :: prisma_client_rust :: select :: SelectType for Select { type Data = Data ; type ModelData = $ crate :: prisma :: whiteboard_item :: Data ; fn to_selections (self) -> Vec < :: prisma_client_rust :: Selection > { self . 0 } } Select ($ crate :: prisma :: whiteboard_item :: select ! (@ selections_to_select_params ; : select { $ ($ field $ (($ ($ filters) +) $ (. $ arg ($ ($ arg_params) *)) *) ? $ (: $ selection_mode { $ ($ selections) + }) ?) + }) . into_iter () . map (| p | p . to_selection ()) . collect ()) } } ; (@ definitions ; $ ($ field : ident $ (($ ($ filters : tt) +) $ (. $ arg : ident ($ ($ arg_params : tt) *)) *) ? $ (: $ selection_mode : ident { $ ($ selections : tt) + }) ?) +) => { # [allow (warnings)] enum Fields { id , item_type , value , pos_x , pos_y , width , height , created_at , updated_at , whiteboard , whiteboard_id } # [allow (warnings)] impl Fields { fn selections () { $ (let _ = Fields :: $ field ;) + } } # [allow (warnings)] # [derive (std :: fmt :: Debug , Clone)] pub struct Data { $ (pub $ field : $ crate :: prisma :: whiteboard_item :: select ! (@ field_type ; $ field $ (: $ selection_mode { $ ($ selections) + }) ?) ,) + } impl :: serde :: Serialize for Data { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : :: serde :: Serializer , { use :: serde :: ser :: SerializeStruct ; let mut state = serializer . serialize_struct ("Data" , [$ (stringify ! ($ field) ,) + stringify ! (id) , stringify ! (item_type) , stringify ! (value) , stringify ! (pos_x) , stringify ! (pos_y) , stringify ! (width) , stringify ! (height) , stringify ! (created_at) , stringify ! (updated_at) , stringify ! (whiteboard_id)] . len ()) ? ; $ (state . serialize_field ($ crate :: prisma :: whiteboard_item :: select ! (@ field_serde_name ; $ field) , & self . $ field) ? ;) * state . end () } } impl < 'de > :: serde :: Deserialize < 'de > for Data { fn deserialize < D > (deserializer : D) -> Result < Self , D :: Error > where D : :: serde :: Deserializer < 'de > , { # [allow (warnings)] enum Field { $ ($ field) , + , } impl < 'de > :: serde :: Deserialize < 'de > for Field { fn deserialize < D > (deserializer : D) -> Result < Field , D :: Error > where D : :: serde :: Deserializer < 'de > , { struct FieldVisitor ; impl < 'de > :: serde :: de :: Visitor < 'de > for FieldVisitor { type Value = Field ; fn expecting (& self , formatter : & mut :: std :: fmt :: Formatter) -> :: std :: fmt :: Result { formatter . write_str (concat ! ($ ($ crate :: prisma :: whiteboard_item :: select ! (@ field_serde_name ; $ field) , ", ") , +)) } fn visit_str < E > (self , value : & str) -> Result < Field , E > where E : :: serde :: de :: Error , { match value { $ ($ crate :: prisma :: whiteboard_item :: select ! (@ field_serde_name ; $ field) => Ok (Field :: $ field)) , * , _ => Err (:: serde :: de :: Error :: unknown_field (value , FIELDS)) , } } } deserializer . deserialize_identifier (FieldVisitor) } } struct DataVisitor ; impl < 'de > :: serde :: de :: Visitor < 'de > for DataVisitor { type Value = Data ; fn expecting (& self , formatter : & mut std :: fmt :: Formatter) -> std :: fmt :: Result { formatter . write_str ("struct Data") } fn visit_map < V > (self , mut map : V) -> Result < Data , V :: Error > where V : :: serde :: de :: MapAccess < 'de > , { $ (let mut $ field = None ;) * while let Some (key) = map . next_key () ? { match key { $ (Field :: $ field => { if $ field . is_some () { return Err (:: serde :: de :: Error :: duplicate_field ($ crate :: prisma :: whiteboard_item :: select ! (@ field_serde_name ; $ field))) ; } $ field = Some (map . next_value () ?) ; }) * } } $ (let $ field = $ field . ok_or_else (|| serde :: de :: Error :: missing_field ($ crate :: prisma :: whiteboard_item :: select ! (@ field_serde_name ; $ field))) ? ;) * Ok (Data { $ ($ field) , * }) } } const FIELDS : & 'static [& 'static str] = & ["id" , "item_type" , "value" , "posX" , "posY" , "width" , "height" , "createdAt" , "updatedAt" , "Whiteboard" , "whiteboardId"] ; deserializer . deserialize_struct ("Data" , FIELDS , DataVisitor) } } impl prisma_client_rust :: rspc :: internal :: specta :: Type for Data { const NAME : & 'static str = "Data" ; fn inline (_opts : prisma_client_rust :: rspc :: internal :: specta :: DefOpts , _ : & [prisma_client_rust :: rspc :: internal :: specta :: DataType]) -> prisma_client_rust :: rspc :: internal :: specta :: DataType { prisma_client_rust :: rspc :: internal :: specta :: DataType :: Object (prisma_client_rust :: rspc :: internal :: specta :: ObjectType { name : "Data" . to_string () , tag : None , generics : vec ! [] , fields : vec ! [$ (prisma_client_rust :: rspc :: internal :: specta :: ObjectField { name : stringify ! ($ field) . to_string () , optional : false , ty : < $ crate :: prisma :: whiteboard_item :: select ! (@ field_type ; $ field $ (: $ selection_mode { $ ($ selections) + }) ?) as prisma_client_rust :: rspc :: internal :: specta :: Type > :: reference (prisma_client_rust :: rspc :: internal :: specta :: DefOpts { parent_inline : false , type_map : _opts . type_map } , & []) }) , *] , type_id : None }) } fn reference (_opts : prisma_client_rust :: rspc :: internal :: specta :: DefOpts , _ : & [prisma_client_rust :: rspc :: internal :: specta :: DataType]) -> prisma_client_rust :: rspc :: internal :: specta :: DataType { Self :: inline (_opts , & []) } fn definition (_opts : prisma_client_rust :: rspc :: internal :: specta :: DefOpts) -> prisma_client_rust :: rspc :: internal :: specta :: DataType { unreachable ! () } } $ ($ (pub mod $ field { $ crate :: prisma :: whiteboard_item :: select ! (@ field_module ; $ field : $ selection_mode { $ ($ selections) + }) ; }) ?) + } ; (@ field_type ; id) => { i32 } ; (@ field_type ; item_type) => { String } ; (@ field_type ; value) => { String } ; (@ field_type ; pos_x) => { i32 } ; (@ field_type ; pos_y) => { i32 } ; (@ field_type ; width) => { String } ; (@ field_type ; height) => { String } ; (@ field_type ; created_at) => { :: prisma_client_rust :: chrono :: DateTime < :: prisma_client_rust :: chrono :: FixedOffset , > } ; (@ field_type ; updated_at) => { :: prisma_client_rust :: chrono :: DateTime < :: prisma_client_rust :: chrono :: FixedOffset , > } ; (@ field_type ; whiteboard : $ selection_mode : ident { $ ($ selections : tt) + }) => { whiteboard :: Data } ; (@ field_type ; whiteboard) => { crate :: prisma :: whiteboard :: Data } ; (@ field_type ; whiteboard_id) => { i32 } ; (@ field_type ; $ field : ident $ ($ tokens : tt) *) => { compile_error ! (stringify ! (Cannot select field nonexistent field $ field on model "WhiteboardItem" , available fields are "id, item_type, value, pos_x, pos_y, width, height, created_at, updated_at, whiteboard, whiteboard_id")) } ; (@ field_module ; whiteboard : $ selection_mode : ident { $ ($ selections : tt) + }) => { $ crate :: prisma :: whiteboard :: select ! (@ definitions ; $ ($ selections) +) ; } ; (@ field_module ; $ ($ tokens : tt) *) => { } ; (@ selection_field_to_selection_param ; id) => { Into :: < $ crate :: prisma :: whiteboard_item :: SelectParam > :: into ($ crate :: prisma :: whiteboard_item :: id :: Select) } ; (@ selection_field_to_selection_param ; item_type) => { Into :: < $ crate :: prisma :: whiteboard_item :: SelectParam > :: into ($ crate :: prisma :: whiteboard_item :: item_type :: Select) } ; (@ selection_field_to_selection_param ; value) => { Into :: < $ crate :: prisma :: whiteboard_item :: SelectParam > :: into ($ crate :: prisma :: whiteboard_item :: value :: Select) } ; (@ selection_field_to_selection_param ; pos_x) => { Into :: < $ crate :: prisma :: whiteboard_item :: SelectParam > :: into ($ crate :: prisma :: whiteboard_item :: pos_x :: Select) } ; (@ selection_field_to_selection_param ; pos_y) => { Into :: < $ crate :: prisma :: whiteboard_item :: SelectParam > :: into ($ crate :: prisma :: whiteboard_item :: pos_y :: Select) } ; (@ selection_field_to_selection_param ; width) => { Into :: < $ crate :: prisma :: whiteboard_item :: SelectParam > :: into ($ crate :: prisma :: whiteboard_item :: width :: Select) } ; (@ selection_field_to_selection_param ; height) => { Into :: < $ crate :: prisma :: whiteboard_item :: SelectParam > :: into ($ crate :: prisma :: whiteboard_item :: height :: Select) } ; (@ selection_field_to_selection_param ; created_at) => { Into :: < $ crate :: prisma :: whiteboard_item :: SelectParam > :: into ($ crate :: prisma :: whiteboard_item :: created_at :: Select) } ; (@ selection_field_to_selection_param ; updated_at) => { Into :: < $ crate :: prisma :: whiteboard_item :: SelectParam > :: into ($ crate :: prisma :: whiteboard_item :: updated_at :: Select) } ; (@ selection_field_to_selection_param ; whiteboard $ (($ ($ filters : tt) +) $ (. $ arg : ident ($ ($ arg_params : tt) *)) *) ? : $ selection_mode : ident { $ ($ selections : tt) + }) => { { Into :: < $ crate :: prisma :: whiteboard_item :: SelectParam > :: into ($ crate :: prisma :: whiteboard_item :: whiteboard :: Select :: $ selection_mode ($ crate :: prisma :: whiteboard :: select ! (@ selections_to_select_params ; : $ selection_mode { $ ($ selections) + }) . into_iter () . collect ())) } } ; (@ selection_field_to_selection_param ; whiteboard $ (($ ($ filters : tt) +) $ (. $ arg : ident ($ ($ arg_params : tt) *)) *) ?) => { { Into :: < $ crate :: prisma :: whiteboard_item :: SelectParam > :: into ($ crate :: prisma :: whiteboard_item :: whiteboard :: Select :: Fetch) } } ; (@ selection_field_to_selection_param ; whiteboard_id) => { Into :: < $ crate :: prisma :: whiteboard_item :: SelectParam > :: into ($ crate :: prisma :: whiteboard_item :: whiteboard_id :: Select) } ; (@ selection_field_to_selection_param ; $ ($ tokens : tt) *) => { compile_error ! (stringify ! ($ ($ tokens) *)) } ; (@ selections_to_select_params ; : $ macro_name : ident { $ ($ field : ident $ (($ ($ filters : tt) +) $ (. $ arg : ident ($ ($ arg_params : tt) *)) *) ? $ (: $ selection_mode : ident { $ ($ selections : tt) + }) ?) + }) => { [$ ($ crate :: prisma :: whiteboard_item :: $ macro_name ! (@ selection_field_to_selection_param ; $ field $ (($ ($ filters) +) $ (. $ arg ($ ($ arg_params) *)) *) ? $ (: $ selection_mode { $ ($ selections) + }) ?) ,) +] } ; (@ filters_to_args ;) => { vec ! [] } ; (@ filters_to_args ; $ ($ t : tt) *) => { $ ($ t) * } ; (@ field_serde_name ; id) => { "id" } ; (@ field_serde_name ; item_type) => { "item_type" } ; (@ field_serde_name ; value) => { "value" } ; (@ field_serde_name ; pos_x) => { "posX" } ; (@ field_serde_name ; pos_y) => { "posY" } ; (@ field_serde_name ; width) => { "width" } ; (@ field_serde_name ; height) => { "height" } ; (@ field_serde_name ; created_at) => { "createdAt" } ; (@ field_serde_name ; updated_at) => { "updatedAt" } ; (@ field_serde_name ; whiteboard) => { "Whiteboard" } ; (@ field_serde_name ; whiteboard_id) => { "whiteboardId" } ; }
     pub use _select_whiteboard_item as select;
     pub enum SelectParam {
         Id(id::Select),
         ItemType(item_type::Select),
         Value(value::Select),
+        PosX(pos_x::Select),
+        PosY(pos_y::Select),
+        Width(width::Select),
+        Height(height::Select),
         CreatedAt(created_at::Select),
         UpdatedAt(updated_at::Select),
         Whiteboard(whiteboard::Select),
@@ -705,6 +1020,10 @@ pub mod whiteboard_item {
                 Self::Id(data) => data.to_selection(),
                 Self::ItemType(data) => data.to_selection(),
                 Self::Value(data) => data.to_selection(),
+                Self::PosX(data) => data.to_selection(),
+                Self::PosY(data) => data.to_selection(),
+                Self::Width(data) => data.to_selection(),
+                Self::Height(data) => data.to_selection(),
                 Self::CreatedAt(data) => data.to_selection(),
                 Self::UpdatedAt(data) => data.to_selection(),
                 Self::Whiteboard(data) => data.to_selection(),
@@ -713,12 +1032,16 @@ pub mod whiteboard_item {
         }
     }
     #[macro_export]
-    macro_rules ! _include_whiteboard_item { ($ (($ ($ func_arg : ident : $ func_arg_ty : ty) , +) =>) ? $ module_name : ident { $ ($ field : ident $ (($ ($ filters : tt) +) $ (. $ arg : ident ($ ($ arg_params : tt) *)) *) ? $ (: $ selection_mode : ident { $ ($ selections : tt) + }) ?) + }) => { # [allow (warnings)] pub mod $ module_name { $ crate :: prisma :: whiteboard_item :: include ! (@ definitions ; $ ($ field $ (($ ($ filters) +) $ (. $ arg ($ ($ arg_params) *)) *) ? $ (: $ selection_mode { $ ($ selections) + }) ?) +) ; pub struct Include (Vec < :: prisma_client_rust :: Selection >) ; impl :: prisma_client_rust :: include :: IncludeType for Include { type Data = Data ; type ModelData = $ crate :: prisma :: whiteboard_item :: Data ; fn to_selections (self) -> Vec < :: prisma_client_rust :: Selection > { self . 0 } } use super :: * ; pub fn include ($ ($ ($ func_arg : $ func_arg_ty) , +) ?) -> Include { let mut selections = $ crate :: prisma :: whiteboard_item :: _outputs () ; selections . extend ($ crate :: prisma :: whiteboard_item :: include ! (@ selections_to_include_params ; : include { $ ($ field $ (($ ($ filters) +) $ (. $ arg ($ ($ arg_params) *)) *) ? $ (: $ selection_mode { $ ($ selections) + }) ?) + }) . into_iter () . map (| p | p . to_selection ())) ; Include (selections) } } } ; ({ $ ($ field : ident $ (($ ($ filters : tt) +) $ (. $ arg : ident ($ ($ arg_params : tt) *)) *) ? $ (: $ selection_mode : ident { $ ($ selections : tt) + }) ?) + }) => { { $ crate :: prisma :: whiteboard_item :: include ! (@ definitions ; $ ($ field $ (($ ($ filters) +) $ (. $ arg ($ ($ arg_params) *)) *) ? $ (: $ selection_mode { $ ($ selections) + }) ?) +) ; pub struct Include (Vec < :: prisma_client_rust :: Selection >) ; impl :: prisma_client_rust :: include :: IncludeType for Include { type Data = Data ; type ModelData = $ crate :: prisma :: whiteboard_item :: Data ; fn to_selections (self) -> Vec < :: prisma_client_rust :: Selection > { self . 0 } } Include ({ let mut selections = $ crate :: prisma :: whiteboard_item :: _outputs () ; selections . extend ($ crate :: prisma :: whiteboard_item :: include ! (@ selections_to_include_params ; : include { $ ($ field $ (($ ($ filters) +) $ (. $ arg ($ ($ arg_params) *)) *) ? $ (: $ selection_mode { $ ($ selections) + }) ?) + }) . into_iter () . map (| p | p . to_selection ())) ; selections }) } } ; (@ definitions ; $ ($ field : ident $ (($ ($ filters : tt) +) $ (. $ arg : ident ($ ($ arg_params : tt) *)) *) ? $ (: $ selection_mode : ident { $ ($ selections : tt) + }) ?) +) => { # [allow (warnings)] enum Fields { whiteboard } # [allow (warnings)] impl Fields { fn selections () { $ (let _ = Fields :: $ field ;) + } } # [allow (warnings)] # [derive (std :: fmt :: Debug , Clone)] pub struct Data { pub id : i32 , pub item_type : String , pub value : String , pub created_at : :: prisma_client_rust :: chrono :: DateTime < :: prisma_client_rust :: chrono :: FixedOffset , > , pub updated_at : :: prisma_client_rust :: chrono :: DateTime < :: prisma_client_rust :: chrono :: FixedOffset , > , pub whiteboard_id : i32 , $ (pub $ field : $ crate :: prisma :: whiteboard_item :: include ! (@ field_type ; $ field $ (: $ selection_mode { $ ($ selections) + }) ?) ,) + } impl :: serde :: Serialize for Data { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : :: serde :: Serializer , { use :: serde :: ser :: SerializeStruct ; let mut state = serializer . serialize_struct ("Data" , [$ (stringify ! ($ field) ,) + stringify ! (id) , stringify ! (item_type) , stringify ! (value) , stringify ! (created_at) , stringify ! (updated_at) , stringify ! (whiteboard_id)] . len ()) ? ; $ (state . serialize_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; $ field) , & self . $ field) ? ;) * state . serialize_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; id) , & self . id) ? ; state . serialize_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; item_type) , & self . item_type) ? ; state . serialize_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; value) , & self . value) ? ; state . serialize_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; created_at) , & self . created_at) ? ; state . serialize_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; updated_at) , & self . updated_at) ? ; state . serialize_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; whiteboard_id) , & self . whiteboard_id) ? ; state . end () } } impl < 'de > :: serde :: Deserialize < 'de > for Data { fn deserialize < D > (deserializer : D) -> Result < Self , D :: Error > where D : :: serde :: Deserializer < 'de > , { # [allow (warnings)] enum Field { $ ($ field) , + , id , item_type , value , created_at , updated_at , whiteboard_id } impl < 'de > :: serde :: Deserialize < 'de > for Field { fn deserialize < D > (deserializer : D) -> Result < Field , D :: Error > where D : :: serde :: Deserializer < 'de > , { struct FieldVisitor ; impl < 'de > :: serde :: de :: Visitor < 'de > for FieldVisitor { type Value = Field ; fn expecting (& self , formatter : & mut :: std :: fmt :: Formatter) -> :: std :: fmt :: Result { formatter . write_str (concat ! ($ ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; $ field) , ", ") , + , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; id) , ", " , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; item_type) , ", " , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; value) , ", " , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; created_at) , ", " , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; updated_at) , ", " , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; whiteboard_id) , ", ")) } fn visit_str < E > (self , value : & str) -> Result < Field , E > where E : :: serde :: de :: Error , { match value { $ ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; $ field) => Ok (Field :: $ field)) , * , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; id) => Ok (Field :: id) , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; item_type) => Ok (Field :: item_type) , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; value) => Ok (Field :: value) , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; created_at) => Ok (Field :: created_at) , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; updated_at) => Ok (Field :: updated_at) , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; whiteboard_id) => Ok (Field :: whiteboard_id) , _ => Err (:: serde :: de :: Error :: unknown_field (value , FIELDS)) , } } } deserializer . deserialize_identifier (FieldVisitor) } } struct DataVisitor ; impl < 'de > :: serde :: de :: Visitor < 'de > for DataVisitor { type Value = Data ; fn expecting (& self , formatter : & mut std :: fmt :: Formatter) -> std :: fmt :: Result { formatter . write_str ("struct Data") } fn visit_map < V > (self , mut map : V) -> Result < Data , V :: Error > where V : :: serde :: de :: MapAccess < 'de > , { $ (let mut $ field = None ;) * let mut id = None ; let mut item_type = None ; let mut value = None ; let mut created_at = None ; let mut updated_at = None ; let mut whiteboard_id = None ; while let Some (key) = map . next_key () ? { match key { Field :: id => { if id . is_some () { return Err (:: serde :: de :: Error :: duplicate_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; id))) ; } id = Some (map . next_value () ?) ; } Field :: item_type => { if item_type . is_some () { return Err (:: serde :: de :: Error :: duplicate_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; item_type))) ; } item_type = Some (map . next_value () ?) ; } Field :: value => { if value . is_some () { return Err (:: serde :: de :: Error :: duplicate_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; value))) ; } value = Some (map . next_value () ?) ; } Field :: created_at => { if created_at . is_some () { return Err (:: serde :: de :: Error :: duplicate_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; created_at))) ; } created_at = Some (map . next_value () ?) ; } Field :: updated_at => { if updated_at . is_some () { return Err (:: serde :: de :: Error :: duplicate_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; updated_at))) ; } updated_at = Some (map . next_value () ?) ; } Field :: whiteboard_id => { if whiteboard_id . is_some () { return Err (:: serde :: de :: Error :: duplicate_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; whiteboard_id))) ; } whiteboard_id = Some (map . next_value () ?) ; } $ (Field :: $ field => { if $ field . is_some () { return Err (:: serde :: de :: Error :: duplicate_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; $ field))) ; } $ field = Some (map . next_value () ?) ; }) * } } $ (let $ field = $ field . ok_or_else (|| serde :: de :: Error :: missing_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; $ field))) ? ;) * let id = id . ok_or_else (|| serde :: de :: Error :: missing_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; id))) ? ; let item_type = item_type . ok_or_else (|| serde :: de :: Error :: missing_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; item_type))) ? ; let value = value . ok_or_else (|| serde :: de :: Error :: missing_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; value))) ? ; let created_at = created_at . ok_or_else (|| serde :: de :: Error :: missing_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; created_at))) ? ; let updated_at = updated_at . ok_or_else (|| serde :: de :: Error :: missing_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; updated_at))) ? ; let whiteboard_id = whiteboard_id . ok_or_else (|| serde :: de :: Error :: missing_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; whiteboard_id))) ? ; Ok (Data { id , item_type , value , created_at , updated_at , whiteboard_id , $ ($ field) , * }) } } const FIELDS : & 'static [& 'static str] = & ["id" , "item_type" , "value" , "createdAt" , "updatedAt" , "Whiteboard" , "whiteboardId"] ; deserializer . deserialize_struct ("Data" , FIELDS , DataVisitor) } } impl prisma_client_rust :: rspc :: internal :: specta :: Type for Data { const NAME : & 'static str = "Data" ; fn inline (_opts : prisma_client_rust :: rspc :: internal :: specta :: DefOpts , _ : & [prisma_client_rust :: rspc :: internal :: specta :: DataType]) -> prisma_client_rust :: rspc :: internal :: specta :: DataType { prisma_client_rust :: rspc :: internal :: specta :: DataType :: Object (prisma_client_rust :: rspc :: internal :: specta :: ObjectType { name : "Data" . to_string () , tag : None , generics : vec ! [] , fields : vec ! [prisma_client_rust :: rspc :: internal :: specta :: ObjectField { name : stringify ! (id) . to_string () , optional : false , ty : < i32 as prisma_client_rust :: rspc :: internal :: specta :: Type > :: reference (prisma_client_rust :: rspc :: internal :: specta :: DefOpts { parent_inline : false , type_map : _opts . type_map } , & []) } , prisma_client_rust :: rspc :: internal :: specta :: ObjectField { name : stringify ! (item_type) . to_string () , optional : false , ty : < String as prisma_client_rust :: rspc :: internal :: specta :: Type > :: reference (prisma_client_rust :: rspc :: internal :: specta :: DefOpts { parent_inline : false , type_map : _opts . type_map } , & []) } , prisma_client_rust :: rspc :: internal :: specta :: ObjectField { name : stringify ! (value) . to_string () , optional : false , ty : < String as prisma_client_rust :: rspc :: internal :: specta :: Type > :: reference (prisma_client_rust :: rspc :: internal :: specta :: DefOpts { parent_inline : false , type_map : _opts . type_map } , & []) } , prisma_client_rust :: rspc :: internal :: specta :: ObjectField { name : stringify ! (created_at) . to_string () , optional : false , ty : < :: prisma_client_rust :: chrono :: DateTime < :: prisma_client_rust :: chrono :: FixedOffset , > as prisma_client_rust :: rspc :: internal :: specta :: Type > :: reference (prisma_client_rust :: rspc :: internal :: specta :: DefOpts { parent_inline : false , type_map : _opts . type_map } , & []) } , prisma_client_rust :: rspc :: internal :: specta :: ObjectField { name : stringify ! (updated_at) . to_string () , optional : false , ty : < :: prisma_client_rust :: chrono :: DateTime < :: prisma_client_rust :: chrono :: FixedOffset , > as prisma_client_rust :: rspc :: internal :: specta :: Type > :: reference (prisma_client_rust :: rspc :: internal :: specta :: DefOpts { parent_inline : false , type_map : _opts . type_map } , & []) } , prisma_client_rust :: rspc :: internal :: specta :: ObjectField { name : stringify ! (whiteboard_id) . to_string () , optional : false , ty : < i32 as prisma_client_rust :: rspc :: internal :: specta :: Type > :: reference (prisma_client_rust :: rspc :: internal :: specta :: DefOpts { parent_inline : false , type_map : _opts . type_map } , & []) } , $ (prisma_client_rust :: rspc :: internal :: specta :: ObjectField { name : stringify ! ($ field) . to_string () , optional : false , ty : < $ crate :: prisma :: whiteboard_item :: include ! (@ field_type ; $ field $ (: $ selection_mode { $ ($ selections) + }) ?) as prisma_client_rust :: rspc :: internal :: specta :: Type > :: reference (prisma_client_rust :: rspc :: internal :: specta :: DefOpts { parent_inline : false , type_map : _opts . type_map } , & []) }) , *] , type_id : None }) } fn reference (_opts : prisma_client_rust :: rspc :: internal :: specta :: DefOpts , _ : & [prisma_client_rust :: rspc :: internal :: specta :: DataType]) -> prisma_client_rust :: rspc :: internal :: specta :: DataType { Self :: inline (_opts , & []) } fn definition (_opts : prisma_client_rust :: rspc :: internal :: specta :: DefOpts) -> prisma_client_rust :: rspc :: internal :: specta :: DataType { unreachable ! () } } $ ($ (pub mod $ field { $ crate :: prisma :: whiteboard_item :: $ selection_mode ! (@ field_module ; $ field : $ selection_mode { $ ($ selections) + }) ; }) ?) + } ; (@ field_type ; whiteboard : $ selection_mode : ident { $ ($ selections : tt) + }) => { whiteboard :: Data } ; (@ field_type ; whiteboard) => { crate :: prisma :: whiteboard :: Data } ; (@ field_type ; $ field : ident $ ($ tokens : tt) *) => { compile_error ! (stringify ! (Cannot include nonexistent relation $ field on model "WhiteboardItem" , available relations are "whiteboard")) } ; (@ field_module ; whiteboard : $ selection_mode : ident { $ ($ selections : tt) + }) => { $ crate :: prisma :: whiteboard :: include ! (@ definitions ; $ ($ selections) +) ; } ; (@ field_module ; $ ($ tokens : tt) *) => { } ; (@ selection_field_to_selection_param ; whiteboard $ (($ ($ filters : tt) +) $ (. $ arg : ident ($ ($ arg_params : tt) *)) *) ? : $ selection_mode : ident { $ ($ selections : tt) + }) => { { Into :: < $ crate :: prisma :: whiteboard_item :: IncludeParam > :: into ($ crate :: prisma :: whiteboard_item :: whiteboard :: Include :: $ selection_mode ($ crate :: prisma :: whiteboard :: include ! (@ selections_to_include_params ; : $ selection_mode { $ ($ selections) + }) . into_iter () . collect ())) } } ; (@ selection_field_to_selection_param ; whiteboard $ (($ ($ filters : tt) +) $ (. $ arg : ident ($ ($ arg_params : tt) *)) *) ?) => { { Into :: < $ crate :: prisma :: whiteboard_item :: IncludeParam > :: into ($ crate :: prisma :: whiteboard_item :: whiteboard :: Include :: Fetch) } } ; (@ selection_field_to_selection_param ; $ ($ tokens : tt) *) => { compile_error ! (stringify ! ($ ($ tokens) *)) } ; (@ selections_to_include_params ; : $ macro_name : ident { $ ($ field : ident $ (($ ($ filters : tt) +) $ (. $ arg : ident ($ ($ arg_params : tt) *)) *) ? $ (: $ selection_mode : ident { $ ($ selections : tt) + }) ?) + }) => { [$ ($ crate :: prisma :: whiteboard_item :: $ macro_name ! (@ selection_field_to_selection_param ; $ field $ (($ ($ filters) +) $ (. $ arg ($ ($ arg_params) *)) *) ? $ (: $ selection_mode { $ ($ selections) + }) ?) ,) +] } ; (@ filters_to_args ;) => { vec ! [] } ; (@ filters_to_args ; $ ($ t : tt) *) => { $ ($ t) * } ; (@ field_serde_name ; id) => { "id" } ; (@ field_serde_name ; item_type) => { "item_type" } ; (@ field_serde_name ; value) => { "value" } ; (@ field_serde_name ; created_at) => { "createdAt" } ; (@ field_serde_name ; updated_at) => { "updatedAt" } ; (@ field_serde_name ; whiteboard) => { "Whiteboard" } ; (@ field_serde_name ; whiteboard_id) => { "whiteboardId" } ; }
+    macro_rules ! _include_whiteboard_item { ($ (($ ($ func_arg : ident : $ func_arg_ty : ty) , +) =>) ? $ module_name : ident { $ ($ field : ident $ (($ ($ filters : tt) +) $ (. $ arg : ident ($ ($ arg_params : tt) *)) *) ? $ (: $ selection_mode : ident { $ ($ selections : tt) + }) ?) + }) => { # [allow (warnings)] pub mod $ module_name { $ crate :: prisma :: whiteboard_item :: include ! (@ definitions ; $ ($ field $ (($ ($ filters) +) $ (. $ arg ($ ($ arg_params) *)) *) ? $ (: $ selection_mode { $ ($ selections) + }) ?) +) ; pub struct Include (Vec < :: prisma_client_rust :: Selection >) ; impl :: prisma_client_rust :: include :: IncludeType for Include { type Data = Data ; type ModelData = $ crate :: prisma :: whiteboard_item :: Data ; fn to_selections (self) -> Vec < :: prisma_client_rust :: Selection > { self . 0 } } use super :: * ; pub fn include ($ ($ ($ func_arg : $ func_arg_ty) , +) ?) -> Include { let mut selections = $ crate :: prisma :: whiteboard_item :: _outputs () ; selections . extend ($ crate :: prisma :: whiteboard_item :: include ! (@ selections_to_include_params ; : include { $ ($ field $ (($ ($ filters) +) $ (. $ arg ($ ($ arg_params) *)) *) ? $ (: $ selection_mode { $ ($ selections) + }) ?) + }) . into_iter () . map (| p | p . to_selection ())) ; Include (selections) } } } ; ({ $ ($ field : ident $ (($ ($ filters : tt) +) $ (. $ arg : ident ($ ($ arg_params : tt) *)) *) ? $ (: $ selection_mode : ident { $ ($ selections : tt) + }) ?) + }) => { { $ crate :: prisma :: whiteboard_item :: include ! (@ definitions ; $ ($ field $ (($ ($ filters) +) $ (. $ arg ($ ($ arg_params) *)) *) ? $ (: $ selection_mode { $ ($ selections) + }) ?) +) ; pub struct Include (Vec < :: prisma_client_rust :: Selection >) ; impl :: prisma_client_rust :: include :: IncludeType for Include { type Data = Data ; type ModelData = $ crate :: prisma :: whiteboard_item :: Data ; fn to_selections (self) -> Vec < :: prisma_client_rust :: Selection > { self . 0 } } Include ({ let mut selections = $ crate :: prisma :: whiteboard_item :: _outputs () ; selections . extend ($ crate :: prisma :: whiteboard_item :: include ! (@ selections_to_include_params ; : include { $ ($ field $ (($ ($ filters) +) $ (. $ arg ($ ($ arg_params) *)) *) ? $ (: $ selection_mode { $ ($ selections) + }) ?) + }) . into_iter () . map (| p | p . to_selection ())) ; selections }) } } ; (@ definitions ; $ ($ field : ident $ (($ ($ filters : tt) +) $ (. $ arg : ident ($ ($ arg_params : tt) *)) *) ? $ (: $ selection_mode : ident { $ ($ selections : tt) + }) ?) +) => { # [allow (warnings)] enum Fields { whiteboard } # [allow (warnings)] impl Fields { fn selections () { $ (let _ = Fields :: $ field ;) + } } # [allow (warnings)] # [derive (std :: fmt :: Debug , Clone)] pub struct Data { pub id : i32 , pub item_type : String , pub value : String , pub pos_x : i32 , pub pos_y : i32 , pub width : String , pub height : String , pub created_at : :: prisma_client_rust :: chrono :: DateTime < :: prisma_client_rust :: chrono :: FixedOffset , > , pub updated_at : :: prisma_client_rust :: chrono :: DateTime < :: prisma_client_rust :: chrono :: FixedOffset , > , pub whiteboard_id : i32 , $ (pub $ field : $ crate :: prisma :: whiteboard_item :: include ! (@ field_type ; $ field $ (: $ selection_mode { $ ($ selections) + }) ?) ,) + } impl :: serde :: Serialize for Data { fn serialize < S > (& self , serializer : S) -> Result < S :: Ok , S :: Error > where S : :: serde :: Serializer , { use :: serde :: ser :: SerializeStruct ; let mut state = serializer . serialize_struct ("Data" , [$ (stringify ! ($ field) ,) + stringify ! (id) , stringify ! (item_type) , stringify ! (value) , stringify ! (pos_x) , stringify ! (pos_y) , stringify ! (width) , stringify ! (height) , stringify ! (created_at) , stringify ! (updated_at) , stringify ! (whiteboard_id)] . len ()) ? ; $ (state . serialize_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; $ field) , & self . $ field) ? ;) * state . serialize_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; id) , & self . id) ? ; state . serialize_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; item_type) , & self . item_type) ? ; state . serialize_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; value) , & self . value) ? ; state . serialize_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; pos_x) , & self . pos_x) ? ; state . serialize_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; pos_y) , & self . pos_y) ? ; state . serialize_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; width) , & self . width) ? ; state . serialize_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; height) , & self . height) ? ; state . serialize_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; created_at) , & self . created_at) ? ; state . serialize_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; updated_at) , & self . updated_at) ? ; state . serialize_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; whiteboard_id) , & self . whiteboard_id) ? ; state . end () } } impl < 'de > :: serde :: Deserialize < 'de > for Data { fn deserialize < D > (deserializer : D) -> Result < Self , D :: Error > where D : :: serde :: Deserializer < 'de > , { # [allow (warnings)] enum Field { $ ($ field) , + , id , item_type , value , pos_x , pos_y , width , height , created_at , updated_at , whiteboard_id } impl < 'de > :: serde :: Deserialize < 'de > for Field { fn deserialize < D > (deserializer : D) -> Result < Field , D :: Error > where D : :: serde :: Deserializer < 'de > , { struct FieldVisitor ; impl < 'de > :: serde :: de :: Visitor < 'de > for FieldVisitor { type Value = Field ; fn expecting (& self , formatter : & mut :: std :: fmt :: Formatter) -> :: std :: fmt :: Result { formatter . write_str (concat ! ($ ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; $ field) , ", ") , + , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; id) , ", " , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; item_type) , ", " , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; value) , ", " , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; pos_x) , ", " , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; pos_y) , ", " , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; width) , ", " , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; height) , ", " , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; created_at) , ", " , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; updated_at) , ", " , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; whiteboard_id) , ", ")) } fn visit_str < E > (self , value : & str) -> Result < Field , E > where E : :: serde :: de :: Error , { match value { $ ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; $ field) => Ok (Field :: $ field)) , * , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; id) => Ok (Field :: id) , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; item_type) => Ok (Field :: item_type) , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; value) => Ok (Field :: value) , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; pos_x) => Ok (Field :: pos_x) , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; pos_y) => Ok (Field :: pos_y) , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; width) => Ok (Field :: width) , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; height) => Ok (Field :: height) , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; created_at) => Ok (Field :: created_at) , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; updated_at) => Ok (Field :: updated_at) , $ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; whiteboard_id) => Ok (Field :: whiteboard_id) , _ => Err (:: serde :: de :: Error :: unknown_field (value , FIELDS)) , } } } deserializer . deserialize_identifier (FieldVisitor) } } struct DataVisitor ; impl < 'de > :: serde :: de :: Visitor < 'de > for DataVisitor { type Value = Data ; fn expecting (& self , formatter : & mut std :: fmt :: Formatter) -> std :: fmt :: Result { formatter . write_str ("struct Data") } fn visit_map < V > (self , mut map : V) -> Result < Data , V :: Error > where V : :: serde :: de :: MapAccess < 'de > , { $ (let mut $ field = None ;) * let mut id = None ; let mut item_type = None ; let mut value = None ; let mut pos_x = None ; let mut pos_y = None ; let mut width = None ; let mut height = None ; let mut created_at = None ; let mut updated_at = None ; let mut whiteboard_id = None ; while let Some (key) = map . next_key () ? { match key { Field :: id => { if id . is_some () { return Err (:: serde :: de :: Error :: duplicate_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; id))) ; } id = Some (map . next_value () ?) ; } Field :: item_type => { if item_type . is_some () { return Err (:: serde :: de :: Error :: duplicate_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; item_type))) ; } item_type = Some (map . next_value () ?) ; } Field :: value => { if value . is_some () { return Err (:: serde :: de :: Error :: duplicate_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; value))) ; } value = Some (map . next_value () ?) ; } Field :: pos_x => { if pos_x . is_some () { return Err (:: serde :: de :: Error :: duplicate_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; pos_x))) ; } pos_x = Some (map . next_value () ?) ; } Field :: pos_y => { if pos_y . is_some () { return Err (:: serde :: de :: Error :: duplicate_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; pos_y))) ; } pos_y = Some (map . next_value () ?) ; } Field :: width => { if width . is_some () { return Err (:: serde :: de :: Error :: duplicate_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; width))) ; } width = Some (map . next_value () ?) ; } Field :: height => { if height . is_some () { return Err (:: serde :: de :: Error :: duplicate_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; height))) ; } height = Some (map . next_value () ?) ; } Field :: created_at => { if created_at . is_some () { return Err (:: serde :: de :: Error :: duplicate_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; created_at))) ; } created_at = Some (map . next_value () ?) ; } Field :: updated_at => { if updated_at . is_some () { return Err (:: serde :: de :: Error :: duplicate_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; updated_at))) ; } updated_at = Some (map . next_value () ?) ; } Field :: whiteboard_id => { if whiteboard_id . is_some () { return Err (:: serde :: de :: Error :: duplicate_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; whiteboard_id))) ; } whiteboard_id = Some (map . next_value () ?) ; } $ (Field :: $ field => { if $ field . is_some () { return Err (:: serde :: de :: Error :: duplicate_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; $ field))) ; } $ field = Some (map . next_value () ?) ; }) * } } $ (let $ field = $ field . ok_or_else (|| serde :: de :: Error :: missing_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; $ field))) ? ;) * let id = id . ok_or_else (|| serde :: de :: Error :: missing_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; id))) ? ; let item_type = item_type . ok_or_else (|| serde :: de :: Error :: missing_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; item_type))) ? ; let value = value . ok_or_else (|| serde :: de :: Error :: missing_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; value))) ? ; let pos_x = pos_x . ok_or_else (|| serde :: de :: Error :: missing_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; pos_x))) ? ; let pos_y = pos_y . ok_or_else (|| serde :: de :: Error :: missing_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; pos_y))) ? ; let width = width . ok_or_else (|| serde :: de :: Error :: missing_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; width))) ? ; let height = height . ok_or_else (|| serde :: de :: Error :: missing_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; height))) ? ; let created_at = created_at . ok_or_else (|| serde :: de :: Error :: missing_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; created_at))) ? ; let updated_at = updated_at . ok_or_else (|| serde :: de :: Error :: missing_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; updated_at))) ? ; let whiteboard_id = whiteboard_id . ok_or_else (|| serde :: de :: Error :: missing_field ($ crate :: prisma :: whiteboard_item :: include ! (@ field_serde_name ; whiteboard_id))) ? ; Ok (Data { id , item_type , value , pos_x , pos_y , width , height , created_at , updated_at , whiteboard_id , $ ($ field) , * }) } } const FIELDS : & 'static [& 'static str] = & ["id" , "item_type" , "value" , "posX" , "posY" , "width" , "height" , "createdAt" , "updatedAt" , "Whiteboard" , "whiteboardId"] ; deserializer . deserialize_struct ("Data" , FIELDS , DataVisitor) } } impl prisma_client_rust :: rspc :: internal :: specta :: Type for Data { const NAME : & 'static str = "Data" ; fn inline (_opts : prisma_client_rust :: rspc :: internal :: specta :: DefOpts , _ : & [prisma_client_rust :: rspc :: internal :: specta :: DataType]) -> prisma_client_rust :: rspc :: internal :: specta :: DataType { prisma_client_rust :: rspc :: internal :: specta :: DataType :: Object (prisma_client_rust :: rspc :: internal :: specta :: ObjectType { name : "Data" . to_string () , tag : None , generics : vec ! [] , fields : vec ! [prisma_client_rust :: rspc :: internal :: specta :: ObjectField { name : stringify ! (id) . to_string () , optional : false , ty : < i32 as prisma_client_rust :: rspc :: internal :: specta :: Type > :: reference (prisma_client_rust :: rspc :: internal :: specta :: DefOpts { parent_inline : false , type_map : _opts . type_map } , & []) } , prisma_client_rust :: rspc :: internal :: specta :: ObjectField { name : stringify ! (item_type) . to_string () , optional : false , ty : < String as prisma_client_rust :: rspc :: internal :: specta :: Type > :: reference (prisma_client_rust :: rspc :: internal :: specta :: DefOpts { parent_inline : false , type_map : _opts . type_map } , & []) } , prisma_client_rust :: rspc :: internal :: specta :: ObjectField { name : stringify ! (value) . to_string () , optional : false , ty : < String as prisma_client_rust :: rspc :: internal :: specta :: Type > :: reference (prisma_client_rust :: rspc :: internal :: specta :: DefOpts { parent_inline : false , type_map : _opts . type_map } , & []) } , prisma_client_rust :: rspc :: internal :: specta :: ObjectField { name : stringify ! (pos_x) . to_string () , optional : false , ty : < i32 as prisma_client_rust :: rspc :: internal :: specta :: Type > :: reference (prisma_client_rust :: rspc :: internal :: specta :: DefOpts { parent_inline : false , type_map : _opts . type_map } , & []) } , prisma_client_rust :: rspc :: internal :: specta :: ObjectField { name : stringify ! (pos_y) . to_string () , optional : false , ty : < i32 as prisma_client_rust :: rspc :: internal :: specta :: Type > :: reference (prisma_client_rust :: rspc :: internal :: specta :: DefOpts { parent_inline : false , type_map : _opts . type_map } , & []) } , prisma_client_rust :: rspc :: internal :: specta :: ObjectField { name : stringify ! (width) . to_string () , optional : false , ty : < String as prisma_client_rust :: rspc :: internal :: specta :: Type > :: reference (prisma_client_rust :: rspc :: internal :: specta :: DefOpts { parent_inline : false , type_map : _opts . type_map } , & []) } , prisma_client_rust :: rspc :: internal :: specta :: ObjectField { name : stringify ! (height) . to_string () , optional : false , ty : < String as prisma_client_rust :: rspc :: internal :: specta :: Type > :: reference (prisma_client_rust :: rspc :: internal :: specta :: DefOpts { parent_inline : false , type_map : _opts . type_map } , & []) } , prisma_client_rust :: rspc :: internal :: specta :: ObjectField { name : stringify ! (created_at) . to_string () , optional : false , ty : < :: prisma_client_rust :: chrono :: DateTime < :: prisma_client_rust :: chrono :: FixedOffset , > as prisma_client_rust :: rspc :: internal :: specta :: Type > :: reference (prisma_client_rust :: rspc :: internal :: specta :: DefOpts { parent_inline : false , type_map : _opts . type_map } , & []) } , prisma_client_rust :: rspc :: internal :: specta :: ObjectField { name : stringify ! (updated_at) . to_string () , optional : false , ty : < :: prisma_client_rust :: chrono :: DateTime < :: prisma_client_rust :: chrono :: FixedOffset , > as prisma_client_rust :: rspc :: internal :: specta :: Type > :: reference (prisma_client_rust :: rspc :: internal :: specta :: DefOpts { parent_inline : false , type_map : _opts . type_map } , & []) } , prisma_client_rust :: rspc :: internal :: specta :: ObjectField { name : stringify ! (whiteboard_id) . to_string () , optional : false , ty : < i32 as prisma_client_rust :: rspc :: internal :: specta :: Type > :: reference (prisma_client_rust :: rspc :: internal :: specta :: DefOpts { parent_inline : false , type_map : _opts . type_map } , & []) } , $ (prisma_client_rust :: rspc :: internal :: specta :: ObjectField { name : stringify ! ($ field) . to_string () , optional : false , ty : < $ crate :: prisma :: whiteboard_item :: include ! (@ field_type ; $ field $ (: $ selection_mode { $ ($ selections) + }) ?) as prisma_client_rust :: rspc :: internal :: specta :: Type > :: reference (prisma_client_rust :: rspc :: internal :: specta :: DefOpts { parent_inline : false , type_map : _opts . type_map } , & []) }) , *] , type_id : None }) } fn reference (_opts : prisma_client_rust :: rspc :: internal :: specta :: DefOpts , _ : & [prisma_client_rust :: rspc :: internal :: specta :: DataType]) -> prisma_client_rust :: rspc :: internal :: specta :: DataType { Self :: inline (_opts , & []) } fn definition (_opts : prisma_client_rust :: rspc :: internal :: specta :: DefOpts) -> prisma_client_rust :: rspc :: internal :: specta :: DataType { unreachable ! () } } $ ($ (pub mod $ field { $ crate :: prisma :: whiteboard_item :: $ selection_mode ! (@ field_module ; $ field : $ selection_mode { $ ($ selections) + }) ; }) ?) + } ; (@ field_type ; whiteboard : $ selection_mode : ident { $ ($ selections : tt) + }) => { whiteboard :: Data } ; (@ field_type ; whiteboard) => { crate :: prisma :: whiteboard :: Data } ; (@ field_type ; $ field : ident $ ($ tokens : tt) *) => { compile_error ! (stringify ! (Cannot include nonexistent relation $ field on model "WhiteboardItem" , available relations are "whiteboard")) } ; (@ field_module ; whiteboard : $ selection_mode : ident { $ ($ selections : tt) + }) => { $ crate :: prisma :: whiteboard :: include ! (@ definitions ; $ ($ selections) +) ; } ; (@ field_module ; $ ($ tokens : tt) *) => { } ; (@ selection_field_to_selection_param ; whiteboard $ (($ ($ filters : tt) +) $ (. $ arg : ident ($ ($ arg_params : tt) *)) *) ? : $ selection_mode : ident { $ ($ selections : tt) + }) => { { Into :: < $ crate :: prisma :: whiteboard_item :: IncludeParam > :: into ($ crate :: prisma :: whiteboard_item :: whiteboard :: Include :: $ selection_mode ($ crate :: prisma :: whiteboard :: include ! (@ selections_to_include_params ; : $ selection_mode { $ ($ selections) + }) . into_iter () . collect ())) } } ; (@ selection_field_to_selection_param ; whiteboard $ (($ ($ filters : tt) +) $ (. $ arg : ident ($ ($ arg_params : tt) *)) *) ?) => { { Into :: < $ crate :: prisma :: whiteboard_item :: IncludeParam > :: into ($ crate :: prisma :: whiteboard_item :: whiteboard :: Include :: Fetch) } } ; (@ selection_field_to_selection_param ; $ ($ tokens : tt) *) => { compile_error ! (stringify ! ($ ($ tokens) *)) } ; (@ selections_to_include_params ; : $ macro_name : ident { $ ($ field : ident $ (($ ($ filters : tt) +) $ (. $ arg : ident ($ ($ arg_params : tt) *)) *) ? $ (: $ selection_mode : ident { $ ($ selections : tt) + }) ?) + }) => { [$ ($ crate :: prisma :: whiteboard_item :: $ macro_name ! (@ selection_field_to_selection_param ; $ field $ (($ ($ filters) +) $ (. $ arg ($ ($ arg_params) *)) *) ? $ (: $ selection_mode { $ ($ selections) + }) ?) ,) +] } ; (@ filters_to_args ;) => { vec ! [] } ; (@ filters_to_args ; $ ($ t : tt) *) => { $ ($ t) * } ; (@ field_serde_name ; id) => { "id" } ; (@ field_serde_name ; item_type) => { "item_type" } ; (@ field_serde_name ; value) => { "value" } ; (@ field_serde_name ; pos_x) => { "posX" } ; (@ field_serde_name ; pos_y) => { "posY" } ; (@ field_serde_name ; width) => { "width" } ; (@ field_serde_name ; height) => { "height" } ; (@ field_serde_name ; created_at) => { "createdAt" } ; (@ field_serde_name ; updated_at) => { "updatedAt" } ; (@ field_serde_name ; whiteboard) => { "Whiteboard" } ; (@ field_serde_name ; whiteboard_id) => { "whiteboardId" } ; }
     pub use _include_whiteboard_item as include;
     pub enum IncludeParam {
         Id(id::Include),
         ItemType(item_type::Include),
         Value(value::Include),
+        PosX(pos_x::Include),
+        PosY(pos_y::Include),
+        Width(width::Include),
+        Height(height::Include),
         CreatedAt(created_at::Include),
         UpdatedAt(updated_at::Include),
         Whiteboard(whiteboard::Include),
@@ -730,6 +1053,10 @@ pub mod whiteboard_item {
                 Self::Id(data) => data.to_selection(),
                 Self::ItemType(data) => data.to_selection(),
                 Self::Value(data) => data.to_selection(),
+                Self::PosX(data) => data.to_selection(),
+                Self::PosY(data) => data.to_selection(),
+                Self::Width(data) => data.to_selection(),
+                Self::Height(data) => data.to_selection(),
                 Self::CreatedAt(data) => data.to_selection(),
                 Self::UpdatedAt(data) => data.to_selection(),
                 Self::Whiteboard(data) => data.to_selection(),
@@ -755,6 +1082,14 @@ pub mod whiteboard_item {
         pub item_type: String,
         #[serde(rename = "value")]
         pub value: String,
+        #[serde(rename = "posX")]
+        pub pos_x: i32,
+        #[serde(rename = "posY")]
+        pub pos_y: i32,
+        #[serde(rename = "width")]
+        pub width: String,
+        #[serde(rename = "height")]
+        pub height: String,
         #[serde(rename = "createdAt")]
         pub created_at:
             ::prisma_client_rust::chrono::DateTime<::prisma_client_rust::chrono::FixedOffset>,
@@ -810,6 +1145,18 @@ pub mod whiteboard_item {
         DivideId(i32),
         SetItemType(String),
         SetValue(String),
+        SetPosX(i32),
+        IncrementPosX(i32),
+        DecrementPosX(i32),
+        MultiplyPosX(i32),
+        DividePosX(i32),
+        SetPosY(i32),
+        IncrementPosY(i32),
+        DecrementPosY(i32),
+        MultiplyPosY(i32),
+        DividePosY(i32),
+        SetWidth(String),
+        SetHeight(String),
         SetCreatedAt(
             ::prisma_client_rust::chrono::DateTime<::prisma_client_rust::chrono::FixedOffset>,
         ),
@@ -864,6 +1211,78 @@ pub mod whiteboard_item {
                 ),
                 SetParam::SetValue(value) => (
                     "value".to_string(),
+                    ::prisma_client_rust::PrismaValue::String(value),
+                ),
+                SetParam::SetPosX(value) => (
+                    "posX".to_string(),
+                    ::prisma_client_rust::PrismaValue::Int(value as i64),
+                ),
+                SetParam::IncrementPosX(value) => (
+                    "posX".to_string(),
+                    ::prisma_client_rust::PrismaValue::Object(vec![(
+                        "increment".to_string(),
+                        ::prisma_client_rust::PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                SetParam::DecrementPosX(value) => (
+                    "posX".to_string(),
+                    ::prisma_client_rust::PrismaValue::Object(vec![(
+                        "decrement".to_string(),
+                        ::prisma_client_rust::PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                SetParam::MultiplyPosX(value) => (
+                    "posX".to_string(),
+                    ::prisma_client_rust::PrismaValue::Object(vec![(
+                        "multiply".to_string(),
+                        ::prisma_client_rust::PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                SetParam::DividePosX(value) => (
+                    "posX".to_string(),
+                    ::prisma_client_rust::PrismaValue::Object(vec![(
+                        "divide".to_string(),
+                        ::prisma_client_rust::PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                SetParam::SetPosY(value) => (
+                    "posY".to_string(),
+                    ::prisma_client_rust::PrismaValue::Int(value as i64),
+                ),
+                SetParam::IncrementPosY(value) => (
+                    "posY".to_string(),
+                    ::prisma_client_rust::PrismaValue::Object(vec![(
+                        "increment".to_string(),
+                        ::prisma_client_rust::PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                SetParam::DecrementPosY(value) => (
+                    "posY".to_string(),
+                    ::prisma_client_rust::PrismaValue::Object(vec![(
+                        "decrement".to_string(),
+                        ::prisma_client_rust::PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                SetParam::MultiplyPosY(value) => (
+                    "posY".to_string(),
+                    ::prisma_client_rust::PrismaValue::Object(vec![(
+                        "multiply".to_string(),
+                        ::prisma_client_rust::PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                SetParam::DividePosY(value) => (
+                    "posY".to_string(),
+                    ::prisma_client_rust::PrismaValue::Object(vec![(
+                        "divide".to_string(),
+                        ::prisma_client_rust::PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                SetParam::SetWidth(value) => (
+                    "width".to_string(),
+                    ::prisma_client_rust::PrismaValue::String(value),
+                ),
+                SetParam::SetHeight(value) => (
+                    "height".to_string(),
                     ::prisma_client_rust::PrismaValue::String(value),
                 ),
                 SetParam::SetCreatedAt(value) => (
@@ -928,6 +1347,10 @@ pub mod whiteboard_item {
         Id(::prisma_client_rust::Direction),
         ItemType(::prisma_client_rust::Direction),
         Value(::prisma_client_rust::Direction),
+        PosX(::prisma_client_rust::Direction),
+        PosY(::prisma_client_rust::Direction),
+        Width(::prisma_client_rust::Direction),
+        Height(::prisma_client_rust::Direction),
         CreatedAt(::prisma_client_rust::Direction),
         UpdatedAt(::prisma_client_rust::Direction),
         WhiteboardId(::prisma_client_rust::Direction),
@@ -945,6 +1368,22 @@ pub mod whiteboard_item {
                 ),
                 Self::Value(direction) => (
                     "value".to_string(),
+                    ::prisma_client_rust::PrismaValue::String(direction.to_string()),
+                ),
+                Self::PosX(direction) => (
+                    "posX".to_string(),
+                    ::prisma_client_rust::PrismaValue::String(direction.to_string()),
+                ),
+                Self::PosY(direction) => (
+                    "posY".to_string(),
+                    ::prisma_client_rust::PrismaValue::String(direction.to_string()),
+                ),
+                Self::Width(direction) => (
+                    "width".to_string(),
+                    ::prisma_client_rust::PrismaValue::String(direction.to_string()),
+                ),
+                Self::Height(direction) => (
+                    "height".to_string(),
                     ::prisma_client_rust::PrismaValue::String(direction.to_string()),
                 ),
                 Self::CreatedAt(direction) => (
@@ -997,6 +1436,44 @@ pub mod whiteboard_item {
         ValueStartsWith(String),
         ValueEndsWith(String),
         ValueNot(String),
+        PosXEquals(i32),
+        PosXInVec(Vec<i32>),
+        PosXNotInVec(Vec<i32>),
+        PosXLt(i32),
+        PosXLte(i32),
+        PosXGt(i32),
+        PosXGte(i32),
+        PosXNot(i32),
+        PosYEquals(i32),
+        PosYInVec(Vec<i32>),
+        PosYNotInVec(Vec<i32>),
+        PosYLt(i32),
+        PosYLte(i32),
+        PosYGt(i32),
+        PosYGte(i32),
+        PosYNot(i32),
+        WidthEquals(String),
+        WidthInVec(Vec<String>),
+        WidthNotInVec(Vec<String>),
+        WidthLt(String),
+        WidthLte(String),
+        WidthGt(String),
+        WidthGte(String),
+        WidthContains(String),
+        WidthStartsWith(String),
+        WidthEndsWith(String),
+        WidthNot(String),
+        HeightEquals(String),
+        HeightInVec(Vec<String>),
+        HeightNotInVec(Vec<String>),
+        HeightLt(String),
+        HeightLte(String),
+        HeightGt(String),
+        HeightGte(String),
+        HeightContains(String),
+        HeightStartsWith(String),
+        HeightEndsWith(String),
+        HeightNot(String),
         CreatedAtEquals(
             ::prisma_client_rust::chrono::DateTime<::prisma_client_rust::chrono::FixedOffset>,
         ),
@@ -1331,6 +1808,312 @@ pub mod whiteboard_item {
                         ::prisma_client_rust::PrismaValue::String(value),
                     )]),
                 ),
+                Self::PosXEquals(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "posX",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "equals".to_string(),
+                        ::prisma_client_rust::PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::PosXInVec(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "posX",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "in".to_string(),
+                        ::prisma_client_rust::PrismaValue::List(
+                            value
+                                .into_iter()
+                                .map(|v| ::prisma_client_rust::PrismaValue::Int(v as i64))
+                                .collect(),
+                        ),
+                    )]),
+                ),
+                Self::PosXNotInVec(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "posX",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "notIn".to_string(),
+                        ::prisma_client_rust::PrismaValue::List(
+                            value
+                                .into_iter()
+                                .map(|v| ::prisma_client_rust::PrismaValue::Int(v as i64))
+                                .collect(),
+                        ),
+                    )]),
+                ),
+                Self::PosXLt(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "posX",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "lt".to_string(),
+                        ::prisma_client_rust::PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::PosXLte(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "posX",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "lte".to_string(),
+                        ::prisma_client_rust::PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::PosXGt(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "posX",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "gt".to_string(),
+                        ::prisma_client_rust::PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::PosXGte(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "posX",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "gte".to_string(),
+                        ::prisma_client_rust::PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::PosXNot(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "posX",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "not".to_string(),
+                        ::prisma_client_rust::PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::PosYEquals(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "posY",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "equals".to_string(),
+                        ::prisma_client_rust::PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::PosYInVec(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "posY",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "in".to_string(),
+                        ::prisma_client_rust::PrismaValue::List(
+                            value
+                                .into_iter()
+                                .map(|v| ::prisma_client_rust::PrismaValue::Int(v as i64))
+                                .collect(),
+                        ),
+                    )]),
+                ),
+                Self::PosYNotInVec(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "posY",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "notIn".to_string(),
+                        ::prisma_client_rust::PrismaValue::List(
+                            value
+                                .into_iter()
+                                .map(|v| ::prisma_client_rust::PrismaValue::Int(v as i64))
+                                .collect(),
+                        ),
+                    )]),
+                ),
+                Self::PosYLt(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "posY",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "lt".to_string(),
+                        ::prisma_client_rust::PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::PosYLte(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "posY",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "lte".to_string(),
+                        ::prisma_client_rust::PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::PosYGt(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "posY",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "gt".to_string(),
+                        ::prisma_client_rust::PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::PosYGte(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "posY",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "gte".to_string(),
+                        ::prisma_client_rust::PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::PosYNot(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "posY",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "not".to_string(),
+                        ::prisma_client_rust::PrismaValue::Int(value as i64),
+                    )]),
+                ),
+                Self::WidthEquals(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "width",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "equals".to_string(),
+                        ::prisma_client_rust::PrismaValue::String(value),
+                    )]),
+                ),
+                Self::WidthInVec(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "width",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "in".to_string(),
+                        ::prisma_client_rust::PrismaValue::List(
+                            value
+                                .into_iter()
+                                .map(|v| ::prisma_client_rust::PrismaValue::String(v))
+                                .collect(),
+                        ),
+                    )]),
+                ),
+                Self::WidthNotInVec(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "width",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "notIn".to_string(),
+                        ::prisma_client_rust::PrismaValue::List(
+                            value
+                                .into_iter()
+                                .map(|v| ::prisma_client_rust::PrismaValue::String(v))
+                                .collect(),
+                        ),
+                    )]),
+                ),
+                Self::WidthLt(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "width",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "lt".to_string(),
+                        ::prisma_client_rust::PrismaValue::String(value),
+                    )]),
+                ),
+                Self::WidthLte(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "width",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "lte".to_string(),
+                        ::prisma_client_rust::PrismaValue::String(value),
+                    )]),
+                ),
+                Self::WidthGt(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "width",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "gt".to_string(),
+                        ::prisma_client_rust::PrismaValue::String(value),
+                    )]),
+                ),
+                Self::WidthGte(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "width",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "gte".to_string(),
+                        ::prisma_client_rust::PrismaValue::String(value),
+                    )]),
+                ),
+                Self::WidthContains(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "width",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "contains".to_string(),
+                        ::prisma_client_rust::PrismaValue::String(value),
+                    )]),
+                ),
+                Self::WidthStartsWith(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "width",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "startsWith".to_string(),
+                        ::prisma_client_rust::PrismaValue::String(value),
+                    )]),
+                ),
+                Self::WidthEndsWith(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "width",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "endsWith".to_string(),
+                        ::prisma_client_rust::PrismaValue::String(value),
+                    )]),
+                ),
+                Self::WidthNot(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "width",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "not".to_string(),
+                        ::prisma_client_rust::PrismaValue::String(value),
+                    )]),
+                ),
+                Self::HeightEquals(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "height",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "equals".to_string(),
+                        ::prisma_client_rust::PrismaValue::String(value),
+                    )]),
+                ),
+                Self::HeightInVec(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "height",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "in".to_string(),
+                        ::prisma_client_rust::PrismaValue::List(
+                            value
+                                .into_iter()
+                                .map(|v| ::prisma_client_rust::PrismaValue::String(v))
+                                .collect(),
+                        ),
+                    )]),
+                ),
+                Self::HeightNotInVec(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "height",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "notIn".to_string(),
+                        ::prisma_client_rust::PrismaValue::List(
+                            value
+                                .into_iter()
+                                .map(|v| ::prisma_client_rust::PrismaValue::String(v))
+                                .collect(),
+                        ),
+                    )]),
+                ),
+                Self::HeightLt(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "height",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "lt".to_string(),
+                        ::prisma_client_rust::PrismaValue::String(value),
+                    )]),
+                ),
+                Self::HeightLte(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "height",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "lte".to_string(),
+                        ::prisma_client_rust::PrismaValue::String(value),
+                    )]),
+                ),
+                Self::HeightGt(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "height",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "gt".to_string(),
+                        ::prisma_client_rust::PrismaValue::String(value),
+                    )]),
+                ),
+                Self::HeightGte(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "height",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "gte".to_string(),
+                        ::prisma_client_rust::PrismaValue::String(value),
+                    )]),
+                ),
+                Self::HeightContains(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "height",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "contains".to_string(),
+                        ::prisma_client_rust::PrismaValue::String(value),
+                    )]),
+                ),
+                Self::HeightStartsWith(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "height",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "startsWith".to_string(),
+                        ::prisma_client_rust::PrismaValue::String(value),
+                    )]),
+                ),
+                Self::HeightEndsWith(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "height",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "endsWith".to_string(),
+                        ::prisma_client_rust::PrismaValue::String(value),
+                    )]),
+                ),
+                Self::HeightNot(value) => ::prisma_client_rust::SerializedWhere::new(
+                    "height",
+                    ::prisma_client_rust::SerializedWhereValue::Object(vec![(
+                        "not".to_string(),
+                        ::prisma_client_rust::PrismaValue::String(value),
+                    )]),
+                ),
                 Self::CreatedAtEquals(value) => ::prisma_client_rust::SerializedWhere::new(
                     "createdAt",
                     ::prisma_client_rust::SerializedWhereValue::Object(vec![(
@@ -1638,11 +2421,19 @@ pub mod whiteboard_item {
             self,
             item_type: String,
             value: String,
+            pos_x: i32,
+            pos_y: i32,
+            width: String,
+            height: String,
             whiteboard: super::whiteboard::UniqueWhereParam,
             mut _params: Vec<SetParam>,
         ) -> Create<'a> {
             _params.push(item_type::set(item_type));
             _params.push(value::set(value));
+            _params.push(pos_x::set(pos_x));
+            _params.push(pos_y::set(pos_y));
+            _params.push(width::set(width));
+            _params.push(height::set(height));
             _params.push(whiteboard::connect(whiteboard));
             Create::new(
                 self.client._new_query_context(),
@@ -1652,16 +2443,31 @@ pub mod whiteboard_item {
         }
         pub fn create_many(
             self,
-            data: Vec<(String, String, i32, Vec<SetParam>)>,
+            data: Vec<(String, String, i32, i32, String, String, i32, Vec<SetParam>)>,
         ) -> CreateMany<'a> {
             let data = data
                 .into_iter()
-                .map(|(item_type, value, whiteboard_id, mut _params)| {
-                    _params.push(item_type::set(item_type));
-                    _params.push(value::set(value));
-                    _params.push(whiteboard_id::set(whiteboard_id));
-                    _params
-                })
+                .map(
+                    |(
+                        item_type,
+                        value,
+                        pos_x,
+                        pos_y,
+                        width,
+                        height,
+                        whiteboard_id,
+                        mut _params,
+                    )| {
+                        _params.push(item_type::set(item_type));
+                        _params.push(value::set(value));
+                        _params.push(pos_x::set(pos_x));
+                        _params.push(pos_y::set(pos_y));
+                        _params.push(width::set(width));
+                        _params.push(height::set(height));
+                        _params.push(whiteboard_id::set(whiteboard_id));
+                        _params
+                    },
+                )
                 .collect();
             CreateMany::new(
                 self.client._new_query_context(),
@@ -1693,7 +2499,11 @@ pub mod whiteboard_item {
         pub fn upsert(
             self,
             _where: UniqueWhereParam,
-            (item_type, value, whiteboard, mut _params): (
+            (item_type, value, pos_x, pos_y, width, height, whiteboard, mut _params): (
+                String,
+                String,
+                i32,
+                i32,
                 String,
                 String,
                 super::whiteboard::UniqueWhereParam,
@@ -1703,6 +2513,10 @@ pub mod whiteboard_item {
         ) -> Upsert<'a> {
             _params.push(item_type::set(item_type));
             _params.push(value::set(value));
+            _params.push(pos_x::set(pos_x));
+            _params.push(pos_y::set(pos_y));
+            _params.push(width::set(width));
+            _params.push(height::set(height));
             _params.push(whiteboard::connect(whiteboard));
             Upsert::new(
                 self.client._new_query_context(),
@@ -9851,6 +10665,14 @@ pub mod _prisma {
         ItemType,
         #[serde(rename = "value")]
         Value,
+        #[serde(rename = "posX")]
+        PosX,
+        #[serde(rename = "posY")]
+        PosY,
+        #[serde(rename = "width")]
+        Width,
+        #[serde(rename = "height")]
+        Height,
         #[serde(rename = "createdAt")]
         CreatedAt,
         #[serde(rename = "updatedAt")]
@@ -9864,6 +10686,10 @@ pub mod _prisma {
                 Self::Id => "id".to_string(),
                 Self::ItemType => "item_type".to_string(),
                 Self::Value => "value".to_string(),
+                Self::PosX => "posX".to_string(),
+                Self::PosY => "posY".to_string(),
+                Self::Width => "width".to_string(),
+                Self::Height => "height".to_string(),
                 Self::CreatedAt => "createdAt".to_string(),
                 Self::UpdatedAt => "updatedAt".to_string(),
                 Self::WhiteboardId => "whiteboardId".to_string(),
