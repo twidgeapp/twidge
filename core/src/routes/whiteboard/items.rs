@@ -8,7 +8,7 @@ use crate::{prisma, Shared};
 
 #[derive(Debug, Clone, Deserialize, Serialize, Type)]
 pub struct GetWhiteBoardItemsArgs {
-    pub whiteboard_id: u32,
+    pub whiteboard_id: i32,
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize, Type)]
@@ -18,20 +18,35 @@ pub struct CreateWhiteBoardArgs {
     pub whiteboard_id: i32,
 }
 
+#[derive(Debug, Clone, Deserialize, Serialize, Type)]
+pub struct MoveWhiteboardItemArgs {
+    pub id: i32,
+    pub x_pos: String,
+    pub y_pos: String,
+}
+
+#[derive(Debug, Clone, Deserialize, Serialize, Type)]
+pub struct ResizeWhiteboardItemArgs {
+    pub id: i32,
+    pub width: String,
+    pub height: String,
+}
+
 pub fn mount() -> RouterBuilder<Shared> {
     RouterBuilder::<Shared>::new()
         .query("get", move |ctx, args: GetWhiteBoardItemsArgs| async move {
             let GetWhiteBoardItemsArgs { whiteboard_id } = args;
+            log::info!("Getting whiteboard items for {}", whiteboard_id);
             let client = ctx.client.clone();
 
             let whiteboard_elements = client
                 .whiteboard_item()
-                .find_many(vec![prisma::whiteboard_item::WhereParam::IdEquals(
-                    whiteboard_id.try_into().unwrap(),
+                .find_many(vec![prisma::whiteboard_item::whiteboard_id::equals(
+                    whiteboard_id,
                 )])
                 .exec()
                 .await?;
-
+            log::info!("Found whiteboard elements: {:?}", whiteboard_elements);
             Ok(whiteboard_elements)
         })
         .mutation(
@@ -50,6 +65,10 @@ pub fn mount() -> RouterBuilder<Shared> {
                         .create(
                             r#type,
                             data,
+                            "auto".to_string(),
+                            "auto".to_string(),
+                            "auto".to_string(),
+                            "auto".to_string(),
                             prisma::whiteboard::id::equals(whiteboard_id),
                             vec![],
                         )
@@ -76,6 +95,10 @@ pub fn mount() -> RouterBuilder<Shared> {
                         .create(
                             r#type,
                             file_path.to_str().unwrap().to_string(),
+                            "auto".to_string(),
+                            "auto".to_string(),
+                            "auto".to_string(),
+                            "auto".to_string(),
                             prisma::whiteboard::id::equals(whiteboard_id),
                             vec![],
                         )
@@ -83,6 +106,44 @@ pub fn mount() -> RouterBuilder<Shared> {
                         .await?;
                 }
 
+                Ok(())
+            },
+        )
+        .mutation(
+            "move",
+            move |ctx, args: MoveWhiteboardItemArgs| async move {
+                let client = ctx.client.clone();
+
+                client
+                    .whiteboard_item()
+                    .update(
+                        prisma::whiteboard_item::id::equals(args.id),
+                        vec![
+                            prisma::whiteboard_item::pos_x::set(args.x_pos),
+                            prisma::whiteboard_item::pos_y::set(args.y_pos),
+                        ],
+                    )
+                    .exec()
+                    .await?;
+                Ok(())
+            },
+        )
+        .mutation(
+            "resize",
+            move |ctx, args: ResizeWhiteboardItemArgs| async move {
+                let client = ctx.client.clone();
+
+                client
+                    .whiteboard_item()
+                    .update(
+                        prisma::whiteboard_item::id::equals(args.id),
+                        vec![
+                            prisma::whiteboard_item::width::set(args.width),
+                            prisma::whiteboard_item::height::set(args.height),
+                        ],
+                    )
+                    .exec()
+                    .await?;
                 Ok(())
             },
         )

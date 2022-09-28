@@ -76,7 +76,7 @@ const getClipboardFileType = (file: File) => {
  * Adds a paste event listener to the document
  * Infers the type of the clipboard data and returns it
  */
-const useClipSense = () => {
+const useClipSense = ({refetch}) => {
     const mutations = rspc.useMutation("whiteboard.items.create")
     const params = useParams();
 
@@ -93,7 +93,15 @@ const useClipSense = () => {
         for (const item of clipBoardItems) {
             if (item.type === "text" && typeof item.data === "string") {
                 console.log("text", item.data);
-                mutations.mutate({whiteboard_id: parseInt(params.id!), data: item.data, type: "text"})
+                mutations.mutate({
+                    whiteboard_id: parseInt(params.id!),
+                    data: item.data,
+                    type: "text"
+                }, {
+                    onSuccess: () => {
+                        refetch()
+                    }
+                })
 
             } else if (item.type === "file" && typeof item.data !== "string") {
                 // convert item.data to base64
@@ -106,6 +114,10 @@ const useClipSense = () => {
                         whiteboard_id: parseInt(params.id!),
                         data: reader.result.toString(),
                         type: getClipboardFileType(item.data).fileType
+                    }, {
+                        onSuccess: () => {
+                            refetch()
+                        }
                     })
                 }
 

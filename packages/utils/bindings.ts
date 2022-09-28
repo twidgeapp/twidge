@@ -11,7 +11,9 @@ export type Operations = {
     mutations: 
         { key: ["settings.set", SetSettingsArgs], result: Settings } | 
         { key: ["spaces.create"], result: Spaces } | 
-        { key: ["whiteboard.items.create", CreateWhiteBoardArgs], result: null },
+        { key: ["whiteboard.items.create", CreateWhiteBoardArgs], result: null } | 
+        { key: ["whiteboard.items.move", MoveWhiteboardItemArgs], result: null } | 
+        { key: ["whiteboard.items.resize", ResizeWhiteboardItemArgs], result: null },
     subscriptions: never
 };
 
@@ -21,10 +23,14 @@ export interface GetSettingsArgs { key: string }
 
 export interface GetWhiteBoardItemsArgs { whiteboard_id: number }
 
+export interface MoveWhiteboardItemArgs { id: number, x_pos: string, y_pos: string }
+
+export interface ResizeWhiteboardItemArgs { id: number, width: string, height: string }
+
 export interface SetSettingsArgs { key: string, value: string }
 
 export interface Settings { id: number, name: string, value: string, createdAt: string, updatedAt: string }
 
 export interface Spaces { id: number, name: string, icon: string, color: string }
 
-export interface WhiteboardItem { id: number, item_type: string, value: string, createdAt: string, updatedAt: string, whiteboardId: number }
+export interface WhiteboardItem { id: number, item_type: string, value: string, posX: string, posY: string, width: string, height: string, createdAt: string, updatedAt: string, whiteboardId: number }

@@ -14,8 +14,8 @@ model WhiteboardItem {
   id           Int         @id @default(autoincrement())
   item_type    String
   value        String
-  posX         Int
-  posY         Int
+  posX         String
+  posY         String
   width        String
   height       String
   createdAt    DateTime    @default(now())
