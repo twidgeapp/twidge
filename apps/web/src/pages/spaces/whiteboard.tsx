@@ -11,6 +11,7 @@ import useClipSense from "../../utils/clipsense";
 import rspc from "@twidge/core/query";
 import Moveable from "react-moveable";
 import "../../whiteboard.css"
+import WhiteboardItemElement, {checkIfImage} from "../../components/spaces/whiteboard";
 
 const WhiteboardPage = () => {
     const params = useParams();
@@ -54,7 +55,8 @@ const WhiteboardPage = () => {
                                         width: e.width == 'auto' ? null : e.width,
                                         height: e.height == 'auto' ? null : e.height,
                                     }}
-                                    className={`target${e.id} w-96 bg-dark-gray4 p-2 rounded-xl border border-gray11`}>{e.value}
+                                    className={`target${e.id} w-96 bg-dark-gray4 p-2 rounded-xl border border-gray11`}>
+                                    <WhiteboardItemElement element={e}/>
                                 </div>
                                 <Moveable
                                     rootContainer={document.body}
@@ -63,6 +65,7 @@ const WhiteboardPage = () => {
                                     flushSync={flushSync}
                                     draggable={true}
                                     resizable={true}
+                                    keepRatio={checkIfImage(e.item_type) ? true : false}
                                     renderDirections={["nw", "ne", "se", "sw", "n", "s", "e", "w"]}
                                     snappable={true}
                                     origin={false}
