@@ -76,7 +76,7 @@ const getClipboardFileType = (file: File) => {
  * Adds a paste event listener to the document
  * Infers the type of the clipboard data and returns it
  */
-const useClipSense = ({refetch}) => {
+const useClipSense = ({refetch}: { refetch: () => void }) => {
     const mutations = rspc.useMutation("whiteboard.items.create")
     const params = useParams();
 
@@ -103,25 +103,28 @@ const useClipSense = ({refetch}) => {
                     }
                 })
 
-            } else if (item.type === "file" && typeof item.data !== "string") {
-                // convert item.data to base64
-                const reader = new FileReader();
-                reader.readAsDataURL(item.data);
-                reader.onload = () => {
-                    if (!reader.result) return;
+            } else if (item.type === "file") {
+                if (item.data instanceof File) {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(item.data);
+                    reader.onload = () => {
+                        if (!reader.result) return;
 
-                    mutations.mutate({
-                        whiteboard_id: parseInt(params.id!),
-                        data: reader.result.toString(),
-                        type: getClipboardFileType(item.data).fileType
-                    }, {
-                        onSuccess: () => {
-                            refetch()
-                        }
-                    })
+                        mutations.mutate({
+                            whiteboard_id: parseInt(params.id!),
+                            data: reader.result.toString(),
+                            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                            // @ts-ignore
+                            type: getClipboardFileType(item.data).fileType
+                        }, {
+                            onSuccess: () => {
+                                refetch()
+                            }
+                        })
+                    }
+
+                    console.log("File name", item.data.name);
                 }
-
-                console.log("File name", item.data.name);
             }
         }
     };

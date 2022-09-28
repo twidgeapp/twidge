@@ -11,7 +11,7 @@ import useClipSense from "../../utils/clipsense";
 import rspc from "@twidge/core/query";
 import Moveable from "react-moveable";
 import "../../whiteboard.css"
-import WhiteboardItemElement, {checkIfImage} from "../../components/spaces/whiteboard";
+import WhiteboardItemElement, {checkIfMedia} from "../../components/spaces/whiteboard";
 
 const WhiteboardPage = () => {
     const params = useParams();
@@ -47,6 +47,8 @@ const WhiteboardPage = () => {
                     className="viewer"
                 >
                     <div className="viewport selecto-area">
+                        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                        {/*@ts-ignore*/}
                         {data?.map((e) => (
                             <>
                                 <div
@@ -65,7 +67,7 @@ const WhiteboardPage = () => {
                                     flushSync={flushSync}
                                     draggable={true}
                                     resizable={true}
-                                    keepRatio={checkIfImage(e.item_type) ? true : false}
+                                    keepRatio={checkIfMedia(e.item_type) ? true : false}
                                     renderDirections={["nw", "ne", "se", "sw", "n", "s", "e", "w"]}
                                     snappable={true}
                                     origin={false}
