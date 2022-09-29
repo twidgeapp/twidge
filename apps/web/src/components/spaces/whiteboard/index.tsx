@@ -1,6 +1,6 @@
 import {WhiteboardItem} from "@twidge/utils/bindings";
 import {convertFileSrc} from "@tauri-apps/api/tauri";
-
+import AudioPlayer from "./audio";
 
 export const checkIfImage = (file_type: string) => file_type === "png" || file_type === "jpeg" || file_type === "jpg" || file_type === "gif" || file_type === "svg"
 
@@ -18,6 +18,7 @@ const Text = ({element}: { element: WhiteboardItem }) => {
     )
 }
 
+
 const WhiteboardItemElement = ({element}: { element: WhiteboardItem }) => {
     if (element.item_type === 'text') {
         return <Text element={element}/>
@@ -27,8 +28,7 @@ const WhiteboardItemElement = ({element}: { element: WhiteboardItem }) => {
         return <video className="rounded-md h-full w-full" src={convertFileSrc(element.value)} controls={true}/>
     } else if (checkIfAudio(element.item_type)) {
         return (
-            <audio className="rounded-md h-full w-full audio" src={convertFileSrc(element.value)}
-                   controls={true}/>
+            <AudioPlayer element={element}/>
         )
     }
 

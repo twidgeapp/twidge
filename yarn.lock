@@ -4864,6 +4864,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/moment@npm:^2.13.0":
+  version: 2.13.0
+  resolution: "@types/moment@npm:2.13.0"
+  dependencies:
+    moment: "*"
+  checksum: 0bb9e73c0c961a1112ba67773779c3a84edca5063660e79f8b104bc0857dc53447f93e7ac3df78924d17e7e0a87c9ccc9e87505308798c9495ac6de278af7305
+  languageName: node
+  linkType: hard
+
 "@types/ms@npm:*":
   version: 0.7.31
   resolution: "@types/ms@npm:0.7.31"
@@ -14292,6 +14301,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"moment-duration-format@npm:^2.3.2":
+  version: 2.3.2
+  resolution: "moment-duration-format@npm:2.3.2"
+  checksum: 84bdb479b2d0d6fd4684ea4a5a8e3955024afa7a0df2369cd327fe35af020aa613283f71c7002d2c4af68015860137801e7d5cc8a6997289d005d697f2b88943
+  languageName: node
+  linkType: hard
+
+"moment@npm:*, moment@npm:^2.29.4":
+  version: 2.29.4
+  resolution: "moment@npm:2.29.4"
+  checksum: 0ec3f9c2bcba38dc2451b1daed5daded747f17610b92427bebe1d08d48d8b7bdd8d9197500b072d14e326dd0ccf3e326b9e3d07c5895d3d49e39b6803b76e80e
+  languageName: node
+  linkType: hard
+
 "move-concurrently@npm:^1.0.1":
   version: 1.0.1
   resolution: "move-concurrently@npm:1.0.1"
@@ -16181,6 +16204,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-audio-player@npm:^0.17.0":
+  version: 0.17.0
+  resolution: "react-audio-player@npm:0.17.0"
+  dependencies:
+    prop-types: ^15.7.2
+  peerDependencies:
+    react: ">=16"
+    react-dom: ">=16"
+  checksum: 03042c6ed663dda5d18cae4f399daa53078deed8f34b1b9f2f634bbc168ee7f4e73686f494c88f3091c534fa90af922bc85d80f081af02e0335782557a4a8715
+  languageName: node
+  linkType: hard
+
 "react-css-styled@npm:^1.0.4":
   version: 1.0.4
   resolution: "react-css-styled@npm:1.0.4"
@@ -16312,6 +16347,16 @@ __metadata:
     overlap-area: ^1.1.0
     react-css-styled: ^1.0.4
   checksum: 5f520de3f06b3bfe151e23a73c6632a006bfa3973a80876766ae709ac6393e1c4a970a3c15e586f58e583087a07acdfacd189426411660bb2f450c842bfecbf8
+  languageName: node
+  linkType: hard
+
+"react-range@npm:^1.8.14":
+  version: 1.8.14
+  resolution: "react-range@npm:1.8.14"
+  peerDependencies:
+    react: ^16.8.0-0 || ^17.0.0-0 || ^18.0.0-0
+    react-dom: ^16.8.0-0 || ^17.0.0-0 || ^18.0.0-0
+  checksum: 7020c011dc293db46ede9b7cb014dbfe71d59f96aad9cf9b12e9de26c2b600c504e11d39368af8c539c4a3dc1f93e966745063e0b494c388c28fbadd338164bb
   languageName: node
   linkType: hard
 
@@ -19081,6 +19126,7 @@ __metadata:
     eslint: ^8.23.1
     eslint-plugin-storybook: ^0.6.4
     husky: ^8.0.1
+    moment-duration-format: ^2.3.2
     postcss-import: ^15.0.0
     postcss-loader: ^7.0.1
     prettier: 2.7.1
@@ -20172,6 +20218,7 @@ __metadata:
     "@twidge/config": "workspace:*"
     "@twidge/core": "workspace:*"
     "@twidge/ui": "workspace:*"
+    "@types/moment": ^2.13.0
     "@types/react": ^18.0.17
     "@types/react-dom": ^18.0.6
     "@types/react-router": ^5.1.18
@@ -20179,11 +20226,15 @@ __metadata:
     autoprefixer: ^10.4.8
     framer-motion: ^7.3.5
     history: ^5.3.0
+    moment: ^2.29.4
+    moment-duration-format: ^2.3.2
     postcss: ^8.4.16
     react: ^18.2.0
+    react-audio-player: ^0.17.0
     react-dom: ^18.2.0
     react-infinite-viewer: ^0.16.4
     react-moveable: ^0.39.1
+    react-range: ^1.8.14
     selecto: ^1.20.2
     tailwindcss: ^3.1.8
     typescript: ^4.6.4
