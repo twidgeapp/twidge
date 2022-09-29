@@ -1,5 +1,9 @@
 import React from "react";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import moment from "moment";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import momentDurationFormatSetup from "moment-duration-format"
 
 export default function Bar(props) {
@@ -16,8 +20,9 @@ export default function Bar(props) {
 
     function calcClickedTime(e) {
         const clickPositionInPage = e.pageX;
-        const bar = document.querySelector(".bar__progress");
-        const barStart = bar.getBoundingClientRect().left + window.scrollX;
+        const bar: any = document.querySelector(".bar__progress");
+        if (!bar) return;
+        const barStart = bar?.getBoundingClientRect().left + window.scrollX;
         const barWidth = bar.offsetWidth;
         const clickPositionInBar = clickPositionInPage - barStart;
         const timePerPixel = duration / barWidth;
@@ -27,7 +32,7 @@ export default function Bar(props) {
     function handleTimeDrag(e) {
         onTimeUpdate(calcClickedTime(e));
 
-        const updateTimeOnMove = eMove => {
+        const updateTimeOnMove = (eMove: any) => {
             onTimeUpdate(calcClickedTime(eMove));
         };
 

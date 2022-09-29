@@ -58,6 +58,7 @@ pub fn mount() -> RouterBuilder<Shared> {
                     whiteboard_id,
                 } = args;
                 let client = ctx.client.clone();
+                let r#type = r#type.replace("application/", "");
 
                 if r#type == "text" {
                     client
@@ -86,6 +87,8 @@ pub fn mount() -> RouterBuilder<Shared> {
 
                     let file_name = uuid::Uuid::new_v4().to_string();
                     let mut file_path = assets_dir.join(file_name + "." + &r#type);
+
+                    log::info!("{:#?}", file_path);
 
                     let mut file = tokio::fs::File::create(file_path.clone()).await.unwrap();
                     file.write_all(data).await.unwrap();

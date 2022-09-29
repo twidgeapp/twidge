@@ -21,7 +21,7 @@ const AudioPlayer = ({element}: { element: WhiteboardItem }) => {
                 <source src={convertFileSrc(element.value)}/>
                 Your browser does not support the <code>audio</code> element.
             </audio>
-            <div className="controls">
+            <div className="controls min-w-[16rem]">
                 {playing ? (
                     <Pause handleClick={() => setPlaying(false)}/>
                 ) : (
@@ -31,7 +31,7 @@ const AudioPlayer = ({element}: { element: WhiteboardItem }) => {
                     <Bar
                         curTime={curTime}
                         duration={duration}
-                        onTimeUpdate={(time) => setClickedTime(time)}
+                        onTimeUpdate={(time: any) => setClickedTime(time)}
                     />
                 </div>
             </div>

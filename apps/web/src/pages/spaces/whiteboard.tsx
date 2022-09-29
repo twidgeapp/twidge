@@ -57,7 +57,7 @@ const WhiteboardPage = () => {
                                         width: e.width == 'auto' ? null : e.width,
                                         height: e.height == 'auto' ? null : e.height,
                                     }}
-                                    className={`target${e.id} w-96 bg-dark-gray4 p-2 rounded-xl border border-gray11 grid place-items-center`}>
+                                    className={`target${e.id} bg-dark-gray4 p-2 rounded-xl border border-gray11 grid place-items-center max-w-fit w-full`}>
                                     <WhiteboardItemElement element={e}/>
                                 </div>
                                 <Moveable

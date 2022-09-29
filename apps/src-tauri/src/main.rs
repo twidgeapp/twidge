@@ -4,6 +4,7 @@
 )]
 
 use std::sync::Arc;
+
 use tcore::Shared;
 
 #[tokio::main]
@@ -23,7 +24,10 @@ async fn main() {
             shared_clone.clone()
         }))
         .manage(shared)
-        .invoke_handler(tauri::generate_handler![tcore::functions::show_bar,])
+        .invoke_handler(tauri::generate_handler![
+            tcore::functions::show_bar,
+            tcore::functions::open_in_default_app
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

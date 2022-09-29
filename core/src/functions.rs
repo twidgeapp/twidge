@@ -8,3 +8,8 @@ pub async fn show_bar(_window: tauri::Window) -> Result<(), String> {
 
     Ok(())
 }
+
+#[tauri::command]
+pub async fn open_in_default_app(data: String) -> Result<(), String> {
+    open::that(data).map_err(|e| e.to_string())
+}

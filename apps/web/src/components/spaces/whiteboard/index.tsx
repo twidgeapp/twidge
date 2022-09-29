@@ -1,6 +1,8 @@
 import {WhiteboardItem} from "@twidge/utils/bindings";
 import {convertFileSrc} from "@tauri-apps/api/tauri";
 import AudioPlayer from "./audio";
+import {Document24Filled} from "@fluentui/react-icons";
+import {invoke} from "@tauri-apps/api";
 
 export const checkIfImage = (file_type: string) => file_type === "png" || file_type === "jpeg" || file_type === "jpg" || file_type === "gif" || file_type === "svg"
 
@@ -32,7 +34,13 @@ const WhiteboardItemElement = ({element}: { element: WhiteboardItem }) => {
         )
     }
 
-    return <div>Unknown item type</div>
+    return <div onDoubleClick={() => {
+        invoke("open_in_default_app", {data: element.value})
+    }}
+                className="text-white text-sm flex flex-col items-center w-full h-full text-dark-blue11 hover:text-dark-blue9">
+        <Document24Filled className={"w-full h-full"}/>
+    </div>
+
 }
 
 export default WhiteboardItemElement;
