@@ -40,17 +40,8 @@ model Notes {
   updatedAt  DateTime  @updatedAt
   spaceId    Spaces    @relation(fields: [spacesId], references: [id])
   spacesId   Int
-  Journals   Journals? @relation(fields: [journalsId], references: [id])
-  journalsId Int?
 }
 
-model Journals {
-  id       Int     @id @default(autoincrement())
-  notes    Notes[]
-  title    String
-  Spaces   Spaces? @relation(fields: [spacesId], references: [id])
-  spacesId Int?
-}
 
 model Spaces {
   id         Int          @id @default(autoincrement())
@@ -58,7 +49,6 @@ model Spaces {
   icon       String
   color      String
   Notes      Notes[]
-  journals   Journals[]
   Whiteboard Whiteboard[]
 }
 

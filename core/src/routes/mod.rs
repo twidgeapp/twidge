@@ -5,6 +5,7 @@ use rspc::{Config, Router};
 use crate::Shared;
 
 pub mod db;
+pub mod notes;
 pub mod settings;
 pub mod spaces;
 pub mod whiteboard;
@@ -21,6 +22,7 @@ pub fn init_router() -> Router<Shared> {
         .merge("spaces.", spaces::mount())
         .merge("settings.", settings::mount())
         .merge("db.", db::mount())
+        .merge("notes.", notes::mount())
         .merge("whiteboard.", whiteboard::mount())
         .query("version", move |_, _: ()| async move {
             env!("CARGO_PKG_VERSION")

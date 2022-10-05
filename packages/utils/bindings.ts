@@ -4,11 +4,13 @@
 export type Operations = {
     queries: 
         { key: ["db.migrate_and_populate"], result: null } | 
+        { key: ["notes.get", NotesArgs], result: Array<Notes> } | 
         { key: ["settings.get", GetSettingsArgs], result: Settings } | 
         { key: ["spaces.get"], result: Array<Spaces> } | 
         { key: ["version"], result: string } | 
         { key: ["whiteboard.items.get", GetWhiteBoardItemsArgs], result: Array<WhiteboardItem> },
     mutations: 
+        { key: ["notes.create", NotesArgs], result: Notes } | 
         { key: ["settings.set", SetSettingsArgs], result: Settings } | 
         { key: ["spaces.create"], result: Spaces } | 
         { key: ["whiteboard.items.create", CreateWhiteBoardArgs], result: null } | 
@@ -24,6 +26,10 @@ export interface GetSettingsArgs { key: string }
 export interface GetWhiteBoardItemsArgs { whiteboard_id: number }
 
 export interface MoveWhiteboardItemArgs { id: number, x_pos: string, y_pos: string }
+
+export interface Notes { id: number, title: string, content: string, createdAt: string, updatedAt: string, spacesId: number }
+
+export interface NotesArgs { space_id: number }
 
 export interface ResizeWhiteboardItemArgs { id: number, width: string, height: string }
 
