@@ -21,7 +21,7 @@ const WhiteboardPage = () => {
     const moveMutation = rspc.useMutation('whiteboard.items.move');
     const resizeMutation = rspc.useMutation('whiteboard.items.resize');
 
-    const {data, error, refetch} = rspc.useQuery(["whiteboard.items.get", {whiteboard_id: parseInt(params.id!)}]);
+    const {data, refetch} = rspc.useQuery(["whiteboard.items.get", {whiteboard_id: parseInt(params.id!)}]);
 
     useClipSense({refetch});
 

@@ -5,6 +5,7 @@ import { useContext } from "react";
 import rspc from "@twidge/core/query";
 import { useParams } from "react-router";
 import { Notes as TNotes } from "@twidge/utils/bindings";
+import { Link } from "@twidge/core/router";
 
 const Notes = () => {
     const params = useParams();
@@ -41,16 +42,21 @@ const Notes = () => {
             </div>
             <div className="flex flex-col gap-1">
                 {(notesQuery.data as TNotes[])?.map((note) => (
-                    <div className="flex gap-2 items-center px-4 py-2 mx-2 justify-between hover:bg-dark-gray2 rounded-xl transition-all duration">
-                        <div className="flex gap-2 pl-4 text-dark-blue9">
-                            <Document20Filled />
-                            <div className="flex flex-col gap-1">
-                                <div className="text-white text-sm font-normal">
-                                    {note.title}
+                    <Link
+                        key={note.id}
+                        to={`/spaces/${params.id}/notes/${note.id}`}
+                    >
+                        <div className="flex gap-2 items-center px-4 py-2 mx-2 justify-between hover:bg-dark-gray2 rounded-xl transition-all duration">
+                            <div className="flex gap-2 pl-4 text-dark-blue9">
+                                <Document20Filled />
+                                <div className="flex flex-col gap-1">
+                                    <div className="text-white text-sm font-normal">
+                                        {note.title}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
         </div>

@@ -82,11 +82,11 @@ pub fn mount() -> RouterBuilder<Shared> {
                     let data_url = dataurl::DataUrl::parse(&data).unwrap();
                     let data = data_url.get_data();
 
-                    let mut assets_dir = get_twidge_dir().join("assets");
+                    let assets_dir = get_twidge_dir().join("assets");
                     std::fs::create_dir_all(&assets_dir).unwrap();
 
                     let file_name = uuid::Uuid::new_v4().to_string();
-                    let mut file_path = assets_dir.join(file_name + "." + &r#type);
+                    let file_path = assets_dir.join(file_name + "." + &r#type);
 
                     log::info!("{:#?}", file_path);
 
