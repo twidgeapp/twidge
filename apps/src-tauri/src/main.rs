@@ -12,22 +12,14 @@ async fn main() {
     std::env::set_var("RUST_LOG", "debug");
     pretty_env_logger::init();
 
-    let client = tcore::db::migrator::new_client().await.unwrap();
-    let shared = Shared {
-        client: Arc::new(client),
-    };
-    let router = Arc::new(tcore::routes::init_router());
-    let shared_clone = shared.clone();
+    let client = Arc::new(tcore::db::migrator::new_client().await.unwrap());
+    let router = tcore::routes::init_router();
 
     tauri::Builder::default()
-        .plugin(rspc::integrations::tauri::plugin(router, move || {
-            shared_clone.clone()
+        .plugin(rspc::integrations::tauri::plugin(router, move || Shared {
+            client: Arc::clone(&client),
         }))
-        .manage(shared)
-        .invoke_handler(tauri::generate_handler![
-            tcore::functions::show_bar,
-            tcore::functions::open_in_default_app
-        ])
+        .invoke_handler(tauri::generate_handler![tcore::functions::show_bar])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

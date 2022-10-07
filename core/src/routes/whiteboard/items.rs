@@ -6,62 +6,46 @@ use tokio::io::AsyncWriteExt;
 use crate::utils::get_twidge_dir;
 use crate::{prisma, Shared};
 
-#[derive(Debug, Clone, Deserialize, Serialize, Type)]
-pub struct GetWhiteBoardItemsArgs {
-    pub whiteboard_id: i32,
-}
-
-#[derive(Debug, Clone, Deserialize, Serialize, Type)]
-pub struct CreateWhiteBoardArgs {
-    pub r#type: String,
-    pub data: String,
-    pub whiteboard_id: i32,
-}
-
-#[derive(Debug, Clone, Deserialize, Serialize, Type)]
-pub struct MoveWhiteboardItemArgs {
-    pub id: i32,
-    pub x_pos: String,
-    pub y_pos: String,
-}
-
-#[derive(Debug, Clone, Deserialize, Serialize, Type)]
-pub struct ResizeWhiteboardItemArgs {
-    pub id: i32,
-    pub width: String,
-    pub height: String,
-}
-
 pub fn mount() -> RouterBuilder<Shared> {
     RouterBuilder::<Shared>::new()
-        .query("get", move |ctx, args: GetWhiteBoardItemsArgs| async move {
-            let GetWhiteBoardItemsArgs { whiteboard_id } = args;
-            log::info!("Getting whiteboard items for {}", whiteboard_id);
-            let client = ctx.client.clone();
+        .query("get", |t| {
+            #[derive(Debug, Clone, Deserialize, Serialize, Type)]
+            struct Args {
+                whiteboard_id: i32,
+            }
 
-            let whiteboard_elements = client
-                .whiteboard_item()
-                .find_many(vec![prisma::whiteboard_item::whiteboard_id::equals(
-                    whiteboard_id,
-                )])
-                .exec()
-                .await?;
-            log::info!("Found whiteboard elements: {:?}", whiteboard_elements);
-            Ok(whiteboard_elements)
+            t(|ctx, Args { whiteboard_id }: Args| async move {
+                log::info!("Getting whiteboard items for {}", whiteboard_id);
+                let whiteboard_elements = ctx
+                    .client
+                    .whiteboard_item()
+                    .find_many(vec![prisma::whiteboard_item::whiteboard_id::equals(
+                        whiteboard_id,
+                    )])
+                    .exec()
+                    .await?;
+                log::info!("Found whiteboard elements: {:?}", whiteboard_elements);
+                Ok(whiteboard_elements)
+            })
         })
-        .mutation(
-            "create",
-            move |ctx, args: CreateWhiteBoardArgs| async move {
-                let CreateWhiteBoardArgs {
+        .mutation("create", |t| {
+            #[derive(Debug, Clone, Deserialize, Serialize, Type)]
+            struct Args {
+                r#type: String,
+                data: String,
+                whiteboard_id: i32,
+            }
+
+            t(|ctx, args: Args| async move {
+                let Args {
                     data,
                     r#type,
                     whiteboard_id,
                 } = args;
-                let client = ctx.client.clone();
                 let r#type = r#type.replace("application/", "");
 
                 if r#type == "text" {
-                    client
+                    ctx.client
                         .whiteboard_item()
                         .create(
                             r#type,
@@ -74,8 +58,7 @@ pub fn mount() -> RouterBuilder<Shared> {
                             vec![],
                         )
                         .exec()
-                        .await
-                        .unwrap();
+                        .await?;
                 } else {
                     // file type is a file
                     // convert base64 to binary and save to file
@@ -93,7 +76,7 @@ pub fn mount() -> RouterBuilder<Shared> {
                     let mut file = tokio::fs::File::create(file_path.clone()).await.unwrap();
                     file.write_all(data).await.unwrap();
 
-                    client
+                    ctx.client
                         .whiteboard_item()
                         .create(
                             r#type,
@@ -110,14 +93,18 @@ pub fn mount() -> RouterBuilder<Shared> {
                 }
 
                 Ok(())
-            },
-        )
-        .mutation(
-            "move",
-            move |ctx, args: MoveWhiteboardItemArgs| async move {
-                let client = ctx.client.clone();
+            })
+        })
+        .mutation("move", |t| {
+            #[derive(Debug, Clone, Deserialize, Serialize, Type)]
+            struct Args {
+                id: i32,
+                x_pos: String,
+                y_pos: String,
+            }
 
-                client
+            t(|ctx, args: Args| async move {
+                ctx.client
                     .whiteboard_item()
                     .update(
                         prisma::whiteboard_item::id::equals(args.id),
@@ -129,14 +116,18 @@ pub fn mount() -> RouterBuilder<Shared> {
                     .exec()
                     .await?;
                 Ok(())
-            },
-        )
-        .mutation(
-            "resize",
-            move |ctx, args: ResizeWhiteboardItemArgs| async move {
-                let client = ctx.client.clone();
+            })
+        })
+        .mutation("resize", |t| {
+            #[derive(Debug, Clone, Deserialize, Serialize, Type)]
+            struct Args {
+                id: i32,
+                width: String,
+                height: String,
+            }
 
-                client
+            t(|ctx, args: Args| async move {
+                ctx.client
                     .whiteboard_item()
                     .update(
                         prisma::whiteboard_item::id::equals(args.id),
@@ -148,6 +139,6 @@ pub fn mount() -> RouterBuilder<Shared> {
                     .exec()
                     .await?;
                 Ok(())
-            },
-        )
+            })
+        })
 }

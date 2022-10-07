@@ -1,4 +1,3 @@
-use migration_core::migration_connector::ConnectorError;
 use prisma_client_rust::migrations::DbPushError;
 use thiserror::Error;
 
@@ -15,12 +14,6 @@ pub enum CoreError {
 
     #[error("Tokio Join Error")]
     TokioJoinError(#[from] tokio::task::JoinError),
-
-    #[error("Quaint Error")]
-    QuaintError(#[from] quaint::error::Error),
-
-    #[error("Migration Core Error")]
-    MigrationCoreError(#[from] ConnectorError),
 
     #[error("Db Push Error")]
     DbPushError(#[from] DbPushError),
