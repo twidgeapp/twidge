@@ -18,7 +18,7 @@ lazy_static! {
     };
 }
 
-pub async fn populate_settings(client: Arc<PrismaClient>) -> Result<(), CoreError> {
+pub async fn populate_settings(client: &Arc<PrismaClient>) -> Result<(), CoreError> {
     for (key, value) in SETTINGS.iter() {
         let found_ele = client
             .settings()

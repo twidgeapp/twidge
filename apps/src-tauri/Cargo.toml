@@ -15,7 +15,7 @@ rust-version = "1.57"
 tauri-build = { version = "1.0.4", features = [] }
 
 [dependencies]
-rspc = { version = "0.0.5", features = [
+rspc = { workspace = true, features = [
   "uuid",
   "chrono",
   "tracing",
@@ -23,7 +23,7 @@ rspc = { version = "0.0.5", features = [
 ] }
 serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
-tauri = { version = "1.0.5", features = ["api-all"] }
+tauri = { version = "1.0.5", features = ["api-all", "macos-private-api"] }
 tcore= {path="../../core"}
 log = "0.4"
 tokio = { version = "1.21.0", features = ["full"] }
