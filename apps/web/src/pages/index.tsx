@@ -4,8 +4,7 @@ import { useDispatch } from "@twidge/core/state";
 import rspc from "@twidge/core/query";
 import { invoke } from "@tauri-apps/api";
 import { useNavigate } from "react-router";
-import { setLoaded, setPlatform, setVersion } from "@twidge/core/state/global";
-import { platform } from "@tauri-apps/api/os";
+import { setLoaded, setVersion } from "@twidge/core/state/global";
 
 const Home = () => {
   const versionData = rspc.useQuery(["version"]);

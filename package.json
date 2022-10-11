@@ -1,12 +1,12 @@
 {
   "name": "twidge",
   "version": "1.0.0",
-  "description": "",
+  "description": "<p align=\"center\">     <img width=\"200px\" src=\"https://raw.githubusercontent.com/VarunPotti/twidge/master/assets/logo.svg\">     <p align=\"center\">         <img src=\"https://img.shields.io/badge/version-0.0.1--alpha-c6b5ff\">         <img src=\"https://img.shields.io/tokei/lines/github/VarunPotti/twidge?color=ffb5f5\">         <img src=\"https://img.shields.io/github/license/VarunPotti/twidge?color=75ff73\">         <img src=\"https://img.shields.io/github/languages/top/VarunPotti/twidge?color=b5f0ff\">         <img src=\"https://img.shields.io/github/languages/code-size/VarunPotti/twidge?color=%235e6cff&label=size\">         <a href=\"https://discord.gg/JWrtFeUdVA\">             <img src=\"https://img.shields.io/badge/discord-join-green\" />         </a>     </p>     <br />     <h1>Twidge</h1>     <p>A productivity app which is an extension to your mind</p> </p>",
   "main": "index.js",
   "workspaces": [
     "apps/*",
     "packages/*",
-    "./core"
+    "core"
   ],
   "scripts": {
     "web:dev": "cd apps/web && yarn dev",
@@ -25,7 +25,7 @@
     "build-storybook": "build-storybook"
   },
   "keywords": [],
-  "author": "",
+  "author": "Varun Potti",
   "license": "ISC",
   "packageManager": "yarn@3.2.3",
   "devDependencies": {
@@ -61,5 +61,13 @@
   "dependencies": {
     "clsx": "^1.2.1",
     "moment-duration-format": "^2.3.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VarunPotti/twidge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/VarunPotti/twidge/issues"
+  },
+  "homepage": "https://github.com/VarunPotti/twidge#readme"
 }
