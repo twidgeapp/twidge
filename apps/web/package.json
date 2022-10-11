@@ -9,6 +9,8 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@editorjs/editorjs": "^2.25.0",
+        "@editorjs/header": "^2.6.2",
         "@fluentui/react-icons": "^2.0.179",
         "@radix-ui/colors": "^0.1.8",
         "@radix-ui/react-progress": "^1.0.0",

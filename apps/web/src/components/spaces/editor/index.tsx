@@ -1,54 +1,35 @@
-import { useState } from "react";
-import EditorBlock from "./block";
-
-const uid = () => {
-    return Date.now().toString(36) + Math.random().toString(36).substr(2);
-};
-
-const initialBlock = { id: uid(), html: "", tag: "p" };
+import EditorJS, { EditorConfig } from "@editorjs/editorjs";
+import { useEffect } from "react";
+import Header from "@editorjs/header";
+import "./editor.css";
 
 const Editor = () => {
-    const [blocks, setBlocks] = useState([initialBlock]);
+    const editorConfig: EditorConfig = {
+        readOnly: false,
+        holder: "editorjs",
 
-    const onChangeHandler = (updatedBlock: any) => {
-        const index = blocks.map((b) => b.id).indexOf(updatedBlock.id);
-        const updatedBlocks = [...blocks];
-        updatedBlocks[index] = {
-            ...updatedBlocks[index],
-            tag: updatedBlock.tag,
-            html: updatedBlock.html,
-        };
+        tools: {
+            header: {
+                class: Header,
+                inlineToolbar: ["marker", "link"],
+                config: {
+                    placeholder: "Header",
+                },
+                shortcut: "CMD+SHIFT+H",
+            },
+        },
+        defaultBlock: "paragraph",
 
-        setBlocks(updatedBlocks);
+        onChange: function (api, event) {
+            console.log("something changed", event);
+        },
     };
 
-    const addBlockHandler = (currentBlock: any) => {
-        const newBlock = { id: uid(), html: "", tag: "p" };
-        setBlocks((prev) => {
-            const index = prev.findIndex((e) => e.id === currentBlock.id);
-            const newBlocks = [...prev];
-            newBlocks.splice(index + 1, 0, newBlock);
-            return newBlocks;
-        });
-        setTimeout(() => {
-            currentBlock.ref.nextElementSibling.focus();
-        }, 150);
-    };
+    useEffect(() => {
+        new EditorJS(editorConfig);
+    }, []);
 
-    return (
-        <div>
-            {blocks.map((block, key) => {
-                return (
-                    <EditorBlock
-                        onChangeHandler={onChangeHandler}
-                        addBlockHandler={addBlockHandler}
-                        propBlock={block}
-                        key={key}
-                    />
-                );
-            })}
-        </div>
-    );
+    return <div id="editorjs"></div>;
 };
 
 export default Editor;

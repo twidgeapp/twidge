@@ -6,8 +6,8 @@ import SpaceContext from "../../../components/spaces/ctx";
 import SpaceSidebar from "../../../components/spaces/sidebar";
 import Layout from "../../../layouts";
 import "draft-js/dist/Draft.css";
-import React from "react";
 import Editor from "../../../components/spaces/editor";
+import "./notes.css";
 
 const NotesHome = () => {
     const params = useParams();
@@ -27,7 +27,7 @@ const NotesHome = () => {
             <Layout>
                 <SpaceSidebar />
                 <div
-                    className={`w-full ${
+                    className={`w-full overflow-hidden ${
                         platform === "win32"
                             ? "h-[calc(100vh-40px)] mt-[40px]"
                             : "h-full"

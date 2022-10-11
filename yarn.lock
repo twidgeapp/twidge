@@ -2353,6 +2353,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@editorjs/editorjs@npm:^2.25.0":
+  version: 2.25.0
+  resolution: "@editorjs/editorjs@npm:2.25.0"
+  dependencies:
+    codex-notifier: ^1.1.2
+    codex-tooltip: ^1.0.5
+    nanoid: ^3.1.22
+  checksum: a7cf152bd2457715fab622b1fe7725b169259075ab6206f8964304dc1b6c0cac113aaa92d60ddbdb7aaafa001d3bb4e2036e2c62514a93bf8227038907914848
+  languageName: node
+  linkType: hard
+
+"@editorjs/header@npm:^2.6.2":
+  version: 2.6.2
+  resolution: "@editorjs/header@npm:2.6.2"
+  checksum: a3985b054263e8bf68a91afe3d2bc1c2eaf72402390aac3430d338f724851763f90d88ac235836909b37f85a2963c0e6ea6e299e9ee2d44305df5b9a227a79b3
+  languageName: node
+  linkType: hard
+
 "@egjs/agent@npm:^2.2.1":
   version: 2.4.3
   resolution: "@egjs/agent@npm:2.4.3"
@@ -7573,6 +7591,20 @@ __metadata:
   version: 1.2.1
   resolution: "clsx@npm:1.2.1"
   checksum: 30befca8019b2eb7dbad38cff6266cf543091dae2825c856a62a8ccf2c3ab9c2907c4d12b288b73101196767f66812365400a227581484a05f968b0307cfaf12
+  languageName: node
+  linkType: hard
+
+"codex-notifier@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "codex-notifier@npm:1.1.2"
+  checksum: 2130f5b1ff2a55417cb40132b8fa220139e761f95b9183a3616cf595c4d9cb1777a0e90675ac69a5c22253013f65ae76428f09946c69b08b11b846b1f849e461
+  languageName: node
+  linkType: hard
+
+"codex-tooltip@npm:^1.0.5":
+  version: 1.0.5
+  resolution: "codex-tooltip@npm:1.0.5"
+  checksum: 8ea91ce69853b7054f7379710ce03163fc1262db20f4e56a38d4eb946ece37fa18b07d13df6fb72d3b7fce768af26c8af169766b0aed1f9625210fe05e182f20
   languageName: node
   linkType: hard
 
@@ -14464,7 +14496,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^3.3.1, nanoid@npm:^3.3.4":
+"nanoid@npm:^3.1.22, nanoid@npm:^3.3.1, nanoid@npm:^3.3.4":
   version: 3.3.4
   resolution: "nanoid@npm:3.3.4"
   bin:
@@ -20330,6 +20362,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "web@workspace:apps/web"
   dependencies:
+    "@editorjs/editorjs": ^2.25.0
+    "@editorjs/header": ^2.6.2
     "@fluentui/react-icons": ^2.0.179
     "@radix-ui/colors": ^0.1.8
     "@radix-ui/react-progress": ^1.0.0
