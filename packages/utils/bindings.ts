@@ -4,27 +4,42 @@
 export type Procedures = {
     queries: 
         { key: "db.migrate_and_populate", input: never, result: null } | 
-        { key: "notes.get", input: Args, result: Array<Notes> } | 
+        { key: "notes.get", input: GetArgs, result: Array<Notes> } | 
         { key: "openInDefault", input: string, result: null } | 
-        { key: "settings.get", input: Args, result: Settings | null } | 
+        { key: "settings.get", input: SettingsGetArgs, result: Settings | null } | 
         { key: "spaces.get", input: never, result: Array<Spaces> } | 
         { key: "version", input: never, result: string } | 
-        { key: "whiteboard.items.get", input: Args, result: Array<WhiteboardItem> },
+        { key: "whiteboard.items.get", input: GetArgs, result: Array<WhiteboardItem> },
     mutations: 
-        { key: "notes.create", input: Args, result: Notes } | 
-        { key: "settings.set", input: Args, result: Settings } | 
+        { key: "notes.create", input: CreateArgs, result: Notes } | 
+        { key: "notes.edit", input: EditArgs, result: Notes } | 
+        { key: "settings.set", input: SettingsSetArgs, result: Settings } | 
         { key: "spaces.create", input: never, result: Spaces } | 
-        { key: "whiteboard.items.create", input: Args, result: null } | 
-        { key: "whiteboard.items.move", input: Args, result: null } | 
-        { key: "whiteboard.items.resize", input: Args, result: null },
+        { key: "whiteboard.items.create", input: ItemCreateArgs, result: null } | 
+        { key: "whiteboard.items.move", input: MoveArgs, result: null } | 
+        { key: "whiteboard.items.resize", input: ResizeArgs, result: null },
     subscriptions: never
 };
 
-export interface Args { whiteboard_id: number }
+export interface CreateArgs { space_id: number }
+
+export interface EditArgs { id: number, title: string, content: string }
+
+export interface GetArgs { whiteboard_id: number }
+
+export interface ItemCreateArgs { type: string, data: string, whiteboard_id: number }
+
+export interface MoveArgs { id: number, x_pos: string, y_pos: string }
 
 export interface Notes { id: number, title: string, content: string, createdAt: string, updatedAt: string, spacesId: number }
 
+export interface ResizeArgs { id: number, width: string, height: string }
+
 export interface Settings { id: number, name: string, value: string, createdAt: string, updatedAt: string }
+
+export interface SettingsGetArgs { key: string }
+
+export interface SettingsSetArgs { key: string, value: string }
 
 export interface Spaces { id: number, name: string, icon: string, color: string }
 

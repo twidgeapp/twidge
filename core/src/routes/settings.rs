@@ -8,11 +8,11 @@ pub fn mount() -> RouterBuilder<Shared> {
     RouterBuilder::<Shared>::new()
         .query("get", |t| {
             #[derive(Debug, Clone, Deserialize, Serialize, Type)]
-            struct Args {
+            struct SettingsGetArgs {
                 key: String,
             }
 
-            t(|ctx, args: Args| async move {
+            t(|ctx, args: SettingsGetArgs| async move {
                 ctx.client
                     .settings()
                     .find_unique(prisma::settings::name::equals(args.key.clone()))
@@ -23,12 +23,12 @@ pub fn mount() -> RouterBuilder<Shared> {
         })
         .mutation("set", |t| {
             #[derive(Debug, Clone, Deserialize, Serialize, Type)]
-            struct Args {
+            struct SettingsSetArgs {
                 key: String,
                 value: String,
             }
 
-            t(|ctx, args: Args| async move {
+            t(|ctx, args: SettingsSetArgs| async move {
                 let value = ctx
                     .client
                     .settings()

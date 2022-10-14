@@ -1,29 +1,34 @@
-import {useSelector} from "@twidge/core/state";
-import {Spaces} from "@twidge/utils/bindings";
+import { useSelector } from "@twidge/core/state";
+import { Spaces } from "@twidge/utils/bindings";
 import InfiniteViewer from "react-infinite-viewer";
-import React, {useMemo} from "react";
-import {useParams} from "react-router";
+import React, { useMemo } from "react";
+import { useParams } from "react-router";
 import SpaceContext from "../../components/spaces/ctx";
 import SpaceSidebar from "../../components/spaces/sidebar";
 import Layout from "../../layouts";
-import {flushSync} from "react-dom";
+import { flushSync } from "react-dom";
 import useClipSense from "../../utils/clipsense";
 import rspc from "@twidge/core/query";
 import Moveable from "react-moveable";
-import "../../whiteboard.css"
-import WhiteboardItemElement, {checkIfMedia} from "../../components/spaces/whiteboard";
+import "../../whiteboard.css";
+import WhiteboardItemElement, {
+    checkIfMedia,
+} from "../../components/spaces/whiteboard";
 
 const WhiteboardPage = () => {
-    const params = useParams();
+    const params: any = useParams();
 
     const spaces = useSelector((state: any) => state.spaces.spaces);
 
-    const moveMutation = rspc.useMutation('whiteboard.items.move');
-    const resizeMutation = rspc.useMutation('whiteboard.items.resize');
+    const moveMutation = rspc.useMutation("whiteboard.items.move");
+    const resizeMutation = rspc.useMutation("whiteboard.items.resize");
 
-    const {data, refetch} = rspc.useQuery(["whiteboard.items.get", {whiteboard_id: parseInt(params.id!)}]);
+    const { data, refetch } = rspc.useQuery([
+        "whiteboard.items.get",
+        { whiteboard_id: parseInt(params.id!) },
+    ]);
 
-    useClipSense({refetch});
+    useClipSense({ refetch });
 
     const spaceInfo = useMemo(() => {
         if (!spaces) return null;
@@ -35,9 +40,9 @@ const WhiteboardPage = () => {
     }, [params, spaces]);
 
     return (
-        <SpaceContext.Provider value={{spaceInfo: spaceInfo}}>
+        <SpaceContext.Provider value={{ spaceInfo: spaceInfo }}>
             <Layout>
-                <SpaceSidebar/>
+                <SpaceSidebar />
 
                 <InfiniteViewer
                     useAutoZoom={true}
@@ -54,11 +59,18 @@ const WhiteboardPage = () => {
                                 <div
                                     style={{
                                         transform: `translate(${e.posX}, ${e.posY})`,
-                                        width: e.width == 'auto' ? null : e.width,
-                                        height: e.height == 'auto' ? null : e.height,
+                                        width:
+                                            e.width == "auto"
+                                                ? undefined
+                                                : e.width,
+                                        height:
+                                            e.height == "auto"
+                                                ? undefined
+                                                : e.height,
                                     }}
-                                    className={`target${e.id} bg-dark-gray4 p-2 rounded-xl border border-gray11 grid place-items-center max-w-fit w-full`}>
-                                    <WhiteboardItemElement element={e}/>
+                                    className={`target${e.id} bg-dark-gray4 p-2 rounded-xl border border-gray11 grid place-items-center max-w-fit w-full`}
+                                >
+                                    <WhiteboardItemElement element={e} />
                                 </div>
                                 <Moveable
                                     rootContainer={document.body}
@@ -67,26 +79,45 @@ const WhiteboardPage = () => {
                                     flushSync={flushSync}
                                     draggable={true}
                                     resizable={true}
-                                    keepRatio={checkIfMedia(e.item_type) ? true : false}
-                                    renderDirections={["nw", "ne", "se", "sw", "n", "s", "e", "w"]}
+                                    keepRatio={
+                                        checkIfMedia(e.item_type) ? true : false
+                                    }
+                                    renderDirections={[
+                                        "nw",
+                                        "ne",
+                                        "se",
+                                        "sw",
+                                        "n",
+                                        "s",
+                                        "e",
+                                        "w",
+                                    ]}
                                     snappable={true}
                                     origin={false}
                                     rotateAroundControls={true}
                                     onResizeEnd={(resizeEvent) => {
-                                        const {width, height} = resizeEvent.lastEvent;
+                                        const { width, height } =
+                                            resizeEvent.lastEvent;
                                         resizeMutation.mutate({
                                             id: e.id,
-                                            width: width + 'px',
-                                            height: height + 'px'
-                                        })
-                                        console.log(resizeEvent)
+                                            width: width + "px",
+                                            height: height + "px",
+                                        });
+                                        console.log(resizeEvent);
                                     }}
                                     onDragEnd={(target) => {
-                                        let {transform} = target.lastEvent;
-                                        transform = transform.replace("translate(", "").replace(")", "").split(",");
+                                        let { transform } = target.lastEvent;
+                                        transform = transform
+                                            .replace("translate(", "")
+                                            .replace(")", "")
+                                            .split(",");
                                         const x = transform[0].trim();
                                         const y = transform[1].trim();
-                                        moveMutation.mutate({id: parseInt(e.id), x_pos: x, y_pos: y});
+                                        moveMutation.mutate({
+                                            id: parseInt(e.id.toString()),
+                                            x_pos: x,
+                                            y_pos: y,
+                                        });
                                     }}
                                     onRender={(e) => {
                                         e.target.style.cssText += e.cssText;
@@ -96,8 +127,7 @@ const WhiteboardPage = () => {
                         ))}
                     </div>
                 </InfiniteViewer>
-                <div className="empty elements">
-                </div>
+                <div className="empty elements"></div>
             </Layout>
         </SpaceContext.Provider>
     );

@@ -53,6 +53,11 @@ module.exports = {
                     ...tomatoDark,
                 },
             },
+            spacing: {
+                "some key": {
+                    1.5: "1.5px", // not sure about the correct value
+                },
+            },
         },
     },
 

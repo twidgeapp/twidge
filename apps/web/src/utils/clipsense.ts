@@ -1,6 +1,6 @@
-import {useEffect} from "react";
+import { useEffect } from "react";
 import rspc from "@twidge/core/query";
-import {useParams} from "react-router";
+import { useParams } from "react-router";
 
 interface IClipBoardItem {
     type: "text" | "file";
@@ -43,7 +43,7 @@ const getClipboardData = (e: ClipboardEvent): IClipBoardItem[] | undefined => {
 
 const getClipboardFileType = (file: File) => {
     let fileType = file.type;
-    console.log(fileType)
+    console.log(fileType);
     if (fileType.includes("image")) {
         fileType = fileType.replace("image/", "");
         // svg
@@ -76,9 +76,9 @@ const getClipboardFileType = (file: File) => {
  * Adds a paste event listener to the document
  * Infers the type of the clipboard data and returns it
  */
-const useClipSense = ({refetch}: { refetch: () => void }) => {
-    const mutations = rspc.useMutation("whiteboard.items.create")
-    const params = useParams();
+const useClipSense = ({ refetch }: { refetch: () => void }) => {
+    const mutations = rspc.useMutation("whiteboard.items.create");
+    const params: any = useParams();
 
     const onPaste = (e: ClipboardEvent) => {
         let clipBoardItems = getClipboardData(e);
@@ -87,22 +87,26 @@ const useClipSense = ({refetch}: { refetch: () => void }) => {
         // remove duplicates from clipBoardItems
         clipBoardItems = clipBoardItems.filter((item, index) => {
             if (!clipBoardItems) return;
-            return clipBoardItems.findIndex((i) => i.data === item.data) === index;
+            return (
+                clipBoardItems.findIndex((i) => i.data === item.data) === index
+            );
         });
 
         for (const item of clipBoardItems) {
             if (item.type === "text" && typeof item.data === "string") {
                 console.log("text", item.data);
-                mutations.mutate({
-                    whiteboard_id: parseInt(params.id!),
-                    data: item.data,
-                    type: "text"
-                }, {
-                    onSuccess: () => {
-                        refetch()
+                mutations.mutate(
+                    {
+                        whiteboard_id: parseInt(params.id!),
+                        data: item.data,
+                        type: "text",
+                    },
+                    {
+                        onSuccess: () => {
+                            refetch();
+                        },
                     }
-                })
-
+                );
             } else if (item.type === "file") {
                 if (item.data instanceof File) {
                     const reader = new FileReader();
@@ -110,18 +114,21 @@ const useClipSense = ({refetch}: { refetch: () => void }) => {
                     reader.onload = () => {
                         if (!reader.result) return;
 
-                        mutations.mutate({
-                            whiteboard_id: parseInt(params.id!),
-                            data: reader.result.toString(),
-                            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                            // @ts-ignore
-                            type: getClipboardFileType(item.data).fileType
-                        }, {
-                            onSuccess: () => {
-                                refetch()
+                        mutations.mutate(
+                            {
+                                whiteboard_id: parseInt(params.id!),
+                                data: reader.result.toString(),
+                                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                                // @ts-ignore
+                                type: getClipboardFileType(item.data).fileType,
+                            },
+                            {
+                                onSuccess: () => {
+                                    refetch();
+                                },
                             }
-                        })
-                    }
+                        );
+                    };
 
                     console.log("File name", item.data.name);
                 }

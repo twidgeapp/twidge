@@ -1,19 +1,26 @@
 import { Document20Filled, Add12Filled } from "@fluentui/react-icons";
-import { useNavigate } from "react-router";
-import SpaceContext from "../ctx";
-import { useContext } from "react";
 import rspc from "@twidge/core/query";
 import { useParams } from "react-router";
 import { Notes as TNotes } from "@twidge/utils/bindings";
 import { Link } from "@twidge/core/router";
+import { useEffect } from "react";
+import { useDispatch } from "@twidge/core/state";
+import { setNotes } from "@twidge/core/state/space/notes";
 
 const Notes = () => {
-    const params = useParams();
+    const params: any = useParams();
     const notesQuery = rspc.useQuery([
         "notes.get",
-        { space_id: parseInt(params.id!) },
+        { whiteboard_id: parseInt(params.id) },
     ]);
     const createNoteMutation = rspc.useMutation("notes.create");
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        dispatch(setNotes(notesQuery.data));
+    }, [notesQuery.data]);
 
     return (
         <div className="flex flex-col gap-2">
@@ -29,7 +36,7 @@ const Notes = () => {
                     onClick={() => {
                         createNoteMutation.mutate(
                             {
-                                space_id: parseInt(params.id!),
+                                space_id: parseInt(params.id),
                             },
                             {
                                 onSuccess: () => {

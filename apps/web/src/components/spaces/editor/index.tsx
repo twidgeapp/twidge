@@ -1,35 +1,25 @@
-import EditorJS, { EditorConfig } from "@editorjs/editorjs";
-import { useEffect } from "react";
-import Header from "@editorjs/header";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import "./editor.css";
+import { useSelector } from "@twidge/core/state";
+import { useMemo } from "react";
+import { useParams } from "react-router";
+import Editor from "./editor";
 
-const Editor = () => {
-    const editorConfig: EditorConfig = {
-        readOnly: false,
-        holder: "editorjs",
+const EditorPage = () => {
+    const notes = useSelector((state) => state.notes.notes);
+    const params: any = useParams();
+    const note = useMemo(() => {
+        if (!params || !notes) return;
 
-        tools: {
-            header: {
-                class: Header,
-                inlineToolbar: ["marker", "link"],
-                config: {
-                    placeholder: "Header",
-                },
-                shortcut: "CMD+SHIFT+H",
-            },
-        },
-        defaultBlock: "paragraph",
+        return notes.find((note) => note.id === parseInt(params.noteId));
+    }, [notes, params]);
 
-        onChange: function (api, event) {
-            console.log("something changed", event);
-        },
-    };
-
-    useEffect(() => {
-        new EditorJS(editorConfig);
-    }, []);
-
-    return <div id="editorjs"></div>;
+    if (note) {
+        return <Editor content={note.content} />;
+    } else {
+        return <></>;
+    }
 };
 
-export default Editor;
+export default EditorPage;

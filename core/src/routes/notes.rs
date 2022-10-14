@@ -6,11 +6,11 @@ pub fn mount() -> RouterBuilder<Shared> {
     RouterBuilder::<Shared>::new()
         .query("get", |t| {
             #[derive(Debug, Clone, Deserialize, Serialize, Type)]
-            struct Args {
+            struct GetArgs {
                 space_id: i32,
             }
 
-            t(|ctx, Args { space_id }: Args| async move {
+            t(|ctx, GetArgs { space_id }: GetArgs| async move {
                 let result = ctx
                     .client
                     .notes()
@@ -24,11 +24,11 @@ pub fn mount() -> RouterBuilder<Shared> {
         })
         .mutation("create", |t| {
             #[derive(Debug, Clone, Deserialize, Serialize, Type)]
-            struct Args {
+            struct CreateArgs {
                 space_id: i32,
             }
 
-            t(|ctx, Args { space_id }: Args| async move {
+            t(|ctx, CreateArgs { space_id }: CreateArgs| async move {
                 let notes_length = ctx
                     .client
                     .notes()
@@ -53,5 +53,33 @@ pub fn mount() -> RouterBuilder<Shared> {
 
                 Ok(result)
             })
+        })
+        .mutation("edit", |t| {
+            #[derive(Debug, Clone, Deserialize, Serialize, Type)]
+            struct EditArgs {
+                id: i32,
+                title: String,
+                content: String,
+            }
+
+            t(
+                |ctx, EditArgs { id, title, content }: EditArgs| async move {
+                    println!("edit note {}", id);
+                    let result = ctx
+                        .client
+                        .notes()
+                        .update(
+                            prisma::notes::id::equals(id),
+                            vec![
+                                prisma::notes::title::set(title),
+                                prisma::notes::content::set(content),
+                            ],
+                        )
+                        .exec()
+                        .await?;
+
+                    Ok(result)
+                },
+            )
         })
 }

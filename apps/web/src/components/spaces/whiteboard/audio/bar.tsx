@@ -4,21 +4,25 @@ import React from "react";
 import moment from "moment";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import momentDurationFormatSetup from "moment-duration-format"
+import momentDurationFormatSetup from "moment-duration-format";
 
-export default function Bar(props) {
-    const {duration, curTime, onTimeUpdate} = props;
+export default function Bar(props: any) {
+    const { duration, curTime, onTimeUpdate } = props;
 
     const curPercentage = (curTime / duration) * 100;
 
-    function formatDuration(duration) {
+    function formatDuration(duration: any) {
         momentDurationFormatSetup(moment);
-        return moment
-            .duration(duration, "seconds")
-            .format("mm:ss", {trim: false});
+        return (
+            moment
+                .duration(duration, "seconds")
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                .format("mm:ss", { trim: false })
+        );
     }
 
-    function calcClickedTime(e) {
+    function calcClickedTime(e: any) {
         const clickPositionInPage = e.pageX;
         const bar: any = document.querySelector(".bar__progress");
         if (!bar) return;
@@ -29,7 +33,7 @@ export default function Bar(props) {
         return timePerPixel * clickPositionInBar;
     }
 
-    function handleTimeDrag(e) {
+    function handleTimeDrag(e: any) {
         onTimeUpdate(calcClickedTime(e));
 
         const updateTimeOnMove = (eMove: any) => {
@@ -49,14 +53,14 @@ export default function Bar(props) {
             <div
                 className="bar__progress"
                 style={{
-                    background: `linear-gradient(to right, #2daee0 ${curPercentage}%, white 0)`
+                    background: `linear-gradient(to right, #2daee0 ${curPercentage}%, white 0)`,
                 }}
-                onMouseDown={e => handleTimeDrag(e)}
+                onMouseDown={(e) => handleTimeDrag(e)}
             >
-        <span
-            className="bar__progress__knob"
-            style={{left: `${curPercentage - 2}%`}}
-        />
+                <span
+                    className="bar__progress__knob"
+                    style={{ left: `${curPercentage - 2}%` }}
+                />
             </div>
             <span className="bar__time">{formatDuration(duration)}</span>
         </div>

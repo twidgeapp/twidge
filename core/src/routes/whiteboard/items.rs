@@ -10,11 +10,11 @@ pub fn mount() -> RouterBuilder<Shared> {
     RouterBuilder::<Shared>::new()
         .query("get", |t| {
             #[derive(Debug, Clone, Deserialize, Serialize, Type)]
-            struct Args {
+            struct GetArgs {
                 whiteboard_id: i32,
             }
 
-            t(|ctx, Args { whiteboard_id }: Args| async move {
+            t(|ctx, GetArgs { whiteboard_id }: GetArgs| async move {
                 log::info!("Getting whiteboard items for {}", whiteboard_id);
                 let whiteboard_elements = ctx
                     .client
@@ -30,14 +30,14 @@ pub fn mount() -> RouterBuilder<Shared> {
         })
         .mutation("create", |t| {
             #[derive(Debug, Clone, Deserialize, Serialize, Type)]
-            struct Args {
+            struct ItemCreateArgs {
                 r#type: String,
                 data: String,
                 whiteboard_id: i32,
             }
 
-            t(|ctx, args: Args| async move {
-                let Args {
+            t(|ctx, args: ItemCreateArgs| async move {
+                let ItemCreateArgs {
                     data,
                     r#type,
                     whiteboard_id,
@@ -97,13 +97,13 @@ pub fn mount() -> RouterBuilder<Shared> {
         })
         .mutation("move", |t| {
             #[derive(Debug, Clone, Deserialize, Serialize, Type)]
-            struct Args {
+            struct MoveArgs {
                 id: i32,
                 x_pos: String,
                 y_pos: String,
             }
 
-            t(|ctx, args: Args| async move {
+            t(|ctx, args: MoveArgs| async move {
                 ctx.client
                     .whiteboard_item()
                     .update(
@@ -120,13 +120,13 @@ pub fn mount() -> RouterBuilder<Shared> {
         })
         .mutation("resize", |t| {
             #[derive(Debug, Clone, Deserialize, Serialize, Type)]
-            struct Args {
+            struct ResizeArgs {
                 id: i32,
                 width: String,
                 height: String,
             }
 
-            t(|ctx, args: Args| async move {
+            t(|ctx, args: ResizeArgs| async move {
                 ctx.client
                     .whiteboard_item()
                     .update(

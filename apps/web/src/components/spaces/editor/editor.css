@@ -1,74 +1,46 @@
-.ce-toolbar__plus{
-    color: white;
-}
-.ce-inline-toolbar, .ce-conversion-toolbar {
-    color: white;
-    background-color: #2f2f2f;
-    border: none;
+#editorjs {
+    @apply selection:bg-dark-gray4 selection:text-white;
 }
 
-.ce-inline-toolbar__dropdown:hover{
-    background-color: #2f2f2f;
-    border-top-left-radius: 12px;
-    border-bottom-left-radius: 12px;
+.ce-block--selected .ce-block__content {
+    @apply bg-dark-gray4 text-white;
+}
+.ce-toolbar__plus, .icon, .ce-toolbar__settings-btn{
+    @apply text-white hover:bg-dark-gray5
+}
+.ce-inline-toolbar,.ce-popover{
+    @apply bg-dark-gray4 border-none
 }
 
-.ce-conversion-tool__icon{
-    color: white;
-    background-color: #2f2f2f;
+.ce-inline-toolbar__dropdown, .ce-inline-tool, .ce-popover__item {
+    @apply bg-dark-gray4 border-none hover:bg-dark-gray5 rounded-tl-md rounded-bl-md text-dark-gray12
 }
 
-.ce-inline-toolbar__actions input{
-    color: white;
-    background-color: #2f2f2f !important;
-}
-
-.ce-block--selected .ce-block__content{
-    background-color: #2f2f2f;
-}
-
-.ce-toolbox .ce-popover{
-    background-color: #2f2f2f;
-    border: none;
-}
-.ce-toolbox .ce-popover:hover{
-    background-color: #2f2f2f;
-}
-
-.ce-popover__item:hover{
-    color: white;
-    background-color: #2f2f2f;
-}
-.ce-toolbox .ce-popover .ce-popover__items .ce-popover__item-icon{
-    color: #2f2f2f;
-}
-
-.cdx-search-field{
-    color: white;
-    background-color: #2f2f2f;
+.ce-popover__item-icon,.ce-conversion-tool__icon{
+    @apply text-white bg-dark-gray3 border-none
 }
 
 .ce-inline-tool{
-    color: white;
-    background-color: #2f2f2f;
+    @apply !rounded-none
 }
 
-.ce-inline-tool:hover{
-    color: white;
-    background-color: #2f2f2f;
+.ce-conversion-toolbar{
+    @apply bg-dark-gray4 border-none
 }
 
-.ce-toolbar__settings-btn{
-    color: white;
+.ce-conversion-tool{
+    @apply bg-dark-gray4 border-none hover:bg-dark-gray5 rounded-tl-md rounded-bl-md
 }
 
-.ce-settings {
-    color: white;
-    background-color: #2f2f2f;
-    border: none;
+.cdx-search-field{
+    @apply bg-dark-gray4 border-none
 }
 
-.ce-settings span:hover, .ce-settings__button:hover{
-    color: white;
-    background-color: #161616;
+
+.ce-settings{
+    @apply bg-dark-gray4 border-none
+}
+
+.cdx-settings-button, .ce-settings__button{
+    @apply bg-dark-gray4 border-none hover:bg-dark-gray5 text-white
 }

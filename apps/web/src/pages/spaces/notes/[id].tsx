@@ -6,11 +6,11 @@ import SpaceContext from "../../../components/spaces/ctx";
 import SpaceSidebar from "../../../components/spaces/sidebar";
 import Layout from "../../../layouts";
 import "draft-js/dist/Draft.css";
-import Editor from "../../../components/spaces/editor";
+import EditorPage from "../../../components/spaces/editor";
 import "./notes.css";
 
 const NotesHome = () => {
-    const params = useParams();
+    const params: any = useParams();
     const spaces = useSelector((state: any) => state.spaces.spaces);
     const platform = useSelector((state: any) => state.global.platform);
 
@@ -33,7 +33,7 @@ const NotesHome = () => {
                             : "h-full"
                     }`}
                 >
-                    <Editor />
+                    <EditorPage />
                 </div>
             </Layout>
         </SpaceContext.Provider>
