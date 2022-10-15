@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Hero from "../components/hero/index.astro";
+import Footer from "../components/Footer.astro";
 import Features from "../components/features/index.astro";
 import ExampleUsage from "../components/usage/index.svelte";
 ---
@@ -12,5 +13,7 @@ import ExampleUsage from "../components/usage/index.svelte";
         <Hero />
         <Features />
         <ExampleUsage client:load />
+        <Footer />
     </div>
 </Layout>
+

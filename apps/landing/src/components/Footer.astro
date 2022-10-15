@@ -1,0 +1,27 @@
+---
+import { Image } from "@astrojs/image/components";
+---
+
+<div
+    class="flex items-center border-t border-gray-800 bg-[#221925] justify-center p-5 w-full"
+>
+    <div class="flex items-center flex-col">
+        <Image
+            class="select-none"
+            src={"/landing.png"}
+            alt="Logo"
+            width={48}
+            height={30}
+        />
+        <h1 class="mt-4 mb-2 font-bold text-xl">Twidge</h1>
+        <p class="text-sm">
+            &copy; Copyright {new Date().getFullYear()} Twidge
+        </p>
+    </div>
+</div>
+
+<style>
+    p {
+        color: grey;
+    }
+</style>
