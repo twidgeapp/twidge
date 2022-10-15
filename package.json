@@ -1,73 +1,21 @@
 {
   "name": "twidge",
   "version": "1.0.0",
-  "description": "<p align=\"center\">     <img width=\"200px\" src=\"https://raw.githubusercontent.com/VarunPotti/twidge/master/assets/logo.svg\">     <p align=\"center\">         <img src=\"https://img.shields.io/badge/version-0.0.1--alpha-c6b5ff\">         <img src=\"https://img.shields.io/tokei/lines/github/VarunPotti/twidge?color=ffb5f5\">         <img src=\"https://img.shields.io/github/license/VarunPotti/twidge?color=75ff73\">         <img src=\"https://img.shields.io/github/languages/top/VarunPotti/twidge?color=b5f0ff\">         <img src=\"https://img.shields.io/github/languages/code-size/VarunPotti/twidge?color=%235e6cff&label=size\">         <a href=\"https://discord.gg/JWrtFeUdVA\">             <img src=\"https://img.shields.io/badge/discord-join-green\" />         </a>     </p>     <br />     <h1>Twidge</h1>     <p>A productivity app which is an extension to your mind</p> </p>",
-  "main": "index.js",
-  "workspaces": [
-    "apps/*",
-    "packages/*",
-    "core"
-  ],
   "scripts": {
-    "web:dev": "cd apps/web && yarn dev",
-    "tauri:dev": "cd apps/src-tauri && yarn dev",
-    "web:build": "cd apps/web && yarn build",
-    "tauri:build": "cd apps/src-tauri && yarn build",
-    "dev": "concurrently --names \"web,tauri\" -c \"bgBlue.bold,bgMagenta.bold\" \"yarn web:dev\" \"yarn tauri:dev\"",
-    "build": "yarn web:build && yarn tauri:build",
-    "landing:dev": "cd apps/landing && yarn dev",
-    "landing:build": "cd apps/landing && yarn build",
-    "landing:preview": "cd apps/landing && yarn preview",
-    "generate": "cargo prisma generate",
-    "format": "prettier --write '**/*.{js,jsx,ts,tsx}'",
-    "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "desktop:dev": "cd apps/desktop && pnpm dev",
+    "desktop:build": "cd apps/desktop && pnpm build",
+    "tauri:dev": "cd apps/src-tauri && cargo tauri dev",
+    "tauri:build": "cd apps/src-tauri && cargo tauri build",
+    "dev": "concurrently \"pnpm desktop:dev\" \"pnpm tauri:dev\"",
+    "desktop": "cd apps/desktop && pnpm "
   },
-  "keywords": [],
-  "author": "Varun Potti",
-  "license": "ISC",
-  "packageManager": "yarn@3.2.3",
   "devDependencies": {
-    "@babel/core": "^7.19.1",
-    "@commitlint/cli": "^17.1.2",
-    "@commitlint/config-conventional": "^17.1.0",
-    "@mdx-js/react": "^1.6.22",
-    "@storybook/addon-actions": "^6.5.12",
-    "@storybook/addon-docs": "^6.5.12",
-    "@storybook/addon-essentials": "^6.5.12",
-    "@storybook/addon-interactions": "^6.5.12",
-    "@storybook/addon-links": "^6.5.12",
-    "@storybook/addon-postcss": "^2.0.0",
-    "@storybook/builder-webpack4": "^6.5.12",
-    "@storybook/manager-webpack4": "^6.5.12",
-    "@storybook/react": "^6.5.12",
-    "@storybook/testing-library": "^0.0.13",
-    "@twidge/config": "workspace:*",
-    "@typescript-eslint/eslint-plugin": "^5.38.0",
-    "@typescript-eslint/parser": "^5.38.0",
-    "astro": "^1.2.1",
-    "babel-loader": "^8.2.5",
-    "concurrently": "^7.3.0",
-    "eslint": "^8.23.1",
-    "eslint-plugin-storybook": "^0.6.4",
-    "husky": "^8.0.1",
-    "postcss-import": "^15.0.0",
-    "postcss-loader": "^7.0.1",
-    "prettier": "2.7.1",
-    "storybook": "^6.5.12",
-    "typescript": "^4.8.3"
-  },
-  "dependencies": {
-    "clsx": "^1.2.1",
-    "moment-duration-format": "^2.3.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/VarunPotti/twidge.git"
-  },
-  "bugs": {
-    "url": "https://github.com/VarunPotti/twidge/issues"
-  },
-  "homepage": "https://github.com/VarunPotti/twidge#readme"
+    "@typescript-eslint/parser": "^5.40.0",
+    "concurrently": "^7.4.0",
+    "eslint": "^8.25.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1",
+    "typescript": "^4.6.4"
+  }
 }

@@ -1,61 +1,23 @@
-datasource db {
-  provider = "sqlite"
-  url      = "file:dev.db"
-}
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
   // Corresponds to the cargo alias created earlier
   provider = "cargo prisma"
   // The location to generate the schema. Is relative to the position of the schema
-  output   = "../core/src/prisma.rs"
+  output   = "./src/prisma.rs"
 }
 
-model WhiteboardItem {
-  id           Int         @id @default(autoincrement())
-  item_type    String
-  value        String
-  posX         String
-  posY         String
-  width        String
-  height       String
-  createdAt    DateTime    @default(now())
-  updatedAt    DateTime    @updatedAt
-  Whiteboard   Whiteboard @relation(fields: [whiteboardId], references: [id])
-  whiteboardId Int
+datasource db {
+  provider = "sqlite"
+  url      = "file:./sqlite.db"
 }
-
-model Whiteboard {
-  id              Int              @id @default(autoincrement())
-  name            String
-  whiteboardItems WhiteboardItem[]
-  space           Spaces           @relation(fields: [spacesId], references: [id])
-  spacesId        Int
-}
-
-model Notes {
-  id         Int       @id @default(autoincrement())
-  title      String
-  content    String
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
-  spaceId    Spaces    @relation(fields: [spacesId], references: [id])
-  spacesId   Int
-}
-
 
 model Spaces {
-  id         Int          @id @default(autoincrement())
-  name       String
-  icon       String
-  color      String
-  Notes      Notes[]
-  Whiteboard Whiteboard[]
-}
+  id    Int    @id @default(autoincrement())
+  name  String
+  icon  String
+  color String
 
-model Settings {
-  id        Int      @id @default(autoincrement())
-  name      String   @unique
-  value     String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
+  @@map("spaces")
 }

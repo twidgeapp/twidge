@@ -1,17 +1,7 @@
 node_modules
-**/*/node_modules
+
+/prisma/src/prisma.rs
+
 /target
-/core/src/prisma.rs
 
-/.turbo
-/.yarn/*
-!.yarn/patches
-!.yarn/releases
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/versions
-.pnp.*
-.vercel
-
-src/prisma.rs
-.DS_Store
+**/node_modules

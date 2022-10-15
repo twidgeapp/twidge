@@ -1,7 +1,0 @@
-{
-    "name": "@twidge/tauri",
-    "scripts": {
-        "dev": "cargo tauri dev",
-        "build": "cargo tauri build"
-    }
-}

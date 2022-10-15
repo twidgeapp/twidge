@@ -3,30 +3,15 @@
     "beforeBuildCommand": "",
     "beforeDevCommand": "",
     "devPath": "http://localhost:3000",
-    "distDir": "../web/dist"
+    "distDir": "../desktop/dist"
   },
   "package": {
     "productName": "Twidge",
     "version": "0.1.0"
   },
   "tauri": {
-    "macOSPrivateApi": true,
     "allowlist": {
-      "all": true,
-      "fs": {
-        "all": true
-      },
-      "protocol": {
-        "assetScope": [
-          "*"
-        ]
-      },
-      "os": {
-        "all": true
-      },
-      "globalShortcut": {
-        "all": true
-      }
+      "all": true
     },
     "bundle": {
       "active": true,
@@ -37,11 +22,13 @@
       },
       "externalBin": [],
       "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
         "icons/128x128@2x.png",
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "twidge.vpotti.me",
+      "identifier": "com.tauri.dev",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -60,7 +47,7 @@
       }
     },
     "security": {
-      "csp": "default-src asset: https://asset.localhost blob: data: filesystem: ws: wss: http: https: tauri: 'unsafe-eval' 'unsafe-inline' 'self' img-src: 'self'"
+      "csp": null
     },
     "updater": {
       "active": false
@@ -68,12 +55,12 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 750,
+        "height": 600,
         "resizable": true,
         "title": "Twidge",
+        "width": 1200,
         "decorations": false,
-        "transparent": true,
-        "width": 1400
+        "transparent": true
       }
     ]
   }
