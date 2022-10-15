@@ -4,4 +4,4 @@ node_modules
 
 /target
 
-**/node_modules
+**/*/node_modules
