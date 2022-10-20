@@ -3,16 +3,18 @@ import usePlatform from "./hooks/usePlatform";
 import rspc from "./query";
 import { observer } from "mobx-react";
 import Global from "@twidge/utils/state/global";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import GlobalContext, { IGlobalContext } from "@twidge/utils/ctx";
-import LoadingPage from "./pages/loading";
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
 } from "react-router-dom";
-import HomePage from "./pages/home";
+import LoadingPage from "./pages/loading";
+import OnboardingPage from "./pages/onboarding/index";
+
+const HomePage = React.lazy(() => import("./pages/home"));
 
 const Root = styled("div", {
   width: "100%",
@@ -25,6 +27,7 @@ const router = createBrowserRouter(
     <>
       <Route path="/" element={<LoadingPage />}></Route>
       <Route path="/home" element={<HomePage />}></Route>
+      <Route path="/onboarding" element={<OnboardingPage />}></Route>
     </>
   )
 );

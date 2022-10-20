@@ -4978,6 +4978,8 @@ dependencies = [
  "prisma",
  "prisma-client-rust",
  "rspc",
+ "serde",
+ "serde_json",
  "tauri",
 ]
 

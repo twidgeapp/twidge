@@ -44,7 +44,7 @@ const LoadingPage = () => {
   useEffect(() => {}, [isLoading]);
 
   if (!isLoading) {
-    return <Navigate to="/home" />;
+    return <Navigate to="/onboarding" />;
   }
 
   return (
