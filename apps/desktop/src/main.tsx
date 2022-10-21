@@ -5,6 +5,7 @@ import App from "./App";
 import "./index.css";
 import { darkTheme, globalCss } from "@twidge/config/stitches.config";
 import rspc, { client, queryClient } from "./query";
+import { BrowserRouter } from "react-router-dom";
 
 const css = globalCss({
   body: {
@@ -26,7 +27,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
           dark: darkTheme.className,
         }}
       >
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </ThemeProvider>
     </rspc.Provider>
   </React.StrictMode>
