@@ -1,0 +1,7 @@
+{
+  "name": "@twidge/components",
+  "dependencies": {
+    "@twidge/utils": "*",
+    "@twidge/config": "*"
+  }
+}

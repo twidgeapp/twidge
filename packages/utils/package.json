@@ -1,3 +1,11 @@
 {
-    "name": "@twidge/utils"
+  "name": "@twidge/utils",
+  "dependencies": {
+    "mobx": "^6.6.2",
+    "mobx-react": "^7.5.3",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.17"
+  }
 }
