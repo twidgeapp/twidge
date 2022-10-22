@@ -62,6 +62,7 @@ const OnboardingHomePage = () => {
 
   return (
     <Root
+      data-tauri-drag-region
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       exit={{ opacity: 0, y: 20 }}

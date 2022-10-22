@@ -1,11 +1,7 @@
-use std::{
-    io::Error,
-    sync::{Arc, Mutex},
-};
+use std::sync::{Arc, Mutex};
 
-use axum::{routing::get, Extension, Json, Router};
+use axum::{routing::get, Extension, Router};
 use log::info;
-use serde_json::{json, Value};
 use tauri::Window;
 
 type WindowState = Arc<Mutex<Option<Window>>>;
@@ -15,12 +11,12 @@ struct AppState {
 }
 
 async fn home(Extension(shared): Extension<Arc<AppState>>) -> &'static str {
-    println!("Hello");
     let window = shared.window.lock().unwrap();
+
     // focus the window
     window.as_ref().unwrap().set_focus();
 
-    "HELLO"
+    "Hello, I am under the woter!!"
 }
 
 pub async fn setup_daemon(window: Arc<Mutex<Option<Window>>>) {
