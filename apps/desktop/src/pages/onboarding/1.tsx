@@ -6,70 +6,70 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Root = styled(motion.div, {
-  width: "100%",
-  height: "100%",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  gap: "4px",
-  justifyContent: "center",
+	width: "100%",
+	height: "100%",
+	display: "flex",
+	flexDirection: "column",
+	alignItems: "center",
+	gap: "4px",
+	justifyContent: "center",
 
-  userSelect: "none",
+	userSelect: "none",
 });
 
 const Header = styled("h1", {
-  fontSize: "28px",
-  fontWeight: "900",
-  color: "$mauve11",
-  margin: "0",
+	fontSize: "28px",
+	fontWeight: "900",
+	color: "$mauve11",
+	margin: "0",
 });
 
 const Span = styled(motion.span, {
-  fontSize: "14px",
-  color: "$mauve11",
-  margin: "0",
-  textAlign: "center",
-  lineHeight: "1.5",
-  width: "100%",
-  display: "block",
-  fontWeight: "700",
+	fontSize: "14px",
+	color: "$mauve11",
+	margin: "0",
+	textAlign: "center",
+	lineHeight: "1.5",
+	width: "100%",
+	display: "block",
+	fontWeight: "700",
 
-  marginTop: "12px",
+	marginTop: "12px",
 });
 
 const Buttons = styled(motion.div, {
-  display: "flex",
-  flexDirection: "row",
-  gap: "12px",
-  marginTop: "12px",
+	display: "flex",
+	flexDirection: "row",
+	gap: "12px",
+	marginTop: "12px",
 });
 
 const OnboardingPage1 = () => {
-  const navigate = useNavigate();
+	const navigate = useNavigate();
 
-  useEffect(() => {
-    const onKeyPress = (e: KeyboardEvent) => {
-      if (e.key === "Enter") {
-        navigate("/onboarding/2");
-      }
-    };
-    document.addEventListener("keydown", onKeyPress);
+	useEffect(() => {
+		const onKeyPress = (e: KeyboardEvent) => {
+			if (e.key === "Enter") {
+				navigate("/onboarding/2");
+			}
+		};
+		document.addEventListener("keydown", onKeyPress);
 
-    return () => {
-      document.removeEventListener("keydown", onKeyPress);
-    };
-  }, []);
+		return () => {
+			document.removeEventListener("keydown", onKeyPress);
+		};
+	}, []);
 
-  return (
-    <Root
-      initial={{ y: 25, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      exit={{ opacity: 0, y: 20 }}
-      transition={{ duration: 1 }}
-    >
-      <h1>Concepts</h1>
-    </Root>
-  );
+	return (
+		<Root
+			initial={{ y: 25, opacity: 0 }}
+			animate={{ y: 0, opacity: 1 }}
+			exit={{ opacity: 0, y: 20 }}
+			transition={{ duration: 1 }}
+		>
+			<h1>Concepts</h1>
+		</Root>
+	);
 };
 
 export default OnboardingPage1;

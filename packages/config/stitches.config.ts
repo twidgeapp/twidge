@@ -2,92 +2,92 @@
 
 import { createStitches } from "@stitches/react";
 import {
-  mauve,
-  tomato,
-  red,
-  crimson,
-  pink,
-  plum,
-  purple,
-  violet,
-  mint,
-  yellow,
-  amber,
-  blue,
-  indigo,
-  mauveDark,
-  tomatoDark,
-  redDark,
-  crimsonDark,
-  pinkDark,
-  plumDark,
-  purpleDark,
-  violetDark,
-  mintDark,
-  yellowDark,
-  amberDark,
-  blueDark,
-  indigoDark,
+	mauve,
+	tomato,
+	red,
+	crimson,
+	pink,
+	plum,
+	purple,
+	violet,
+	mint,
+	yellow,
+	amber,
+	blue,
+	indigo,
+	mauveDark,
+	tomatoDark,
+	redDark,
+	crimsonDark,
+	pinkDark,
+	plumDark,
+	purpleDark,
+	violetDark,
+	mintDark,
+	yellowDark,
+	amberDark,
+	blueDark,
+	indigoDark,
 } from "@radix-ui/colors";
 
 const { styled, createTheme, globalCss, keyframes } = createStitches({
-  theme: {
-    colors: {
-      /// gray scale
-      ...mauve,
+	theme: {
+		colors: {
+			/// gray scale
+			...mauve,
 
-      /// ERROR colors
-      ...tomato,
-      ...red,
-      ...crimson,
+			/// ERROR colors
+			...tomato,
+			...red,
+			...crimson,
 
-      /// Success colors
-      ...mint,
+			/// Success colors
+			...mint,
 
-      /// Neutral colors
-      ...pink,
-      ...plum,
-      ...purple,
-      ...violet,
+			/// Neutral colors
+			...pink,
+			...plum,
+			...purple,
+			...violet,
 
-      /// Warning
-      ...yellow,
-      ...amber,
+			/// Warning
+			...yellow,
+			...amber,
 
-      /// Info
-      ...blue,
-      ...indigo,
-    },
-  },
+			/// Info
+			...blue,
+			...indigo,
+		},
+	},
 });
 
 const darkTheme = createTheme({
-  colors: {
-    /// gray scale
-    ...mauveDark,
+	colors: {
+		/// gray scale
+		...mauveDark,
 
-    /// ERROR colors
-    ...tomatoDark,
-    ...redDark,
-    ...crimsonDark,
+		/// ERROR colors
+		...tomatoDark,
+		...redDark,
+		...crimsonDark,
 
-    /// Success colors
+		/// Success colors
 
-    /// Neutral colors
-    ...mintDark,
-    ...pinkDark,
-    ...plumDark,
-    ...purpleDark,
+		/// Neutral colors
+		...mintDark,
+		...pinkDark,
+		...plumDark,
+		...purpleDark,
 
-    /// Warning
-    ...violetDark,
-    ...yellowDark,
-    ...amberDark,
+		/// Warning
+		...violetDark,
+		...yellowDark,
+		...amberDark,
 
-    /// Info
-    ...blueDark,
-    ...indigoDark,
-  },
+		/// Info
+		...blueDark,
+		...indigoDark,
+	},
 });
 
 export { styled, darkTheme, globalCss, keyframes };

@@ -1,7 +1,11 @@
 {
   "name": "@twidge/components",
   "dependencies": {
+    "@radix-ui/colors": "^0.1.8",
+    "@radix-ui/react-dialog": "^1.0.2",
+    "@radix-ui/react-icons": "^1.1.1",
+    "@twidge/config": "*",
     "@twidge/utils": "*",
-    "@twidge/config": "*"
+    "react": "^18.2.0"
   }
 }

@@ -7,15 +7,16 @@
     "tauri:dev": "cd apps/src-tauri && cargo tauri dev",
     "tauri:build": "cd apps/src-tauri && cargo tauri build",
     "dev": "concurrently \"pnpm desktop:dev\" \"pnpm tauri:dev\"",
-    "desktop": "cd apps/desktop && pnpm "
+    "desktop": "cd apps/desktop && pnpm ",
+    "prepare": "husky install",
+    "format": "rome format --write ./*"
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^5.40.0",
     "concurrently": "^7.4.0",
-    "eslint": "^8.25.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
     "prettier": "^2.7.1",
+    "rome": "0.10.1-next",
     "typescript": "^4.6.4"
   }
 }
