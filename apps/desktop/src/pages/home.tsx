@@ -32,7 +32,7 @@ const HomePage = observer((props: HomePageProps) => {
 	return (
 		<div className="w-full h-full">
 			<DialogComponent>
-				<div>asdasd</div>
+				<div>Login</div>
 				<Login />
 			</DialogComponent>
 		</div>

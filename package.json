@@ -12,7 +12,8 @@
     "desktop": "pnpm --filter desktop",
     "config": "pnpm --filter @twidge/config",
     "utils": "pnpm --filter @twidge/utils",
-    "components": "pnpm --filter @twidge/components"
+    "components": "pnpm --filter @twidge/components",
+    "landing": "pnpm --filter landing"
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^5.40.0",

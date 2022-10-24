@@ -3,10 +3,10 @@ import { action, makeAutoObservable, observable } from "mobx";
 class Global {
 	@observable platform: "Linux" | "Darwin" | "Windows_NT" | null = null;
 	@observable version: string = "0.0.0";
-	
+
 	// twidge is built for offline first support so we start of with isOnline = false
 	@observable isOnline: boolean = false;
-	
+
 	constructor() {
 		makeAutoObservable(this);
 	}
@@ -22,7 +22,7 @@ class Global {
 	}
 
 	@action
-	setIsOnline(isOnline: boolean){
+	setIsOnline(isOnline: boolean) {
 		this.isOnline = isOnline;
 	}
 }

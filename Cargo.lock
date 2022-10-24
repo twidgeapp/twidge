@@ -84,6 +84,7 @@ name = "app"
 version = "0.1.0"
 dependencies = [
  "axum",
+ "http",
  "log",
  "pretty_env_logger",
  "prisma",
@@ -94,6 +95,7 @@ dependencies = [
  "tauri-build",
  "tcore",
  "tokio",
+ "tower-http",
  "window-shadows",
 ]
 
