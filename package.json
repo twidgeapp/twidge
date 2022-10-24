@@ -7,9 +7,12 @@
     "tauri:dev": "cd apps/src-tauri && cargo tauri dev",
     "tauri:build": "cd apps/src-tauri && cargo tauri build",
     "dev": "concurrently \"pnpm desktop:dev\" \"pnpm tauri:dev\"",
-    "desktop": "cd apps/desktop && pnpm ",
     "prepare": "husky install",
-    "format": "rome format --write ./*"
+    "format": "rome format --write ./*",
+    "desktop": "pnpm --filter desktop",
+    "config": "pnpm --filter @twidge/config",
+    "utils": "pnpm --filter @twidge/utils",
+    "components": "pnpm --filter @twidge/components"
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^5.40.0",

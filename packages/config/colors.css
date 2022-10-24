@@ -1,0 +1,24 @@
+:root {
+    --primary: 192;
+    --accent: 298;
+}
+
+.dark {
+    --color-black: var(--primary), 0%, 0%;
+    --color-white: var(--primary), 100%, 100%;
+
+    /* text color */
+    --color-text: var(--accent), 16%, 82%;
+    --color-text-dark: var(--accent), 21%, 53%;
+    --color-text-light: var(--accent), 21%, 95%;
+
+    /* blue color */
+    --color-blue: var(--primary), 35%, 53%;
+    --color-blue-light: var(--primary), 50%, 53%;
+
+    /* app colors */
+    --color-app-bg: var(--primary), 5%, 10%;
+    --color-app-overlay: var(--primary), 5%, 10%;
+    --color-app-modal: var(--primary), 8%, 8%;
+    --color-app-bg-dark: var(--primary), 5%, 5%;
+}

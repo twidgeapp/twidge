@@ -23,3 +23,4 @@ rspc = { workspace = true, features = [
 dirs = "4.0.0"
 serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
+online={version="4.0.0"}

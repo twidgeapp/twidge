@@ -59,7 +59,7 @@
         "resizable": true,
         "title": "Twidge",
         "width": 1200,
-        "decorations": false,
+        "decorations": true,
         "transparent": true
       }
     ]

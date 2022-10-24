@@ -1,11 +1,20 @@
 {
   "name": "@twidge/components",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "@radix-ui/colors": "^0.1.8",
     "@radix-ui/react-dialog": "^1.0.2",
-    "@radix-ui/react-icons": "^1.1.1",
-    "@twidge/config": "*",
-    "@twidge/utils": "*",
-    "react": "^18.2.0"
+    "react": "^18.2.0",
+    "tailwind-styled-components": "^2.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.17"
   }
 }
