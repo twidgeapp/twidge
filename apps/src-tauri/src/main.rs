@@ -4,7 +4,6 @@
 )]
 use std::sync::{Arc, Mutex};
 
-use prisma::prisma;
 use tauri::Manager;
 use tcore::routes::Context;
 use window_shadows::set_shadow;
@@ -33,7 +32,7 @@ async fn main() {
 
     // instantiate a new prisma client and Arc it so that rust doesn't scold me
     let prisma = Arc::new(
-        prisma::new_client_with_url(&format!("file:{}", db_path.display()))
+        tcore::prisma::new_client_with_url(&format!("file:{}", db_path.display()))
             .await
             .unwrap(),
     );

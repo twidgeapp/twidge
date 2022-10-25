@@ -1,4 +1,4 @@
-use prisma::prisma;
+use crate::prisma;
 use rspc::{RouterBuilder, Type};
 
 use super::Context;

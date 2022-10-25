@@ -5,7 +5,7 @@ pub mod settings;
 
 #[derive(Debug, Clone)]
 pub struct Context {
-    pub db: Arc<prisma::prisma::PrismaClient>,
+    pub db: Arc<crate::prisma::PrismaClient>,
 }
 
 pub fn setup_router() -> RouterBuilder<

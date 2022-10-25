@@ -1,6 +1,6 @@
 node_modules
 
-/prisma/src/prisma.rs
+./packages/core/src/prisma.rs
 
 /target
 

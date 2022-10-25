@@ -8,8 +8,8 @@ class Global {
 		name: "Guest",
 		email: null,
 		profile_pic: "/avatar/placeholder.svg",
-		google_oauth_id: "0"
-	}
+		google_oauth_id: "0",
+	};
 	// twidge is built for offline first support so we start of with isOnline = false
 	@observable isOnline: boolean = false;
 

@@ -4,7 +4,7 @@ import React from "react";
 
 interface Props {
 	children: React.ReactNode[];
-	isOpen: boolean
+	isOpen: boolean;
 }
 
 const StyledOverlay = tw(

@@ -14,19 +14,18 @@ const HomePage = observer((props: HomePageProps) => {
 		null,
 		{},
 		"GET",
-		true
+		true,
 	);
-	const { error: userError, response: userResponse, refetch: userRefetch } = useCustomQuery(
-		null,
-		{},
-		"GET",
-		true
-	);
+	const {
+		error: userError,
+		response: userResponse,
+		refetch: userRefetch,
+	} = useCustomQuery(null, {}, "GET", true);
 
 	useEffect(() => {
 		let refresh_token = localStorage.getItem("refresh_token");
-		refetch({}, `/auth/token?token=${refresh_token}`)
-	}, [])
+		refetch({}, `/auth/token?token=${refresh_token}`);
+	}, []);
 
 	useEffect(() => {
 		if (error && !isLoading && !response) {
@@ -42,17 +41,17 @@ const HomePage = observer((props: HomePageProps) => {
 		} else if (response) {
 			/// user is already authenticated
 			const { access_token } = response as any;
-			userRefetch({}, `/auth/user?token=${access_token}`)
+			userRefetch({}, `/auth/user?token=${access_token}`);
 		}
 	}, [isLoading, error, response]);
 
 	useEffect(() => {
 		if (userResponse) {
-			props.globalStore.setUser(userResponse)
+			props.globalStore.setUser(userResponse);
 		} else if (userError) {
-			setLogin(true)
+			setLogin(true);
 		}
-	}, [userResponse, userError])
+	}, [userResponse, userError]);
 
 	return (
 		<div className="w-full h-full">

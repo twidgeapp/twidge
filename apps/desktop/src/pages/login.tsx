@@ -8,11 +8,13 @@ const LoginPage = () => {
 		refresh_token: string;
 	}>(`/auth/tokens/get?unique_id=${unique_id}`, {}, "GET");
 
-
 	useEffect(() => {
 		if (response?.refresh_token) {
-			localStorage.setItem("refresh_token", response.refresh_token.replace('"', ""));
-			window.location.replace("/")
+			localStorage.setItem(
+				"refresh_token",
+				response.refresh_token.replace('"', ""),
+			);
+			window.location.replace("/");
 		}
 	}, [response]);
 

@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use prisma::prisma;
+use crate::prisma;
 use rspc::RouterBuilder;
 
 use super::Context;
