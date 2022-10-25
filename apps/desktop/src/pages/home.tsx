@@ -5,6 +5,7 @@ import useCustomQuery from "../hooks/useCustomQuery";
 import DialogComponent from "@twidge/components/dialog";
 import Login from "../components/login";
 import BaseLayout from "../layouts/base_layout";
+
 interface HomePageProps {
 	globalStore: GlobalStore;
 }
@@ -59,7 +60,7 @@ const HomePage = observer((props: HomePageProps) => {
 	return (
 		<>
 			<DialogComponent isOpen={login}>
-				<div></div>
+				<div />
 				<Login />
 			</DialogComponent>
 			<BaseLayout>asd</BaseLayout>

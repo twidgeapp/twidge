@@ -1,4 +1,5 @@
-import React from "react";
+import GlobalContext from "@twidge/utils/ctx";
+import React, { useContext } from "react";
 import Sidebar from "../components/sidebar";
 
 interface Props {
@@ -6,9 +7,11 @@ interface Props {
 }
 
 const BaseLayout = (props: Props) => {
+	const { spaceStore } = useContext(GlobalContext)
+
 	return (
 		<div className="w-full h-full flex">
-			<Sidebar />
+			<Sidebar spaceStore={spaceStore} />
 			{props.children}
 		</div>
 	);

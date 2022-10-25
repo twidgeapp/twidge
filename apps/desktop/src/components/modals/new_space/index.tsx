@@ -1,7 +1,41 @@
 import { IconBook } from "@tabler/icons";
+import GlobalContext from "@twidge/utils/ctx";
+import { useContext, useState } from "react";
 import ColorPicker from "./color_picker";
 
 const NewSpaceModal = () => {
+	const [primaryColor, setPrimaryColor] = useState(192);
+	const [accentColor, setAccentColor] = useState(298);
+	const [name, setName] = useState("");
+	const [description, setDescription] = useState("");
+	const { spaceStore } = useContext(GlobalContext)
+	const [validations, setValidations] = useState<any>({});
+
+	const onSubmit = () => {
+		if (name === "" || description === "") {
+			setValidations({
+				name: name === "",
+				description: description === "",
+			});
+		} else {
+			let id = spaceStore.spaces.length + 1;
+			spaceStore.addSpace({
+				colors: {
+					primary: primaryColor,
+					accent: accentColor,
+				},
+				created_at: "",
+				description: description,
+				icon: "IconBook",
+				id: id,
+				name: name,
+				updated_at: ""
+			});
+
+			document.getElementById("close-button-modal")?.click();
+		}
+	}
+
 	return (
 		<div className="w-[480px] bg-app-modal/40 backdrop-blur-xl shadow-lg border border-text/10 rounded-xl select-none font-mulish">
 			<div className="px-6 pt-6  rounded-t-xl">
@@ -12,7 +46,11 @@ const NewSpaceModal = () => {
 							<IconBook size={16} className="text-blue" />
 						</button>
 						<input
+							style={{
+								border: validations["name"] === true ? "1px solid red" : "undefined",
+							}}
 							placeholder="Name"
+							onInput={(e) => setName(e.currentTarget.value)}
 							type="text"
 							className="bg-app-bg text-sm grid place-items-center px-2 text-text rounded-lg border border-text/10 w-full focus:outline-none"
 						/>
@@ -20,6 +58,10 @@ const NewSpaceModal = () => {
 					<div className="flex gap-1">
 						<input
 							placeholder="Description"
+							style={{
+								border: validations["description"] === true ? "1px solid red" : "undefined",
+							}}
+							onInput={(e) => setDescription(e.currentTarget.value)}
 							type="text"
 							className="bg-app-bg h-[34px] grid place-items-center px-2 text-text rounded-lg border border-text/10 text-sm w-full focus:outline-none"
 						/>
@@ -31,14 +73,8 @@ const NewSpaceModal = () => {
 					Colors:
 				</h1>
 				<div className="grid grid-cols-2">
-					<div className="col-span-1 w-full h-full py-2 gap-2 flex flex-col">
-						<ColorPicker text="Primary" setColor={console.log} />
-						<ColorPicker text="Secondary" setColor={console.log} />
-					</div>
-					<div className="col-span-1 w-full h-full p-2 gap-2 flex flex-col">
-						<ColorPicker text="Text" setColor={console.log} />
-						<ColorPicker text="Buttons" setColor={console.log} />
-					</div>
+					<ColorPicker text="Primary" setColor={setPrimaryColor} />
+					<ColorPicker text="Accent" setColor={setAccentColor} />
 				</div>
 				<div className="flex gap-1 w-full items-center justify-end pt-3">
 					<button
@@ -49,7 +85,7 @@ const NewSpaceModal = () => {
 					>
 						Cancel
 					</button>
-					<button className="bg-blue-dark text-text h-[34px] grid place-items-center px-4 rounded-lg border border-text/10 text-sm focus:outline-none">
+					<button onClick={onSubmit} className="bg-blue-dark hover:bg-blue transition-all duration-150 text-text h-[34px] grid place-items-center px-4 rounded-lg border border-text/10 text-sm focus:outline-none">
 						Create
 					</button>
 				</div>
