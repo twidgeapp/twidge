@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
-import Logo from "../../assets/logo.svg"
-import { IconPlus } from "@tabler/icons"
-import tw from "tailwind-styled-components"
+import Logo from "../../assets/logo.svg";
+import { IconPlus } from "@tabler/icons";
+import tw from "tailwind-styled-components";
+import DialogComponent from "@twidge/components/dialog";
+import NewSpaceModal from "../modals/new_space";
 
-const Separator = tw.div`w-full h-[1px] bg-text`
+const Separator = tw.div`w-full h-[1px] bg-text`;
 
 const Sidebar = () => {
     return (
@@ -12,11 +14,14 @@ const Sidebar = () => {
                 <img className="select-none" src={Logo} />
             </Link>
             <div className="w-8 h-8 grid place-items-center rounded-md hover:bg-app-bg transition-all duration-150 cursor-pointer">
-                <IconPlus className="text-text"></IconPlus>
+                <DialogComponent isOpen={undefined} trigger>
+                    <IconPlus className="text-text"></IconPlus>
+                    <NewSpaceModal />
+                </DialogComponent>
             </div>
             <Separator />
-        </div>
-    )
-}
+        </div >
+    );
+};
 
 export default Sidebar;

@@ -15,6 +15,7 @@
     /* blue color */
     --color-blue: var(--primary), 35%, 53%;
     --color-blue-light: var(--primary), 50%, 53%;
+    --color-blue-dark: var(--primary), 45%, 48%;
 
     /* app colors */
     --color-app-bg: var(--primary), 5%, 10%;

@@ -10,7 +10,7 @@ const Login = () => {
 	return (
 		<div className="w-[300px] bg-app-modal rounded-xl gap-2 flex flex-col items-center shadow-xl shadow-black/40">
 			<div className="px-3 py-5 w-full flex flex-col bg-app-dark items-center rounded-t-xl">
-				<img src={Logo} width="25%" />
+				<img src={Logo} width="20%" />
 				<h1 className="text-2xl text-center w-full text-white font-extrabold mt-2">
 					Login to Twidge
 				</h1>
@@ -36,7 +36,7 @@ const Login = () => {
 							fill="white"
 						/>
 					</svg>
-					Login with Google
+					Continue with Google
 				</a>
 				<span className="text-white/30 text-center leading-5 text-[8px] font-semibold">
 					By logging in you agree to our{" "}

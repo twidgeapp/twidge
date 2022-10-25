@@ -16,6 +16,7 @@ module.exports = {
 				blue: {
 					DEFAULT: alpha("--color-blue"),
 					light: alpha("--color-blue-light"),
+					dark: alpha("--color-blue-dark")
 				},
 				text: {
 					DEFAULT: alpha("--color-text"),
@@ -30,8 +31,8 @@ module.exports = {
 				},
 				sidebar: {
 					DEFAULT: alpha("--color-sidebar-bg"),
-					hover: alpha("--color-sidebar-hover-state")
-				}
+					hover: alpha("--color-sidebar-hover-state"),
+				},
 			},
 		},
 	},

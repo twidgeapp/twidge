@@ -62,9 +62,7 @@ const HomePage = observer((props: HomePageProps) => {
 				<div></div>
 				<Login />
 			</DialogComponent>
-			<BaseLayout>
-				asd
-			</BaseLayout>
+			<BaseLayout>asd</BaseLayout>
 		</>
 	);
 });
