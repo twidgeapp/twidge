@@ -21,4 +21,8 @@
     --color-app-overlay: var(--primary), 5%, 10%;
     --color-app-modal: var(--primary), 8%, 8%;
     --color-app-bg-dark: var(--primary), 5%, 5%;
+
+    /* sidebar color */
+    --color-sidebar-bg: var(--primary), 9%, 8%;
+    --color-sidebar-hover-state: var(--primary) 100%, 100%;
 }

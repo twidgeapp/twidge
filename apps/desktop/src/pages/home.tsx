@@ -4,18 +4,21 @@ import { useEffect, useState } from "react";
 import useCustomQuery from "../hooks/useCustomQuery";
 import DialogComponent from "@twidge/components/dialog";
 import Login from "../components/login";
+import BaseLayout from "../layouts/base_layout";
 interface HomePageProps {
 	globalStore: GlobalStore;
 }
 
 const HomePage = observer((props: HomePageProps) => {
 	const [login, setLogin] = useState(false);
+
 	const { error, isLoading, refetch, response } = useCustomQuery(
 		null,
 		{},
 		"GET",
 		true,
 	);
+
 	const {
 		error: userError,
 		response: userResponse,
@@ -54,13 +57,15 @@ const HomePage = observer((props: HomePageProps) => {
 	}, [userResponse, userError]);
 
 	return (
-		<div className="w-full h-full">
+		<>
 			<DialogComponent isOpen={login}>
 				<div></div>
 				<Login />
 			</DialogComponent>
-			{JSON.stringify(props.globalStore.user)}
-		</div>
+			<BaseLayout>
+				asd
+			</BaseLayout>
+		</>
 	);
 });
 

@@ -28,6 +28,10 @@ module.exports = {
 					modal: alpha("--color-app-modal"),
 					dark: alpha("--color-app-bg-dark"),
 				},
+				sidebar: {
+					DEFAULT: alpha("--color-sidebar-bg"),
+					hover: alpha("--color-sidebar-hover-state")
+				}
 			},
 		},
 	},

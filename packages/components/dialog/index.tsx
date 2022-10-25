@@ -5,6 +5,7 @@ import React from "react";
 interface Props {
 	children: React.ReactNode[];
 	isOpen: boolean;
+	trigger?: boolean
 }
 
 const StyledOverlay = tw(
@@ -17,7 +18,9 @@ const StyledComponent = tw(
 const DialogComponent = (props: Props) => {
 	return (
 		<DialogPrimitives.Root open={props.isOpen}>
-			<DialogPrimitives.Trigger>{props.children[0]}</DialogPrimitives.Trigger>
+			{props.trigger && (
+				<DialogPrimitives.Trigger>{props.children[0]}</DialogPrimitives.Trigger>
+			)}
 			<DialogPrimitives.Portal>
 				<StyledOverlay />
 				<StyledComponent>{props.children[1]}</StyledComponent>

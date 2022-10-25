@@ -12,6 +12,7 @@
     "@rspc/client": "^0.1.2",
     "@rspc/react": "^0.1.2",
     "@rspc/tauri": "^0.1.2",
+    "@tabler/icons": "^1.107.0",
     "@tanstack/react-query": "^4.13.0",
     "@tauri-apps/api": "^1.1.0",
     "@twidge/components": "workspace:*",
@@ -23,7 +24,8 @@
     "mobx-react": "^7.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.4.2"
+    "react-router-dom": "^6.4.2",
+    "tailwind-styled-components": "^2.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",
