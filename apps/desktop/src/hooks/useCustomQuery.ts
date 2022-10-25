@@ -11,7 +11,7 @@ const useCustomQuery = <T>(
 	url: string | null,
 	data: any,
 	method: "GET" | "POST",
-	onStart?: boolean
+	noRequestOnStart?: boolean,
 ): {
 	isLoading: boolean;
 	response: T | null;
@@ -32,7 +32,6 @@ const useCustomQuery = <T>(
 				data: data !== null ? data : c_data,
 			})
 			.then((res) => {
-				console.log(res.data)
 				setResponse(res.data);
 				setIsLoading(false);
 			})
@@ -43,7 +42,7 @@ const useCustomQuery = <T>(
 	};
 
 	useEffect(() => {
-		if (!onStart) {
+		if (!noRequestOnStart) {
 			fetchData();
 		}
 	}, []);

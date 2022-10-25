@@ -8,23 +8,13 @@ const LoginPage = () => {
 		refresh_token: string;
 	}>(`/auth/tokens/get?unique_id=${unique_id}`, {}, "GET");
 
-	const { refetch, response: userAccessToken } = useCustomQuery(
-		null,
-		{},
-		"GET",
-		true,
-	);
 
 	useEffect(() => {
 		if (response?.refresh_token) {
-			localStorage.setItem("refresh_token", response.refresh_token);
-			refetch({}, `/auth/user?refresh_token=${response.refresh_token}`);
+			localStorage.setItem("refresh_token", response.refresh_token.replace('"', ""));
+			window.location.replace("/")
 		}
 	}, [response]);
-
-	useEffect(() => {
-		console.log(userAccessToken);
-	}, [userAccessToken]);
 
 	return (
 		<div className="w-full h-full">
