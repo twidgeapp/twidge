@@ -29,7 +29,7 @@ function App() {
 	}, []);
 
 	return (
-		<div className="w-screen h-screen bg-app-bg text-text-light">
+		<div className="w-screen h-screen bg-app-bg text-text-light font-inter">
 			<Routes>
 				<Route path="/" element={<LoadingPage />} />
 				<Route path="/home" element={<HomePage globalStore={globalStore} />} />

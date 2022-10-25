@@ -1,7 +1,7 @@
 import tw from "tailwind-styled-components";
 import * as DialogPrimitives from "@radix-ui/react-dialog";
 import React from "react";
-import { IconX } from "@tabler/icons"
+import { IconX } from "@tabler/icons";
 
 interface Props {
 	children: React.ReactNode[];
@@ -9,18 +9,22 @@ interface Props {
 	trigger?: boolean;
 }
 
-const StyledOverlay = tw(DialogPrimitives.Overlay)`bg-app-bg/40 backdrop-blur-sm w-screen h-screen  absolute top-0 modal-overlay-animation`;
+const StyledOverlay = tw(
+	DialogPrimitives.Overlay,
+)`bg-app-bg/40 backdrop-blur-sm w-screen h-screen  absolute top-0 modal-overlay-animation`;
 const StyledComponent = tw(
 	DialogPrimitives.Content,
 )`fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 modal-content-animation focus-none`;
 
-const CloseIcon = tw(DialogPrimitives.Close)`absolute top-3 right-3 text-text`
+const CloseIcon = tw(DialogPrimitives.Close)`absolute top-3 right-3 text-text`;
 
 const DialogComponent = (props: Props) => {
 	return (
 		<DialogPrimitives.Root open={props.isOpen}>
 			{props.trigger && (
-				<DialogPrimitives.Trigger className="focus:outline-none">{props.children[0]}</DialogPrimitives.Trigger>
+				<DialogPrimitives.Trigger className="focus:outline-none">
+					{props.children[0]}
+				</DialogPrimitives.Trigger>
 			)}
 			<DialogPrimitives.Portal>
 				<StyledOverlay style={{ filter: "blur(10px)" }} />
@@ -32,10 +36,8 @@ const DialogComponent = (props: Props) => {
 								<IconX />
 							</CloseIcon>
 						)}
-
 					</>
 				</StyledComponent>
-
 			</DialogPrimitives.Portal>
 		</DialogPrimitives.Root>
 	);

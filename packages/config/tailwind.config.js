@@ -10,13 +10,17 @@ module.exports = {
 	],
 	theme: {
 		extend: {
+			fontFamily: {
+				inter: ["Inter", "sans-serif"],
+				mulish: ["Mulish", "sans-serif"],
+			},
 			colors: {
 				black: alpha("--color-black"),
 				white: alpha("--color-white"),
 				blue: {
 					DEFAULT: alpha("--color-blue"),
 					light: alpha("--color-blue-light"),
-					dark: alpha("--color-blue-dark")
+					dark: alpha("--color-blue-dark"),
 				},
 				text: {
 					DEFAULT: alpha("--color-text"),
