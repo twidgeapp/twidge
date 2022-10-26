@@ -2,14 +2,21 @@ import { IconBook } from "@tabler/icons";
 import GlobalContext from "@twidge/utils/ctx";
 import { useContext, useState } from "react";
 import ColorPicker from "./color_picker";
+import Popover from "@twidge/components/popover"
+import IconPicker from "./icon_picker";
+import * as Icons from "@tabler/icons";
 
 const NewSpaceModal = () => {
 	const [primaryColor, setPrimaryColor] = useState(192);
 	const [accentColor, setAccentColor] = useState(298);
 	const [name, setName] = useState("");
 	const [description, setDescription] = useState("");
-	const { spaceStore } = useContext(GlobalContext)
+	const { spaceStore } = useContext(GlobalContext);
 	const [validations, setValidations] = useState<any>({});
+	const [color, setColor] = useState("#512fc2");
+	const [icon, setIcon] = useState("IconBook");
+	// @ts-ignore
+	const Icon = Icons[icon];
 
 	const onSubmit = () => {
 		if (name === "" || description === "") {
@@ -29,12 +36,13 @@ const NewSpaceModal = () => {
 				icon: "IconBook",
 				id: id,
 				name: name,
-				updated_at: ""
+				updated_at: "",
 			});
 
 			document.getElementById("close-button-modal")?.click();
 		}
-	}
+	};
+
 
 	return (
 		<div className="w-[480px] bg-app-modal/40 backdrop-blur-xl shadow-lg border border-text/10 rounded-xl select-none font-mulish">
@@ -42,12 +50,17 @@ const NewSpaceModal = () => {
 				<h1 className="text-white text-2xl font-bold">Create a new Space</h1>
 				<div className="flex flex-col gap-3 mt-6">
 					<div className="flex gap-2">
-						<button className="p-2 !w-[34px] !h-[34px] bg-app-bg grid place-items-center cursor-pointer text-text rounded-lg border border-text/10 focus:outline-none">
-							<IconBook size={16} className="text-blue" />
-						</button>
+						<Popover>
+							<button className="p-2 !w-[34px] !h-[34px] bg-app-bg grid place-items-center cursor-pointer text-text rounded-lg border border-text/10 focus:outline-none">
+								<Icon size={16} color={color} />
+							</button>
+							<IconPicker color={color} icon={icon} setColor={setColor} setIcon={setIcon} />
+						</Popover>
+
 						<input
 							style={{
-								border: validations["name"] === true ? "1px solid red" : "undefined",
+								border:
+									validations["name"] === true ? "1px solid red" : "undefined",
 							}}
 							placeholder="Name"
 							onInput={(e) => setName(e.currentTarget.value)}
@@ -59,7 +72,10 @@ const NewSpaceModal = () => {
 						<input
 							placeholder="Description"
 							style={{
-								border: validations["description"] === true ? "1px solid red" : "undefined",
+								border:
+									validations["description"] === true
+										? "1px solid red"
+										: "undefined",
 							}}
 							onInput={(e) => setDescription(e.currentTarget.value)}
 							type="text"
@@ -85,7 +101,10 @@ const NewSpaceModal = () => {
 					>
 						Cancel
 					</button>
-					<button onClick={onSubmit} className="bg-blue-dark hover:bg-blue transition-all duration-150 text-text h-[34px] grid place-items-center px-4 rounded-lg border border-text/10 text-sm focus:outline-none">
+					<button
+						onClick={onSubmit}
+						className="bg-blue-dark hover:bg-blue transition-all duration-150 text-text h-[34px] grid place-items-center px-4 rounded-lg border border-text/10 text-sm focus:outline-none"
+					>
 						Create
 					</button>
 				</div>

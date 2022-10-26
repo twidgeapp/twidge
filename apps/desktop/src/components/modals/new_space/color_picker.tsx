@@ -16,7 +16,6 @@ const ColorPicker = (props: Props) => {
 		setOpen(false);
 	});
 
-
 	return (
 		<div className="relative text-white">
 			<div className="w-full flex gap-2">
@@ -40,6 +39,7 @@ const ColorPicker = (props: Props) => {
 					<HslColorPicker
 						color={color}
 						onChange={(color) => {
+							document.body.style.setProperty(`--${props.text.toLowerCase()}`, color.h.toString())
 							setColor(color);
 							props.setColor(color.h);
 						}}

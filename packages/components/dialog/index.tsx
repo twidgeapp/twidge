@@ -7,6 +7,7 @@ interface Props {
 	children: React.ReactNode[];
 	isOpen?: boolean;
 	trigger?: boolean;
+	restoreColors?: boolean;
 }
 
 const StyledOverlay = tw(
@@ -20,9 +21,9 @@ const CloseIcon = tw(DialogPrimitives.Close)`absolute top-3 right-3 text-text`;
 
 const DialogComponent = (props: Props) => {
 	return (
-		<DialogPrimitives.Root open={props.isOpen}>
+		<DialogPrimitives.Root open={props.isOpen} modal={true}>
 			{props.trigger && (
-				<DialogPrimitives.Trigger className="focus:outline-none">
+				<DialogPrimitives.Trigger className="focus:outline-none" asChild>
 					{props.children[0]}
 				</DialogPrimitives.Trigger>
 			)}
@@ -32,7 +33,12 @@ const DialogComponent = (props: Props) => {
 					<>
 						{props.children[1]}
 						{props.trigger && (
-							<CloseIcon id="close-button-modal" className="backdrop-blur-0">
+							<CloseIcon id="close-button-modal" onClick={() => {
+								if (props.restoreColors) {
+									document.body.style.setProperty("--primary", "192");
+									document.body.style.setProperty("--accent", "298");
+								}
+							}} className="backdrop-blur-0">
 								<IconX />
 							</CloseIcon>
 						)}

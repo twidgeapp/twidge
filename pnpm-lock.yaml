@@ -141,11 +141,13 @@ importers:
 
   packages/utils:
     specifiers:
+      '@tabler/icons': ^1.107.0
       '@types/react': ^18.0.17
       mobx: ^6.6.2
       mobx-react: ^7.5.3
       react: ^18.2.0
     dependencies:
+      '@tabler/icons': 1.107.0_react@18.2.0
       mobx: 6.6.2
       mobx-react: 7.5.3_mobx@6.6.2+react@18.2.0
       react: 18.2.0

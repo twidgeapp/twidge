@@ -7,7 +7,7 @@ interface Props {
 }
 
 const BaseLayout = (props: Props) => {
-	const { spaceStore } = useContext(GlobalContext)
+	const { spaceStore } = useContext(GlobalContext);
 
 	return (
 		<div className="w-full h-full flex">
