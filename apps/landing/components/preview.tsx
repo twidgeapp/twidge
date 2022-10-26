@@ -1,12 +1,16 @@
 const Preview = () => {
 	return (
 		<div className="h-full grid place-items-center mt-[50px]">
-			<div
-				className="w-[1088px] h-[680px] bg-white bg-opacity-40 rounded-xl border border-white"
+			<img
+				className="rounded-xl"
 				style={{
 					boxShadow: "0px 0px 500px 50px rgba(0, 194, 255, 0.25)",
 				}}
-			></div>
+				src="/assets/illustrations/preview.svg"
+				width={"1366"}
+				height={"768"}
+				alt=""
+			/>
 		</div>
 	);
 };
