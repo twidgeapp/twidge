@@ -6,9 +6,10 @@ import HomePage from "./pages/home";
 import rspc from "./query";
 import { listen } from "@tauri-apps/api/event";
 import LoginPage from "./pages/login";
+import SpacePage from "./pages/space/[id]";
 
 function App() {
-	const { globalStore } = useContext(GlobalContext);
+	const { globalStore, spaceStore } = useContext(GlobalContext);
 	const navigate = useNavigate();
 	const { isLoading } = rspc.useQuery(["misc.is_online"], {
 		onSuccess: (data) => {
@@ -34,6 +35,10 @@ function App() {
 				<Route path="/" element={<LoadingPage />} />
 				<Route path="/home" element={<HomePage globalStore={globalStore} />} />
 				<Route path="/login" element={<LoginPage />} />
+				<Route
+					path="/space/:id"
+					element={<SpacePage spaceStore={spaceStore} />}
+				/>
 			</Routes>
 		</div>
 	);

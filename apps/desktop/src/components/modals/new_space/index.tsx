@@ -2,9 +2,11 @@ import { IconBook } from "@tabler/icons";
 import GlobalContext from "@twidge/utils/ctx";
 import { useContext, useState } from "react";
 import ColorPicker from "./color_picker";
-import Popover from "@twidge/components/popover"
+import Popover from "@twidge/components/popover";
 import IconPicker from "./icon_picker";
 import * as Icons from "@tabler/icons";
+import rspc from "../../../query";
+import { IconType } from "@twidge/utils/state/spaces";
 
 const NewSpaceModal = () => {
 	const [primaryColor, setPrimaryColor] = useState(192);
@@ -17,6 +19,7 @@ const NewSpaceModal = () => {
 	const [icon, setIcon] = useState("IconBook");
 	// @ts-ignore
 	const Icon = Icons[icon];
+	const { mutate } = rspc.useMutation("spaces.create");
 
 	const onSubmit = () => {
 		if (name === "" || description === "") {
@@ -25,24 +28,25 @@ const NewSpaceModal = () => {
 				description: description === "",
 			});
 		} else {
-			let id = spaceStore.spaces.length + 1;
-			spaceStore.addSpace({
-				colors: {
-					primary: primaryColor,
-					accent: accentColor,
+			mutate(
+				{
+					accent_color: accentColor.toString(),
+					primary_color: primaryColor.toString(),
+					name,
+					description,
+					color: color,
+					icon: icon,
 				},
-				created_at: "",
-				description: description,
-				icon: "IconBook",
-				id: id,
-				name: name,
-				updated_at: "",
-			});
-
-			document.getElementById("close-button-modal")?.click();
+				{
+					onSuccess: (data) => {
+						console.log(data);
+						spaceStore.addSpace(data);
+						document.getElementById("close-button-modal")?.click();
+					},
+				},
+			);
 		}
 	};
-
 
 	return (
 		<div className="w-[480px] bg-app-modal/40 backdrop-blur-xl shadow-lg border border-text/10 rounded-xl select-none font-mulish">
@@ -54,7 +58,12 @@ const NewSpaceModal = () => {
 							<button className="p-2 !w-[34px] !h-[34px] bg-app-bg grid place-items-center cursor-pointer text-text rounded-lg border border-text/10 focus:outline-none">
 								<Icon size={16} color={color} />
 							</button>
-							<IconPicker color={color} icon={icon} setColor={setColor} setIcon={setIcon} />
+							<IconPicker
+								color={color}
+								icon={icon}
+								setColor={setColor}
+								setIcon={setIcon}
+							/>
 						</Popover>
 
 						<input

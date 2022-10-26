@@ -13,13 +13,20 @@ datasource db {
   url      = "file:./sqlite.db"
 }
 
-model Spaces {
-  id    Int    @id @default(autoincrement())
-  name  String
-  icon  String
-  color String
+model Space {
+  id          Int    @id @default(autoincrement())
+  name        String
+  icon        String
+  color       String
+  description String
 
-  @@map("spaces")
+  primaryColor String
+  accentColor  String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now()) @updatedAt
+
+  @@map("space")
 }
 
 model Settings {

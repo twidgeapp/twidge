@@ -1,5 +1,6 @@
 import { action, makeAutoObservable, observable } from "mobx";
-import * as Icons from "@tabler/icons"
+import * as Icons from "@tabler/icons";
+import { Space } from "../../../apps/desktop/src/bindings";
 
 export type IconType = keyof typeof Icons;
 
@@ -17,21 +18,21 @@ interface ISpace {
 }
 
 class Spaces {
-	@observable spaces: ISpace[] = [];
+	@observable spaces: Space[] = [];
 
 	constructor() {
 		makeAutoObservable(this);
 	}
 
-	@action setSpaces(spaces: ISpace[]) {
+	@action setSpaces(spaces: Space[]) {
 		this.spaces = spaces;
 	}
 
-	@action addSpace(space: ISpace) {
+	@action addSpace(space: Space) {
 		this.spaces = [space, ...this.spaces];
 	}
 
-	@action updateSpace(space: ISpace) {
+	@action updateSpace(space: Space) {
 		this.spaces = this.spaces.map((s) => {
 			if (s.id === space.id) {
 				return space;
@@ -40,7 +41,7 @@ class Spaces {
 		});
 	}
 
-	@action deleteSpace(space: ISpace) {
+	@action deleteSpace(space: Space) {
 		this.spaces = this.spaces.filter((s) => s.id !== space.id);
 	}
 }

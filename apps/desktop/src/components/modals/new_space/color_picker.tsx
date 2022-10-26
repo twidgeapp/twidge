@@ -39,7 +39,10 @@ const ColorPicker = (props: Props) => {
 					<HslColorPicker
 						color={color}
 						onChange={(color) => {
-							document.body.style.setProperty(`--${props.text.toLowerCase()}`, color.h.toString())
+							document.body.style.setProperty(
+								`--${props.text.toLowerCase()}`,
+								color.h.toString(),
+							);
 							setColor(color);
 							props.setColor(color.h);
 						}}

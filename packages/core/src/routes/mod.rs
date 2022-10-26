@@ -2,6 +2,7 @@ use rspc::{internal::MiddlewareBuilderLike, Config, Router, RouterBuilder};
 use std::{path::PathBuf, sync::Arc};
 pub mod misc;
 pub mod settings;
+pub mod spaces;
 
 #[derive(Debug, Clone)]
 pub struct Context {
@@ -24,6 +25,7 @@ pub fn setup_router() -> RouterBuilder<
         )
         .merge("misc.", misc::mount())
         .merge("settings.", settings::mount())
+        .merge("spaces.", spaces::mount())
         .query("version", |t| {
             t(|_, _: ()| env!("CARGO_PKG_VERSION").to_string())
         })

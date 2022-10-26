@@ -23,7 +23,7 @@ const DialogComponent = (props: Props) => {
 	return (
 		<DialogPrimitives.Root open={props.isOpen} modal={true}>
 			{props.trigger && (
-				<DialogPrimitives.Trigger className="focus:outline-none" asChild>
+				<DialogPrimitives.Trigger className="focus:outline-none bg-transparent">
 					{props.children[0]}
 				</DialogPrimitives.Trigger>
 			)}
@@ -33,12 +33,16 @@ const DialogComponent = (props: Props) => {
 					<>
 						{props.children[1]}
 						{props.trigger && (
-							<CloseIcon id="close-button-modal" onClick={() => {
-								if (props.restoreColors) {
-									document.body.style.setProperty("--primary", "192");
-									document.body.style.setProperty("--accent", "298");
-								}
-							}} className="backdrop-blur-0">
+							<CloseIcon
+								id="close-button-modal"
+								onClick={() => {
+									if (props.restoreColors) {
+										document.body.style.setProperty("--primary", "192");
+										document.body.style.setProperty("--accent", "298");
+									}
+								}}
+								className="backdrop-blur-0"
+							>
 								<IconX />
 							</CloseIcon>
 						)}
