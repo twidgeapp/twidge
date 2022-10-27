@@ -29,7 +29,7 @@ const SpacePage = observer((props: Props) => {
 		};
 	}, [space]);
 
-	return <BaseLayout>{JSON.stringify(space)}</BaseLayout>;
+	return <BaseLayout>	</BaseLayout>;
 });
 
 export default SpacePage;

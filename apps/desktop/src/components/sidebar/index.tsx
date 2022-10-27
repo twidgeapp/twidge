@@ -26,7 +26,7 @@ const Sidebar = observer((props: Props) => {
 	}, [data]);
 
 	return (
-		<div className="w-16 h-full bg-sidebar flex flex-col gap-3 p-4">
+		<div className="w-16 h-full bg-sidebar flex flex-col gap-3 p-4 border-r border-r-text/10 items-center">
 			<Link to="/home">
 				<img className="select-none" src={Logo} />
 			</Link>
