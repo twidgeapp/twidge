@@ -12,7 +12,9 @@ const Header = (props: Props) => {
     return (
         <div className="w-full h-12 flex items-center px-4 border-b border-b-text/10">
             <Icon color={props.space.color} />
-            <h1 className="text-sm font-bold ml-2 text-text-light">{props.space.name}</h1>
+            <h1 className="text-sm font-bold ml-2 text-text-light">
+                {props.space.name}
+            </h1>
         </div>
     );
 };

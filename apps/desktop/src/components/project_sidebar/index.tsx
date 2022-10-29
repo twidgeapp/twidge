@@ -13,8 +13,8 @@ const ProjectSidebar = observer((props: Props) => {
     const { id } = useParams();
 
     const space = useMemo(() => {
-        let project = props.spaceStore.spaces.find(
-            (space) => space.id.toString() === id,
+        const project = props.spaceStore.spaces.find(
+            (space) => space.id.toString() === id
         );
         return project;
     }, [id, props.spaceStore]);
@@ -29,7 +29,6 @@ const ProjectSidebar = observer((props: Props) => {
     } else {
         return <></>;
     }
-
 });
 
 export default ProjectSidebar;

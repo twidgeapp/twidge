@@ -7,8 +7,8 @@ import { TauriTransport } from "@rspc/tauri";
 
 // You must provide the generated types as a generic and create a transport (in this example we are using HTTP Fetch) so that the client knows how to communicate with your API.
 const client = createClient<Procedures>({
-	// Refer to the integration your using for the correct transport.
-	transport: new TauriTransport(),
+    // Refer to the integration your using for the correct transport.
+    transport: new TauriTransport(),
 });
 
 const queryClient = new QueryClient();
