@@ -7,6 +7,7 @@
     "tauri:dev": "cd apps/src-tauri && cargo tauri dev",
     "tauri:build": "cd apps/src-tauri && cargo tauri build",
     "dev": "concurrently \"pnpm desktop:dev\" \"pnpm tauri:dev\"",
+    "build": "pnpm desktop:build && pnpm tauri:build",
     "prepare": "husky install",
     "format": "rome format --write ./*",
     "desktop": "pnpm --filter desktop",

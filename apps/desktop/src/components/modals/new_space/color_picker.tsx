@@ -35,6 +35,7 @@ const ColorPicker = (props: Props) => {
 				</div>
 			</div>
 			{open && (
+				// @ts-ignore
 				<div className="absolute top-8 z-50" ref={color_ref}>
 					<HslColorPicker
 						color={color}

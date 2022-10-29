@@ -29,6 +29,7 @@ const DialogComponent = (props: Props) => {
 			)}
 			<DialogPrimitives.Portal>
 				<StyledOverlay style={{ filter: "blur(10px)" }} />
+				{/* @ts-ignore */}
 				<StyledComponent className="focus:outline-none">
 					<>
 						{props.children[1]}

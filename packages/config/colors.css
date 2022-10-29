@@ -26,5 +26,5 @@
     /* sidebar color */
     --color-sidebar-bg: var(--primary), 9%, 8%;
     --color-sidebar-hover-state: var(--primary) 100%, 100%;
-
+    --color-sidebar-item: var(--primary), 5%, 15%;
 }

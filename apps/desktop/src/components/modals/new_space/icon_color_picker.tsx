@@ -32,6 +32,7 @@ const IconColorPicker = (props: Props) => {
 						opacity: open ? 1 : 0,
 					}}
 					className="absolute top-8 z-50 transition-opacity duration-150"
+					// @ts-ignore
 					ref={color_ref}
 				>
 					<HexColorPicker

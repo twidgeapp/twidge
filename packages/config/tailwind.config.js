@@ -36,6 +36,7 @@ module.exports = {
 				sidebar: {
 					DEFAULT: alpha("--color-sidebar-bg"),
 					hover: alpha("--color-sidebar-hover-state"),
+					item: alpha("--color-sidebar-item")
 				},
 			},
 		},
