@@ -1,4 +1,6 @@
-import { useSession } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
+import { trpc } from '../utils/trpc';
+import SpaceLayout from './spaces';
 
 interface Props {
     fallback: React.ReactNode;
@@ -6,18 +8,20 @@ interface Props {
 }
 
 const PrivateLayout = (props: Props) => {
-    const { data, status } = useSession();
+    const { status } = useSession();
+
+    if (status === 'unauthenticated') {
+        signIn();
+        return <div>Redirecting...</div>;
+    }
 
     if (status == 'loading') {
         return <div>Loading...</div>;
     }
-    if (status == 'unauthenticated') {
-        // fallback
-        return <div>{props.fallback}</div>;
-    }
+
     return (
-        <div className="w-screen h-screen bg-app-background">
-            {props.children}
+        <div className="w-screen h-screen bg-app-background text-text-light font-inter">
+            <SpaceLayout>{props.children}</SpaceLayout>
         </div>
     );
 };

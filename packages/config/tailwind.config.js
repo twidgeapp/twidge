@@ -14,6 +14,9 @@ const styles = {
     ],
     theme: {
         extend: {
+            fontFamily: {
+                inter: ['Inter', 'sans-serif'],
+            },
             colors: {
                 app: {
                     background: alpha('--color-app-background'),

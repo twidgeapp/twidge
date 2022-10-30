@@ -5,8 +5,8 @@
 .dark{
     /* app */
     --color-app-background: var(--primary), 8%, 8%;
-    --color-sidebar-background: var(--primary), 35%, 13%;
-    --color-sidebar-border: var(--primary), 35%, 28%;
+    --color-sidebar-background: var(--primary), 14%, 10%;
+    --color-sidebar-border: var(--primary), 20%, 15%;
 
     /* text */
     --color-text: var(--primary), 90%, 90%;

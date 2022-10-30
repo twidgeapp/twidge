@@ -8,6 +8,7 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// NEXT AUTH
 model Account {
   id                String  @id @default(cuid())
   userId            String
@@ -43,6 +44,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  Spaces        Spaces[]
 }
 
 model VerificationToken {
@@ -51,4 +53,29 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+// NEXT AUTH ENDS
+
+enum Plans {
+  FREE
+  PERSONAL
+  PRO
+  TEAM
+}
+
+model Spaces {
+  id          String @id @default(cuid())
+  name        String
+  description String
+  icon        String
+  colors      Json
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  owner   User   @relation(fields: [ownerId], references: [id])
+  ownerId String
+
+  plan Plans @default(FREE)
 }

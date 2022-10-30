@@ -11,7 +11,7 @@ interface Context {
         };
         user_id: string;
     };
-    user?: User & {
+    user: User & {
         sessions: Session[];
     };
     prisma: PrismaClient;
@@ -24,7 +24,12 @@ export const router = t.router;
 export const publicProcedure = t.procedure;
 
 export const authenticatedMiddleware = t.middleware(async ({ ctx, next }) => {
-    if (!ctx.session) throw new TRPCError({code: 'UNAUTHORIZED', message: 'Unauthorized' ,cause: 'No session'});
+    if (!ctx.session)
+        throw new TRPCError({
+            code: 'UNAUTHORIZED',
+            message: 'Unauthorized',
+            cause: 'No session',
+        });
 
     const user = await ctx.prisma.user.findUnique({
         where: {
