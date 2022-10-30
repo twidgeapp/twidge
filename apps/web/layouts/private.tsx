@@ -1,13 +1,13 @@
 import { useSession } from 'next-auth/react';
 
-interface Props{
+interface Props {
     fallback: React.ReactNode;
     children: React.ReactNode;
 }
 
 const PrivateLayout = (props: Props) => {
     const { data, status } = useSession();
-    
+
     if (status == 'loading') {
         return <div>Loading...</div>;
     }
@@ -16,7 +16,7 @@ const PrivateLayout = (props: Props) => {
         return <div>{props.fallback}</div>;
     }
     return (
-        <div className='w-screen h-screen bg-app-background'>
+        <div className="w-screen h-screen bg-app-background">
             {props.children}
         </div>
     );

@@ -1,7 +1,6 @@
-const withTM = require("next-transpile-modules")();
+const withTM = require('next-transpile-modules')();
 
 module.exports = withTM({
-  reactStrictMode: true,
-  swcMinify: true,
+    reactStrictMode: true,
+    swcMinify: true,
 });
-

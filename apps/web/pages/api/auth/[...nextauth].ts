@@ -9,24 +9,24 @@ export default NextAuth({
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID!,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-        })
+        }),
     ],
+    secret: process.env.NEXTAUTH_SECRET,
     callbacks: {
         jwt: async ({ token, user }) => {
             if (user) {
                 token.id = user.id;
                 token.email = user.email;
             }
-      
+
             return token;
         },
-        session: async ({ session, token }) => {
-            if (token) {
-                session.id = token.id;
-            }
-      
+        session: async ({ session, token, user }) => {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            session.user_id = user.id;
+
             return session;
         },
-    }
+    },
 });
-

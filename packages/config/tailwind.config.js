@@ -4,14 +4,13 @@ function alpha(variableName) {
     return `hsla(var(${variableName}), <alpha-value>)`;
 }
 
-
 /** @type {import('tailwindcss').Config} */
 const styles = {
     content: [
         './pages/**/*.{js,ts,jsx,tsx}',
         './components/**/*.{js,ts,jsx,tsx}',
         './layouts/**/*.{js,ts,jsx,tsx}',
-        '../../packages/**/*.{js,ts,jsx,tsx}',        
+        '../../packages/**/*.{js,ts,jsx,tsx}',
     ],
     theme: {
         extend: {
@@ -21,7 +20,7 @@ const styles = {
                     sidebar: {
                         background: alpha('--color-sidebar-background'),
                         border: alpha('--color-sidebar-border'),
-                    }
+                    },
                 },
                 text: {
                     DEFAULT: alpha('--color-text'),
@@ -35,11 +34,11 @@ const styles = {
                     disabled: alpha('--color-button-disabled'),
                     text: alpha('--color-button-text'),
                     textDisabled: alpha('--color-button-text-disabled'),
-                }
-            }
+                },
+            },
         },
     },
     plugins: [],
 };
-  
-module.exports = styles
+
+module.exports = styles;

@@ -1,16 +1,16 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import {trpc} from '../utils/trpc';
+import { trpc } from '../utils/trpc';
 import { SessionProvider } from 'next-auth/react';
 import { withTRPC } from '@trpc/next';
 import { AppRouter } from '../server/routes';
-import {ReactQueryDevtools} from '@tanstack/react-query-devtools';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import '@twidge/config/colors.css';
 import '../styles/globals.css';
 
-const App = ({ Component, pageProps }: AppProps)  => {
+const App = ({ Component, pageProps }: AppProps) => {
     return (
-        <div className='dark'>
+        <div className="dark">
             <SessionProvider session={pageProps.session}>
                 <ReactQueryDevtools />
                 <Component {...pageProps} />
@@ -20,11 +20,13 @@ const App = ({ Component, pageProps }: AppProps)  => {
 };
 
 export default withTRPC<AppRouter>({
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     config({ ctx }) {
         const url = process.env.VERCEL_URL
             ? `https://${process.env.VERCEL_URL}/api/trpc`
             : 'http://localhost:3000/api/trpc';
-  
+
         return {
             url,
             headers: {
@@ -32,5 +34,5 @@ export default withTRPC<AppRouter>({
             },
         };
     },
-    ssr: true,
+    ssr: false,
 })(App);
