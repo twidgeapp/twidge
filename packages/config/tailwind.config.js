@@ -1,47 +1,45 @@
 function alpha(variableName) {
+    // some tailwind magic to allow us to specify opacity with CSS variables (eg: bg-app/80)
+    // https://tailwindcss.com/docs/customizing-colors#using-css-variables
     return `hsla(var(${variableName}), <alpha-value>)`;
 }
 
+
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const styles = {
     content: [
-        "./app/**/*.{js,ts,jsx,tsx}",
-        "./pages/**/*.{js,ts,jsx,tsx}",
-        "./components/**/*.{js,ts,jsx,tsx}",
-          "../../packages/**/*.{js,ts,jsx,tsx,html}",
+        './pages/**/*.{js,ts,jsx,tsx}',
+        './components/**/*.{js,ts,jsx,tsx}',
+        './layouts/**/*.{js,ts,jsx,tsx}',
+        '../../packages/**/*.{js,ts,jsx,tsx}',        
     ],
     theme: {
         extend: {
-            fontFamily: {
-                inter: ["Inter", "sans-serif"],
-                mulish: ["Mulish", "sans-serif"],
-            },
             colors: {
-                black: alpha("--color-black"),
-                white: alpha("--color-white"),
-                blue: {
-                    DEFAULT: alpha("--color-blue"),
-                    light: alpha("--color-blue-light"),
-                    dark: alpha("--color-blue-dark"),
+                app: {
+                    background: alpha('--color-app-background'),
+                    sidebar: {
+                        background: alpha('--color-sidebar-background'),
+                        border: alpha('--color-sidebar-border'),
+                    }
                 },
                 text: {
-                    DEFAULT: alpha("--color-text"),
-                    dark: alpha("--color-text-dark"),
-                    light: alpha("--color-text-light"),
+                    DEFAULT: alpha('--color-text'),
+                    dark: alpha('--color-text-dark'),
+                    light: alpha('--color-text-light'),
                 },
-                app: {
-                    bg: alpha("--color-app-bg"),
-                    overlay: alpha("--color-app-overlay"),
-                    modal: alpha("--color-app-modal"),
-                    dark: alpha("--color-app-bg-dark"),
-                },
-                sidebar: {
-                    DEFAULT: alpha("--color-sidebar-bg"),
-                    hover: alpha("--color-sidebar-hover-state"),
-                    item: alpha("--color-sidebar-item"),
-                },
-            },
+                buttons: {
+                    background: alpha('--color-button-background'),
+                    hover: alpha('--color-button-background-hover'),
+                    active: alpha('--color-button-active'),
+                    disabled: alpha('--color-button-disabled'),
+                    text: alpha('--color-button-text'),
+                    textDisabled: alpha('--color-button-text-disabled'),
+                }
+            }
         },
     },
     plugins: [],
 };
+  
+module.exports = styles

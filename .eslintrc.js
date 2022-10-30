@@ -1,1 +1,1 @@
-module.exports = require("./packages/config/eslint.config")
+module.exports = require("@twidge/config/eslint.config")

@@ -1,30 +1,23 @@
-:root {
-    --primary: 192;
-    --accent: 298;
+:root{
+    --primary: 214
 }
 
-.dark {
-    --color-black: var(--primary), 0%, 0%;
-    --color-white: var(--primary), 100%, 100%;
+.dark{
+    /* app */
+    --color-app-background: var(--primary), 8%, 8%;
+    --color-sidebar-background: var(--primary), 35%, 13%;
+    --color-sidebar-border: var(--primary), 35%, 28%;
 
-    /* text color */
-    --color-text: var(--accent), 16%, 82%;
-    --color-text-dark: var(--accent), 21%, 53%;
-    --color-text-light: var(--accent), 21%, 95%;
+    /* text */
+    --color-text: var(--primary), 90%, 90%;
+    --color-text-dark: var(--primary), 50%, 90%;
+    --color-text-light: var(--primary), 35%, 96%;
 
-    /* blue color */
-    --color-blue: var(--primary), 35%, 53%;
-    --color-blue-light: var(--primary), 50%, 53%;
-    --color-blue-dark: var(--primary), 45%, 48%;
-
-    /* app colors */
-    --color-app-bg: var(--primary), 5%, 10%;
-    --color-app-overlay: var(--primary), 5%, 10%;
-    --color-app-modal: var(--primary), 8%, 8%;
-    --color-app-bg-dark: var(--primary), 5%, 5%;
-
-    /* sidebar color */
-    --color-sidebar-bg: var(--primary), 9%, 8%;
-    --color-sidebar-hover-state: var(--primary) 100%, 100%;
-    --color-sidebar-item: var(--primary), 5%, 15%;
+    /* buttons */
+    --color-button-background: var(--primary), 35%, 28%;
+    --color-button-background-hover: var(--primary), 35%, 35%;
+    --color-button-background-active: var(--primary), 35%, 40%;
+    --color-button-background-disabled: var(--primary), 35%, 20%;
+    --color-button-text: var(--primary), 90%, 90%;
+    --color-button-text-disabled: var(--primary), 35%, 73%;
 }

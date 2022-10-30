@@ -1,7 +1,1 @@
-node_modules
-
-packages/core/src/prisma.rs
-
-/target
-
-**/*/node_modules
+/node_modules
