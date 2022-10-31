@@ -1,8 +1,15 @@
 import StateContext from '@twidge/utils/state';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useCallback, useContext, useEffect, useMemo } from 'react';
+import React, { useContext, useEffect } from 'react';
 import PrivateLayout from '../../layouts/private';
 import { trpc } from '../../utils/trpc';
+import Favicon from '../../components/favicon';
+import { Spaces } from '@prisma/client';
+
+const makeFirstCharUppercase = (str?: string) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+};
 
 export default function IndexPage() {
     const { data } = trpc.user.get.useQuery();
@@ -10,14 +17,18 @@ export default function IndexPage() {
     const router = useRouter();
     const { id } = router.query;
     const { spaces } = useContext(StateContext);
+    const [currentSpace, setCurrentSpace] = React.useState<
+        Spaces | undefined
+    >();
 
-    const currentSpace = useMemo(() => {
-        return spaces.spaces.find((space) => space.id === id);
+    useEffect(() => {
+        setCurrentSpace(spaces.spaces.find((space) => space.id === id));
     }, [id, spaces]);
 
     useEffect(() => {
-        if (!currentSpace) return;
-        const colors = currentSpace?.colors as any;
+        const space = currentSpace;
+        if (!space) return;
+        const colors = space?.colors as any;
         document.body.style.setProperty('--primary', colors.primaryColor);
         document.body.style.setProperty('--accent', colors.accentColor);
 
@@ -29,6 +40,15 @@ export default function IndexPage() {
 
     return (
         <PrivateLayout fallback={<div>asd</div>}>
+            <Head>
+                <title key={'title'}>
+                    {currentSpace?.name
+                        ? `${makeFirstCharUppercase(currentSpace?.name)} - `
+                        : ''}{' '}
+                    Twidge
+                </title>
+            </Head>
+            <Favicon space={currentSpace} />
             <div>{JSON.stringify(data)}</div>
         </PrivateLayout>
     );

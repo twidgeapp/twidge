@@ -31,6 +31,7 @@ const Sidebar = (props: Props) => {
             </Dialog>
             <Separator />
             {spaceStore.spaces.map((space) => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 const Icon: Icons.TablerIcon = Icons[space.icon];
 
