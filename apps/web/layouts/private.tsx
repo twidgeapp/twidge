@@ -20,7 +20,7 @@ const PrivateLayout = (props: Props) => {
     }
 
     return (
-        <div className="w-screen h-screen bg-app-background text-text-light font-inter">
+        <div className="w-screen h-screen bg-app-background text-text-light font-inter selection:bg-buttons-background">
             <SpaceLayout>{props.children}</SpaceLayout>
         </div>
     );

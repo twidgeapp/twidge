@@ -22,16 +22,15 @@ const Login = () => {
                             height={52}
                             alt={'Logo'}
                         />
-                        <h1 className="text-2xl font-bold">
-                            Ready to be productive?
-                        </h1>
+                        <h1 className="text-2xl font-bold">Login to Twidge.</h1>
                     </div>
                     <div className="py-6">
                         <button
                             onClick={() => {
                                 signIn('google');
                             }}
-                            className="bg-app-background/90 px-11 py-3 rounded-lg text-red-400 flex gap-2 items-center font-bold"
+                            aria-label="Sign in with Google"
+                            className="bg-app-background/90 px-11 py-3 rounded-lg text-red-400 flex gap-2 items-center font-medium focus:outline focus:outline-offset-2 focus:outline-2"
                         >
                             <IconBrandGoogle size="20px" />
                             Login with Google

@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "web": "pnpm --filter @twidge/web",
+    "utils": "pnpm --filter @twidge/utils",
+    "components": "pnpm --filter @twidge/components",
+
     "dev": "pnpm web dev",
     "format": "prettier-eslint \"./**/*.{jsx,tsx,js,ts}\" --write"
   },
@@ -20,5 +23,9 @@
     "eslint-plugin-react": "^7.31.10",
     "prettier-eslint-cli": "^7.1.0",
     "typescript": "4.8.4"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.5.0",
+    "prisma": "^4.5.0"
   }
 }

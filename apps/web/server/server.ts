@@ -1,4 +1,4 @@
-import { Account, PrismaClient, Session, User } from '@prisma/client';
+import { PrismaClient, Session, User } from '@prisma/client';
 import * as trpc from '@trpc/server';
 import { TRPCError } from '@trpc/server';
 

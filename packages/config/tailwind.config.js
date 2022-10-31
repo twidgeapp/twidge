@@ -25,6 +25,9 @@ const styles = {
                         border: alpha('--color-sidebar-border'),
                     },
                 },
+                modal: {
+                    background: alpha('--color-modal-background'),
+                },
                 text: {
                     DEFAULT: alpha('--color-text'),
                     dark: alpha('--color-text-dark'),

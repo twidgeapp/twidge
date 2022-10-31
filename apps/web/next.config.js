@@ -1,6 +1,9 @@
-const withTM = require('next-transpile-modules')();
+const withTM = require('next-transpile-modules')([
+    '@twidge/utils',
+    '@twidge/components',
+]);
 
 module.exports = withTM({
-    reactStrictMode: true,
     swcMinify: true,
+    reactStrictMode: true,
 });
