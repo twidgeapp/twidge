@@ -1,3 +1,10 @@
+import { rsc } from "../server";
+
 export default function Page() {
-  return <h1 className="text-5xl">Hello, Next.js!</h1>;
+  const value = rsc.whoami.use();
+  return (
+    <div>
+      <p>{JSON.stringify(value)}</p>
+    </div>
+  );
 }

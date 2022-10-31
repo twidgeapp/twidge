@@ -5,3 +5,4 @@ packages/core/src/prisma.rs
 /target
 
 **/*/node_modules
+.vercel

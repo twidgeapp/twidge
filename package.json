@@ -12,6 +12,7 @@
     "components": "pnpm --filter @twidge/components",
     "landing": "pnpm --filter landing",
     "web": "pnpm --filter web",
+    "api": "pnpm --filter @twidge/server",
 
     "format": "prettier-eslint \"**/*.{jsx,tsx,js,ts}\" --write"
   },

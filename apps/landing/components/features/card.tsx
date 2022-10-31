@@ -16,7 +16,7 @@ const Card = (props: Props) => {
           {props.illustration}{" "}
           <span className="text-lg font-extrabold">{props.title}</span>
         </div>
-        <p className="text-sm text-gray-500 mt-2 font-medium break-all">
+        <p className="text-sm text-gray-500 mt-2 font-medium ">
           {props.text}
         </p>
       </div>

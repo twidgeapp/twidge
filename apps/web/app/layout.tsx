@@ -1,14 +1,22 @@
-import "./globals.css"
-import { Inter } from '@next/font/google';
+import "./globals.css";
+import { Inter } from "@next/font/google";
+import { ClientProvider } from "../components/trpc";
+import { rsc } from "../server";
 
 const inter = Inter();
 
-export default function RootLayout({ children }: {
-  children: React.ReactNode;
-}) {
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
+  const user = rsc.whoami.use();
   return (
-    <html lang="en" className={inter.className}>
-      <body>{children}</body>
-    </html>
+    <ClientProvider>
+      <html lang="en" className={inter.className}>
+        <head>
+          <title>Twidge</title>
+        </head>
+        <body>{children}</body>
+      </html>
+    </ClientProvider>
   );
-}
+};
+
+export default RootLayout;
