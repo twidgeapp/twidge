@@ -3,3 +3,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base{
+    
+    a {
+        @apply rounded-lg
+    }
+    button, a{
+        @apply focus:outline-none focus:ring-2 focus:ring-gray-500 rounded-lg
+    }
+}

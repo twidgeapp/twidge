@@ -14,6 +14,22 @@ const NewProject = () => {
     const { spaces } = useContext(StateContext);
 
     const createSpace = () => {
+        spaces.addSpace({
+            name,
+            description,
+            icon,
+            colors: {
+                iconColor: '123123',
+                primaryColor: primary,
+                accentColor: accent,
+            },
+            id: 'undefined-123',
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            ownerId: '',
+            plan: 'FREE',
+        });
+
         mutate(
             {
                 name,
@@ -27,7 +43,8 @@ const NewProject = () => {
             },
             {
                 onSuccess: (space) => {
-                    console.log('SUCCESS');
+                    console.log(space, spaces);
+                    spaces.removeSpace('undefined-123');
                     spaces.addSpace(space);
                     document.getElementById('close-button-modal')?.click();
                 },

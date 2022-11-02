@@ -30,6 +30,7 @@ importers:
   apps/web:
     specifiers:
       '@next-auth/prisma-adapter': ^1.0.5
+      '@stripe/stripe-js': ^1.42.1
       '@tabler/icons': ^1.108.0
       '@tanstack/react-query': ^4.13.4
       '@tanstack/react-query-devtools': ^4.13.4
@@ -47,6 +48,7 @@ importers:
       awesome-typescript-loader: ^5.2.1
       eslint: ^8.26.0
       eslint-config-next: 13.0.0
+      mobx: ^6.6.2
       mobx-react: ^7.5.3
       next: 13.0.0
       next-auth: ^4.15.0
@@ -58,11 +60,13 @@ importers:
       react-colorful: ^5.6.1
       react-dom: 18.2.0
       react-query: ^3.39.2
+      stripe: ^10.15.0
       tailwindcss: ^3.2.1
       typescript: 4.8.4
       zod: ^3.19.1
     dependencies:
       '@next-auth/prisma-adapter': 1.0.5_next-auth@4.15.0
+      '@stripe/stripe-js': 1.42.1
       '@tabler/icons': 1.108.0_biqbaboplfbrettd7655fr4n2y
       '@tanstack/react-query': 4.13.4_biqbaboplfbrettd7655fr4n2y
       '@tanstack/react-query-devtools': 4.13.4_7bek4xl5ythgjjy3udym3otjke
@@ -74,7 +78,8 @@ importers:
       '@twidge/components': link:../../packages/components
       '@twidge/utils': link:../../packages/utils
       awesome-typescript-loader: 5.2.1_typescript@4.8.4
-      mobx-react: 7.5.3_biqbaboplfbrettd7655fr4n2y
+      mobx: 6.6.2
+      mobx-react: 7.5.3_qrr2ojv4n7h7ey2xj7njerqqr4
       next: 13.0.0_biqbaboplfbrettd7655fr4n2y
       next-auth: 4.15.0_r5sq4deac3rmm2d5onhwvomqve
       next-progressbar: 1.0.0
@@ -84,6 +89,7 @@ importers:
       react-colorful: 5.6.1_biqbaboplfbrettd7655fr4n2y
       react-dom: 18.2.0_react@18.2.0
       react-query: 3.39.2_biqbaboplfbrettd7655fr4n2y
+      stripe: 10.15.0
       zod: 3.19.1
     devDependencies:
       '@types/node': 18.11.7
@@ -588,6 +594,10 @@ packages:
     resolution: {integrity: sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==}
     dev: true
 
+  /@stripe/stripe-js/1.42.1:
+    resolution: {integrity: sha512-5H7P7rVNDMdiJCUKsKXRUyr6IjZ4/9f8FB62NCa5O4rDftRfs4u2dPjjHs/tIs4OLeBB6oSzJIkE7cPr4ykPHg==}
+    dev: false
+
   /@swc/helpers/0.4.11:
     resolution: {integrity: sha512-rEUrBSGIoSFuYxwBYtlUFMlE2CwGhmW+w9355/5oduSw8e5h2+Tj4UrAGNNgP9915++wj5vkQo0UuOBqOAq4nw==}
     dependencies:
@@ -754,7 +764,6 @@ packages:
 
   /@types/node/18.11.7:
     resolution: {integrity: sha512-LhFTglglr63mNXUSRYD8A+ZAIu5sFqNJ4Y2fPuY7UlrySJH87rRRlhtVmMHplmfk5WkoJGmDjE9oiTfyX94CpQ==}
-    dev: true
 
   /@types/prettier/2.7.1:
     resolution: {integrity: sha512-ri0UmynRRvZiiUJdiz38MmIblKK+oH30MztdBVR95dv/Ubw6neWSb8u1XpRb72L4qsZOhz+L+z9JD40SJmfWow==}
@@ -2941,7 +2950,7 @@ packages:
       minimist: 1.2.7
     dev: false
 
-  /mobx-react-lite/3.4.0_biqbaboplfbrettd7655fr4n2y:
+  /mobx-react-lite/3.4.0_qrr2ojv4n7h7ey2xj7njerqqr4:
     resolution: {integrity: sha512-bRuZp3C0itgLKHu/VNxi66DN/XVkQG7xtoBVWxpvC5FhAqbOCP21+nPhULjnzEqd7xBMybp6KwytdUpZKEgpIQ==}
     peerDependencies:
       mobx: ^6.1.0
@@ -2954,11 +2963,12 @@ packages:
       react-native:
         optional: true
     dependencies:
+      mobx: 6.6.2
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /mobx-react/7.5.3_biqbaboplfbrettd7655fr4n2y:
+  /mobx-react/7.5.3_qrr2ojv4n7h7ey2xj7njerqqr4:
     resolution: {integrity: sha512-+ltotliKt4Bjn3d8taZH/VFAcRUbaASvsM8/QSvmHXcZ++RZwaFtjl9JkIosy1byaJGEDS3EFFx2InRm2VaSUw==}
     peerDependencies:
       mobx: ^6.1.0
@@ -2971,7 +2981,8 @@ packages:
       react-native:
         optional: true
     dependencies:
-      mobx-react-lite: 3.4.0_biqbaboplfbrettd7655fr4n2y
+      mobx: 6.6.2
+      mobx-react-lite: 3.4.0_qrr2ojv4n7h7ey2xj7njerqqr4
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
@@ -3160,7 +3171,6 @@ packages:
 
   /object-inspect/1.12.2:
     resolution: {integrity: sha512-z+cPxW0QGUp0mcqcsgQyLVRDoXFQbXOwBaqyF7VIgI4TWNQsDHrBpUQslRmIfAoYWdYzs6UlKJtB2XJpTaNSpQ==}
-    dev: true
 
   /object-keys/1.1.1:
     resolution: {integrity: sha512-NuAESUOUMrlIXOfHKzD6bpPu3tYt3xvjNdRIQ+FeT0lNb4K8WR70CaDxhuNguS2XG+GjkyMwOzsN5ZktImfhLA==}
@@ -3558,6 +3568,13 @@ packages:
     resolution: {integrity: sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==}
     engines: {node: '>=6'}
 
+  /qs/6.11.0:
+    resolution: {integrity: sha512-MvjoMCJwEarSbUYk5O+nmoSzSutSsTwF85zcHPQ9OrlFoZOYIjaqBAJIqIXjptyD5vThxGq52Xu/MaJzRkIk4Q==}
+    engines: {node: '>=0.6'}
+    dependencies:
+      side-channel: 1.0.4
+    dev: false
+
   /queue-microtask/1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
     dev: true
@@ -3900,7 +3917,6 @@ packages:
       call-bind: 1.0.2
       get-intrinsic: 1.1.3
       object-inspect: 1.12.2
-    dev: true
 
   /signal-exit/3.0.7:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
@@ -4097,6 +4113,14 @@ packages:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
     dev: true
+
+  /stripe/10.15.0:
+    resolution: {integrity: sha512-KXw7dozfIEQCxsshjKUwsNwlD55CkhcvVgwwxFtQNikVlRpNUPy6Ljz2mN9OXjinbbmLIcn26MAiPxfNp8Adtg==}
+    engines: {node: ^8.1 || >=10.*}
+    dependencies:
+      '@types/node': 18.11.7
+      qs: 6.11.0
+    dev: false
 
   /styled-jsx/5.1.0_react@18.2.0:
     resolution: {integrity: sha512-/iHaRJt9U7T+5tp6TRelLnqBqiaIT0HsO0+vgyj8hK2KUk7aejFqRrumqPUlAqDwAj8IbS/1hk3IhBAAK/FCUQ==}

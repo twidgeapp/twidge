@@ -43,7 +43,7 @@ class Space extends Spaces {
     @observable name = '';
     @observable description = '';
     @observable icon = '';
-    @observable colors: Prisma.JsonValue = {};
+    @observable colors: any = {};
     @observable createdAt: Date = new Date();
     @observable updatedAt: Date = new Date();
     @observable ownerId = '';

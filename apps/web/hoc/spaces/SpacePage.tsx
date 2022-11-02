@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import React, { useContext, useEffect } from 'react';
-import PrivateLayout from '../../layouts/private';
 import Favicon from '../../components/favicon';
 import SpaceContext from '../../utils/ctx/space';
+import PrivateLayout from '../../layouts/private';
 
 const makeFirstCharUppercase = (str?: string) => {
     if (str === undefined) return undefined;
@@ -26,7 +26,7 @@ const SpacePage = () => {
     }, [currentSpace]);
 
     return (
-        <PrivateLayout fallback={<div>asd</div>}>
+        <PrivateLayout isSpacePage={true} fallback={<h1>Loading</h1>}>
             <Head>
                 <title key={'title'}>
                     {currentSpace?.name

@@ -1,15 +1,17 @@
 import { signIn, useSession } from 'next-auth/react';
 import React from 'react';
-import { trpc } from '../utils/trpc';
-import SpaceLayout from './spaces';
+import useUser from '../hooks/useUser';
+import RootLayout from './root';
 
 interface Props {
     fallback: React.ReactNode;
     children: React.ReactNode;
+    isSpacePage: boolean;
 }
 
 const PrivateLayout = (props: Props) => {
     const { status } = useSession();
+    useUser();
 
     if (status === 'unauthenticated') {
         signIn();
@@ -23,7 +25,9 @@ const PrivateLayout = (props: Props) => {
     return (
         <div className="w-screen h-screen bg-app-background text-text-light font-inter selection:bg-buttons-background">
             <React.Suspense fallback={<h1>Loading</h1>}>
-                <SpaceLayout>{props.children}</SpaceLayout>
+                <RootLayout isSpacePage={props.isSpacePage}>
+                    {props.children}
+                </RootLayout>
             </React.Suspense>
         </div>
     );
