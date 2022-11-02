@@ -1,3 +1,6 @@
 {
-    "name": "@twidge/config"
+    "name": "@twidge/config",
+    "dependencies": {
+        "tailwindcss-radix": "^2.6.1"
+    }
 }

@@ -7,7 +7,7 @@
     "web": "pnpm --filter @twidge/web",
     "utils": "pnpm --filter @twidge/utils",
     "components": "pnpm --filter @twidge/components",
-
+    "tconfig": "pnpm --filter @twidge/config",
     "dev": "pnpm web dev",
     "format": "prettier-eslint \"./**/*.{jsx,tsx,js,ts}\" --write"
   },

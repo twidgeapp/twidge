@@ -1,3 +1,5 @@
+import tailwind_radix from 'tailwindcss-radix';
+
 function alpha(variableName) {
     // some tailwind magic to allow us to specify opacity with CSS variables (eg: bg-app/80)
     // https://tailwindcss.com/docs/customizing-colors#using-css-variables
@@ -44,7 +46,9 @@ const styles = {
             },
         },
     },
-    plugins: [],
+    plugins: [
+        tailwind_radix()
+    ],
 };
 
 module.exports = styles;

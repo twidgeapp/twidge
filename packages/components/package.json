@@ -3,6 +3,7 @@
     "dependencies": {
         "@headlessui/react": "^1.7.3",
         "@radix-ui/react-dialog": "^1.0.2",
+        "@radix-ui/react-popover": "^1.0.2",
         "@tabler/icons": "^1.108.0",
         "classnames": "^2.3.2",
         "react": "18.2.0"

@@ -9,6 +9,12 @@ generator client {
   previewFeatures = ["referentialIntegrity"]
 }
 
+enum UserPlans {
+  FREE
+  PERSONAL
+  PRO
+}
+
 // NEXT AUTH
 model Account {
   id                String  @id @default(cuid())
@@ -27,6 +33,7 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+  @@map("accounts")
 }
 
 model Session {
@@ -35,6 +42,8 @@ model Session {
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
 }
 
 model User {
@@ -43,9 +52,12 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+  plan          UserPlans @default(FREE)
   accounts      Account[]
   sessions      Session[]
   Spaces        Spaces[]
+
+  @@map("users")
 }
 
 model VerificationToken {
@@ -54,15 +66,15 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+  @@map("verification_tokens")
 }
 
 // NEXT AUTH ENDS
 
-enum Plans {
+enum SpacePlan {
   FREE
-  PERSONAL
-  PRO
   TEAM
+  TEAMPLUS
 }
 
 model Spaces {
@@ -78,5 +90,27 @@ model Spaces {
   owner   User   @relation(fields: [ownerId], references: [id], onDelete: Cascade)
   ownerId String
 
-  plan Plans @default(FREE)
+  whiteboards Whiteboards[]
+
+  plan SpacePlan @default(FREE)
+
+  @@map("spaces")
+}
+
+model Whiteboards {
+  id   String @id @default(cuid())
+  name String
+  icon String
+
+  // We want to have each user with his permissions (read/write/admin) stored in the whiteboard 
+  // if not in the TeamPlus plan we want to make sure that only the owner has access to the whiteboard 
+  permissions Json
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  spaces   Spaces? @relation(fields: [spacesId], references: [id], onDelete: Cascade)
+  spacesId String?
+
+  @@map("whiteboards")
 }
