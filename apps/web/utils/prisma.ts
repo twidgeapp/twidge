@@ -6,9 +6,12 @@ declare global {
     let prisma: PrismaClient | undefined;
 }
 
-// add logs to prisma
-const logs = [];
-if (process.env.NODE_ENV == 'development') logs == ['query', 'info', 'warn'];
+let logs = [];
+
+if (process.env.NODE_ENV == 'development') {
+    logs = ['query', 'info', 'warn'];
+}
+
 const client = globalThis.prisma || new PrismaClient({ log: logs });
 if (process.env.NODE_ENV !== 'production') globalThis.prisma = client;
 

@@ -1,4 +1,4 @@
-import tailwind_radix from 'tailwindcss-radix';
+const tailwind_radix = require('tailwindcss-radix');
 
 function alpha(variableName) {
     // some tailwind magic to allow us to specify opacity with CSS variables (eg: bg-app/80)

@@ -1,7 +1,7 @@
 import * as Icons from '@tabler/icons';
 import StateContext from '@twidge/utils/state';
-import React, {useContext} from 'react';
-import {trpc} from '../../../utils/trpc';
+import React, { useContext } from 'react';
+import { trpc } from '../../../utils/trpc';
 import ColorPicker from './color-picker';
 import Popover from '@twidge/components/popover';
 
@@ -11,8 +11,8 @@ const NewProject = () => {
     const [icon, setIcon] = React.useState('Icon2fa');
     const [name, setName] = React.useState('');
     const [description, setDescription] = React.useState('');
-    const {mutate} = trpc.spaces.create.useMutation();
-    const {spaces} = useContext(StateContext);
+    const { mutate } = trpc.spaces.create.useMutation();
+    const { spaces } = useContext(StateContext);
 
     const createSpace = () => {
         spaces.addSpace({
@@ -29,6 +29,7 @@ const NewProject = () => {
             updatedAt: new Date(),
             ownerId: '',
             plan: 'FREE',
+            whiteboards: [],
         });
 
         mutate(
@@ -44,9 +45,11 @@ const NewProject = () => {
             },
             {
                 onSuccess: (space) => {
-                    console.log(space, spaces);
                     spaces.removeSpace('undefined-123');
-                    spaces.addSpace(space);
+                    spaces.addSpace({
+                        ...space,
+                        whiteboards: [],
+                    });
                     document.getElementById('close-button-modal')?.click();
                 },
             }
@@ -57,12 +60,9 @@ const NewProject = () => {
         <div className="w-full h-full pt-4">
             <div className="w-full h-full flex flex-col justify-center items-start gap-3">
                 <div className="flex items-center gap-2 w-full">
-                    <Popover>
-
-                    </Popover>
-                    <div
-                        className="min-w-[32px] w-8 h-8 rounded-lg bg-app-sidebar-background border border-text/10 grid place-items-center cursor-pointer">
-                        <Icons.Icon2fa size={20} color={'#123123'}/>
+                    <Popover></Popover>
+                    <div className="min-w-[32px] w-8 h-8 rounded-lg bg-app-sidebar-background border border-text/10 grid place-items-center cursor-pointer">
+                        <Icons.Icon2fa size={20} color={'#123123'} />
                     </div>
                     <input
                         onInput={(e) => setName(e.currentTarget.value)}

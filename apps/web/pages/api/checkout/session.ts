@@ -8,7 +8,6 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     // get users location
     const location = req.headers['cf-ipcountry'] as string;
-    console.log(req.headers);
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         allow_promotion_codes: true,

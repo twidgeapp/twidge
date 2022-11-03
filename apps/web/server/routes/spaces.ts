@@ -22,6 +22,7 @@ export const spaceRouter = router({
             },
             include: {
                 owner: true,
+                whiteboards: true,
             },
         });
 

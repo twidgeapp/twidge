@@ -1,8 +1,7 @@
-import { useRouter } from 'next/router';
 import React from 'react';
-import SpacePage from '../../hoc/spaces/SpacePage';
-import useCurrentSpace from '../../hooks/useCurrentSpace';
-import SpaceContext from '../../utils/ctx/space';
+import SpacePage from '../../../hoc/spaces/SpacePage';
+import useCurrentSpace from '../../../hooks/useCurrentSpace';
+import SpaceContext from '../../../utils/ctx/space';
 
 const SpacesComponent = () => {
     const space = useCurrentSpace();
@@ -15,7 +14,5 @@ const SpacesComponent = () => {
 };
 
 export default function IndexPage() {
-    const router = useRouter();
-
     return <SpacesComponent></SpacesComponent>;
 }

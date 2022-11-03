@@ -12,7 +12,10 @@ const App = ({ Component, pageProps }: AppProps) => {
     return (
         <div className="dark">
             <SessionProvider session={pageProps.session}>
-                <ReactQueryDevtools />
+                <ReactQueryDevtools
+                    position="bottom-right"
+                    panelPosition="right"
+                />
                 <Component {...pageProps} />
             </SessionProvider>
         </div>

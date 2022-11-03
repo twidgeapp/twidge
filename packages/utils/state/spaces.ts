@@ -1,7 +1,11 @@
 import { action, makeAutoObservable, observable } from 'mobx';
 
-import { Plans, Prisma, Spaces as PrismaSpaces } from '@prisma/client';
+import { SpacePlan, Spaces as PSpaces, Whiteboards } from '@prisma/client';
+import Whiteboard from './whiteboard';
 
+type PrismaSpaces = PSpaces & {
+    whiteboards: Whiteboards[];
+};
 class Spaces {
     @observable spaces: Space[] = [];
 
@@ -47,7 +51,8 @@ class Space extends Spaces {
     @observable createdAt: Date = new Date();
     @observable updatedAt: Date = new Date();
     @observable ownerId = '';
-    @observable plan: Plans = Plans.FREE;
+    @observable plan: SpacePlan = SpacePlan.FREE;
+    @observable whiteboards: Whiteboard[] = [];
 
     constructor(space: PrismaSpaces) {
         super();
@@ -65,6 +70,9 @@ class Space extends Spaces {
         this.updatedAt = space.updatedAt;
         this.ownerId = space.ownerId;
         this.plan = space.plan;
+        this.whiteboards = space.whiteboards.map(
+            (whiteboard) => new Whiteboard(whiteboard, this)
+        );
     }
 
     @action
@@ -82,7 +90,7 @@ class Space extends Spaces {
         this.createdAt = new Date();
         this.updatedAt = new Date();
         this.ownerId = '';
-        this.plan = Plans.FREE;
+        this.plan = SpacePlan.FREE;
     }
 }
 
