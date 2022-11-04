@@ -22,6 +22,7 @@
     "@trpc/server": "10.0.0-rc.1",
     "@twidge/components": "workspace:*",
     "@twidge/utils": "workspace:*",
+    "@yomo/presencejs": "1.0.0-alpha.4",
     "awesome-typescript-loader": "^5.2.1",
     "mobx": "^6.6.2",
     "mobx-react": "^7.5.3",

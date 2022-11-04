@@ -44,6 +44,7 @@ importers:
       '@types/node': 18.11.7
       '@types/react': 18.0.24
       '@types/react-dom': 18.0.8
+      '@yomo/presencejs': 1.0.0-alpha.4
       autoprefixer: ^10.4.13
       awesome-typescript-loader: ^5.2.1
       eslint: ^8.26.0
@@ -77,6 +78,7 @@ importers:
       '@trpc/server': 10.0.0-rc.1
       '@twidge/components': link:../../packages/components
       '@twidge/utils': link:../../packages/utils
+      '@yomo/presencejs': 1.0.0-alpha.4
       awesome-typescript-loader: 5.2.1_typescript@4.8.4
       mobx: 6.6.2
       mobx-react: 7.5.3_qrr2ojv4n7h7ey2xj7njerqqr4
@@ -130,9 +132,11 @@ importers:
   packages/utils:
     specifiers:
       '@types/react': 18.0.24
+      '@yomo/presencejs': 1.0.0-alpha.4
       mobx: ^6.6.2
       react: 18.2.0
     dependencies:
+      '@yomo/presencejs': 1.0.0-alpha.4
       mobx: 6.6.2
       react: 18.2.0
     devDependencies:
@@ -1032,6 +1036,13 @@ packages:
       '@typescript-eslint/types': 5.41.0
       eslint-visitor-keys: 3.3.0
     dev: true
+
+  /@yomo/presencejs/1.0.0-alpha.4:
+    resolution: {integrity: sha512-o+VKtE+Cdw7wl6rc+9mdX6trTrvviDCoVL5Hbl6Y9l3kSTG1Bd+A9hRW1X0Z2UgjXQz03Z+k7yIo2TNK4+4wBg==}
+    engines: {node: '>=10'}
+    dependencies:
+      rxjs: 6.6.7
+    dev: false
 
   /acorn-jsx/5.3.2_acorn@8.8.1:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -3942,6 +3953,13 @@ packages:
       queue-microtask: 1.2.3
     dev: true
 
+  /rxjs/6.6.7:
+    resolution: {integrity: sha512-hTdwr+7yYNIT5n4AMYp85KA6yw2Va0FLa3Rguvbpa4W3I5xynaBZo41cM3XM+4Q6fRMj3sBYIR1VAmZMXYJvRQ==}
+    engines: {npm: '>=2.0.0'}
+    dependencies:
+      tslib: 1.14.1
+    dev: false
+
   /rxjs/7.5.7:
     resolution: {integrity: sha512-z9MzKh/UcOqB3i20H6rtrlaE/CgjLOvheWK/9ILrbhROGTweAi1BaFsTT9FbwZi5Trr1qNRs+MXkhmR06awzQA==}
     dependencies:
@@ -4390,7 +4408,6 @@ packages:
 
   /tslib/1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
-    dev: true
 
   /tslib/2.4.0:
     resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}

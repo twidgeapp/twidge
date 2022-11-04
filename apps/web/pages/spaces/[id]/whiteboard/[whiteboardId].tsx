@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import WhiteBoardPage from '../../../../hoc/spaces/WhiteboardPage';
 import useCurrentSpace from '../../../../hooks/useCurrentSpace';
 import useCurrentWhiteboard from '../../../../hooks/useCurrentWhiteboard';
 import SpaceContext from '../../../../utils/ctx/space';
+import usePresenceJS from '../../../../hooks/usePresenceJS';
 
 const WhiteboardComponent = () => {
     const whiteboard = useCurrentWhiteboard();
     const space = useCurrentSpace();
+    usePresenceJS({
+        room:
+            space && whiteboard
+                ? `spaces/${space.id}/whiteboards/${whiteboard.id}`
+                : undefined,
+    });
 
     return (
         <SpaceContext.Provider value={{ space: space, whiteboard: whiteboard }}>

@@ -109,8 +109,44 @@ model Whiteboards {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
 
-  spaces   Spaces? @relation(fields: [spacesId], references: [id], onDelete: Cascade)
-  spacesId String?
+  spaces            Spaces?             @relation(fields: [spacesId], references: [id], onDelete: Cascade)
+  spacesId          String?
+  WhiteboardElement WhiteboardElement[]
 
   @@map("whiteboards")
+}
+
+enum WhiteboardElementType {
+  // text
+  TEXT
+  LINK
+
+  // media
+  IMAGE
+  VIDEO
+  AUDIO
+
+  // colors
+  COLOR
+
+  // one-to-many referers
+  MINIMAP
+}
+
+model WhiteboardElement {
+  id   String                @id @default(cuid())
+  data Json // using a json as its easier to have media support (search)
+  type WhiteboardElementType
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  whiteboard    Whiteboards @relation(fields: [whiteboardsId], references: [id])
+  whiteboardsId String
+
+  parentElementId   String?
+  parentElement     WhiteboardElement?  @relation("ParentSubElements", fields: [parentElementId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  WhiteboardElement WhiteboardElement[] @relation("ParentSubElements")
+
+  @@map("whiteboard_element")
 }
