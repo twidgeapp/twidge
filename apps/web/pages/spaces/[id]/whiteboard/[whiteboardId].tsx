@@ -8,12 +8,16 @@ import usePresenceJS from '../../../../hooks/usePresenceJS';
 const WhiteboardComponent = () => {
     const whiteboard = useCurrentWhiteboard();
     const space = useCurrentSpace();
-    usePresenceJS({
+    const { allUsers } = usePresenceJS({
         room:
             space && whiteboard
                 ? `spaces/${space.id}/whiteboards/${whiteboard.id}`
                 : undefined,
     });
+
+    useEffect(() => {
+        console.log(allUsers);
+    }, [allUsers]);
 
     return (
         <SpaceContext.Provider value={{ space: space, whiteboard: whiteboard }}>

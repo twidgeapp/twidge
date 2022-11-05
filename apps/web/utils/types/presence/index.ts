@@ -5,6 +5,7 @@ interface PresenceJoinPayload {
         name: string;
         avatar: string;
     };
+    color?: string;
 }
 
 interface PresenceLeavePayload {
@@ -19,4 +20,6 @@ interface PresenceGetData {
     payload?: PresenceJoinPayload[];
 }
 
-export { PresenceJoinPayload, PresenceGetData, PresenceLeavePayload };
+export type { PresenceJoinPayload, PresenceGetData, PresenceLeavePayload };
+
+export default {};

@@ -9,7 +9,7 @@ const SpaceSidebar = () => {
     if (!space) return <></>;
 
     return (
-        <div className="w-64 bg-app-sidebar-background border-r border-r-text/10">
+        <div className="w-64 min-w-[256px] bg-app-sidebar-background border-r border-r-text/10">
             <Header space={space} />
             <div className="mt-2 px-2">
                 {space.whiteboards.map((whiteboard, idx) => {

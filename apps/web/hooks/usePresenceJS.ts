@@ -1,6 +1,6 @@
 import StateContext from '@twidge/utils/state';
 import Presence from '@yomo/presencejs';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import {
     PresenceGetData,
     PresenceJoinPayload,
@@ -16,33 +16,26 @@ const usePresenceJS = (props: Props) => {
     const { global, user } = useContext(StateContext);
     // we don't want to use a react state as we don't want the ui to re-render everytime there is a new message
     // instead we use a getEvents() method to get all the events
-    let events: any[] = [];
-    let allUsers: PresenceJoinPayload[] = [];
+    const [allUsers, setAllUsers] = useState<PresenceJoinPayload[]>([]);
 
     const toRoom = (room: string) => {
         if (presence) {
-            allUsers = [];
-            events = [];
+            setAllUsers([]);
             presence.toRoom(room);
         }
     };
 
-    const getEvents = () => {
-        return events;
-    };
-
-    const getAllUsersInRoom = () => {
-        return allUsers;
-    };
+    // listen to changes in the allUsers
 
     useEffect(() => {
+        let yomo: Presence | undefined = undefined;
         console.log(
             `[PresenceJS] Connecting to PresenceJS with user ${global.uniqueId}`
         );
         if (global.presence) {
             setPresence(global.presence);
         } else if (props.room) {
-            const yomo = new Presence('wss://prsc.yomo.dev', {
+            yomo = new Presence('wss://prsc.yomo.dev', {
                 auth: {
                     type: 'token',
                     endpoint: '/api/presence/auth',
@@ -50,20 +43,22 @@ const usePresenceJS = (props: Props) => {
             });
 
             yomo.on('connected', () => {
-                global.setPresence(yomo);
+                global.setPresence(yomo!);
                 setPresence(yomo);
                 console.log('CONNECTED');
-
-                yomo.send<PresenceJoinPayload>('join', {
+                const finalUser: PresenceJoinPayload = {
+                    color: global.color,
                     user: {
                         avatar: user.image!,
                         id: user.id,
                         name: user.name!,
                     },
                     presence_id: global.uniqueId,
-                });
+                };
 
-                yomo.send<PresenceGetData>('get', {
+                yomo!.send<PresenceJoinPayload>('join', finalUser);
+
+                yomo!.send<PresenceGetData>('get', {
                     presence_id: global.uniqueId,
                     key: 'users',
                 });
@@ -74,8 +69,18 @@ const usePresenceJS = (props: Props) => {
                 const user = allUsers.find(
                     (u) => u.presence_id === data.presence_id
                 );
+
                 if (!user) {
-                    allUsers.push(data);
+                    setAllUsers((prev) => {
+                        let finalUsers = [...prev, data];
+                        finalUsers = finalUsers.filter(
+                            (u, id) =>
+                                finalUsers.findIndex(
+                                    (f) => f.presence_id === u.presence_id
+                                ) === id
+                        );
+                        return finalUsers;
+                    });
                 }
             });
 
@@ -83,11 +88,15 @@ const usePresenceJS = (props: Props) => {
                 if (data.presence_id === global.uniqueId) return;
 
                 if (data.key === 'users') {
-                    yomo.send<PresenceGetData>('get-resp', {
-                        presence_id: global.uniqueId,
-                        key: 'users',
-                        for: data.presence_id,
-                        payload: allUsers,
+                    setAllUsers((users) => {
+                        yomo!.send<PresenceGetData>('get-resp', {
+                            presence_id: global.uniqueId,
+                            key: 'users',
+                            for: data.presence_id,
+                            payload: users,
+                        });
+
+                        return users;
                     });
                 }
             });
@@ -100,47 +109,66 @@ const usePresenceJS = (props: Props) => {
                     return;
 
                 if (data.key === 'users') {
-                    // remove any duplicates from data.payload
-                    const users = data.payload?.filter(
-                        (u) => u.presence_id !== global.uniqueId
-                    );
-                    if (users) {
-                        users.forEach((u) => {
-                            const user = allUsers.find(
-                                (u2) => u2.presence_id === u.presence_id
-                            );
-                            if (!user) {
-                                allUsers.push(u);
-                            }
-                        });
-                        console.log(allUsers);
-                    }
+                    setAllUsers((prev) => {
+                        let finalUsers: PresenceJoinPayload[] = [
+                            ...prev,
+                            ...data.payload!,
+                        ];
+                        finalUsers = finalUsers.filter(
+                            (u, id) =>
+                                finalUsers.findIndex(
+                                    (f) => f.presence_id === u.presence_id
+                                ) === id
+                        );
+                        return finalUsers;
+                    });
                 }
             });
 
             yomo.on<PresenceLeavePayload>('leave', (data) => {
-                const index = allUsers.findIndex(
-                    (u) => u.presence_id === data.presence_id
-                );
-                if (index !== -1) {
-                    allUsers.splice(index, 1);
-                }
-            });
+                setAllUsers((prev) => {
+                    const finalUsers = [...prev];
+                    const index = finalUsers.findIndex(
+                        (u) => u.presence_id === data.presence_id
+                    );
+                    if (index !== -1) {
+                        finalUsers.splice(index, 1);
+                    }
 
-            yomo.on('message', (message) => {
-                events.push(message);
+                    return finalUsers;
+                });
             });
         }
 
-        return () => {
-            presence?.send<PresenceLeavePayload>('leave', {
+        const goOffline = async () => {
+            yomo?.send<PresenceLeavePayload>('leave', {
                 presence_id: global.uniqueId,
             });
-            presence?.close();
+
+            // wait for 5 seconds before disconnecting
+            return await new Promise((resolve) => {
+                setTimeout(resolve, 500);
+            });
+        };
+
+        const cleanup = async () => {
+            await goOffline();
+            yomo?.close();
+        };
+
+        window.addEventListener('beforeunload', async (e) => {
+            e.preventDefault();
+
+            await cleanup();
+        });
+
+        return () => {
+            cleanup();
+            window.removeEventListener('beforeunload', cleanup);
         };
     }, [props.room]);
 
-    return { presence, toRoom, getEvents, getAllUsersInRoom };
+    return { presence, toRoom, allUsers };
 };
 
 export default usePresenceJS;
