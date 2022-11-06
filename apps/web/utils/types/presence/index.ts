@@ -20,6 +20,17 @@ interface PresenceGetData {
     payload?: PresenceJoinPayload[];
 }
 
-export type { PresenceJoinPayload, PresenceGetData, PresenceLeavePayload };
+interface PresenceMouseMoveData {
+    presence_id: string;
+    x: number;
+    y: number;
+}
+
+export type {
+    PresenceJoinPayload,
+    PresenceGetData,
+    PresenceLeavePayload,
+    PresenceMouseMoveData,
+};
 
 export default {};

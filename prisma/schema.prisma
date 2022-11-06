@@ -56,6 +56,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   Spaces        Spaces[]
+  Files         Files[]
 
   @@map("users")
 }
@@ -149,4 +150,17 @@ model WhiteboardElement {
   WhiteboardElement WhiteboardElement[] @relation("ParentSubElements")
 
   @@map("whiteboard_element")
+}
+
+model Files {
+  id   String @id @default(cuid())
+  name String
+  type String
+  size Int
+  url  String
+  user User   @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+  userId    String
 }

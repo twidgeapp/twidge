@@ -1,22 +1,29 @@
 import React, { useContext } from 'react';
 import SpaceContext from '../../utils/ctx/space';
 import SpaceLayout from '../../layouts/space';
-import CursorChat from '../../components/cursors';
-import StateContext from '@twidge/utils/state';
+import ReactInfiniteViewer from 'react-infinite-viewer';
+import useClipSense from '../../hooks/useClipSense';
 
 const WhiteBoardPage = () => {
     const { space: currentSpace, whiteboard: currentWhiteboard } =
         useContext(SpaceContext);
-    const { global } = useContext(StateContext);
-
+    const viewerRef = React.useRef<ReactInfiniteViewer>(null);
+    useClipSense();
     return (
         <SpaceLayout
             title={`${currentWhiteboard?.name} - ${currentSpace?.name} - Twidge`}
             icon={currentWhiteboard?.icon}
         >
-            <div className="w-full h-full overflow-auto">
-                <CursorChat stateContext={global} />
-            </div>
+
+            <ReactInfiniteViewer
+                ref={viewerRef}
+                useMouseDrag={true}
+                usePinch={true}
+                useWheelScroll={true}
+                className="viewer"
+            >
+                <div className="viewport">asd</div>
+            </ReactInfiniteViewer>
         </SpaceLayout>
     );
 };

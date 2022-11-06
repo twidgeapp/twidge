@@ -4,12 +4,21 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base{
-    
+@layer base {
     a {
-        @apply rounded-lg
+        @apply rounded-lg;
     }
-    button, a{
-        @apply focus:outline-none focus:ring-2 focus:ring-gray-500 rounded-lg
+    button,
+    a {
+        @apply focus:outline-none focus:ring-2 focus:ring-gray-500 rounded-lg;
     }
+}
+.viewer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.viewport {
+    position: relative;
 }
