@@ -44,3 +44,7 @@
 .cdx-settings-button, .ce-settings__button{
     @apply bg-dark-gray4 border-none hover:bg-dark-gray5 text-white
 }
+
+.ce-code__textarea{
+    @apply !bg-dark-gray4 !border-none outline-none !text-white !min-h-[30px]
+}

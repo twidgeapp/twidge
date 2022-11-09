@@ -13,15 +13,17 @@ import ListTool from "@editorjs/nested-list";
 import TableTool from "@editorjs/table";
 import rspc from "@twidge/core/query";
 import React from "react";
+import { Notes } from "@twidge/utils/bindings";
 
 interface Props {
     content: string;
+    note: Notes
 }
 
 const Editor = React.forwardRef((props: Props, ref) => {
     const notesEditMutation = rspc.useMutation(["notes.edit"]);
     let editor = { isReady: false };
-    const { content } = props;
+    const { content, note } = props;
 
     const editorConfig: EditorConfig = {
         readOnly: false,
@@ -30,7 +32,6 @@ const Editor = React.forwardRef((props: Props, ref) => {
         tools: {
             header: {
                 class: Header,
-                inlineToolbar: ["marker", "link"],
                 config: {
                     placeholder: "Header",
                 },
@@ -68,6 +69,7 @@ const Editor = React.forwardRef((props: Props, ref) => {
         onChange: function (api, event) {
             // get all blocks data
             api.saver.save().then((value) => {
+                console.log(value)
                 notesEditMutation.mutate(
                     {
                         id: note.id,
@@ -84,7 +86,7 @@ const Editor = React.forwardRef((props: Props, ref) => {
                     }
                 );
             });
-            // console.log("something changed", event);
+            console.log("something changed", event);
         },
         data: JSON.parse(content == "" ? "{}" : content),
     };
@@ -95,7 +97,7 @@ const Editor = React.forwardRef((props: Props, ref) => {
         }
     }, []);
 
-    return <div ref={ref} id="editorjs"></div>;
+    return <div spellCheck={false} ref={ref} id="editorjs"></div>;
 });
 
 export default Editor;

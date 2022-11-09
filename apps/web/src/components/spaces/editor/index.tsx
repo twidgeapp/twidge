@@ -25,7 +25,7 @@ const EditorPage = () => {
                 <div className="max-w-3xl w-full h-full flex flex-col items-center">
                     <Title editorRef={editorRef} note={note} />
                     <div className="w-full">
-                        <Editor ref={editorRef} content={note.content} />
+                        <Editor ref={editorRef} note={note} content={note.content} />
                     </div>
                 </div>
             </div>
