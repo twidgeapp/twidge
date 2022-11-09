@@ -1,3 +1,19 @@
 [alias]
 prisma = "run -p prisma --"
 
+
+[target.x86_64-pc-windows-msvc]
+linker = 'rust-lld.exe'
+
+[profile.dev]
+opt-level = 0
+debug = 2
+incremental = true
+codegen-units = 512
+
+[profile.release]
+opt-level = 3
+debug = 0
+incremental = false
+codegen-units = 256
+split-debuginfo = '...'

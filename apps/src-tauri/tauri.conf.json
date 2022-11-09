@@ -71,8 +71,9 @@
         "height": 750,
         "resizable": true,
         "title": "Twidge",
-        "decorations": false,
-        "transparent": true,
+        "decorations": true,
+        "transparent": false,
+        "visible": false,
         "width": 1400
       }
     ]

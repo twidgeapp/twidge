@@ -40,14 +40,13 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             <MenuBarContext.Consumer>
                 {(value) => (
                     <div
-                        className={`bg-dark-gray2 text-white bg-opacity-90 w-full h-full ${
-                            value.maximised ? "" : "rounded-md"
-                        }`}
+                        className={`bg-dark-gray2 text-white bg-opacity-90 w-full h-full`}
                     >
-                        {platform === "win32" ? <WindowsMenuBar /> : <></>}
                         <div className={"w-full h-full flex"}>
                             <Sidebar />
-                            {children}
+                            <div className="flex flex-col w-full h-full">
+                                {platform === "win32" ? <WindowsMenuBar /> : <></>}
+                            </div>
                         </div>
                     </div>
                 )}

@@ -49,14 +49,13 @@ const Sidebar = () => {
             icon={<Add20Filled />}
           />
           <LineBreak />
-          {data?.map((space) => (
-            <Element
-              color={space.color}
-              icon={<Document16Filled />}
-              onClick={() => {
-                navigate(`/spaces/${space.id}`);
-              }}
-            />
+          {data?.map((space, idx) => (
+            <Link to={`/spaces/${space.id}`} key={idx}>
+              <Element
+                color={space.color}
+                icon={<Document16Filled />}
+              />
+            </Link>
           ))}
         </div>
       </div>

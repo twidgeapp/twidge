@@ -4,7 +4,7 @@ const OnBoardingLayout = (props: any) => {
   return (
     <div
       className={
-        "bg-dark-gray2 bg-opacity-90 w-full h-full rounded-md flex items-center justify-center text-white selection:bg-dark-blue11 selection:bg-opacity-50"
+        "bg-dark-gray2 bg-opacity-90 w-full h-full flex items-center justify-center text-white selection:bg-dark-blue11 selection:bg-opacity-50"
       }
     >
       {props.children}

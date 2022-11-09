@@ -14,6 +14,7 @@ import { setPlatform } from "@twidge/core/state/global";
 import { setBackRoutes, setRouteHistory } from "@twidge/core/state/router";
 import WhiteboardPage from "./pages/spaces/whiteboard";
 import NotesHome from "./pages/spaces/notes/[id]";
+import { invoke } from "@tauri-apps/api";
 
 function App() {
     const dispatch = useDispatch();
@@ -27,12 +28,13 @@ function App() {
 
     useEffect(() => {
         platform().then((e) => {
+            invoke("set_visible")
             dispatch(setPlatform(e));
         });
     }, []);
 
     return (
-        <div className="w-screen h-screen bg-black rounded-md">
+        <div className="w-screen h-screen bg-black">
             <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/home" element={<Home />} />

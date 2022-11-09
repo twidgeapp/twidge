@@ -1,6 +1,6 @@
 interface IElementProps {
   icon: JSX.Element;
-  onClick: () => void;
+  onClick?: () => void;
   color?: string;
 }
 

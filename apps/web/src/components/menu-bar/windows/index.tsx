@@ -24,11 +24,10 @@ const MenuButton = ({
                 if (disabled) return;
                 onClick();
             }}
-            className={`${
-                disabled
-                    ? "text-dark-gray11"
-                    : "text-dark-blue11 hover:bg-dark-blue4"
-            }  transition-all duration-150 w-6 h-6 grid place-items-center rounded-xl`}
+            className={`${disabled
+                ? "text-dark-gray11"
+                : "text-dark-blue11 hover:bg-dark-blue4"
+                }  transition-all duration-150 w-6 h-6 grid place-items-center rounded-xl`}
         >
             {children}
         </div>
@@ -47,9 +46,8 @@ const WindowsMenuBar = () => {
     return (
         <div
             data-tauri-drag-region
-            className={`absolute z-[9999999999999999] w-[calc(100%-4%)] top-0 right-0 h-10 flex items-center justify-between pl-2 border-b  border-b-dark-gray4 bg-dark-gray1 ${
-                ctx.maximised ? "" : "rounded-tr-md"
-            }`}
+            className={`w-full top-0 right-0 h-10 flex items-center justify-between pl-2 border-b  border-b-dark-gray4 bg-dark-gray1 ${ctx.maximised ? "" : "rounded-tr-md"
+                }`}
         >
             <div className="flex gap-3">
                 <MenuButton

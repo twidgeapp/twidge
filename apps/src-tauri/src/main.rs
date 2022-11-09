@@ -4,8 +4,9 @@
 )]
 
 use std::sync::Arc;
-
+use tauri::Manager;
 use tcore::Shared;
+use window_shadows::set_shadow;
 
 #[tokio::main]
 async fn main() {
@@ -19,7 +20,19 @@ async fn main() {
         .plugin(rspc::integrations::tauri::plugin(router, move || Shared {
             client: Arc::clone(&client),
         }))
-        .invoke_handler(tauri::generate_handler![tcore::functions::show_bar])
+        .invoke_handler(tauri::generate_handler![
+            tcore::functions::show_bar,
+            tcore::functions::set_visible
+        ])
+        .setup(|app| {
+            let window = app.get_window("main").unwrap();
+            set_shadow(&window, true).expect("Unsupported platform!");
+
+            #[cfg(windows)]
+            window.set_decorations(false).unwrap();
+
+            Ok(())
+        })
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
