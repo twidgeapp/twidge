@@ -18,7 +18,7 @@ const Editor = ({ content }: { content: string }) => {
     const notesEditMutation = rspc.useMutation(["notes.edit"]);
 
     const [editor, setEditor] = useState();
-
+    console.log(content)
     const editorConfig: EditorConfig = {
         readOnly: false,
         holder: "editorjs",
@@ -82,7 +82,7 @@ const Editor = ({ content }: { content: string }) => {
             });
             // console.log("something changed", event);
         },
-        data: JSON.parse(content ?? {}),
+        data: JSON.parse(content == "" ? "{}" : content),
     };
 
     useEffect(() => {

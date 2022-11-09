@@ -1746,6 +1746,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.10.2":
+  version: 7.20.1
+  resolution: "@babel/runtime@npm:7.20.1"
+  dependencies:
+    regenerator-runtime: ^0.13.10
+  checksum: 00567a333d3357925742a6f5e39394dcc0af6e6029103fe188158bf7ae8b0b3ee3c6c0f68fccc217f0a6cfa455f6be252298baf56b3f5ff37b34313b170cd9f6
+  languageName: node
+  linkType: hard
+
 "@babel/runtime@npm:~7.5.4":
   version: 7.5.5
   resolution: "@babel/runtime@npm:7.5.5"
@@ -2133,6 +2142,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@editorjs/code@npm:^2.7.0":
+  version: 2.7.0
+  resolution: "@editorjs/code@npm:2.7.0"
+  checksum: 094b62afea5aee329bb70caa50cf6ef31c4e9bb542ad3b8b353681c3d6648aa8fb2c9784c059aa3d7c9da5cb836d006379728152653e13b47595c93389adad6c
+  languageName: node
+  linkType: hard
+
 "@editorjs/editorjs@npm:^2.25.0":
   version: 2.25.0
   resolution: "@editorjs/editorjs@npm:2.25.0"
@@ -2144,10 +2160,75 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@editorjs/embed@npm:^2.5.3":
+  version: 2.5.3
+  resolution: "@editorjs/embed@npm:2.5.3"
+  checksum: 15bb800187d934e49b93828fe4e4c89464cbbfe2e78e37a19bfc96551a9a0fd3f60719c7ee9af02254a06d42e9e2d1e6fef0fc6593bc99d7bc5e525b0d1b77bd
+  languageName: node
+  linkType: hard
+
 "@editorjs/header@npm:^2.6.2":
   version: 2.6.2
   resolution: "@editorjs/header@npm:2.6.2"
   checksum: a3985b054263e8bf68a91afe3d2bc1c2eaf72402390aac3430d338f724851763f90d88ac235836909b37f85a2963c0e6ea6e299e9ee2d44305df5b9a227a79b3
+  languageName: node
+  linkType: hard
+
+"@editorjs/inline-code@npm:^1.3.1":
+  version: 1.3.1
+  resolution: "@editorjs/inline-code@npm:1.3.1"
+  checksum: 44926ae7bfcf3164e732802ac0838fb88ceef3a6c55d543c5787f9be37be218d188645a333e51a9ce69ba6d856de20131581d77586f60a75e3f71b0882d430e4
+  languageName: node
+  linkType: hard
+
+"@editorjs/link@npm:^2.4.1":
+  version: 2.4.2
+  resolution: "@editorjs/link@npm:2.4.2"
+  dependencies:
+    "@babel/runtime": ^7.10.2
+  checksum: 5bc2ec4bd5a79ce1c3a43349aa39795441aa00efff17f3ec76d22430589057af75bf1adfb6ec79ef51aebb6f715a1e50d4b80430fc22a4aaccdac7fe32a00634
+  languageName: node
+  linkType: hard
+
+"@editorjs/list@npm:^1.7.0":
+  version: 1.7.0
+  resolution: "@editorjs/list@npm:1.7.0"
+  checksum: a0922f17248a089a8fce0ad25ff78b1d2f1215edff97e439c535870bf6f16ebd4108932574c38f231a570981a5f2edab08879d359ae840561033e091f59e06c5
+  languageName: node
+  linkType: hard
+
+"@editorjs/nested-list@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@editorjs/nested-list@npm:1.0.2"
+  checksum: 31c5890ab6d65ff560ec698a6eda0fed067b631e89ddeafaeb63da8fda8e8dc2fc9d850e87489547582e871c1763e4c1080f2c30e8a005068a970a0b359324c0
+  languageName: node
+  linkType: hard
+
+"@editorjs/paragraph@npm:^2.8.0":
+  version: 2.8.0
+  resolution: "@editorjs/paragraph@npm:2.8.0"
+  checksum: e4d85ba7d60e76df77f462105cc2a43fa70fc8f7566f3f4219bd9653f3bb4b55a45b779615052e779032aa1c0c7ff74200ff95f4bb9c90275d725ab48aa06314
+  languageName: node
+  linkType: hard
+
+"@editorjs/personality@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "@editorjs/personality@npm:2.0.2"
+  checksum: db24ea7fe558323f2379bcc611d934df4059494e1b5274cb7661252581e5f778831c170241df9cfea5af7e0e3d068dd0d37a4cf5f1ce0cd331cc15e5edd821e8
+  languageName: node
+  linkType: hard
+
+"@editorjs/quote@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "@editorjs/quote@npm:2.4.0"
+  checksum: e588643b0a9a3cfafb30e3a4b045fffdad3a0a2443497200be4b1dd2a9e860f1b740169da4f017d9de8868e302064d1c6b99fe9f32705f301b376dc44ae7d95b
+  languageName: node
+  linkType: hard
+
+"@editorjs/table@npm:^2.0.4":
+  version: 2.1.0
+  resolution: "@editorjs/table@npm:2.1.0"
+  checksum: 2d83b34c22723cb1ef06246f58fee91201d4eb79f130abe1ca311898d84287f4971eb8799fedbe1a654323e660f6a96a5dfcc787a25776af9f5fe1302d3956b8
   languageName: node
   linkType: hard
 
@@ -16597,6 +16678,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"regenerator-runtime@npm:^0.13.10":
+  version: 0.13.10
+  resolution: "regenerator-runtime@npm:0.13.10"
+  checksum: 09893f5a9e82932642d9a999716b6c626dc53ef2a01307c952ebbf8e011802360163a37c304c18a6c358548be5a72b448e37209954a18696f21e438c81cbb4b9
+  languageName: node
+  linkType: hard
+
 "regenerator-runtime@npm:^0.13.2, regenerator-runtime@npm:^0.13.4, regenerator-runtime@npm:^0.13.7":
   version: 0.13.9
   resolution: "regenerator-runtime@npm:0.13.9"
@@ -20165,8 +20253,18 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "web@workspace:apps/web"
   dependencies:
+    "@editorjs/code": ^2.7.0
     "@editorjs/editorjs": ^2.25.0
+    "@editorjs/embed": ^2.5.3
     "@editorjs/header": ^2.6.2
+    "@editorjs/inline-code": ^1.3.1
+    "@editorjs/link": ^2.4.1
+    "@editorjs/list": ^1.7.0
+    "@editorjs/nested-list": ^1.0.2
+    "@editorjs/paragraph": ^2.8.0
+    "@editorjs/personality": ^2.0.2
+    "@editorjs/quote": ^2.4.0
+    "@editorjs/table": ^2.0.4
     "@fluentui/react-icons": ^2.0.179
     "@radix-ui/colors": ^0.1.8
     "@radix-ui/react-progress": ^1.0.0

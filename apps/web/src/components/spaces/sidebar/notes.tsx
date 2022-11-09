@@ -11,7 +11,7 @@ const Notes = () => {
     const params: any = useParams();
     const notesQuery = rspc.useQuery([
         "notes.get",
-        { whiteboard_id: parseInt(params.id) },
+        { space_id: parseInt(params.id) },
     ]);
     const createNoteMutation = rspc.useMutation("notes.create");
     const dispatch = useDispatch();

@@ -24,7 +24,7 @@ const Home = () => {
     }, [versionData.data, migrator.isLoading]);
 
     return (
-        <div className="rounded-md w-screen h-screen bg-black bg-opacity-90">
+        <div className="rounded-md w-screen h-screen bg-dark-gray2 bg-opacity-90">
             <div className="w-full h-full flex flex-col justify-center items-center">
                 <img src={Logo} alt="logo" />
                 <div className="relative w-full sm:w-1/6 bg-gray-200 mt-4 rounded">

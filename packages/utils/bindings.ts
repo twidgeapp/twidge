@@ -4,15 +4,15 @@
 export type Procedures = {
     queries: 
         { key: "db.migrate_and_populate", input: never, result: null } | 
-        { key: "notes.get", input: GetArgs, result: Array<Notes> } | 
+        { key: "notes.get", input: GetNotesArgs, result: Array<Notes> } | 
         { key: "openInDefault", input: string, result: null } | 
         { key: "settings.get", input: SettingsGetArgs, result: Settings | null } | 
         { key: "spaces.get", input: never, result: Array<Spaces> } | 
         { key: "version", input: never, result: string } | 
         { key: "whiteboard.items.get", input: GetArgs, result: Array<WhiteboardItem> },
     mutations: 
-        { key: "notes.create", input: CreateArgs, result: Notes } | 
-        { key: "notes.edit", input: EditArgs, result: Notes } | 
+        { key: "notes.create", input: CreateNoteArgs, result: Notes } | 
+        { key: "notes.edit", input: EditNotesArgs, result: Notes } | 
         { key: "settings.set", input: SettingsSetArgs, result: Settings } | 
         { key: "spaces.create", input: never, result: Spaces } | 
         { key: "whiteboard.items.create", input: ItemCreateArgs, result: null } | 
@@ -21,11 +21,13 @@ export type Procedures = {
     subscriptions: never
 };
 
-export interface CreateArgs { space_id: number }
+export interface CreateNoteArgs { space_id: number }
 
-export interface EditArgs { id: number, title: string, content: string }
+export interface EditNotesArgs { id: number, title: string, content: string }
 
 export interface GetArgs { whiteboard_id: number }
+
+export interface GetNotesArgs { space_id: number }
 
 export interface ItemCreateArgs { type: string, data: string, whiteboard_id: number }
 

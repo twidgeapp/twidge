@@ -49,6 +49,9 @@ const WhiteboardPage = () => {
                     useMouseDrag={true}
                     usePinch={true}
                     useWheelScroll={true}
+                    useKeyboardScroll={true}
+                    // make zoom less sensitive
+                    zoomSpeed={0.0005}
                     className="viewer"
                 >
                     <div className="viewport selecto-area">
