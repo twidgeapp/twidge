@@ -34,7 +34,7 @@ function App() {
     }, []);
 
     return (
-        <div className="w-screen h-screen bg-black">
+        <div className="w-screen h-screen bg-black overflow-hidden">
             <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/home" element={<Home />} />

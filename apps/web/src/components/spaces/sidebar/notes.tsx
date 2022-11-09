@@ -9,6 +9,7 @@ import { setNotes } from "@twidge/core/state/space/notes";
 
 const Notes = () => {
     const params: any = useParams();
+
     const notesQuery = rspc.useQuery([
         "notes.get",
         { space_id: parseInt(params.id) },
@@ -22,8 +23,14 @@ const Notes = () => {
         dispatch(setNotes(notesQuery.data));
     }, [notesQuery.data]);
 
+    useEffect(() => {
+        document.getElementById("SIDEBAR-NOTES")?.addEventListener("refetch", () => {
+            notesQuery.refetch();
+        })
+    }, [])
+
     return (
-        <div className="flex flex-col gap-2">
+        <div id="SIDEBAR-NOTES" className="flex flex-col gap-2">
             <div className="flex gap-2 items-center px-4 pt-2 mx-2 justify-between">
                 <div className="flex gap-2">
                     <div className="flex flex-col gap-1">
@@ -53,12 +60,14 @@ const Notes = () => {
                         key={note.id}
                         to={`/spaces/${params.id}/notes/${note.id}`}
                     >
-                        <div className="flex gap-2 items-center px-4 py-2 mx-2 justify-between hover:bg-dark-gray2 rounded-xl transition-all duration">
+                        <div className="flex gap-2 items-center px-4 py-2 mx-2 justify-between hover:bg-dark-gray2 rounded-xl transition-all duration w-60">
                             <div className="flex gap-2 pl-4 text-dark-blue9">
                                 <Document20Filled />
                                 <div className="flex flex-col gap-1">
-                                    <div className="text-white text-sm font-normal">
-                                        {note.title}
+                                    <div className="text-white text-sm font-normal truncate">
+                                        {note.title.length > 18
+                                            ? note.title.substring(0, 18) + "..."
+                                            : note.title}
                                     </div>
                                 </div>
                             </div>

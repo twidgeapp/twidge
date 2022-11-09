@@ -27,11 +27,10 @@ const NotesHome = () => {
             <Layout>
                 <SpaceSidebar />
                 <div
-                    className={`w-full overflow-hidden ${
-                        platform === "win32"
-                            ? "h-[calc(100vh-40px)] mt-[40px]"
-                            : "h-full"
-                    }`}
+                    className={`w-full overflow-hidden ${platform === "win32"
+                        ? "h-[calc(100vh-40px)] mt-[40px]"
+                        : "h-full"
+                        }`}
                 >
                     <EditorPage />
                 </div>

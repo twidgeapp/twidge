@@ -12,13 +12,17 @@ import ParagraphTool from "@editorjs/paragraph";
 import ListTool from "@editorjs/nested-list";
 import TableTool from "@editorjs/table";
 import rspc from "@twidge/core/query";
-import { useState } from "react";
+import React from "react";
 
-const Editor = ({ content }: { content: string }) => {
+interface Props {
+    content: string;
+}
+
+const Editor = React.forwardRef((props: Props, ref) => {
     const notesEditMutation = rspc.useMutation(["notes.edit"]);
+    let editor = { isReady: false };
+    const { content } = props;
 
-    const [editor, setEditor] = useState();
-    console.log(content)
     const editorConfig: EditorConfig = {
         readOnly: false,
         holder: "editorjs",
@@ -86,11 +90,12 @@ const Editor = ({ content }: { content: string }) => {
     };
 
     useEffect(() => {
-        const editorjs = new EditorJS(editorConfig);
-        setEditor(editorjs);
+        if (!editor.isReady) {
+            editor = new EditorJS(editorConfig);
+        }
     }, []);
 
-    return <div id="editorjs"></div>;
-};
+    return <div ref={ref} id="editorjs"></div>;
+});
 
 export default Editor;

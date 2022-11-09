@@ -37,20 +37,19 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 setMaximised: setMaximised,
             }}
         >
-            <MenuBarContext.Consumer>
-                {(value) => (
-                    <div
-                        className={`bg-dark-gray2 text-white bg-opacity-90 w-full h-full`}
-                    >
-                        <div className={"w-full h-full flex"}>
-                            <Sidebar />
-                            <div className="flex flex-col w-full h-full">
-                                {platform === "win32" ? <WindowsMenuBar /> : <></>}
-                            </div>
+            <div
+                className={`bg-dark-gray2 text-white bg-opacity-90 w-full h-full`}
+            >
+                <div className={"w-full h-full flex"}>
+                    <Sidebar />
+                    <div className="flex flex-col items-start gap-0 w-full h-full">
+                        {platform === "win32" ? <WindowsMenuBar /> : <></>}
+                        <div className="w-full h-full flex">
+                            {children}
                         </div>
                     </div>
-                )}
-            </MenuBarContext.Consumer>
+                </div>
+            </div>
         </MenuBarContext.Provider>
     );
 };
