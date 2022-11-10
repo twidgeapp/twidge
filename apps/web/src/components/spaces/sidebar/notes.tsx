@@ -13,7 +13,8 @@ const Notes = () => {
     const notesQuery = rspc.useQuery([
         "notes.get",
         { space_id: parseInt(params.id) },
-    ]);
+    ], {
+    });
     const createNoteMutation = rspc.useMutation("notes.create");
     const dispatch = useDispatch();
 

@@ -1,5 +1,5 @@
 #editorjs {
-    @apply selection:bg-dark-gray4 selection:text-white;
+    @apply selection:bg-dark-gray4 selection:text-white z-0;
 }
 
 .ce-block--selected .ce-block__content {
@@ -36,6 +36,10 @@
     @apply bg-dark-gray4 border-none
 }
 
+.tc-wrap{
+    --color-border: #2d3748 !important;
+    --color-background: hsl(0 0% 15.8% / var(--tw-bg-opacity)) !important;
+}
 
 .ce-settings{
     @apply bg-dark-gray4 border-none
@@ -47,4 +51,59 @@
 
 .ce-code__textarea{
     @apply !bg-dark-gray4 !border-none outline-none !text-white !min-h-[30px]
+}
+
+.tc-add-column:hover {
+    @apply bg-dark-gray5
+}
+
+.tc-popover {
+    @apply !bg-dark-gray4 !border-none
+}
+
+.tc-cell--selected {
+    @apply !bg-dark-gray4
+}
+
+.tc-add-row:hover{
+    @apply !bg-dark-gray4 !border-none !text-white
+}
+.tc-add-row::before:hover{
+    @apply !bg-dark-gray4 !border-none !text-white
+}
+
+.tc-popover__item{
+    @apply !bg-dark-gray4 !border-none !text-white
+}
+
+.tc-popover__item-icon{
+    @apply !bg-dark-gray4 !border-none !text-white
+}
+
+h1{
+    @apply !text-white !text-3xl
+}
+
+h2{
+    @apply !text-white !text-2xl
+}
+
+h3{
+    @apply !text-white !text-xl
+}
+
+h4{
+    @apply !text-white !text-lg
+}
+
+h5{
+    @apply !text-white !text-base
+}
+
+h6{
+    @apply !text-white !text-sm
+}
+
+.ce-block__content{
+    @apply !text-white
 }

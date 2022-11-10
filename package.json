@@ -22,7 +22,9 @@
     "format": "prettier --write '**/*.{js,jsx,ts,tsx}'",
     "lint": "eslint '**/*.{js,jsx,ts,tsx}'",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "web": "yarn workspace web",
+    "ui": "yarn workspace @twidge/ui"
   },
   "keywords": [],
   "author": "Varun Potti",

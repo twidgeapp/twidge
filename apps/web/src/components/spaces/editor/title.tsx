@@ -20,8 +20,8 @@ const Title = (props: Props) => {
                 content: props.note.content,
             });
         }
-
         document.getElementById("SIDEBAR-NOTES")?.dispatchEvent(new CustomEvent("refetch"))
+
     }, [title]);
 
     return (

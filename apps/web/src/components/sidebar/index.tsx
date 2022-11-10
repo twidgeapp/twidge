@@ -6,7 +6,8 @@ import { Add20Filled, Document16Filled } from "@fluentui/react-icons";
 import rspc from "@twidge/core/query";
 import { setSpaces } from "@twidge/core/state/space";
 import { useEffect } from "react";
-
+import ModalComponent from "@twidge/ui/modal"
+import NewSpaceModal from "../modals/new-space";
 const LineBreak = () => (
   <div className="border-b w-3/5 h-1 border-b-dark-gray4"></div>
 );
@@ -37,17 +38,13 @@ const Sidebar = () => {
           <Link to="/home">
             <img className="w-6 h-6 select-none" src={Image} />
           </Link>
-          <Element
-            color="#9E9E9E"
-            onClick={() => {
-              mutate(undefined, {
-                onSuccess() {
-                  refetch();
-                },
-              });
-            }}
-            icon={<Add20Filled />}
-          />
+          <ModalComponent>
+            <Element
+              color="#9E9E9E"
+              icon={<Add20Filled />}
+            />
+            <NewSpaceModal />
+          </ModalComponent>
           <LineBreak />
           {data?.map((space, idx) => (
             <Link to={`/spaces/${space.id}`} key={idx}>
