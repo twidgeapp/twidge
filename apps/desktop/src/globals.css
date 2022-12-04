@@ -1,0 +1,6 @@
+/* import ./sathosi.css */
+@import url("./satoshi.css");
+
+* {
+    font-family: "Satoshi";
+}

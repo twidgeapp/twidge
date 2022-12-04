@@ -1,0 +1,13 @@
+{
+  "name": "twidge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "desktop": "pnpm --filter @twidge/desktop",
+    "src-tauri": "pnpm --filter @twidge/src-tauri"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
