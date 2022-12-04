@@ -34,8 +34,8 @@ than welcome to open a [PR](https://github.com/VarunPotti/twidge/pulls) with a f
 ## Fix an issue or create a new feature
 
 - First clone the repo using the command `git clone git@github.com:VarunPotti/twidge.git`
-- Then run `pnpm` to install all the require packages
-- Run `pnpm dev` to run twidge.
+- Then run `yarn` to install all the require packages
+- Run `yarn dev` to run twidge.
 - Fix the issue or create a new feature
 
 ## Pull Request
