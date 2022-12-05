@@ -6,7 +6,6 @@
 use std::sync::Arc;
 use tauri::Manager;
 use tcore::Shared;
-use window_shadows::set_shadow;
 
 #[tokio::main]
 async fn main() {
@@ -24,15 +23,22 @@ async fn main() {
             tcore::functions::show_bar,
             tcore::functions::set_visible
         ])
-        .setup(|app| {
-            let window = app.get_window("main").unwrap();
-            set_shadow(&window, true).expect("Unsupported platform!");
+        .setup(
+            #[allow(unused_variables)]
+            |app| {
+                #[cfg(not(linux))]
+                {
+                    let window = app.get_window("main").unwrap();
 
-            #[cfg(windows)]
-            window.set_decorations(false).unwrap();
+                    window_shadows::set_shadow(&window, true).unwrap();
 
-            Ok(())
-        })
+                    #[cfg(windows)]
+                    window.set_decorations(false).unwrap();
+                }
+
+                Ok(())
+            },
+        )
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
