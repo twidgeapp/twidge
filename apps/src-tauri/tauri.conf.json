@@ -54,9 +54,10 @@
     },
     "windows": [
       {
-        "fullscreen": false,
+        "fullscreen": true,
         "height": 600,
-        "resizable": true,
+        "transparent": true,
+        "resizable": false,
         "title": "Twidge",
         "width": 800
       }

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "desktop": "pnpm --filter @twidge/desktop",
-    "src-tauri": "pnpm --filter @twidge/src-tauri"
+    "src-tauri": "pnpm --filter @twidge/src-tauri",
+    "dev": "pnpm src-tauri dev"
   },
   "keywords": [],
   "author": "",

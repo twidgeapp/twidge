@@ -3,3 +3,6 @@ members=[
     "apps/src-tauri",
     "packages/rust-core"
 ]
+
+[workspace.dependencies]
+rspc={version="0.1.2", features=["tauri"]}
