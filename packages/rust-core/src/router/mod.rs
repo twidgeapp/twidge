@@ -1,9 +1,17 @@
+pub mod config;
+pub mod context;
+pub mod migrations;
+
 use rspc::{Config, Router};
 
-pub fn build_router() -> Router {
-    let router = <Router>::new()
+use self::context::Context;
+
+pub fn build_router() -> Router<Context> {
+    let router = Router::<Context>::new()
         .config(Config::new().export_ts_bindings("../../packages/utils/bindings.ts"))
-        .query("versions", |t| t(|_: (), _: ()| env!("CARGO_PKG_VERSION")))
+        .merge("migrations.", migrations::setup_router())
+        .merge("config.", config::setup_config_router())
+        .query("version", |t| t(|_ctx, _: ()| "1.0.0"))
         .build();
 
     router

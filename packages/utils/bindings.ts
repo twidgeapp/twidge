@@ -2,7 +2,11 @@
 
 export type Procedures = {
     queries: 
-        { key: "versions", input: never, result: string },
+        { key: "config.get", input: GetConfigInput, result: string } | 
+        { key: "migrations.run", input: never, result: string } | 
+        { key: "version", input: never, result: string },
     mutations: never,
     subscriptions: never
 };
+
+export interface GetConfigInput { key: string }

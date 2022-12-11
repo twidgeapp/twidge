@@ -1,3 +1,6 @@
 node_modules
 target
 **/node_modules
+
+# We don't want to push the Prisma Generated Client to the remote repository.
+/prisma/src/lib.rs

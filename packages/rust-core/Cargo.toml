@@ -11,3 +11,5 @@ tauri = { version = "1.2.0", features = [] }
 anyhow = "1.0.66"
 dirs="4.0.0"
 rspc= {workspace=true, features= ["tauri"] }
+prisma-client-rust = { workspace=true, features=["sqlite", "migrations", "rspc"] }
+prisma={path="../../prisma"}

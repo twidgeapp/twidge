@@ -1,0 +1,8 @@
+:root{
+    --background: 220;
+}
+
+.dark{
+    --color-bg: var(--background), 20%, 30%;
+    --color-bg-accent: var(--background), 29%, 20%;
+}

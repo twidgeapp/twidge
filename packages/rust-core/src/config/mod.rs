@@ -2,6 +2,7 @@ use std::path::PathBuf;
 
 use anyhow::Result;
 use serde::{Deserialize, Serialize};
+use serde_json::Value;
 
 use crate::functions::get_twidge_dir;
 
@@ -11,7 +12,7 @@ use crate::functions::get_twidge_dir;
 ///
 /// So we have a separate config file (json) which has all the important settings
 /// which are needed just before the app starts.
-#[derive(Deserialize, Serialize, Debug, Clone)]
+#[derive(Deserialize, Serialize, Debug, Clone, Copy)]
 pub struct Config {
     pub first_start: bool,
 }
@@ -23,6 +24,15 @@ impl Default for Config {
 }
 
 impl Config {
+    pub fn get(&self, key: String) -> anyhow::Result<Value> {
+        let conf: serde_json::Value = serde_json::to_value(&self)?.clone();
+
+        let value = conf.get(&key).ok_or(anyhow::anyhow!("Key not found"))?;
+        println!("Config value: {:?}", value);
+
+        Ok(value.clone())
+    }
+
     pub fn load(&self) -> Result<Self> {
         let twidge_dir = get_twidge_dir()?;
         let config_path = twidge_dir.join("config.json");
