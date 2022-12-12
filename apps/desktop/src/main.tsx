@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import final_routes from './routes';
 import { client, queryClient, rspc } from "./rspc.query"
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import "./nunito.css"
 
 const router = createBrowserRouter(final_routes);
 

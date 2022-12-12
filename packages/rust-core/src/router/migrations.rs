@@ -31,7 +31,7 @@ pub fn setup_router() -> RouterBuilder<Context> {
             client._db_push().await.unwrap();
 
             #[cfg(not(debug_assertions))]
-            client._migrate_deploy().await?;
+            client._migrate_deploy().await.unwrap();
 
             Ok("Hello, world!")
         })

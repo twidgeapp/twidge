@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body, html{
+    overflow: hidden;
+}
+
+/* create a css class which has a shimmer effect with a gradient text color */
+
+.shimmer {
+    text-align: center;
+    background: linear-gradient(90deg, #F34953, #BD00FF,#BD00FF80);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    background-size: 278px 100%;
+    -webkit-animation: shimmer 10s infinite linear;
+}
+
+@keyframes shimmer {
+    0% {
+            background-position: top left;
+    }
+    100% {
+            background-position: top right;
+    }
+}
