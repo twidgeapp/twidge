@@ -37,7 +37,7 @@ const WelcomePage = () => {
 
     return (
         <div className="w-full h-full flex flex-col items-center justify-center absolute z-50">
-            <motion.img src={"/logo.svg"} width={48}
+            <motion.img src={"/logo.svg"} className="mb-2" width={48}
                 initial={{
                     opacity: 0,
                     y: 150,

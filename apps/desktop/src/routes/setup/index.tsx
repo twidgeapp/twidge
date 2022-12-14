@@ -12,7 +12,7 @@ const SetupIndex = () => {
             }}
             animate={{
                 opacity: 1
-            }} className="text-white w-full h-full bg-bg--accent font-nunito">
+            }} className="text-white w-full h-full font-nunito bg-bg-accent/20 backdrop-blur-xl">
             <Blob />
             {page == "welcome" && <WelcomePage />}
         </motion.div>

@@ -7,6 +7,7 @@ use std::sync::Arc;
 
 use rust_core::{config::Config, functions::get_twidge_dir};
 use tauri::Manager;
+use window_vibrancy::{apply_acrylic, apply_blur, apply_vibrancy, Color, NSVisualEffectMaterial};
 
 #[tokio::main]
 async fn main() {
@@ -40,10 +41,20 @@ async fn main() {
                 {
                     let window = app.get_window("main").unwrap();
 
-                    window_shadows::set_shadow(&window, true).unwrap();
-
                     #[cfg(windows)]
                     window.set_decorations(false).unwrap();
+
+                    #[cfg(target_os = "macos")]
+                    apply_vibrancy(&window, NSVisualEffectMaterial::HudWindow, None, None).expect(
+                        "Unsupported platform! 'apply_vibrancy' is only supported on macOS",
+                    );
+
+                    #[cfg(target_os = "windows")]
+                    apply_acrylic(&window, Some((18, 18, 18, 125))).expect(
+                        "Unsupported platform! 'apply_acrylic' is only supported on Windows",
+                    );
+
+                    window_shadows::set_shadow(&window, true).unwrap();
                 }
 
                 Ok(())

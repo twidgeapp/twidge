@@ -12,11 +12,14 @@ const IndexRoute = () => {
 
     if (firstRun.data === "true") {
         navigate("/setup")
+    } else {
+        navigate("/home")
     }
 
     return (
-        <div className="w-screen h-screen bg-bg-accent grid place-items-center">
+        <div className="w-screen h-screen bg-bg-accent/50 grid place-items-center">
             <motion.img
+                className="animate-pulse"
                 src='/logo.svg'
                 width={150}
                 initial={{
