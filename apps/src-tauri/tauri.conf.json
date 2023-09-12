@@ -41,7 +41,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "twidge.vpotti.me",
+      "identifier": "me.vpotti.twidge",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
